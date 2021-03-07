@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 
 interface ActionsInterface<T> {
-  setValueAt: (index: number, value: T) => void;
+  setAt: (index: number, value: T) => void;
   concat: (array: T[]) => void;
   push: (value: T) => void;
   set: (array: T[]) => void;
@@ -12,11 +12,14 @@ interface ActionsInterface<T> {
 const useArray = <T>(initialState?: T[]): ActionsInterface<T> => {
   const [userArray, setUserArray] = useState<T[] | undefined>(initialState);
 
-  const sort = useCallback((compareFn?: (a: T, b: T) => number) => {
-    const sorted = userArray ? userArray.sort(compareFn) : undefined;
-    setUserArray(sorted);
-    return sorted;
-  }, []);
+  const sort = useCallback(
+    (compareFn?: (a: T, b: T) => number) => {
+      const sorted = userArray ? userArray.sort(compareFn) : undefined;
+      setUserArray(sorted);
+      return sorted;
+    },
+    [userArray]
+  );
 
   const get = useCallback(() => userArray, [userArray]);
 
@@ -24,7 +27,7 @@ const useArray = <T>(initialState?: T[]): ActionsInterface<T> => {
     setUserArray(array);
   }, []);
 
-  const setValueAt = useCallback(
+  const setAt = useCallback(
     (index: number, value: T) => {
       if (userArray && index < userArray.length - 1 && index > 0) {
         setUserArray(
@@ -48,8 +51,8 @@ const useArray = <T>(initialState?: T[]): ActionsInterface<T> => {
   }, []);
 
   const actions = useMemo<ActionsInterface<T>>(
-    () => ({ concat, setValueAt, push, set, get, sort }),
-    [concat, setValueAt, push, set, get, sort]
+    () => ({ concat, setAt, push, set, get, sort }),
+    [concat, setAt, push, set, get, sort]
   );
 
   return actions;
