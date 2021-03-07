@@ -1,7 +1,5 @@
 const App = () => {
-  const a = 0;
-  const b = a;
-  return b;
+  return null;
 };
 
 export default App;
