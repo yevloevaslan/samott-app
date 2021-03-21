@@ -9,7 +9,10 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "xcode": "open ./ios/Translator.xcworkspace",
-    "lint:fix": "eslint app/ --ext .js,.jsx,.ts,.tsx --fix"
+    "lint:fix": "eslint app/ --ext .js,.jsx,.ts,.tsx --fix",
+    "bootstrap": "yarn && cd ios && pod install && cd ../",
+    "reset": "rm -rf node_modules ios/Pods yarn.lock",
+    "reload": "rm -rf node_modules ios/Pods && yarn bootstrap"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -22,6 +25,7 @@
     "react-native-reanimated": "^2.0.0",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.18.1",
+    "react-native-splash-screen": "^3.2.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "rest-api-helper": "^0.1.56"

@@ -37,6 +37,13 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "Translator-tvOS";
 		};
+		847066B92607A66200773421 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847066B52607A66200773421 /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +68,7 @@
 		5DEE05211264B527668059AE /* libPods-Translator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2D0A7D8997018E9029282F /* Pods-Translator-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Translator-tvOSTests/Pods-Translator-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Translator/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		847066B52607A66200773421 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		97AB5878728A53816FB3861F /* Pods-Translator-TranslatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-TranslatorTests.debug.xcconfig"; path = "Target Support Files/Pods-Translator-TranslatorTests/Pods-Translator-TranslatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC91C926EEF8CE5CC618FDE9 /* libPods-Translator-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14FA97008D2D36AD8F99817 /* libPods-Translator-TranslatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator-TranslatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +156,6 @@
 				395EA4BC69DB027B244FDA4C /* Pods-Translator-tvOSTests.debug.xcconfig */,
 				6B2D0A7D8997018E9029282F /* Pods-Translator-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +182,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				847066B52607A66200773421 /* SplashScreen.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* Translator */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TranslatorTests */,
@@ -194,6 +202,14 @@
 				00E356EE1AD99517003FC87E /* TranslatorTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* Translator-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* Translator-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		847066B62607A66200773421 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				847066BA2607A66200773421 /* libSplashScreen.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +334,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 847066B62607A66200773421 /* Products */;
+					ProjectRef = 847066B52607A66200773421 /* SplashScreen.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* Translator */,
@@ -327,6 +349,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		847066BA2607A66200773421 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = 847066B92607A66200773421 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
