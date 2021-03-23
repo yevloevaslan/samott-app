@@ -6,6 +6,8 @@ module.exports = {
   rules: {
     semi: [2, "always"],
     quotes: [2, "double"],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": [2],
     "no-console": 2,
     "@typescript-eslint/explicit-function-return-type": 0,
     "react-hooks/rules-of-hooks": 2,
