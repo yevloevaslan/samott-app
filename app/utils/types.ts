@@ -1,4 +1,4 @@
-import { RoutesNames } from "../navigation/routesNames";
+import { RoutesNames } from "./enums";
 
 export type MainRoutesProps = {
   [route in RoutesNames]?: any;
