@@ -17,7 +17,7 @@ const AppContent = () => {
   );
 };
 
-function App() {
+const App = () => {
   const { store, persistor } = useStore();
   useEffect(() => SplashScreen.hide(), []);
 
@@ -28,6 +28,6 @@ function App() {
       </PersistGate>
     </Provider>
   );
-}
+};
 
 export default App;
