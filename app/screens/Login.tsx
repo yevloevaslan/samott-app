@@ -1,12 +1,17 @@
 import React from "react";
 import { View } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
-import { HomeStackProps, RoutesNames, TypographyTypes } from "../utils";
-import { Typography } from "../components";
+import {
+  BackgroundImages,
+  HomeStackProps,
+  RoutesNames,
+  TypographyTypes,
+} from "../utils";
+import { Typography, withBackgroundHoc } from "../components";
 
 interface Props extends StackScreenProps<HomeStackProps, RoutesNames.LOGIN> {}
 
-export default function Login(props: Props) {
+function Login(props: Props) {
   const {} = props;
 
   return (
@@ -16,3 +21,5 @@ export default function Login(props: Props) {
     </View>
   );
 }
+
+export default withBackgroundHoc(BackgroundImages.WITH_CASTLES)(Login);

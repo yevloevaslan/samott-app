@@ -1,5 +1,6 @@
 export enum Colors {
   WHITE = "white",
+  RED = "red",
 }
 
 export enum RoutesNames {
@@ -17,4 +18,8 @@ export enum TypographyTypes {
   BOLD18 = "BOLD18",
   BOLD24 = "BOLD24",
   BOLD34 = "BOLD34",
+}
+
+export enum BackgroundImages {
+  WITH_CASTLES = "WITH_CASTLES",
 }
