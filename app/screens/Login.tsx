@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import {
   BackgroundImages,
@@ -7,7 +7,17 @@ import {
   RoutesNames,
   TypographyTypes,
 } from "../utils";
-import { Typography, withBackgroundHoc } from "../components";
+import { RedTitle, Typography, withBackgroundHoc } from "../components";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 79,
+  },
+  contentContainer: {
+    paddingHorizontal: 39,
+  },
+});
 
 interface Props extends StackScreenProps<HomeStackProps, RoutesNames.LOGIN> {}
 
@@ -15,9 +25,11 @@ function Login(props: Props) {
   const {} = props;
 
   return (
-    <View>
-      <Typography type={TypographyTypes.BOLD34}>123</Typography>
-      <Typography type={TypographyTypes.BOLD34}>АВwИ 123фывфывЗАЦИЯ</Typography>
+    <View style={styles.container}>
+      <RedTitle decorators="all">
+        <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
+      </RedTitle>
+      <View style={styles.contentContainer} />
     </View>
   );
 }

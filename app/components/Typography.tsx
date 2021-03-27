@@ -6,13 +6,24 @@ interface Props extends TextProps {
   children?: React.ReactFragment;
   type: TypographyTypes;
   color?: string;
+  textAlign?: "center" | "left" | "right" | "auto" | "justify";
 }
 
 const Typography = (props: Props) => {
-  const { type, color = StyleGuide.colorPalette.white, style } = props;
+  const {
+    type,
+    color = StyleGuide.colorPalette.white,
+    style,
+    textAlign,
+  } = props;
 
   return (
-    <Text {...props} style={[StyleGuide.typography[type], { color }, style]} />
+    <Text
+      {...props}
+      adjustsFontSizeToFit
+      numberOfLines={1}
+      style={[style, StyleGuide.typography[type], { color, textAlign }]}
+    />
   );
 };
 

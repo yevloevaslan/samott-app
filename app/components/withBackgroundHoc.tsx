@@ -1,5 +1,6 @@
 import React from "react";
 import { ImageBackground, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { BackgroundImages, StyleGuide } from "../utils";
 
 const styles = StyleSheet.create({
@@ -17,12 +18,14 @@ function withBackgroundHoc(
   return <T extends object>(Component: React.ComponentType<T>) => {
     return function (props: T) {
       return (
-        <ImageBackground
-          style={styles.container}
-          source={StyleGuide.backgrounds[image]}
-        >
-          <Component {...props} />
-        </ImageBackground>
+        <SafeAreaView style={styles.container}>
+          <ImageBackground
+            style={styles.container}
+            source={StyleGuide.backgrounds[image]}
+          >
+            <Component {...props} />
+          </ImageBackground>
+        </SafeAreaView>
       );
     };
   };
