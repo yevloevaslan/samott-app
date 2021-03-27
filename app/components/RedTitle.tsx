@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   containerWrapper: {
     justifyContent: "center",
     alignContent: "center",
-    paddingHorizontal: 45,
+    paddingHorizontal: 55,
   },
   withLeftContainerWrapper: {
     paddingRight: 0,

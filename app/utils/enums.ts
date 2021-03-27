@@ -1,6 +1,7 @@
 export enum Colors {
   WHITE = "white",
   RED = "red",
+  ORANGE = "orange",
 }
 
 export enum RoutesNames {
