@@ -1,5 +1,10 @@
-import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import React, { useMemo } from "react";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ViewStyle,
+} from "react-native";
 import { StyleGuide } from "../utils";
 
 const styles = StyleSheet.create({
@@ -9,18 +14,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignContent: "center",
   },
+  disabled: {
+    backgroundColor: StyleGuide.colorPalette.gray,
+  },
 });
 
-interface Props {
-  onPress: () => void;
+interface Props extends TouchableOpacityProps {
   children?: React.ReactNode;
 }
 
 const Button = (props: Props) => {
-  const { onPress, children } = props;
+  const { onPress, children, disabled } = props;
+
+  const containerStyle = useMemo<ViewStyle[]>(() => {
+    if (disabled) {
+      return [styles.container, styles.disabled];
+    }
+    return [styles.container];
+  }, [disabled]);
 
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity {...props} onPress={onPress} style={containerStyle}>
       {children}
     </TouchableOpacity>
   );
