@@ -1,9 +1,11 @@
-import { TextStyle } from "react-native";
-import { Colors, TypographyTypes } from "./enums";
+import { ImageSourcePropType, TextStyle } from "react-native";
+import { BACKGROUND_WITH_CASTLE } from "../assets/images";
+import { BackgroundImages, Colors, TypographyTypes } from "./enums";
 import { IStyleGuide } from "./interfaces";
 
 const colorPalette: { [color in Colors]: string } = {
   [Colors.WHITE]: "#FFFFFF",
+  [Colors.RED]: "#DF5656",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {
@@ -59,7 +61,12 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
   },
 };
 
+const backgrounds: { [background in BackgroundImages]: ImageSourcePropType } = {
+  [BackgroundImages.WITH_CASTLES]: BACKGROUND_WITH_CASTLE,
+};
+
 export const StyleGuide: IStyleGuide = {
   colorPalette,
   typography,
+  backgrounds,
 };
