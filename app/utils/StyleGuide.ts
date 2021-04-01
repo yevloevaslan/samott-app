@@ -5,7 +5,7 @@ import { IStyleGuide } from "./interfaces";
 
 const colorPalette: { [color in Colors]: string } = {
   [Colors.WHITE]: "#FFFFFF",
-  [Colors.RED]: "#DF5656",
+  [Colors.RED]: "#DD5758",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {
