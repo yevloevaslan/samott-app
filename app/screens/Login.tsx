@@ -5,13 +5,7 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { StackScreenProps } from "@react-navigation/stack";
-import {
-  BackgroundImages,
-  HomeStackProps,
-  RoutesNames,
-  TypographyTypes,
-} from "../utils";
+import { BackgroundImages, TypographyTypes } from "../utils";
 import {
   BorderedInput,
   Button,
@@ -19,6 +13,9 @@ import {
   Typography,
   withBackgroundHoc,
 } from "../components";
+import { UserController } from "../lib";
+import useUser from "../redux/hooks/user";
+import { UserActionsTypes } from "../redux/types";
 
 const styles = StyleSheet.create({
   container: {
@@ -38,18 +35,19 @@ const styles = StyleSheet.create({
   },
 });
 
-interface Props extends StackScreenProps<HomeStackProps, RoutesNames.LOGIN> {}
+function Login() {
+  const { setUser } = useUser();
+  const [phoneInputValue, setPhoneInputValue] = useState<string>();
+  const [isErrored, setIsErrored] = useState<boolean | undefined>(true);
 
-function Login(props: Props) {
-  const {} = props;
-  const [phoneInputValue, setPhoneInputValue] = useState<string>("");
-  const [isErrored, setIsErrored] = useState<boolean | undefined>(false);
-
-  const handleOnSubmitButtonPress = useCallback(() => {}, []);
-
-  const handleInputError = useCallback((errored?: boolean) => {
-    setIsErrored(errored);
-  }, []);
+  const handleOnSubmitButtonPress = useCallback(async () => {
+    if (phoneInputValue) {
+      const loginData = await UserController.userLogin("+7" + phoneInputValue);
+      if (loginData) {
+        setUser(UserActionsTypes.SET_LOGIN_DATA, { loginData });
+      }
+    }
+  }, [phoneInputValue, setUser]);
 
   return (
     <View style={styles.container}>
@@ -59,12 +57,12 @@ function Login(props: Props) {
       <KeyboardAvoidingView style={styles.flex}>
         <ScrollView scrollEnabled={false} style={styles.contentContainer}>
           <BorderedInput
-            value={phoneInputValue}
             onChangeText={setPhoneInputValue}
             type="phone-number"
             placeholder="Введите номер телефона"
-            onError={handleInputError}
+            onError={setIsErrored}
             style={styles.phoneInput}
+            maxLength={14}
           />
           <Button disabled={isErrored} onPress={handleOnSubmitButtonPress}>
             <Typography textAlign="center" type={TypographyTypes.NORMAL24}>

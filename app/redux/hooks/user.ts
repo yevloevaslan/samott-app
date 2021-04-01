@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { GlobalState } from "../../utils";
 import { IUser, UserActionsTypes } from "../types/userTypes";
 
-const useUser = (): [IUser, (user: IUser) => void] => {
+const useUser = (): {
+  user: IUser;
+  setUser: (type: UserActionsTypes, user: IUser) => void;
+} => {
   const user = useSelector((state: GlobalState) => state.user);
   const dispatchUser = useDispatch();
   const setUser = useCallback(
-    (us: Partial<IUser>) =>
-      dispatchUser({ type: UserActionsTypes.SET_ID, payload: us.id }),
+    (type: UserActionsTypes, us: Partial<IUser>) =>
+      dispatchUser({ type, payload: { ...us } }),
     [dispatchUser]
   );
-  return [user, setUser];
+  return { user, setUser };
 };
 
 export default useUser;
