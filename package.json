@@ -22,6 +22,8 @@
     "@reduxjs/toolkit": "^1.5.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
+    "add": "^2.0.6",
+    "form-data": "3.0.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-gesture-handler": "^1.10.3",
@@ -29,10 +31,12 @@
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.18.1",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-text-input-mask": "^3.1.4",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
-    "rest-api-helper": "^0.1.56"
+    "rest-api-helper": "^0.1.56",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

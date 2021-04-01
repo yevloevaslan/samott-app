@@ -5,8 +5,6 @@ export type MainRoutesProps = {
 };
 
 export type HomeStackProps = {
-  [RoutesNames.HOME]: {
-    a: boolean;
-  };
+  [RoutesNames.HOME]: {};
   [RoutesNames.LOGIN]: {};
 };

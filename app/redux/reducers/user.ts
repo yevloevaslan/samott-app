@@ -1,17 +1,20 @@
 import { ActionReducerMapBuilder, createReducer } from "@reduxjs/toolkit";
-import { setUserId } from "../actions/userActions";
+import { setUserLogin } from "../actions/userActions";
 import { IUser } from "../types/userTypes";
 
 const initialState: IUser = {
-  id: "",
+  loginData: {
+    id: undefined,
+    updatedAt: null,
+  },
 };
 
 const userReducer = createReducer(
   initialState,
   (builder: ActionReducerMapBuilder<IUser>) => {
-    builder.addCase(setUserId, (state, action) => ({
+    builder.addCase(setUserLogin, (state, action) => ({
       ...state,
-      id: action.payload,
+      ...action.payload,
     }));
   }
 );

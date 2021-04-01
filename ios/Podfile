@@ -7,14 +7,17 @@ target 'Translator' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
+  
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
-
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text', :modular_headers => true
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec', :modular_headers => false
+  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec', :modular_headers => false
+  
   target 'TranslatorTests' do
     inherit! :complete
     # Pods for testing
   end
-
+  
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
@@ -27,7 +30,7 @@ end
 
 target 'Translator-tvOS' do
   # Pods for Translator-tvOS
-
+  
   target 'Translator-tvOSTests' do
     inherit! :search_paths
     # Pods for testing

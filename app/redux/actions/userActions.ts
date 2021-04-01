@@ -1,6 +1,6 @@
-import { UserActionsTypes } from "./../types/userTypes";
+import { IUserLogin, UserActionsTypes } from "./../types/userTypes";
 import { createAction } from "@reduxjs/toolkit";
 
-const setUserId = createAction<string>(UserActionsTypes.SET_ID);
+const setUserLogin = createAction<IUserLogin>(UserActionsTypes.SET_LOGIN_DATA);
 
-export { setUserId };
+export { setUserLogin };

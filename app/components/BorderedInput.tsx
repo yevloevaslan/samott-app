@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import {
   StyleSheet,
   View,
-  TextInput,
   TextInputProps,
   KeyboardTypeOptions,
 } from "react-native";
+import TextInputMask from "react-native-text-input-mask";
 import { StyleGuide, TypographyTypes } from "../utils";
 
 const styles = StyleSheet.create({
@@ -22,30 +22,32 @@ const styles = StyleSheet.create({
 interface Props extends TextInputProps {
   type?: "phone-number" | "any";
   onError?: (errored: boolean) => void;
+  onChangeText: (text?: string) => void;
 }
 
 const BorderedInput = (props: Props) => {
   const { onChangeText, type = "any", onError } = props;
+  const regular = useRef<RegExp>();
 
-  const mask = useMemo<RegExp | undefined>(() => {
+  const mask = useMemo<string | undefined>(() => {
     if (type === "any") {
       return;
     }
 
     switch (type) {
-      case "phone-number":
-        return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+      case "phone-number": {
+        regular.current = /^\d{10}$/;
+        return "+7 ([000]) [000] [00] [00]";
+      }
     }
   }, [type]);
 
   const handleOnChangeText = useCallback(
-    (text: string) => {
-      if (onChangeText) {
-        if (mask && onError) {
-          onError(!text.match(mask));
-        }
-        onChangeText(text);
+    (text: string, ext?: string) => {
+      if (regular.current && onError && ext) {
+        onError(!ext.match(regular.current));
       }
+      onChangeText(mask ? ext : text);
     },
     [mask, onChangeText, onError]
   );
@@ -59,8 +61,9 @@ const BorderedInput = (props: Props) => {
 
   return (
     <View style={[styles.container, props.style]}>
-      <TextInput
+      <TextInputMask
         {...props}
+        mask={mask}
         keyboardType={keyboardType}
         onChangeText={handleOnChangeText}
         style={[styles.input, StyleGuide.typography[TypographyTypes.NORMAL24]]}
