@@ -5,6 +5,16 @@ export type MainRoutesProps = {
 };
 
 export type HomeStackProps = {
-  [RoutesNames.HOME]: {};
-  [RoutesNames.LOGIN]: {};
+  [RoutesNames.HOME]?: {};
+  [RoutesNames.CODE_ENTER]?: {
+    phone?: string;
+    newTimer?: boolean;
+  };
+  [RoutesNames.PHONE_ENTER]?: {};
+  [RoutesNames.ERROR_CODE]: {
+    timerDuration: number;
+    phoneNumber: string;
+  };
 };
+
+export type BorderedInputTypes = "phone-number" | "auth-code" | "any";

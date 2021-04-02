@@ -1,21 +1,23 @@
 import { ActionReducerMapBuilder, createReducer } from "@reduxjs/toolkit";
-import { setUserLogin } from "../actions/userActions";
+import { setUserId, setUserPhone, setUserToken } from "../actions/userActions";
 import { IUser } from "../types/userTypes";
 
-const initialState: IUser = {
-  loginData: {
-    id: undefined,
-    updatedAt: null,
-  },
+export const userInitialState: IUser = {
+  id: undefined,
+  token: undefined,
+  phone: undefined,
 };
 
+function reducer(state: IUser, action: { type: string; payload: any }) {
+  return { ...state, ...action.payload };
+}
+
 const userReducer = createReducer(
-  initialState,
+  userInitialState,
   (builder: ActionReducerMapBuilder<IUser>) => {
-    builder.addCase(setUserLogin, (state, action) => ({
-      ...state,
-      ...action.payload,
-    }));
+    builder.addCase(setUserId, reducer);
+    builder.addCase(setUserPhone, reducer);
+    builder.addCase(setUserToken, reducer);
   }
 );
 

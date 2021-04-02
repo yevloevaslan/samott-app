@@ -7,6 +7,7 @@ interface Props extends TextProps {
   type: TypographyTypes;
   color?: string;
   textAlign?: "center" | "left" | "right" | "auto" | "justify";
+  numberOfLines?: number;
 }
 
 const Typography = (props: Props) => {
@@ -15,13 +16,14 @@ const Typography = (props: Props) => {
     color = StyleGuide.colorPalette.white,
     style,
     textAlign,
+    numberOfLines = 1,
   } = props;
 
   return (
     <Text
       {...props}
       adjustsFontSizeToFit
-      numberOfLines={1}
+      numberOfLines={numberOfLines}
       style={[style, StyleGuide.typography[type], { color, textAlign }]}
     />
   );

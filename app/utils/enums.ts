@@ -3,11 +3,14 @@ export enum Colors {
   RED = "red",
   ORANGE = "orange",
   GRAY = "gray",
+  BLUE = "blue",
 }
 
 export enum RoutesNames {
   HOME = "Home",
-  LOGIN = "Login",
+  PHONE_ENTER = "PhoneEnter",
+  CODE_ENTER = "CodeEnter",
+  ERROR_CODE = "ErrorCode",
 }
 
 export enum TypographyTypes {
@@ -20,6 +23,7 @@ export enum TypographyTypes {
   BOLD18 = "BOLD18",
   BOLD24 = "BOLD24",
   BOLD34 = "BOLD34",
+  NORMAL500 = "NORMAL500",
 }
 
 export enum BackgroundImages {
