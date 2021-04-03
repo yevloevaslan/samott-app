@@ -2,6 +2,7 @@ import { ImageSourcePropType, TextStyle } from "react-native";
 import { BACKGROUND_WITH_CASTLE } from "../assets/images";
 import { BackgroundImages, Colors, TypographyTypes } from "./enums";
 import { IStyleGuide } from "./interfaces";
+import { BACKGROUND_WITH_ORNAMENTS } from "../assets/images/index";
 
 const colorPalette: { [color in Colors]: string } = {
   [Colors.WHITE]: "#FFFFFF",
@@ -9,6 +10,8 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.ORANGE]: "#F2994A",
   [Colors.GRAY]: "#C4C4C4",
   [Colors.BLUE]: "#2F80ED",
+  [Colors.TRANSPARENT]: "transparent",
+  [Colors.GREEN]: "#27AE60",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {
@@ -72,6 +75,7 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
 
 const backgrounds: { [background in BackgroundImages]: ImageSourcePropType } = {
   [BackgroundImages.WITH_CASTLES]: BACKGROUND_WITH_CASTLE,
+  [BackgroundImages.WITH_ORNAMENTS]: BACKGROUND_WITH_ORNAMENTS,
 };
 
 export const StyleGuide: IStyleGuide = {

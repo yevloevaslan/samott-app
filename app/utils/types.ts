@@ -15,6 +15,12 @@ export type HomeStackProps = {
     timerDuration: number;
     phoneNumber: string;
   };
+  [RoutesNames.REGISTRATION]?: {};
 };
 
-export type BorderedInputTypes = "phone-number" | "auth-code" | "any";
+export type BorderedInputTypes =
+  | "phone-number"
+  | "auth-code"
+  | "numbers-only"
+  | "email"
+  | "any";

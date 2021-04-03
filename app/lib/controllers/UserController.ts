@@ -18,7 +18,7 @@ export default function UserController() {
           storeState.user.id
         );
         setUser(UserActionsTypes.SET_TOKEN, { token: response.token });
-        setUser(UserActionsTypes.SET_PHONE, { phone: response.phone });
+        setUser(UserActionsTypes.SET_PHONE, { phone: response.user.phone });
         return response;
       } catch (e) {
         Alert.alert("Не удалось зайти.", "Введите код заново");

@@ -29,10 +29,7 @@ export default class Api {
 
     const data = response.body.data;
 
-    return {
-      token: data.token,
-      phone: data.user.phone,
-    };
+    return data;
   }
 
   async userLogin(phone: string) {
