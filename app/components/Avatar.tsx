@@ -3,7 +3,8 @@ import { Image, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { DEFAULT_AVATAR, PHOTO_CAMERA } from "../assets/images";
 import { useUser } from "../redux/hooks";
-import { StyleGuide } from "../utils";
+import { StyleGuide, TypographyTypes } from "../utils";
+import Typography from "./Typography";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,16 +23,25 @@ const styles = StyleSheet.create({
   newPhotoImage: {
     flexGrow: 0.4,
   },
+  nameContainer: {
+    paddingVertical: 6,
+    paddingHorizontal: 48,
+    backgroundColor: StyleGuide.colorPalette.gray,
+    position: "absolute",
+    bottom: -10,
+    borderRadius: 12,
+  },
 });
 
 interface Props {
   size?: { w: number; h: number };
   newPhoto?: boolean;
   onPress?: () => void;
+  withName?: boolean;
 }
 
 const Avatar = (props: Props) => {
-  const { size = { w: 67, h: 67 }, newPhoto, onPress } = props;
+  const { size = { w: 67, h: 67 }, newPhoto, onPress, withName } = props;
   const { user } = useUser();
   const containerStyle = useMemo(
     () => [
@@ -69,6 +79,13 @@ const Avatar = (props: Props) => {
         source={user.photo || DEFAULT_AVATAR}
         style={avatarImageStyle}
       />
+      {withName && (
+        <View style={styles.nameContainer}>
+          <Typography type={TypographyTypes.NORMAL24}>
+            {user.firstName}
+          </Typography>
+        </View>
+      )}
       {newPhoto && (
         <View style={newPhotoContainerImageStyle}>
           <Image

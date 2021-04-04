@@ -1,5 +1,11 @@
 import React, { useMemo } from "react";
-import { Image, StyleSheet, View, ViewStyle } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
 import { TITLE_DECORATOR } from "../assets/images";
 import { StyleGuide } from "../utils";
 
@@ -41,10 +47,11 @@ const styles = StyleSheet.create({
 interface Props {
   decorators: "left" | "right" | "all";
   children?: React.ReactNode;
+  onPress?: () => void;
 }
 
 const RedTitle = (props: Props) => {
-  const { decorators, children } = props;
+  const { decorators, children, onPress } = props;
 
   const isLeft = useMemo<boolean>(
     () => decorators === "all" || decorators === "left",
@@ -71,7 +78,11 @@ const RedTitle = (props: Props) => {
   }, [decorators, isLeft, isRight]);
 
   return (
-    <View style={containerWrapperStyle}>
+    <TouchableOpacity
+      disabled={!onPress}
+      onPress={onPress}
+      style={containerWrapperStyle}
+    >
       <View style={styles.container}>
         {isLeft && (
           <Image
@@ -87,7 +98,7 @@ const RedTitle = (props: Props) => {
           />
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -5,6 +5,7 @@ import PhoneEnter from "./PhoneEnter";
 import Registration from "./Registration";
 import PinPhoto from "./PinPhoto";
 import Splash from "./Splash";
+import Profile from "./Profile";
 
 const Screens = {
   Missions,
@@ -13,6 +14,7 @@ const Screens = {
   PhoneEnter,
   Registration,
   PinPhoto,
+  Profile,
   Splash,
 };
 
@@ -23,6 +25,7 @@ export {
   PhoneEnter,
   Registration,
   PinPhoto,
+  Profile,
   Splash,
 };
 export default Screens;

@@ -55,6 +55,7 @@ const Routes = () => {
         name={RoutesNames.REGISTRATION}
         component={Screens.Registration}
       />
+      <Stack.Screen name={RoutesNames.PROFILE} component={Screens.Profile} />
       <Stack.Screen
         options={{ cardStyleInterpolator }}
         name={RoutesNames.PIN_PHOTO}

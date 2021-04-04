@@ -120,7 +120,7 @@ const DifficultSelector = (props: Props) => {
       onPress={onPress}
     >
       <Stars difficult={difficult} />
-      <Typography textAlign="center" type={TypographyTypes.BOLD24}>
+      <Typography textAlign="center" type={TypographyTypes.NORMAL18}>
         {title}
       </Typography>
     </TouchableOpacity>

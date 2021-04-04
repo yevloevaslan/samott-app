@@ -8,6 +8,7 @@ import RadioButton from "./RadioButton";
 import Avatar from "./Avatar";
 import DifficultSelector from "./DifficultSelector";
 import TabBar from "./TabBar/TabBar";
+import BackButton from "./BackButton";
 
 export {
   Typography,
@@ -20,4 +21,5 @@ export {
   Avatar,
   DifficultSelector,
   TabBar,
+  BackButton,
 };

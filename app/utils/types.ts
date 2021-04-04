@@ -19,6 +19,7 @@ export type HomeStackProps = {
   [RoutesNames.PIN_PHOTO]?: object;
   [RoutesNames.SPLASH]?: object;
   [RoutesNames.TAB_NAVIGATOR]?: object;
+  [RoutesNames.PROFILE]?: object;
 };
 
 export type BorderedInputTypes =

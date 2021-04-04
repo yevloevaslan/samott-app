@@ -13,6 +13,8 @@ export enum Colors {
   DARK_GREEN = "darkGreen",
   DARK_BROWN = "darkBrown",
   TOMATO = "tomato",
+  DARK_BLUE = "darkBlue",
+  ACID_GREEN = "acidGreen",
 }
 
 export enum RoutesNames {
@@ -23,7 +25,8 @@ export enum RoutesNames {
   REGISTRATION = "Registration",
   PIN_PHOTO = "PinPhoto",
   SPLASH = "Splash",
-  TAB_NAVIGATOR = "TAB_NAVIGATOR",
+  TAB_NAVIGATOR = "TabNavigator",
+  PROFILE = "Profile",
 }
 
 export enum TypographyTypes {
