@@ -59,7 +59,11 @@ const Avatar = (props: Props) => {
   );
 
   return (
-    <TouchableOpacity onPress={onPress} style={containerStyle}>
+    <TouchableOpacity
+      disabled={!onPress}
+      onPress={onPress}
+      style={containerStyle}
+    >
       <Image
         resizeMode="cover"
         source={user.photo || DEFAULT_AVATAR}

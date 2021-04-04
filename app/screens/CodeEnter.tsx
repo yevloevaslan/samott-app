@@ -93,7 +93,7 @@ function CodeEnter(props: Props) {
             {
               name: response.user.firstIn
                 ? RoutesNames.REGISTRATION
-                : RoutesNames.HOME,
+                : RoutesNames.TAB_NAVIGATOR,
             },
           ],
         });

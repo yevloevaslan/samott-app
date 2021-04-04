@@ -14,6 +14,11 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.GREEN]: "#27AE60",
   [Colors.DARK_GRAY]: "#666666",
   [Colors.GRAY45]: "rgba(48, 51, 65, 0.45)",
+  [Colors.BLACK]: "#000000",
+  [Colors.MAYO]: "#DBD8A5",
+  [Colors.DARK_GREEN]: "#549D61",
+  [Colors.DARK_BROWN]: "#746C56",
+  [Colors.TOMATO]: "#FF6633",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {
@@ -36,6 +41,12 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
     fontFamily: "Roboto-Regular",
     fontSize: 24,
     lineHeight: 28,
+  },
+  [TypographyTypes.NORMAL24700]: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 24,
+    lineHeight: 28,
+    fontWeight: "700",
   },
   [TypographyTypes.NORMAL30]: {
     fontFamily: "Roboto-Regular",

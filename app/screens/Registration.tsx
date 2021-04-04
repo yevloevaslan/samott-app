@@ -11,6 +11,8 @@ import {
 } from "../components";
 import { useArray } from "../hooks";
 import { UserController } from "../lib";
+import { useUser } from "../redux/hooks";
+import { UserActionsTypes } from "../redux/types";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -57,6 +59,7 @@ interface Props
 
 function Registration(props: Props) {
   const userController = UserController();
+  const { setUser } = useUser();
   const [isErrored, setIsErrored] = useState<boolean>(true);
   const [firstName, setFirstName] = useState<string>();
   const [middleName, setMiddleName] = useState<string>();
@@ -112,10 +115,24 @@ function Registration(props: Props) {
           email,
         })
         .then(() => {
+          setUser(UserActionsTypes.SET_NAME, {
+            lastName,
+            middleName,
+            firstName,
+            email,
+          });
           props.navigation.navigate(RoutesNames.PIN_PHOTO);
         });
     }
-  }, [email, firstName, lastName, middleName, props, userController]);
+  }, [
+    email,
+    firstName,
+    lastName,
+    middleName,
+    props.navigation,
+    setUser,
+    userController,
+  ]);
 
   return (
     <View style={styles.container}>

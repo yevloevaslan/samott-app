@@ -1,4 +1,4 @@
-import Home from "./Home";
+import Missions from "./Missions";
 import CodeEnter from "./CodeEnter";
 import ErrorCode from "./ErrorCode";
 import PhoneEnter from "./PhoneEnter";
@@ -7,7 +7,7 @@ import PinPhoto from "./PinPhoto";
 import Splash from "./Splash";
 
 const Screens = {
-  Home,
+  Missions,
   CodeEnter,
   ErrorCode,
   PhoneEnter,
@@ -17,7 +17,7 @@ const Screens = {
 };
 
 export {
-  Home,
+  Missions,
   CodeEnter,
   ErrorCode,
   PhoneEnter,

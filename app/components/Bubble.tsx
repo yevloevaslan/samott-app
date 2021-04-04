@@ -7,7 +7,6 @@ import { StyleGuide } from "../utils/StyleGuide";
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 8,
-    paddingVertical: 18,
     borderRadius: 18,
   },
   headerContainer: {

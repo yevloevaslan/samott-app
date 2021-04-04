@@ -6,6 +6,8 @@ import BorderedInput from "./BorderedInput";
 import Bubble from "./Bubble";
 import RadioButton from "./RadioButton";
 import Avatar from "./Avatar";
+import DifficultSelector from "./DifficultSelector";
+import TabBar from "./TabBar/TabBar";
 
 export {
   Typography,
@@ -16,4 +18,6 @@ export {
   Bubble,
   RadioButton,
   Avatar,
+  DifficultSelector,
+  TabBar,
 };

@@ -109,7 +109,7 @@ function PinPhoto(props: Props) {
       index: 0,
       routes: [
         {
-          name: RoutesNames.HOME,
+          name: RoutesNames.TAB_NAVIGATOR,
         },
       ],
     });
@@ -150,9 +150,9 @@ function PinPhoto(props: Props) {
       >
         <View style={styles.modalContentContainerWrapper}>
           <View style={styles.modalImageContainer}>
-            {selectedPhoto.uri && (
+            {selectedPhoto.uri ? (
               <Image source={selectedPhoto} style={styles.selectedPhoto} />
-            )}
+            ) : null}
             <View style={styles.selectedPhotoContainer}>
               <View style={styles.imageCropp} />
             </View>

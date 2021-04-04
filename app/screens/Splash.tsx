@@ -23,7 +23,7 @@ function Splash(props: Props) {
     if (user.token !== "") {
       props.navigation.reset({
         index: 0,
-        routes: [{ name: RoutesNames.HOME }],
+        routes: [{ name: RoutesNames.TAB_NAVIGATOR }],
       });
     } else {
       props.navigation.reset({
