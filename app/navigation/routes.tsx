@@ -9,8 +9,9 @@ const Routes = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={RoutesNames.PHONE_ENTER}
+      initialRouteName={RoutesNames.SPLASH}
     >
+      <Stack.Screen name={RoutesNames.SPLASH} component={Screens.Splash} />
       <Stack.Screen
         name={RoutesNames.PHONE_ENTER}
         component={Screens.PhoneEnter}

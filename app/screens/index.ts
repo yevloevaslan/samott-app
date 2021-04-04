@@ -4,6 +4,7 @@ import ErrorCode from "./ErrorCode";
 import PhoneEnter from "./PhoneEnter";
 import Registration from "./Registration";
 import PinPhoto from "./PinPhoto";
+import Splash from "./Splash";
 
 const Screens = {
   Home,
@@ -12,7 +13,16 @@ const Screens = {
   PhoneEnter,
   Registration,
   PinPhoto,
+  Splash,
 };
 
-export { Home, CodeEnter, ErrorCode, PhoneEnter, Registration, PinPhoto };
+export {
+  Home,
+  CodeEnter,
+  ErrorCode,
+  PhoneEnter,
+  Registration,
+  PinPhoto,
+  Splash,
+};
 export default Screens;

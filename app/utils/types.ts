@@ -17,6 +17,7 @@ export type HomeStackProps = {
   };
   [RoutesNames.REGISTRATION]?: object;
   [RoutesNames.PIN_PHOTO]?: object;
+  [RoutesNames.SPLASH]?: object;
 };
 
 export type BorderedInputTypes =

@@ -17,6 +17,7 @@ export enum RoutesNames {
   ERROR_CODE = "ErrorCode",
   REGISTRATION = "Registration",
   PIN_PHOTO = "PinPhoto",
+  SPLASH = "Splash",
 }
 
 export enum TypographyTypes {

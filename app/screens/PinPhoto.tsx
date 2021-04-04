@@ -7,11 +7,18 @@ import {
   Typography,
   withBackgroundHoc,
 } from "../components";
-import { BackgroundImages, StyleGuide, TypographyTypes } from "../utils";
+import {
+  BackgroundImages,
+  HomeStackProps,
+  RoutesNames,
+  StyleGuide,
+  TypographyTypes,
+} from "../utils";
 import * as ImagePicker from "react-native-image-picker";
 import { useUser } from "../redux/hooks";
 import { UserActionsTypes } from "../redux/types";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { StackScreenProps } from "@react-navigation/stack";
 
 const styles = StyleSheet.create({
   container: {
@@ -69,7 +76,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function PinPhoto() {
+interface Props
+  extends StackScreenProps<HomeStackProps, RoutesNames.PIN_PHOTO> {}
+
+function PinPhoto(props: Props) {
   const { setUser } = useUser();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [selectedPhoto, setSelectedPhoto] = useState<{ uri: string }>({
@@ -93,6 +103,17 @@ function PinPhoto() {
     setUser(UserActionsTypes.SET_PHOTO, { photo: selectedPhoto });
     handleOnCloseModal();
   }, [handleOnCloseModal, selectedPhoto, setUser]);
+
+  const handleOnSubmitButtonPress = useCallback(() => {
+    props.navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: RoutesNames.HOME,
+        },
+      ],
+    });
+  }, [props.navigation]);
 
   return (
     <View style={styles.container}>
@@ -118,7 +139,7 @@ function PinPhoto() {
         newPhoto
         size={{ w: 282, h: 282 }}
       />
-      <Button style={styles.button}>
+      <Button onPress={handleOnSubmitButtonPress} style={styles.button}>
         <Typography textAlign="center">Продолжить</Typography>
       </Button>
       <Modal

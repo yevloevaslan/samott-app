@@ -6,3 +6,4 @@ export const BACKGROUND_ORNAMENT_DECORATOR = {
 };
 export const DEFAULT_AVATAR = { uri: "default_avatar" };
 export const PHOTO_CAMERA = { uri: "photo_camera" };
+export const SPLASH_LOGO = { uri: "splash_logo" };
