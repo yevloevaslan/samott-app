@@ -11,3 +11,10 @@ export interface IStyleGuide {
   typography: { [typography in TypographyTypes]: TextStyle };
   backgrounds: { [background in BackgroundImages]: ImageSourcePropType };
 }
+
+export interface IUserInfo {
+  lastName: string;
+  middleName: string;
+  firstName: string;
+  email?: string;
+}

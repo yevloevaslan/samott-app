@@ -5,6 +5,7 @@ import Button from "./Button";
 import BorderedInput from "./BorderedInput";
 import Bubble from "./Bubble";
 import RadioButton from "./RadioButton";
+import Avatar from "./Avatar";
 
 export {
   Typography,
@@ -14,4 +15,5 @@ export {
   BorderedInput,
   Bubble,
   RadioButton,
+  Avatar,
 };

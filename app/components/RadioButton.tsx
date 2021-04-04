@@ -33,7 +33,7 @@ const RadioButton = (props: Props) => {
 
   const handleOnPress = useCallback(() => {
     setIsSetted((prev) => !prev);
-    onPress(isSetted);
+    onPress(!isSetted);
   }, [isSetted, onPress]);
 
   return (

@@ -81,17 +81,7 @@ const Bubble = (props: Props) => {
           </Typography>
         </View>
       )}
-      {children && (
-        <View>
-          <Typography
-            numberOfLines={2}
-            textAlign="center"
-            type={TypographyTypes.NORMAL24}
-          >
-            {children}
-          </Typography>
-        </View>
-      )}
+      {children}
       {from === "left" && <View style={arrowStyle} />}
       {from === "right" && <View style={arrowStyle} />}
     </View>

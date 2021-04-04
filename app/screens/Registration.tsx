@@ -1,3 +1,4 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import {
@@ -8,7 +9,15 @@ import {
   Typography,
   withBackgroundHoc,
 } from "../components";
-import { BackgroundImages, StyleGuide, TypographyTypes } from "../utils";
+import { useArray } from "../hooks";
+import { UserController } from "../lib";
+import {
+  BackgroundImages,
+  HomeStackProps,
+  RoutesNames,
+  StyleGuide,
+  TypographyTypes,
+} from "../utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +25,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingRight: 27,
     paddingTop: 20,
+    paddingBottom: 20,
   },
   helloBubbleContainer: {
     marginBottom: 50,
@@ -42,60 +52,70 @@ const styles = StyleSheet.create({
   },
 });
 
-function Registration() {
+interface Props
+  extends StackScreenProps<HomeStackProps, RoutesNames.REGISTRATION> {}
+
+function Registration(props: Props) {
+  const userController = UserController();
   const [isErrored, setIsErrored] = useState<boolean>(true);
-  const [name, setName] = useState<string>();
-  const [secondName, setSecondName] = useState<string>();
-  const [thirdName, setThirdName] = useState<string>();
-  const [birthdayDay, setBirthdayDay] = useState<number>();
-  const [birthdayMonth, setBirthdayMonth] = useState<number>();
-  const [birthdayYear, setBirthdayYear] = useState<number>();
+  const [firstName, setFirstName] = useState<string>();
+  const [middleName, setMiddleName] = useState<string>();
+  const [lastName, setLastName] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const birthday = useArray<number>([0, 0, 0]);
   const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>();
 
   const isAllInputsDone = useMemo(
     () =>
       Boolean(
-        name &&
-          secondName &&
-          thirdName &&
-          birthdayDay &&
-          birthdayMonth &&
-          birthdayYear &&
-          isTermsAccepted
+        firstName && middleName && lastName && birthday && isTermsAccepted
       ),
-    [
-      birthdayDay,
-      birthdayMonth,
-      birthdayYear,
-      isTermsAccepted,
-      name,
-      secondName,
-      thirdName,
-    ]
+    [birthday, firstName, middleName, lastName, isTermsAccepted]
   );
 
   useEffect(() => {
-    if (isAllInputsDone) {
-      setIsErrored(false);
-    }
-    setIsErrored(true);
+    setIsErrored(!isAllInputsDone);
   }, [isAllInputsDone]);
 
-  const handleOnAgreePress = useCallback((isSetted?: boolean) => {
-    setIsTermsAccepted(isSetted);
-  }, []);
+  const handleOnAgreePress = useCallback(setIsTermsAccepted, [
+    setIsTermsAccepted,
+  ]);
 
-  const handleOnChangeDay = useCallback((text?: string) => {
-    setBirthdayDay(Number(text));
-  }, []);
+  const handleOnChangeDay = useCallback(
+    (text?: string) => {
+      birthday.setAt(0, Number(text));
+    },
+    [birthday]
+  );
 
-  const handleOnChangeMonth = useCallback((text?: string) => {
-    setBirthdayMonth(Number(text));
-  }, []);
+  const handleOnChangeMonth = useCallback(
+    (text?: string) => {
+      birthday.setAt(1, Number(text));
+    },
+    [birthday]
+  );
 
-  const handleOnChangeYear = useCallback((text?: string) => {
-    setBirthdayYear(Number(text));
-  }, []);
+  const handleOnChangeYear = useCallback(
+    (text?: string) => {
+      birthday.setAt(2, Number(text));
+    },
+    [birthday]
+  );
+
+  const handleOnAcceptButtonPress = useCallback(async () => {
+    if (lastName && middleName && firstName) {
+      userController
+        .userPutInfo({
+          lastName,
+          middleName,
+          firstName,
+          email,
+        })
+        .then(() => {
+          props.navigation.navigate(RoutesNames.PIN_PHOTO);
+        });
+    }
+  }, [email, firstName, lastName, middleName, props, userController]);
 
   return (
     <View style={styles.container}>
@@ -109,17 +129,17 @@ function Registration() {
         />
       </View>
       <BorderedInput
-        onChangeText={setName}
+        onChangeText={setFirstName}
         style={styles.inputStyle}
         placeholder="Имя"
       />
       <BorderedInput
-        onChangeText={setSecondName}
+        onChangeText={setMiddleName}
         style={styles.inputStyle}
         placeholder="Фамилия"
       />
       <BorderedInput
-        onChangeText={setThirdName}
+        onChangeText={setLastName}
         style={styles.inputStyle}
         placeholder="Отчество"
       />
@@ -158,7 +178,11 @@ function Registration() {
           />
         </View>
       </View>
-      <BorderedInput type="email" placeholder="Email (необязательно)" />
+      <BorderedInput
+        onChangeText={setEmail}
+        type="email"
+        placeholder="Email (необязательно)"
+      />
       <View style={styles.termsOfUseButtonContainer}>
         <RadioButton onPress={handleOnAgreePress}>
           <Typography
@@ -172,7 +196,7 @@ function Registration() {
           </Typography>
         </RadioButton>
       </View>
-      <Button disabled={isErrored}>
+      <Button onPress={handleOnAcceptButtonPress} disabled={isErrored}>
         <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
           Продолжить
         </Typography>

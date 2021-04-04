@@ -6,6 +6,8 @@ export enum Colors {
   BLUE = "blue",
   TRANSPARENT = "transparent",
   GREEN = "green",
+  DARK_GRAY = "darkGray",
+  GRAY45 = "gray45",
 }
 
 export enum RoutesNames {
@@ -13,7 +15,8 @@ export enum RoutesNames {
   PHONE_ENTER = "PhoneEnter",
   CODE_ENTER = "CodeEnter",
   ERROR_CODE = "ErrorCode",
-  REGISTRATION = "REGISTRATION",
+  REGISTRATION = "Registration",
+  PIN_PHOTO = "PinPhoto",
 }
 
 export enum TypographyTypes {
@@ -27,6 +30,7 @@ export enum TypographyTypes {
   BOLD24 = "BOLD24",
   BOLD34 = "BOLD34",
   NORMAL500 = "NORMAL500",
+  NORMAL30 = "NORMAL30",
 }
 
 export enum BackgroundImages {

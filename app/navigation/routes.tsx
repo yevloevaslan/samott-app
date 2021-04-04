@@ -27,6 +27,7 @@ const Routes = () => {
         name={RoutesNames.REGISTRATION}
         component={Screens.Registration}
       />
+      <Stack.Screen name={RoutesNames.PIN_PHOTO} component={Screens.PinPhoto} />
       <Stack.Screen name={RoutesNames.HOME} component={Screens.Home} />
     </Stack.Navigator>
   );

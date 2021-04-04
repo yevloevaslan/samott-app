@@ -1,3 +1,4 @@
+import { IUserInfo } from "./../../utils/interfaces";
 import { ApiLogin, ApiUserInfo } from "./apiTypes";
 import { RestApiHelper } from "rest-api-helper";
 import config from "./apiConfig";
@@ -40,5 +41,14 @@ export default class Api {
       .fetch();
 
     return response.body.data;
+  }
+
+  async userPutInfo(info: IUserInfo, token: string) {
+    const response = await RestApiHelper.build<void>("userPutInfo")
+      .withBody({ ...info })
+      .withHeaders({ "x-access-token": token })
+      .fetch();
+
+    return response.body;
   }
 }

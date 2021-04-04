@@ -46,7 +46,6 @@ function withBackgroundHoc(
       return (
         <SafeAreaView style={styles.containerWrapper}>
           <ImageBackground
-            resizeMethod="resize"
             resizeMode="stretch"
             style={styles.content}
             source={StyleGuide.backgrounds[image]}

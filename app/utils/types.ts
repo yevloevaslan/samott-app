@@ -5,17 +5,18 @@ export type MainRoutesProps = {
 };
 
 export type HomeStackProps = {
-  [RoutesNames.HOME]?: {};
+  [RoutesNames.HOME]?: object;
   [RoutesNames.CODE_ENTER]?: {
     phone?: string;
     newTimer?: boolean;
   };
-  [RoutesNames.PHONE_ENTER]?: {};
+  [RoutesNames.PHONE_ENTER]?: object;
   [RoutesNames.ERROR_CODE]: {
     timerDuration: number;
     phoneNumber: string;
   };
-  [RoutesNames.REGISTRATION]?: {};
+  [RoutesNames.REGISTRATION]?: object;
+  [RoutesNames.PIN_PHOTO]?: object;
 };
 
 export type BorderedInputTypes =
