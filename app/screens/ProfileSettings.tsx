@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import {
   Avatar,
-  BackButton,
   BorderedInput,
   RadioButton,
   Header,
@@ -22,13 +21,15 @@ import { useUser } from "../redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
+  RESET_APP,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
 } from "../utils";
 import * as ImagePicker from "react-native-image-picker";
 import { UserActionsTypes } from "../redux/types";
-import { TRASH_CAN } from "../assets/images";
+import { EXIT, TRASH_CAN } from "../assets/images";
+import { useDispatch } from "react-redux";
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -38,20 +39,9 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
   },
-  titleNameContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  titleNameText: {
-    marginLeft: 10,
-  },
   container: {
     flex: 1,
     paddingTop: 30,
-  },
-  redTitleContainer: {
-    flexDirection: "row",
-    paddingVertical: 20,
   },
   inputStyle: {
     marginBottom: 15,
@@ -128,6 +118,13 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     justifyContent: "center",
   },
+  exitIconContainer: {
+    width: 44,
+    height: 41,
+  },
+  exitIcon: {
+    flexGrow: 1,
+  },
 });
 
 interface Props
@@ -135,6 +132,7 @@ interface Props
 
 function ProfileSettings(props: Props) {
   const { user, setUser } = useUser();
+  const dispatch = useDispatch();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string | undefined>(
     user.firstName
@@ -209,15 +207,28 @@ function ProfileSettings(props: Props) {
     handleOnCloseModal();
   }, [handleOnCloseModal, selectedPhoto, setUser]);
 
+  const handleOnBackButtonPress = useCallback(async () => {}, []);
+
+  const handleOnExitButtonPress = useCallback(async () => {
+    props.navigation.navigate(RoutesNames.PHONE_ENTER);
+    dispatch({ type: RESET_APP });
+  }, [dispatch, props.navigation]);
+
   return (
     <View style={styles.container}>
-      <Header title="Настройки" decorators="right">
-        <View style={styles.redTitleContainer}>
-          <View style={styles.titleNameContainer}>
-            <BackButton navigation={props.navigation} />
-            <Typography style={styles.titleNameText}>Настройки</Typography>
-          </View>
-        </View>
+      <Header
+        onBackButtonPress={handleOnBackButtonPress}
+        navigation={props.navigation}
+        title="Настройки"
+        justifyContent="space-between"
+        decorators="right"
+      >
+        <TouchableOpacity
+          style={styles.exitIconContainer}
+          onPress={handleOnExitButtonPress}
+        >
+          <Image source={EXIT} style={styles.exitIcon} />
+        </TouchableOpacity>
       </Header>
       <View style={styles.contentContainer}>
         <View style={styles.avatarContainer}>

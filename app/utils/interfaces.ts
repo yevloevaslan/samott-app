@@ -1,9 +1,10 @@
 import { ImageSourcePropType, TextStyle } from "react-native";
-import { IUser } from "../redux/types/userTypes";
+import { IUser, IApp } from "../redux/types";
 import { Colors, TypographyTypes, BackgroundImages } from "./enums";
 
 export interface GlobalState {
   user: IUser;
+  app: IApp;
 }
 
 export interface IStyleGuide {

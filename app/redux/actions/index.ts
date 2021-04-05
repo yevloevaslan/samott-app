@@ -1,6 +1,7 @@
 import * as UserActions from "./userActions";
+import * as AppActions from "./appActions";
 
-const ReduxActions = { UserActions };
+const ReduxActions = { UserActions, AppActions };
 
-export { UserActions };
+export { UserActions, AppActions };
 export default ReduxActions;

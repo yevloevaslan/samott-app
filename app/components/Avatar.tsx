@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity, Image, StyleSheet, View } from "react-native";
 import { DEFAULT_AVATAR, PHOTO_CAMERA } from "../assets/images";
 import { useUser } from "../redux/hooks";
 import { StyleGuide, TypographyTypes } from "../utils";
