@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
   bubbleContainer: {
     marginBottom: 20,
   },
+  titleContainer: {
+    paddingVertical: 15,
+  },
+  bubbleTextContainer: {
+    padding: 5,
+  },
 });
 
 interface Props
@@ -61,7 +67,9 @@ function ErrorCode(props: Props) {
   return (
     <View style={styles.containerWrapper}>
       <RedTitle decorators="all">
-        <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
+        <View style={styles.titleContainer}>
+          <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
+        </View>
       </RedTitle>
       <KeyboardAvoidingView style={styles.container}>
         <ScrollView scrollEnabled={false} style={styles.contentContainer}>
@@ -70,7 +78,15 @@ function ErrorCode(props: Props) {
               backgroundColor={StyleGuide.colorPalette.orange}
               title={"НЕВЕРНЫЙ КОД\nПОДТВЕРЖДЕНИЯ!"}
             >
-              Проверьте коректность{"\n"}введения кода подтверждения
+              <View style={styles.bubbleTextContainer}>
+                <Typography
+                  type={TypographyTypes.NORMAL24}
+                  numberOfLines={2}
+                  textAlign="center"
+                >
+                  Проверьте коректность{"\n"}введения кода подтверждения
+                </Typography>
+              </View>
             </Bubble>
           </View>
           <TouchableOpacity

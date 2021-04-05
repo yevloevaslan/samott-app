@@ -9,6 +9,7 @@ import Typography from "./Typography";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: StyleGuide.colorPalette.gray,
+    overflow: "visible",
   },
   avatarImage: {
     flexGrow: 1,
@@ -25,10 +26,11 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     paddingVertical: 6,
-    paddingHorizontal: 48,
+    width: "100%",
+    alignItems: "center",
     backgroundColor: StyleGuide.colorPalette.gray,
     position: "absolute",
-    bottom: -10,
+    bottom: 0,
     borderRadius: 12,
   },
 });

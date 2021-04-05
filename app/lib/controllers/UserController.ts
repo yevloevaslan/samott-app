@@ -21,7 +21,7 @@ export default function UserController() {
         setUser(UserActionsTypes.SET_PHONE, { phone: response.user.phone });
         return response;
       } catch (e) {
-        Alert.alert("Не удалось зайти.", "Введите код заново");
+        Alert.alert("Не удалось зайти.", `${e}`);
       }
     },
     [setUser, storeState.user.id]
@@ -34,7 +34,7 @@ export default function UserController() {
         setUser(UserActionsTypes.SET_ID, { id: response._id });
         return response;
       } catch (e) {
-        Alert.alert("Не удалось зайти.", "Введите номер заново");
+        Alert.alert("Не удалось зайти.", `${e}`);
       }
     },
     [setUser]
@@ -50,17 +50,31 @@ export default function UserController() {
 
         return response;
       } catch (e) {
-        Alert.alert("Не удалось зайти.", "Попробуйте заново.");
+        Alert.alert("Не удалось зайти.", `${e}`);
       }
     },
     [storeState.user.token]
   );
 
-  const controller = useMemo(() => ({ userLogin, userAuth, userPutInfo }), [
-    userAuth,
-    userLogin,
-    userPutInfo,
-  ]);
+  const userGetInfo = useCallback(async () => {
+    try {
+      const response = await Api.getInstance().userGetInfo(
+        storeState.user.token
+      );
+      const { lastName, score, middleName, firstName, phone } = response;
+      setUser(UserActionsTypes.SET_NAME, { lastName, middleName, firstName });
+      setUser(UserActionsTypes.SET_PHONE, { phone });
+      setUser(UserActionsTypes.SET_SCORE, { score });
+      return response;
+    } catch (e) {
+      Alert.alert("Ошибка", `${e}`);
+    }
+  }, [setUser, storeState.user.token]);
+
+  const controller = useMemo(
+    () => ({ userLogin, userAuth, userPutInfo, userGetInfo }),
+    [userAuth, userLogin, userPutInfo, userGetInfo]
+  );
 
   return controller;
 }

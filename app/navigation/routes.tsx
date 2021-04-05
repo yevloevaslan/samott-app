@@ -62,6 +62,10 @@ const Routes = () => {
         component={Screens.PinPhoto}
       />
       <Stack.Screen name={RoutesNames.TAB_NAVIGATOR} component={TabNavigator} />
+      <Stack.Screen
+        name={RoutesNames.PROFILE_SETTINGS}
+        component={Screens.ProfileSettings}
+      />
     </Stack.Navigator>
   );
 };

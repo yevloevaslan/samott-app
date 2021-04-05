@@ -6,6 +6,8 @@ import {
   setUserToken,
   setUserName,
   setUserRating,
+  setUserBirthday,
+  setUserScore,
 } from "../actions/userActions";
 import { IUser } from "../types/userTypes";
 
@@ -17,6 +19,8 @@ export const userInitialState: IUser = {
   middleName: "",
   lastName: "",
   email: undefined,
+  birthday: undefined,
+  score: 0,
 };
 
 function reducer(state: IUser, action: { type: string; payload: any }) {
@@ -32,6 +36,8 @@ const userReducer = createReducer(
     builder.addCase(setUserPhoto, reducer);
     builder.addCase(setUserName, reducer);
     builder.addCase(setUserRating, reducer);
+    builder.addCase(setUserBirthday, reducer);
+    builder.addCase(setUserScore, reducer);
   }
 );
 

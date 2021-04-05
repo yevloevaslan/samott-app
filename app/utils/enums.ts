@@ -27,6 +27,7 @@ export enum RoutesNames {
   SPLASH = "Splash",
   TAB_NAVIGATOR = "TabNavigator",
   PROFILE = "Profile",
+  PROFILE_SETTINGS = "ProfileSettings",
 }
 
 export enum TypographyTypes {

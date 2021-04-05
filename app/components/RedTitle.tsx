@@ -50,7 +50,7 @@ interface Props {
   onPress?: () => void;
 }
 
-const RedTitle = (props: Props) => {
+const Header = (props: Props) => {
   const { decorators, children, onPress } = props;
 
   const isLeft = useMemo<boolean>(
@@ -102,4 +102,4 @@ const RedTitle = (props: Props) => {
   );
 };
 
-export default RedTitle;
+export default Header;

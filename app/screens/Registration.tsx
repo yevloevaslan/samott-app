@@ -106,7 +106,8 @@ function Registration(props: Props) {
   );
 
   const handleOnAcceptButtonPress = useCallback(async () => {
-    if (lastName && middleName && firstName) {
+    const birth = birthday.get();
+    if (lastName && middleName && firstName && birth) {
       userController
         .userPutInfo({
           lastName,
@@ -120,11 +121,13 @@ function Registration(props: Props) {
             middleName,
             firstName,
             email,
+            birthday: new Date(birth.join(".")),
           });
           props.navigation.navigate(RoutesNames.PIN_PHOTO);
         });
     }
   }, [
+    birthday,
     email,
     firstName,
     lastName,

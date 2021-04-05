@@ -6,6 +6,7 @@ import Registration from "./Registration";
 import PinPhoto from "./PinPhoto";
 import Splash from "./Splash";
 import Profile from "./Profile";
+import ProfileSettings from "./ProfileSettings";
 
 const Screens = {
   Missions,
@@ -15,6 +16,7 @@ const Screens = {
   Registration,
   PinPhoto,
   Profile,
+  ProfileSettings,
   Splash,
 };
 
@@ -26,6 +28,7 @@ export {
   Registration,
   PinPhoto,
   Profile,
+  ProfileSettings,
   Splash,
 };
 export default Screens;

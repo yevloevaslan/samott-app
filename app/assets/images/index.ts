@@ -18,3 +18,4 @@ export const ARROW_BUTTON = { uri: "arrow_button" };
 export const EXIT = { uri: "exit" };
 export const GEAR_WHEEL = { uri: "gear_wheel" };
 export const ROTATE_ARROWS = { uri: "rotate_arrows" };
+export const TRASH_CAN = { uri: "trash_can" };

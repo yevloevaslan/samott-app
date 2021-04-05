@@ -17,4 +17,6 @@ export interface IUserInfo {
   middleName: string;
   firstName: string;
   email?: string;
+  phone?: string;
+  score?: number;
 }

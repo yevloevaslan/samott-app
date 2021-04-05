@@ -8,10 +8,11 @@ import {
   Bubble,
   Button,
   DifficultSelector,
-  RedTitle,
+  Header,
   Typography,
   withBackgroundHoc,
 } from "../components";
+import { UserController } from "../lib";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -142,13 +143,18 @@ const styles = StyleSheet.create({
 interface Props extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE> {}
 
 function Profile(props: Props) {
+  const userController = UserController();
   const handleOnGoSettingsPress = useCallback(() => {
-    props.navigation.goBack();
+    props.navigation.navigate(RoutesNames.PROFILE_SETTINGS);
   }, [props.navigation]);
+
+  const handleOnUpdatePress = useCallback(async () => {
+    await userController.userGetInfo();
+  }, [userController]);
 
   return (
     <View style={styles.container}>
-      <RedTitle decorators="right">
+      <Header decorators="right">
         <View style={styles.titleContentContainer}>
           <View style={styles.titleTextContainer}>
             <BackButton navigation={props.navigation} />
@@ -158,7 +164,7 @@ function Profile(props: Props) {
             <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
           </TouchableOpacity>
         </View>
-      </RedTitle>
+      </Header>
       <View style={styles.contentContainer}>
         <View style={styles.avatarContainer}>
           <Avatar withName size={{ w: 152, h: 149 }} />
@@ -190,7 +196,7 @@ function Profile(props: Props) {
             </View>
           </View>
           <View style={[styles.whiteContainer, styles.updateContainer]}>
-            <Button style={styles.updateButton}>
+            <Button style={styles.updateButton} onPress={handleOnUpdatePress}>
               <Image source={ROTATE_ARROWS} style={styles.updateButtonIcon} />
             </Button>
             <Typography

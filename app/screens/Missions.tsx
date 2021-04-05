@@ -12,7 +12,7 @@ import {
   Avatar,
   Bubble,
   DifficultSelector,
-  RedTitle,
+  Header,
   Typography,
   withBackgroundHoc,
 } from "../components";
@@ -59,7 +59,7 @@ function Missions(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <RedTitle decorators="right" onPress={handleOnTitlePress}>
+        <Header decorators="right" onPress={handleOnTitlePress}>
           <View style={styles.titleContetContainer}>
             <Avatar />
             <Typography style={styles.nameText}>{user.firstName}</Typography>
@@ -72,7 +72,7 @@ function Missions(props: Props) {
               </Typography>
             </Bubble>
           </View>
-        </RedTitle>
+        </Header>
       </View>
       <Typography
         type={TypographyTypes.BOLD24}

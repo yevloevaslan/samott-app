@@ -20,6 +20,7 @@ export type HomeStackProps = {
   [RoutesNames.SPLASH]?: object;
   [RoutesNames.TAB_NAVIGATOR]?: object;
   [RoutesNames.PROFILE]?: object;
+  [RoutesNames.PROFILE_SETTINGS]?: object;
 };
 
 export type BorderedInputTypes =

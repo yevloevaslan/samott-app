@@ -1,5 +1,12 @@
 import React, { useCallback, useState } from "react";
-import { Dimensions, Image, Modal, StyleSheet, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  Modal,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import {
   Avatar,
   Bubble,
@@ -17,7 +24,6 @@ import {
 import * as ImagePicker from "react-native-image-picker";
 import { useUser } from "../redux/hooks";
 import { UserActionsTypes } from "../redux/types";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
 
 const styles = StyleSheet.create({
@@ -38,15 +44,15 @@ const styles = StyleSheet.create({
     backgroundColor: StyleGuide.colorPalette.gray45,
   },
   modalImageContainer: {
-    width: Dimensions.get("screen").width,
-    height: Dimensions.get("screen").width,
+    width: 380,
+    height: 380,
   },
   modalActionButtonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
     paddingHorizontal: 43,
+    width: "100%",
   },
   selectedPhoto: {
     flexGrow: 1,
@@ -74,6 +80,10 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     borderColor: StyleGuide.colorPalette.white,
   },
+  bubbleContent: {
+    paddingLeft: 5,
+    paddingBottom: 5,
+  },
 });
 
 interface Props
@@ -88,8 +98,8 @@ function PinPhoto(props: Props) {
 
   const handleOnAvatarPress = useCallback(() => {
     ImagePicker.launchImageLibrary({ mediaType: "photo" }, (photo) => {
-      setIsModal(true);
       if (photo.uri) {
+        setIsModal(true);
         setSelectedPhoto({ uri: photo.uri });
       }
     });
@@ -125,6 +135,7 @@ function PinPhoto(props: Props) {
         backgroundColor={StyleGuide.colorPalette.green}
       >
         <Typography
+          style={styles.bubbleContent}
           numberOfLines={3}
           textAlign="left"
           type={TypographyTypes.NORMAL14}

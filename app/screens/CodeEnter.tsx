@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
   submitButton: {
     marginBottom: 20,
   },
+  titleContainer: {
+    paddingVertical: 15,
+  },
 });
 
 interface Props
@@ -120,7 +123,9 @@ function CodeEnter(props: Props) {
   return (
     <View style={styles.container}>
       <RedTitle decorators="all">
-        <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
+        <View style={styles.titleContainer}>
+          <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
+        </View>
       </RedTitle>
       <KeyboardAvoidingView style={styles.flex}>
         <ScrollView scrollEnabled={false} style={styles.contentContainer}>
