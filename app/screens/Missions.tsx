@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { StackScreenProps } from "@react-navigation/stack";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -9,10 +9,9 @@ import {
   TypographyTypes,
 } from "../utils";
 import {
-  Avatar,
   Bubble,
-  DifficultSelector,
   Header,
+  Star,
   Typography,
   withBackgroundHoc,
 } from "../components";
@@ -23,13 +22,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 28,
   },
-  titleContetContainer: {
-    paddingVertical: 3,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  nameText: {
-    marginHorizontal: 13,
+  ratingBubbleContainer: {
+    marginLeft: 10,
   },
   titleContainer: {
     marginBottom: 32,
@@ -40,8 +34,31 @@ const styles = StyleSheet.create({
   difficultSelectorsContainer: {
     flex: 1,
     justifyContent: "space-between",
-    paddingRight: 97,
-    paddingVertical: 32,
+    paddingRight: 40,
+    paddingVertical: 20,
+  },
+  difficultSelector: {
+    width: "100%",
+    paddingVertical: 22,
+    paddingLeft: 18,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingRight: 30,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  starsContainer: {
+    flexDirection: "row",
+  },
+  easy: {
+    backgroundColor: StyleGuide.colorPalette.mayo,
+  },
+  medium: {
+    backgroundColor: StyleGuide.colorPalette.orange,
+  },
+  hard: {
+    backgroundColor: StyleGuide.colorPalette.tomato,
   },
 });
 
@@ -59,17 +76,22 @@ function Missions(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Header decorators="right" onPress={handleOnTitlePress}>
-          <Avatar />
-          <Typography style={styles.nameText}>{user.firstName}</Typography>
-          <Bubble backgroundColor={StyleGuide.colorPalette.mayo}>
-            <Typography
-              type={TypographyTypes.NORMAL18}
-              color={StyleGuide.colorPalette.black}
-            >
-              Рейтинг 0
-            </Typography>
-          </Bubble>
+        <Header
+          avatar
+          title={user.firstName}
+          decorators="right"
+          onPress={handleOnTitlePress}
+        >
+          <View style={styles.ratingBubbleContainer}>
+            <Bubble backgroundColor={StyleGuide.colorPalette.mayo}>
+              <Typography
+                type={TypographyTypes.NORMAL18}
+                color={StyleGuide.colorPalette.black}
+              >
+                Рейтинг 0
+              </Typography>
+            </Bubble>
+          </View>
         </Header>
       </View>
       <Typography
@@ -89,9 +111,27 @@ function Missions(props: Props) {
         Выберите уровень обучения
       </Typography>
       <View style={styles.difficultSelectorsContainer}>
-        <DifficultSelector difficult="easy" />
-        <DifficultSelector difficult="middle" />
-        <DifficultSelector difficult="hard" />
+        <TouchableOpacity style={[styles.difficultSelector, styles.easy]}>
+          <View style={styles.starsContainer}>
+            <Star difficult="easy" />
+          </View>
+          <Typography type={TypographyTypes.BOLD24}>ЛЕГКИЙ</Typography>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.difficultSelector, styles.medium]}>
+          <View style={styles.starsContainer}>
+            <Star difficult="middle" />
+            <Star difficult="middle" />
+          </View>
+          <Typography type={TypographyTypes.BOLD24}>СРЕДНИЙ</Typography>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.difficultSelector, styles.hard]}>
+          <View style={styles.starsContainer}>
+            <Star difficult="hard" />
+            <Star difficult="hard" />
+            <Star difficult="hard" />
+          </View>
+          <Typography type={TypographyTypes.BOLD24}>СЛОЖНЫЙ</Typography>
+        </TouchableOpacity>
       </View>
     </View>
   );
