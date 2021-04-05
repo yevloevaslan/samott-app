@@ -1,15 +1,10 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import { BackgroundImages, TypographyTypes, HomeStackProps } from "../utils";
 import {
   BorderedInput,
   Button,
-  RedTitle,
+  Header,
   Typography,
   withBackgroundHoc,
 } from "../components";
@@ -33,17 +28,11 @@ const styles = StyleSheet.create({
   phoneInput: {
     marginBottom: 10,
   },
-  flex: {
-    flex: 1,
-  },
   timerButton: {
     alignItems: "center",
   },
   submitButton: {
     marginBottom: 20,
-  },
-  titleContainer: {
-    paddingVertical: 15,
   },
 });
 
@@ -122,47 +111,45 @@ function CodeEnter(props: Props) {
 
   return (
     <View style={styles.container}>
-      <RedTitle decorators="all">
-        <View style={styles.titleContainer}>
-          <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
-        </View>
-      </RedTitle>
-      <KeyboardAvoidingView style={styles.flex}>
-        <ScrollView scrollEnabled={false} style={styles.contentContainer}>
-          <BorderedInput
-            onChangeText={handleOnChangeText}
-            type="auth-code"
-            placeholder="Введите код подтверждения"
-            onError={setIsInputErrored}
-            style={styles.phoneInput}
-          />
-          <Button
-            style={styles.submitButton}
-            disabled={isInputErrored}
-            onPress={handleOnSubmitButtonPress}
+      <Header
+        titleType={TypographyTypes.BOLD34}
+        decorators="all"
+        title="АВТОРИЗАЦИЯ"
+      />
+      <View style={styles.contentContainer}>
+        <BorderedInput
+          onChangeText={handleOnChangeText}
+          type="auth-code"
+          placeholder="Введите код подтверждения"
+          onError={setIsInputErrored}
+          style={styles.phoneInput}
+        />
+        <Button
+          style={styles.submitButton}
+          disabled={isInputErrored}
+          onPress={handleOnSubmitButtonPress}
+        >
+          <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
+            Создать аккаунт
+          </Typography>
+        </Button>
+        <TouchableOpacity
+          style={styles.timerButton}
+          onPress={handleOnTimerPress}
+          disabled={timerDuration !== 0}
+        >
+          <Typography
+            color={StyleGuide.colorPalette.blue}
+            type={
+              timerDuration === 0
+                ? TypographyTypes.NORMAL900
+                : TypographyTypes.ITALIC18
+            }
           >
-            <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
-              Создать аккаунт
-            </Typography>
-          </Button>
-          <TouchableOpacity
-            style={styles.timerButton}
-            onPress={handleOnTimerPress}
-            disabled={timerDuration !== 0}
-          >
-            <Typography
-              color={StyleGuide.colorPalette.blue}
-              type={
-                timerDuration === 0
-                  ? TypographyTypes.NORMAL900
-                  : TypographyTypes.ITALIC18
-              }
-            >
-              {timerText} {timerDuration !== 0 && formatted}
-            </Typography>
-          </TouchableOpacity>
-        </ScrollView>
-      </KeyboardAvoidingView>
+            {timerText} {timerDuration !== 0 && formatted}
+          </Typography>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

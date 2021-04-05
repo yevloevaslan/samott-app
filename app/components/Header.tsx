@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
+import React, { useCallback, useMemo } from "react";
 import {
   Image,
   StyleSheet,
@@ -6,8 +7,14 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { Avatar, BackButton, Typography } from ".";
 import { TITLE_DECORATOR } from "../assets/images";
-import { StyleGuide } from "../utils";
+import {
+  HomeStackProps,
+  RoutesNames,
+  StyleGuide,
+  TypographyTypes,
+} from "../utils";
 
 const styles = StyleSheet.create({
   containerWrapper: {
@@ -28,7 +35,9 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 73.5,
     paddingHorizontal: 18,
+    flexDirection: "row",
     backgroundColor: StyleGuide.colorPalette.red,
+    alignItems: "center",
   },
   decorator: {
     width: 64,
@@ -39,19 +48,40 @@ const styles = StyleSheet.create({
   left: {
     left: -32,
   },
+  titleText: {
+    marginLeft: 10,
+  },
   right: {
     right: -32,
+  },
+  leftContentContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 
 interface Props {
   decorators: "left" | "right" | "all";
   children?: React.ReactNode;
+  avatar?: boolean;
+  title: string;
   onPress?: () => void;
+  navigation?: StackNavigationProp<HomeStackProps, RoutesNames>;
+  justifyContent?: "space-between" | "space-around" | "space-evenly";
+  titleType?: TypographyTypes;
 }
 
 const Header = (props: Props) => {
-  const { decorators, children, onPress } = props;
+  const {
+    decorators,
+    children,
+    onPress,
+    avatar,
+    title,
+    navigation,
+    justifyContent = "flex-start",
+    titleType,
+  } = props;
 
   const isLeft = useMemo<boolean>(
     () => decorators === "all" || decorators === "left",
@@ -77,6 +107,16 @@ const Header = (props: Props) => {
     return [styles.containerWrapper];
   }, [decorators, isLeft, isRight]);
 
+  const renderLeft = useCallback(() => {
+    if (avatar) {
+      return <Avatar />;
+    } else if (navigation) {
+      return <BackButton navigation={navigation} />;
+    }
+
+    return null;
+  }, [avatar, navigation]);
+
   return (
     <TouchableOpacity
       disabled={!onPress}
@@ -90,7 +130,15 @@ const Header = (props: Props) => {
             style={[styles.decorator, styles.left]}
           />
         )}
-        <View style={styles.contentContainer}>{children}</View>
+        <View style={[styles.contentContainer, { justifyContent }]}>
+          <View style={styles.leftContentContainer}>
+            {renderLeft()}
+            <Typography type={titleType} style={styles.titleText}>
+              {title}
+            </Typography>
+          </View>
+          {children}
+        </View>
         {isRight && (
           <Image
             source={TITLE_DECORATOR}

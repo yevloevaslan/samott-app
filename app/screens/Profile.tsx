@@ -4,7 +4,6 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { GEAR_WHEEL, RED_STAR, ROTATE_ARROWS } from "../assets/images";
 import {
   Avatar,
-  BackButton,
   Bubble,
   Button,
   DifficultSelector,
@@ -25,18 +24,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 48,
-  },
-  titleContentContainer: {
-    flexDirection: "row",
-    paddingTop: 15,
-    justifyContent: "space-between",
-  },
-  titleTextContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  titleText: {
-    marginLeft: 10,
   },
   settingsButtonImage: {
     width: 42,
@@ -154,16 +141,15 @@ function Profile(props: Props) {
 
   return (
     <View style={styles.container}>
-      <Header decorators="right">
-        <View style={styles.titleContentContainer}>
-          <View style={styles.titleTextContainer}>
-            <BackButton navigation={props.navigation} />
-            <Typography style={styles.titleText}>Профиль</Typography>
-          </View>
-          <TouchableOpacity onPress={handleOnGoSettingsPress}>
-            <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
-          </TouchableOpacity>
-        </View>
+      <Header
+        justifyContent="space-between"
+        navigation={props.navigation}
+        title="Профиль"
+        decorators="right"
+      >
+        <TouchableOpacity onPress={handleOnGoSettingsPress}>
+          <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
+        </TouchableOpacity>
       </Header>
       <View style={styles.contentContainer}>
         <View style={styles.avatarContainer}>

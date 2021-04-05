@@ -1,6 +1,6 @@
 import Typography from "./Typography";
 import withBackgroundHoc from "./withBackgroundHoc";
-import Header from "./RedTitle";
+import Header from "./Header";
 import Button from "./Button";
 import BorderedInput from "./BorderedInput";
 import Bubble from "./Bubble";

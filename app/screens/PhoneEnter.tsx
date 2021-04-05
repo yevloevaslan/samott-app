@@ -1,14 +1,9 @@
 import React, { useCallback, useState } from "react";
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   Button,
   BorderedInput,
-  RedTitle,
+  Header,
   Typography,
   withBackgroundHoc,
 } from "../components";
@@ -30,12 +25,6 @@ const styles = StyleSheet.create({
   },
   phoneInput: {
     marginBottom: 10,
-  },
-  flex: {
-    flex: 1,
-  },
-  titleContainer: {
-    paddingVertical: 15,
   },
 });
 
@@ -65,32 +54,30 @@ function PhoneEnter(props: Props) {
 
   return (
     <View style={styles.container}>
-      <RedTitle decorators="all">
-        <View style={styles.titleContainer}>
-          <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
-        </View>
-      </RedTitle>
-      <KeyboardAvoidingView style={styles.flex}>
-        <ScrollView scrollEnabled={false} style={styles.contentContainer}>
-          <BorderedInput
-            onChangeText={handleOnChangeText}
-            type="phone-number"
-            placeholder="Введите номер телефона"
-            onError={setIsInputErrored}
-            style={styles.phoneInput}
-            maxLength={14}
-          />
-          <Button
-            style={styles.submitButton}
-            disabled={isInputErrored}
-            onPress={handleOnSubmitButtonPress}
-          >
-            <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
-              Подтвердить
-            </Typography>
-          </Button>
-        </ScrollView>
-      </KeyboardAvoidingView>
+      <Header
+        titleType={TypographyTypes.BOLD34}
+        title="АВТОРИЗАЦИЯ"
+        decorators="all"
+      />
+      <View style={styles.contentContainer}>
+        <BorderedInput
+          onChangeText={handleOnChangeText}
+          type="phone-number"
+          placeholder="Введите номер телефона"
+          onError={setIsInputErrored}
+          style={styles.phoneInput}
+          maxLength={14}
+        />
+        <Button
+          style={styles.submitButton}
+          disabled={isInputErrored}
+          onPress={handleOnSubmitButtonPress}
+        >
+          <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
+            Подтвердить
+          </Typography>
+        </Button>
+      </View>
     </View>
   );
 }

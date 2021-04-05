@@ -19,4 +19,5 @@ export interface IUserInfo {
   email?: string;
   phone?: string;
   score?: number;
+  birthday: Date;
 }

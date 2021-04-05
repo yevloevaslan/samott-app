@@ -56,6 +56,7 @@ function withBackgroundHoc(
               style={styles.container}
             >
               <ScrollView
+                keyboardShouldPersistTaps="handled"
                 bounces={false}
                 style={styles.contentContainerWrapper}
                 contentContainerStyle={styles.contentContainer}

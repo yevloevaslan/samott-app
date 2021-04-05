@@ -60,18 +60,16 @@ function Missions(props: Props) {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Header decorators="right" onPress={handleOnTitlePress}>
-          <View style={styles.titleContetContainer}>
-            <Avatar />
-            <Typography style={styles.nameText}>{user.firstName}</Typography>
-            <Bubble backgroundColor={StyleGuide.colorPalette.mayo}>
-              <Typography
-                type={TypographyTypes.NORMAL18}
-                color={StyleGuide.colorPalette.black}
-              >
-                Рейтинг 0
-              </Typography>
-            </Bubble>
-          </View>
+          <Avatar />
+          <Typography style={styles.nameText}>{user.firstName}</Typography>
+          <Bubble backgroundColor={StyleGuide.colorPalette.mayo}>
+            <Typography
+              type={TypographyTypes.NORMAL18}
+              color={StyleGuide.colorPalette.black}
+            >
+              Рейтинг 0
+            </Typography>
+          </Bubble>
         </Header>
       </View>
       <Typography
