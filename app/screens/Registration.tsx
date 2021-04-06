@@ -108,23 +108,20 @@ function Registration(props: Props) {
   const handleOnAcceptButtonPress = useCallback(async () => {
     const birth = birthday.get();
     if (lastName && middleName && firstName && birth) {
-      userController
-        .userPutInfo({
-          lastName,
-          middleName,
-          firstName,
-          email,
-        })
-        .then(() => {
-          setUser(UserActionsTypes.SET_NAME, {
-            lastName,
-            middleName,
-            firstName,
-            email,
-            birthday: new Date(birth.join(".")),
-          });
-          props.navigation.navigate(RoutesNames.PIN_PHOTO);
-        });
+      const userInfo = {
+        lastName,
+        middleName,
+        firstName,
+        email,
+        birthday: new Date(birth[2], birth[1], birth[0]),
+      };
+      if (!email?.match(/^[a-z]*@[a-z]*.[a-z]*$/)) {
+        delete userInfo.email;
+      }
+      userController.userPutInfo(userInfo).then(() => {
+        setUser(UserActionsTypes.SET_NAME, userInfo);
+        props.navigation.navigate(RoutesNames.PIN_PHOTO);
+      });
     }
   }, [
     birthday,

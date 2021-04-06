@@ -211,7 +211,7 @@ function ProfileSettings(props: Props) {
 
   return (
     <View style={styles.container}>
-      <Header decorators="right">
+      <Header title="Настройки" decorators="right">
         <View style={styles.redTitleContainer}>
           <View style={styles.titleNameContainer}>
             <BackButton navigation={props.navigation} />

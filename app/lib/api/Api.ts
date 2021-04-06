@@ -45,7 +45,7 @@ export default class Api {
 
   async userPutInfo(info: IUserInfo, token: string) {
     const response = await RestApiHelper.build<void>("userPutInfo")
-      .withBody({ ...info })
+      .withBody({ ...info, birthday: info.birthday.toString() })
       .withHeaders({ "x-access-token": token })
       .fetch();
 

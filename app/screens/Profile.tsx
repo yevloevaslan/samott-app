@@ -4,11 +4,10 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { GEAR_WHEEL, RED_STAR, ROTATE_ARROWS } from "../assets/images";
 import {
   Avatar,
-  BackButton,
   Bubble,
   Button,
-  DifficultSelector,
   Header,
+  Star,
   Typography,
   withBackgroundHoc,
 } from "../components";
@@ -25,18 +24,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 48,
-  },
-  titleContentContainer: {
-    flexDirection: "row",
-    paddingTop: 15,
-    justifyContent: "space-between",
-  },
-  titleTextContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  titleText: {
-    marginLeft: 10,
   },
   settingsButtonImage: {
     width: 42,
@@ -123,20 +110,43 @@ const styles = StyleSheet.create({
   difficultContainer: {
     marginBottom: 10,
     flexDirection: "row",
-    marginLeft: -10,
     justifyContent: "space-between",
   },
-  easyCounter: {
-    backgroundColor: StyleGuide.colorPalette.mayo,
+  difficultsContainer: {
+    flex: 1,
+    marginLeft: -10,
   },
-  middleCounter: {
-    backgroundColor: StyleGuide.colorPalette.orange,
-  },
-  hardCounter: {
-    backgroundColor: StyleGuide.colorPalette.tomato,
+  difficultCounter: {
+    paddingVertical: 12,
+    paddingHorizontal: 38,
+    borderRadius: 12,
   },
   missionStatusTitleText: {
     marginBottom: 20,
+  },
+  difficultSelector: {
+    marginRight: 10,
+    flex: 1,
+    paddingVertical: 12,
+    paddingLeft: 18,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingRight: 24,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  starsContainer: {
+    flexDirection: "row",
+  },
+  easy: {
+    backgroundColor: StyleGuide.colorPalette.mayo,
+  },
+  medium: {
+    backgroundColor: StyleGuide.colorPalette.orange,
+  },
+  hard: {
+    backgroundColor: StyleGuide.colorPalette.tomato,
   },
 });
 
@@ -154,16 +164,15 @@ function Profile(props: Props) {
 
   return (
     <View style={styles.container}>
-      <Header decorators="right">
-        <View style={styles.titleContentContainer}>
-          <View style={styles.titleTextContainer}>
-            <BackButton navigation={props.navigation} />
-            <Typography style={styles.titleText}>Профиль</Typography>
-          </View>
-          <TouchableOpacity onPress={handleOnGoSettingsPress}>
-            <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
-          </TouchableOpacity>
-        </View>
+      <Header
+        justifyContent="space-between"
+        navigation={props.navigation}
+        title="Профиль"
+        decorators="right"
+      >
+        <TouchableOpacity onPress={handleOnGoSettingsPress}>
+          <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
+        </TouchableOpacity>
       </Header>
       <View style={styles.contentContainer}>
         <View style={styles.avatarContainer}>
@@ -232,22 +241,44 @@ function Profile(props: Props) {
           >
             Выполнено заданий
           </Typography>
-          <View style={styles.difficultContainer}>
-            <DifficultSelector difficult="easy" />
-            <View style={[styles.starContainer, styles.easyCounter]}>
-              <Typography>0</Typography>
+          <View style={styles.difficultsContainer}>
+            <View style={styles.difficultContainer}>
+              <TouchableOpacity style={[styles.difficultSelector, styles.easy]}>
+                <View style={styles.starsContainer}>
+                  <Star size={24} difficult="easy" />
+                </View>
+                <Typography type={TypographyTypes.NORMAL18}>ЛЕГКИЙ</Typography>
+              </TouchableOpacity>
+              <View style={[styles.difficultCounter, styles.easy]}>
+                <Typography>0</Typography>
+              </View>
             </View>
-          </View>
-          <View style={styles.difficultContainer}>
-            <DifficultSelector difficult="middle" />
-            <View style={[styles.starContainer, styles.middleCounter]}>
-              <Typography>0</Typography>
+            <View style={styles.difficultContainer}>
+              <TouchableOpacity
+                style={[styles.difficultSelector, styles.medium]}
+              >
+                <View style={styles.starsContainer}>
+                  <Star size={24} difficult="middle" />
+                  <Star size={24} difficult="middle" />
+                </View>
+                <Typography type={TypographyTypes.NORMAL18}>СРЕДНИЙ</Typography>
+              </TouchableOpacity>
+              <View style={[styles.difficultCounter, styles.medium]}>
+                <Typography>0</Typography>
+              </View>
             </View>
-          </View>
-          <View style={styles.difficultContainer}>
-            <DifficultSelector difficult="hard" />
-            <View style={[styles.starContainer, styles.hardCounter]}>
-              <Typography>0</Typography>
+            <View style={styles.difficultContainer}>
+              <TouchableOpacity style={[styles.difficultSelector, styles.hard]}>
+                <View style={styles.starsContainer}>
+                  <Star size={24} difficult="hard" />
+                  <Star size={24} difficult="hard" />
+                  <Star size={24} difficult="hard" />
+                </View>
+                <Typography type={TypographyTypes.NORMAL18}>СЛОЖНЫЙ</Typography>
+              </TouchableOpacity>
+              <View style={[styles.difficultCounter, styles.hard]}>
+                <Typography>0</Typography>
+              </View>
             </View>
           </View>
         </View>

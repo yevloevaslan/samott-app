@@ -1,15 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { BackgroundImages, RoutesNames, TypographyTypes } from "../utils/enums";
 import { HomeStackProps, StyleGuide } from "../utils";
 import { StackScreenProps } from "@react-navigation/stack";
-import { Bubble, RedTitle, Typography, withBackgroundHoc } from "../components";
+import { Bubble, Header, Typography, withBackgroundHoc } from "../components";
 import { useTimer } from "../hooks";
 import UserController from "../lib/controllers/UserController";
 
@@ -17,9 +11,6 @@ const styles = StyleSheet.create({
   containerWrapper: {
     flex: 1,
     paddingTop: 79,
-  },
-  container: {
-    flex: 1,
   },
   contentContainer: {
     paddingHorizontal: 25,
@@ -31,9 +22,6 @@ const styles = StyleSheet.create({
   },
   bubbleContainer: {
     marginBottom: 20,
-  },
-  titleContainer: {
-    paddingVertical: 15,
   },
   bubbleTextContainer: {
     padding: 5,
@@ -66,47 +54,45 @@ function ErrorCode(props: Props) {
 
   return (
     <View style={styles.containerWrapper}>
-      <RedTitle decorators="all">
-        <View style={styles.titleContainer}>
-          <Typography type={TypographyTypes.BOLD34}>АВТОРИЗАЦИЯ</Typography>
-        </View>
-      </RedTitle>
-      <KeyboardAvoidingView style={styles.container}>
-        <ScrollView scrollEnabled={false} style={styles.contentContainer}>
-          <View style={styles.bubbleContainer}>
-            <Bubble
-              backgroundColor={StyleGuide.colorPalette.orange}
-              title={"НЕВЕРНЫЙ КОД\nПОДТВЕРЖДЕНИЯ!"}
-            >
-              <View style={styles.bubbleTextContainer}>
-                <Typography
-                  type={TypographyTypes.NORMAL24}
-                  numberOfLines={2}
-                  textAlign="center"
-                >
-                  Проверьте коректность{"\n"}введения кода подтверждения
-                </Typography>
-              </View>
-            </Bubble>
-          </View>
-          <TouchableOpacity
-            style={styles.timerButton}
-            onPress={handleOnTimerPress}
-            disabled={seconds !== 0}
+      <Header
+        titleType={TypographyTypes.BOLD34}
+        title="АВТОРИЗАЦИЯ"
+        decorators="all"
+      />
+      <View style={styles.contentContainer}>
+        <View style={styles.bubbleContainer}>
+          <Bubble
+            backgroundColor={StyleGuide.colorPalette.orange}
+            title={"НЕВЕРНЫЙ КОД\nПОДТВЕРЖДЕНИЯ!"}
           >
-            <Typography
-              color={StyleGuide.colorPalette.blue}
-              type={
-                seconds === 0
-                  ? TypographyTypes.NORMAL900
-                  : TypographyTypes.ITALIC18
-              }
-            >
-              {timerText} {seconds !== 0 && formatted}
-            </Typography>
-          </TouchableOpacity>
-        </ScrollView>
-      </KeyboardAvoidingView>
+            <View style={styles.bubbleTextContainer}>
+              <Typography
+                type={TypographyTypes.NORMAL24}
+                numberOfLines={2}
+                textAlign="center"
+              >
+                Проверьте коректность{"\n"}введения кода подтверждения
+              </Typography>
+            </View>
+          </Bubble>
+        </View>
+        <TouchableOpacity
+          style={styles.timerButton}
+          onPress={handleOnTimerPress}
+          disabled={seconds !== 0}
+        >
+          <Typography
+            color={StyleGuide.colorPalette.blue}
+            type={
+              seconds === 0
+                ? TypographyTypes.NORMAL900
+                : TypographyTypes.ITALIC18
+            }
+          >
+            {timerText} {seconds !== 0 && formatted}
+          </Typography>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
