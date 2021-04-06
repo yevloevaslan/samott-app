@@ -35,3 +35,5 @@ export const TABS: TabBarType[] = [
     size: { w: 50, h: 49 },
   },
 ];
+
+export const RESET_APP = "RESET_APP";

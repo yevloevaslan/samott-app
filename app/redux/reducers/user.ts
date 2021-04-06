@@ -1,14 +1,6 @@
 import { ActionReducerMapBuilder, createReducer } from "@reduxjs/toolkit";
-import {
-  setUserId,
-  setUserPhone,
-  setUserPhoto,
-  setUserToken,
-  setUserName,
-  setUserRating,
-  setUserBirthday,
-  setUserScore,
-} from "../actions/userActions";
+import { reducer } from "../../utils";
+import { UserActions } from "../actions";
 import { IUser } from "../types/userTypes";
 
 export const userInitialState: IUser = {
@@ -19,25 +11,21 @@ export const userInitialState: IUser = {
   middleName: "",
   lastName: "",
   email: undefined,
-  birthday: undefined,
+  birthday: new Date(),
   score: 0,
 };
-
-function reducer(state: IUser, action: { type: string; payload: any }) {
-  return { ...state, ...action.payload };
-}
 
 const userReducer = createReducer(
   userInitialState,
   (builder: ActionReducerMapBuilder<IUser>) => {
-    builder.addCase(setUserId, reducer);
-    builder.addCase(setUserPhone, reducer);
-    builder.addCase(setUserToken, reducer);
-    builder.addCase(setUserPhoto, reducer);
-    builder.addCase(setUserName, reducer);
-    builder.addCase(setUserRating, reducer);
-    builder.addCase(setUserBirthday, reducer);
-    builder.addCase(setUserScore, reducer);
+    builder.addCase(UserActions.setUserId, reducer);
+    builder.addCase(UserActions.setUserPhone, reducer);
+    builder.addCase(UserActions.setUserToken, reducer);
+    builder.addCase(UserActions.setUserPhoto, reducer);
+    builder.addCase(UserActions.setUserName, reducer);
+    builder.addCase(UserActions.setUserRating, reducer);
+    builder.addCase(UserActions.setUserBirthday, reducer);
+    builder.addCase(UserActions.setUserScore, reducer);
   }
 );
 

@@ -69,6 +69,7 @@ interface Props {
   navigation?: StackNavigationProp<HomeStackProps, RoutesNames>;
   justifyContent?: "space-between" | "space-around" | "space-evenly";
   titleType?: TypographyTypes;
+  onBackButtonPress?: () => {};
 }
 
 const Header = (props: Props) => {
@@ -81,6 +82,7 @@ const Header = (props: Props) => {
     navigation,
     justifyContent = "flex-start",
     titleType,
+    onBackButtonPress,
   } = props;
 
   const isLeft = useMemo<boolean>(
@@ -107,15 +109,23 @@ const Header = (props: Props) => {
     return [styles.containerWrapper];
   }, [decorators, isLeft, isRight]);
 
+  const handleOnBackButtonPress = useCallback(() => {
+    if (onBackButtonPress) {
+      onBackButtonPress();
+    }
+  }, [onBackButtonPress]);
+
   const renderLeft = useCallback(() => {
     if (avatar) {
       return <Avatar />;
     } else if (navigation) {
-      return <BackButton navigation={navigation} />;
+      return (
+        <BackButton onPress={handleOnBackButtonPress} navigation={navigation} />
+      );
     }
 
     return null;
-  }, [avatar, navigation]);
+  }, [avatar, handleOnBackButtonPress, navigation]);
 
   return (
     <TouchableOpacity

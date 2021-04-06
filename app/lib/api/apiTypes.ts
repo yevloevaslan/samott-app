@@ -1,3 +1,4 @@
+import { IUserInfo } from "./../../utils/interfaces";
 export type ApiLogin = {
   data: {
     _id: string;
@@ -5,7 +6,7 @@ export type ApiLogin = {
   };
 };
 
-export type ApiUserInfo = {
+export type ApiUserAuth = {
   data: {
     token: string;
     user: {
@@ -17,3 +18,7 @@ export type ApiUserInfo = {
     };
   };
 };
+
+export interface ApiUserInfo extends Omit<IUserInfo, "birthday"> {
+  birthday: string;
+}

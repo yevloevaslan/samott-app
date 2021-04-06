@@ -41,7 +41,7 @@ export default function UserController() {
   );
 
   const userPutInfo = useCallback(
-    async (info: IUserInfo) => {
+    async (info: Partial<IUserInfo>) => {
       try {
         const response = await Api.getInstance().userPutInfo(
           info,
@@ -61,10 +61,18 @@ export default function UserController() {
       const response = await Api.getInstance().userGetInfo(
         storeState.user.token
       );
-      const { lastName, score, middleName, firstName, phone } = response;
+      const {
+        lastName,
+        score,
+        middleName,
+        firstName,
+        phone,
+        birthday,
+      } = response;
       setUser(UserActionsTypes.SET_NAME, { lastName, middleName, firstName });
       setUser(UserActionsTypes.SET_PHONE, { phone });
       setUser(UserActionsTypes.SET_SCORE, { score });
+      setUser(UserActionsTypes.SET_BIRTHDAY, { birthday: new Date(birthday) });
       return response;
     } catch (e) {
       Alert.alert("Ошибка", `${e}`);

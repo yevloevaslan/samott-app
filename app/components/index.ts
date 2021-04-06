@@ -9,6 +9,7 @@ import Avatar from "./Avatar";
 import TabBar from "./TabBar/TabBar";
 import BackButton from "./BackButton";
 import Star from "./Star";
+import DatePicker from "./DatePicker";
 
 export {
   Typography,
@@ -22,4 +23,5 @@ export {
   TabBar,
   BackButton,
   Star,
+  DatePicker,
 };

@@ -79,6 +79,9 @@ function CodeEnter(props: Props) {
     if (parsedInputValue) {
       const response = await userController.userAuth(parsedInputValue);
       if (response) {
+        if (!response.user.firstIn) {
+          await userController.userGetInfo();
+        }
         props.navigation.reset({
           index: 0,
           routes: [
