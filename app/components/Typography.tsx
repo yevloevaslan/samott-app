@@ -4,7 +4,7 @@ import { TypographyTypes, StyleGuide } from "../utils";
 
 interface Props extends TextProps {
   children?: React.ReactFragment;
-  type: TypographyTypes;
+  type?: TypographyTypes;
   color?: string;
   textAlign?: "center" | "left" | "right" | "auto" | "justify";
   numberOfLines?: number;
@@ -12,7 +12,7 @@ interface Props extends TextProps {
 
 const Typography = (props: Props) => {
   const {
-    type,
+    type = TypographyTypes.NORMAL24,
     color = StyleGuide.colorPalette.white,
     style,
     textAlign,

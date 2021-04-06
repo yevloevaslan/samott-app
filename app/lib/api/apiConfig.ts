@@ -23,6 +23,10 @@ const config: ApiConfig = {
       url: "users/confirm",
       method: "POST",
     },
+    userPutInfo: {
+      url: "users/info",
+      method: "PUT",
+    },
   },
 };
 

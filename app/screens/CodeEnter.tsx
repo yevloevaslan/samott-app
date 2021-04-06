@@ -87,7 +87,16 @@ function CodeEnter(props: Props) {
     if (parsedInputValue) {
       const response = await userController.userAuth(parsedInputValue);
       if (response) {
-        props.navigation.navigate(RoutesNames.HOME);
+        props.navigation.reset({
+          index: 0,
+          routes: [
+            {
+              name: response.user.firstIn
+                ? RoutesNames.REGISTRATION
+                : RoutesNames.TAB_NAVIGATOR,
+            },
+          ],
+        });
       } else {
         handleGoError();
       }

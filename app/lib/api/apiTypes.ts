@@ -13,6 +13,7 @@ export type ApiUserInfo = {
       createdAt: Date;
       updatedAt: Date;
       _id: string;
+      firstIn: boolean;
     };
   };
 };

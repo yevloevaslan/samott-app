@@ -4,6 +4,10 @@ import RedTitle from "./RedTitle";
 import Button from "./Button";
 import BorderedInput from "./BorderedInput";
 import Bubble from "./Bubble";
+import RadioButton from "./RadioButton";
+import Avatar from "./Avatar";
+import DifficultSelector from "./DifficultSelector";
+import TabBar from "./TabBar/TabBar";
 
 export {
   Typography,
@@ -12,4 +16,8 @@ export {
   Button,
   BorderedInput,
   Bubble,
+  RadioButton,
+  Avatar,
+  DifficultSelector,
+  TabBar,
 };

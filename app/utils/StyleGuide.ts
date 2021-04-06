@@ -2,6 +2,7 @@ import { ImageSourcePropType, TextStyle } from "react-native";
 import { BACKGROUND_WITH_CASTLE } from "../assets/images";
 import { BackgroundImages, Colors, TypographyTypes } from "./enums";
 import { IStyleGuide } from "./interfaces";
+import { BACKGROUND_WITH_ORNAMENTS } from "../assets/images/index";
 
 const colorPalette: { [color in Colors]: string } = {
   [Colors.WHITE]: "#FFFFFF",
@@ -9,6 +10,15 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.ORANGE]: "#F2994A",
   [Colors.GRAY]: "#C4C4C4",
   [Colors.BLUE]: "#2F80ED",
+  [Colors.TRANSPARENT]: "transparent",
+  [Colors.GREEN]: "#27AE60",
+  [Colors.DARK_GRAY]: "#666666",
+  [Colors.GRAY45]: "rgba(48, 51, 65, 0.45)",
+  [Colors.BLACK]: "#000000",
+  [Colors.MAYO]: "#DBD8A5",
+  [Colors.DARK_GREEN]: "#549D61",
+  [Colors.DARK_BROWN]: "#746C56",
+  [Colors.TOMATO]: "#FF6633",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {
@@ -31,6 +41,18 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
     fontFamily: "Roboto-Regular",
     fontSize: 24,
     lineHeight: 28,
+  },
+  [TypographyTypes.NORMAL24700]: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 24,
+    lineHeight: 28,
+    fontWeight: "700",
+  },
+  [TypographyTypes.NORMAL30]: {
+    fontFamily: "Roboto-Regular",
+    fontWeight: "700",
+    fontSize: 30,
+    lineHeight: 35.16,
   },
   [TypographyTypes.NORMAL500]: {
     fontWeight: "500",
@@ -72,6 +94,7 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
 
 const backgrounds: { [background in BackgroundImages]: ImageSourcePropType } = {
   [BackgroundImages.WITH_CASTLES]: BACKGROUND_WITH_CASTLE,
+  [BackgroundImages.WITH_ORNAMENTS]: BACKGROUND_WITH_ORNAMENTS,
 };
 
 export const StyleGuide: IStyleGuide = {

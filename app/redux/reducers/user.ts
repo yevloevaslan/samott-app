@@ -1,11 +1,22 @@
 import { ActionReducerMapBuilder, createReducer } from "@reduxjs/toolkit";
-import { setUserId, setUserPhone, setUserToken } from "../actions/userActions";
+import {
+  setUserId,
+  setUserPhone,
+  setUserPhoto,
+  setUserToken,
+  setUserName,
+  setUserRating,
+} from "../actions/userActions";
 import { IUser } from "../types/userTypes";
 
 export const userInitialState: IUser = {
   id: undefined,
-  token: undefined,
+  token: "",
   phone: undefined,
+  firstName: "",
+  middleName: "",
+  lastName: "",
+  email: undefined,
 };
 
 function reducer(state: IUser, action: { type: string; payload: any }) {
@@ -18,6 +29,9 @@ const userReducer = createReducer(
     builder.addCase(setUserId, reducer);
     builder.addCase(setUserPhone, reducer);
     builder.addCase(setUserToken, reducer);
+    builder.addCase(setUserPhoto, reducer);
+    builder.addCase(setUserName, reducer);
+    builder.addCase(setUserRating, reducer);
   }
 );
 

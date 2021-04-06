@@ -69,8 +69,9 @@ function ErrorCode(props: Props) {
             <Bubble
               backgroundColor={StyleGuide.colorPalette.orange}
               title={"НЕВЕРНЫЙ КОД\nПОДТВЕРЖДЕНИЯ!"}
-              content={"Проверьте коректность\nвведения кода подтверждения"}
-            />
+            >
+              Проверьте коректность{"\n"}введения кода подтверждения
+            </Bubble>
           </View>
           <TouchableOpacity
             style={styles.timerButton}

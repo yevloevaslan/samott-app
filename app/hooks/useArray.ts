@@ -29,11 +29,11 @@ const useArray = <T>(initialState?: T[]): ActionsInterface<T> => {
 
   const setAt = useCallback(
     (index: number, value: T) => {
-      if (userArray && index < userArray.length - 1 && index > 0) {
-        setUserArray(
-          (prev) => prev && prev.map((v, i) => (i === index ? value : v))
-        );
-      }
+      // if (userArray && index < userArray.length - 1 && index > 0) {
+      setUserArray(
+        (prev) => prev && prev.map((v, i) => (i === index ? value : v))
+      );
+      // }
     },
     [userArray]
   );

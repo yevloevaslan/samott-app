@@ -4,13 +4,26 @@ export enum Colors {
   ORANGE = "orange",
   GRAY = "gray",
   BLUE = "blue",
+  TRANSPARENT = "transparent",
+  GREEN = "green",
+  DARK_GRAY = "darkGray",
+  GRAY45 = "gray45",
+  BLACK = "black",
+  MAYO = "mayo",
+  DARK_GREEN = "darkGreen",
+  DARK_BROWN = "darkBrown",
+  TOMATO = "tomato",
 }
 
 export enum RoutesNames {
-  HOME = "Home",
+  MISSIONS = "Missions",
   PHONE_ENTER = "PhoneEnter",
   CODE_ENTER = "CodeEnter",
   ERROR_CODE = "ErrorCode",
+  REGISTRATION = "Registration",
+  PIN_PHOTO = "PinPhoto",
+  SPLASH = "Splash",
+  TAB_NAVIGATOR = "TAB_NAVIGATOR",
 }
 
 export enum TypographyTypes {
@@ -24,8 +37,11 @@ export enum TypographyTypes {
   BOLD24 = "BOLD24",
   BOLD34 = "BOLD34",
   NORMAL500 = "NORMAL500",
+  NORMAL30 = "NORMAL30",
+  NORMAL24700 = "NORMAL24700",
 }
 
 export enum BackgroundImages {
   WITH_CASTLES = "WITH_CASTLES",
+  WITH_ORNAMENTS = "WITH_ORNAMENTS",
 }
