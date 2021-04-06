@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { StackScreenProps } from "@react-navigation/stack";
 import { StyleSheet, View } from "react-native";
 import {
@@ -12,7 +12,7 @@ import {
   Avatar,
   Bubble,
   DifficultSelector,
-  RedTitle,
+  Header,
   Typography,
   withBackgroundHoc,
 } from "../components";
@@ -52,10 +52,14 @@ function Missions(props: Props) {
   const {} = props;
   const { user } = useUser();
 
+  const handleOnTitlePress = useCallback(() => {
+    props.navigation.navigate(RoutesNames.PROFILE);
+  }, [props.navigation]);
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <RedTitle decorators="right">
+        <Header decorators="right" onPress={handleOnTitlePress}>
           <View style={styles.titleContetContainer}>
             <Avatar />
             <Typography style={styles.nameText}>{user.firstName}</Typography>
@@ -68,7 +72,7 @@ function Missions(props: Props) {
               </Typography>
             </Bubble>
           </View>
-        </RedTitle>
+        </Header>
       </View>
       <Typography
         type={TypographyTypes.BOLD24}

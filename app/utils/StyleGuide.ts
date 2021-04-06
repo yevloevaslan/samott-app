@@ -19,6 +19,8 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.DARK_GREEN]: "#549D61",
   [Colors.DARK_BROWN]: "#746C56",
   [Colors.TOMATO]: "#FF6633",
+  [Colors.DARK_BLUE]: "#1B53DB",
+  [Colors.ACID_GREEN]: "#CCFF33",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {

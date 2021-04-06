@@ -5,6 +5,8 @@ export enum UserActionsTypes {
   SET_PHOTO = "SET_PHOTO",
   SET_NAME = "SET_NAME",
   SET_RATING = "SET_RATING",
+  SET_BIRTHDAY = "SET_BIRTHDAY",
+  SET_SCORE = "SET_SCORE",
 }
 
 export interface IUser {
@@ -16,4 +18,6 @@ export interface IUser {
   middleName: string;
   firstName: string;
   email?: string;
+  score?: number;
+  birthday?: Date;
 }

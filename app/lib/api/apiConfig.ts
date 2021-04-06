@@ -27,6 +27,10 @@ const config: ApiConfig = {
       url: "users/info",
       method: "PUT",
     },
+    userGetInfo: {
+      url: "users/info",
+      method: "GET",
+    },
   },
 };
 

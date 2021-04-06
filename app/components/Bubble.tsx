@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     marginBottom: 8,
+    padding: 5,
   },
   bubbleArrow: {
     position: "absolute",
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     borderRightColor: StyleGuide.colorPalette.transparent,
     borderLeftColor: StyleGuide.colorPalette.transparent,
     borderBottomWidth: 18,
+    zIndex: -1,
   },
   leftArrow: {
     left: -28,

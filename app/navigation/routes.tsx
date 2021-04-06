@@ -55,12 +55,17 @@ const Routes = () => {
         name={RoutesNames.REGISTRATION}
         component={Screens.Registration}
       />
+      <Stack.Screen name={RoutesNames.PROFILE} component={Screens.Profile} />
       <Stack.Screen
         options={{ cardStyleInterpolator }}
         name={RoutesNames.PIN_PHOTO}
         component={Screens.PinPhoto}
       />
       <Stack.Screen name={RoutesNames.TAB_NAVIGATOR} component={TabNavigator} />
+      <Stack.Screen
+        name={RoutesNames.PROFILE_SETTINGS}
+        component={Screens.ProfileSettings}
+      />
     </Stack.Navigator>
   );
 };

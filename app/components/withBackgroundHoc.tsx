@@ -48,6 +48,7 @@ function withBackgroundHoc(
           <ImageBackground
             resizeMode="stretch"
             style={styles.content}
+            imageStyle={{ position: "absolute" }}
             source={StyleGuide.backgrounds[image]}
           >
             <KeyboardAvoidingView

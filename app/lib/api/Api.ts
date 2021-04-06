@@ -51,4 +51,14 @@ export default class Api {
 
     return response.body;
   }
+
+  async userGetInfo(token: string) {
+    const response = await RestApiHelper.build<{ data: IUserInfo }>(
+      "userGetInfo"
+    )
+      .withHeaders({ "x-access-token": token })
+      .fetch();
+
+    return response.body.data;
+  }
 }
