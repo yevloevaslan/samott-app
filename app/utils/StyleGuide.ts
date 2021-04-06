@@ -8,6 +8,7 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.RED]: "#DD5758",
   [Colors.ORANGE]: "#F2994A",
   [Colors.GRAY]: "#C4C4C4",
+  [Colors.BLUE]: "#2F80ED",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {
@@ -27,6 +28,12 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
     lineHeight: 21,
   },
   [TypographyTypes.NORMAL24]: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 24,
+    lineHeight: 28,
+  },
+  [TypographyTypes.NORMAL500]: {
+    fontWeight: "500",
     fontFamily: "Roboto-Regular",
     fontSize: 24,
     lineHeight: 28,

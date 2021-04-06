@@ -6,7 +6,7 @@ import {
   KeyboardTypeOptions,
 } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
-import { StyleGuide, TypographyTypes } from "../utils";
+import { StyleGuide, TypographyTypes, BorderedInputTypes } from "../utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
 });
 
 interface Props extends TextInputProps {
-  type?: "phone-number" | "any";
+  type?: BorderedInputTypes;
   onError?: (errored: boolean) => void;
-  onChangeText: (text?: string) => void;
+  onChangeText: (text?: string, ext?: string) => void;
 }
 
 const BorderedInput = (props: Props) => {
@@ -39,6 +39,10 @@ const BorderedInput = (props: Props) => {
         regular.current = /^\d{10}$/;
         return "+7 ([000]) [000] [00] [00]";
       }
+      case "auth-code": {
+        regular.current = /^\d{6}$/;
+        return "[0] [0] [0] [0] [0] [0]";
+      }
     }
   }, [type]);
 
@@ -47,15 +51,17 @@ const BorderedInput = (props: Props) => {
       if (regular.current && onError && ext) {
         onError(!ext.match(regular.current));
       }
-      onChangeText(mask ? ext : text);
+      onChangeText(text, ext);
     },
-    [mask, onChangeText, onError]
+    [onChangeText, onError]
   );
 
   const keyboardType = useMemo<KeyboardTypeOptions | undefined>(() => {
     switch (type) {
       case "phone-number":
         return "phone-pad";
+      case "auth-code":
+        return "number-pad";
     }
   }, [type]);
 

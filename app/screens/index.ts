@@ -1,7 +1,9 @@
 import Home from "./Home";
-import Login from "./Login";
+import CodeEnter from "./CodeEnter";
+import ErrorCode from "./ErrorCode";
+import PhoneEnter from "./PhoneEnter";
 
-const Screens = { Home, Login };
+const Screens = { Home, CodeEnter, ErrorCode, PhoneEnter };
 
-export { Home, Login };
+export { Home, CodeEnter, ErrorCode };
 export default Screens;

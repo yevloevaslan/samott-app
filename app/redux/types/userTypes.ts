@@ -1,12 +1,11 @@
 export enum UserActionsTypes {
-  SET_LOGIN_DATA = "SET_LOGIN_DATA",
-}
-
-export interface IUserLogin {
-  id?: string;
-  updatedAt: Date | null;
+  SET_ID = "SET_ID",
+  SET_TOKEN = "SET_TOKEN",
+  SET_PHONE = "SET_PHONE",
 }
 
 export interface IUser {
-  loginData: IUserLogin;
+  id?: string;
+  phone?: string;
+  token?: string;
 }

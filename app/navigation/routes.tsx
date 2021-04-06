@@ -9,9 +9,20 @@ const Routes = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={RoutesNames.LOGIN}
+      initialRouteName={RoutesNames.PHONE_ENTER}
     >
-      <Stack.Screen name={RoutesNames.LOGIN} component={Screens.Login} />
+      <Stack.Screen
+        name={RoutesNames.PHONE_ENTER}
+        component={Screens.PhoneEnter}
+      />
+      <Stack.Screen
+        name={RoutesNames.CODE_ENTER}
+        component={Screens.CodeEnter}
+      />
+      <Stack.Screen
+        name={RoutesNames.ERROR_CODE}
+        component={Screens.ErrorCode}
+      />
       <Stack.Screen name={RoutesNames.HOME} component={Screens.Home} />
     </Stack.Navigator>
   );

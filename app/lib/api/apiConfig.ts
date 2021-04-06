@@ -19,6 +19,10 @@ const config: ApiConfig = {
       url: "users/login",
       method: "POST",
     },
+    userAuth: {
+      url: "users/confirm",
+      method: "POST",
+    },
   },
 };
 

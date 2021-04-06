@@ -24,9 +24,6 @@ if (process.env.NODE_ENV === "development") {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default () => {
-  const enhancer = compose(applyMiddleware(...middlewares));
-  const store = createStore(persistedReducer, INITIAL_STATE, enhancer);
-  const persistor = persistStore(store);
-  return { store, persistor };
-};
+const enhancer = compose(applyMiddleware(...middlewares));
+export const store = createStore(persistedReducer, INITIAL_STATE, enhancer);
+export const persistor = persistStore(store);

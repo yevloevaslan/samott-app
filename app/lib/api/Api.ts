@@ -1,4 +1,4 @@
-import { ApiLogin } from "./apiTypes";
+import { ApiLogin, ApiUserInfo } from "./apiTypes";
 import { RestApiHelper } from "rest-api-helper";
 import config from "./apiConfig";
 
@@ -19,8 +19,24 @@ export default class Api {
     return Api.instance;
   }
 
+  async userAuth(code: string, _id?: string) {
+    const response = await RestApiHelper.build<ApiUserInfo>("userAuth")
+      .withBody({
+        _id,
+        code,
+      })
+      .fetch();
+
+    const data = response.body.data;
+
+    return {
+      token: data.token,
+      phone: data.user.phone,
+    };
+  }
+
   async userLogin(phone: string) {
-    const response = await RestApiHelper.build<{ data: ApiLogin }>("userLogin")
+    const response = await RestApiHelper.build<ApiLogin>("userLogin")
       .withBody({
         phone,
       })

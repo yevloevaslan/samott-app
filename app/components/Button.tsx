@@ -3,7 +3,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps,
-  ViewStyle,
 } from "react-native";
 import { StyleGuide } from "../utils";
 
@@ -26,12 +25,12 @@ interface Props extends TouchableOpacityProps {
 const Button = (props: Props) => {
   const { onPress, children, disabled } = props;
 
-  const containerStyle = useMemo<ViewStyle[]>(() => {
+  const containerStyle = useMemo(() => {
     if (disabled) {
-      return [styles.container, styles.disabled];
+      return [styles.container, styles.disabled, props.style];
     }
-    return [styles.container];
-  }, [disabled]);
+    return [styles.container, props.style];
+  }, [disabled, props.style]);
 
   return (
     <TouchableOpacity {...props} onPress={onPress} style={containerStyle}>
