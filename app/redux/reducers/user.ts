@@ -11,7 +11,7 @@ export const userInitialState: IUser = {
   middleName: "",
   lastName: "",
   email: undefined,
-  birthday: undefined,
+  birthday: new Date(),
   score: 0,
 };
 

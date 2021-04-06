@@ -15,12 +15,13 @@ import {
   Header,
   Typography,
   withBackgroundHoc,
+  DatePicker,
 } from "../components";
-import { useArray } from "../hooks";
 import { useUser } from "../redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
+  IUserInfo,
   RESET_APP,
   RoutesNames,
   StyleGuide,
@@ -30,6 +31,7 @@ import * as ImagePicker from "react-native-image-picker";
 import { UserActionsTypes } from "../redux/types";
 import { EXIT, TRASH_CAN } from "../assets/images";
 import { useDispatch } from "react-redux";
+import { UserController } from "../lib";
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -51,10 +53,6 @@ const styles = StyleSheet.create({
   },
   birthdayInputsContainerTitle: {
     marginBottom: 30,
-  },
-  birthdayInputsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
   },
   avatarContainer: {
     marginBottom: 20,
@@ -132,6 +130,7 @@ interface Props
 
 function ProfileSettings(props: Props) {
   const { user, setUser } = useUser();
+  const userController = UserController();
   const dispatch = useDispatch();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string | undefined>(
@@ -142,24 +141,13 @@ function ProfileSettings(props: Props) {
   );
   const [lastName, setLastName] = useState<string | undefined>(user.lastName);
   const [email, setEmail] = useState<string | undefined>(user.email);
-  const birthday = useArray<number | undefined>([
-    user.birthday?.getDay(),
-    user.birthday?.getMonth(),
-    user.birthday?.getFullYear(),
-  ]);
-
+  const [birthday, setBirthday] = useState<Date | undefined>(user.birthday);
   const [isMale, setIsMale] = useState<boolean>(false);
   const [isFemale, setIsFemale] = useState<boolean>(false);
   const [selectedPhoto, setSelectedPhoto] = useState<{ uri: string }>({
     uri: "",
   });
-
-  const handleOnChangeDay = useCallback(
-    (text?: string) => {
-      birthday.setAt(0, Number(text));
-    },
-    [birthday]
-  );
+  const [isPicker, setIsPicker] = useState<boolean>(false);
 
   const handleOnAvatarPress = useCallback(() => {
     ImagePicker.launchImageLibrary({ mediaType: "photo" }, (photo) => {
@@ -169,20 +157,6 @@ function ProfileSettings(props: Props) {
       }
     });
   }, []);
-
-  const handleOnChangeMonth = useCallback(
-    (text?: string) => {
-      birthday.setAt(1, Number(text));
-    },
-    [birthday]
-  );
-
-  const handleOnChangeYear = useCallback(
-    (text?: string) => {
-      birthday.setAt(2, Number(text));
-    },
-    [birthday]
-  );
 
   const handleOnFemaleSexPress = useCallback((isSetted?: boolean) => {
     if (isSetted) {
@@ -207,12 +181,44 @@ function ProfileSettings(props: Props) {
     handleOnCloseModal();
   }, [handleOnCloseModal, selectedPhoto, setUser]);
 
-  const handleOnBackButtonPress = useCallback(async () => {}, []);
+  const handleOnBackButtonPress = useCallback(async () => {
+    const userInfo: Partial<IUserInfo> = {
+      lastName: lastName || user.lastName,
+      middleName: middleName || user.middleName,
+      firstName: firstName || user.firstName,
+      birthday,
+    };
+    const response = await userController.userPutInfo(userInfo);
+    if (response) {
+      await userController.userGetInfo();
+    }
+  }, [
+    birthday,
+    firstName,
+    lastName,
+    middleName,
+    user.firstName,
+    user.lastName,
+    user.middleName,
+    userController,
+  ]);
 
   const handleOnExitButtonPress = useCallback(async () => {
     props.navigation.navigate(RoutesNames.PHONE_ENTER);
     dispatch({ type: RESET_APP });
   }, [dispatch, props.navigation]);
+
+  const handleOnChangeBirthDay = useCallback(
+    (date?: Date) => {
+      setBirthday(date || birthday);
+      setIsPicker(false);
+    },
+    [birthday]
+  );
+
+  const handleOnOpenPicker = useCallback(() => {
+    setIsPicker(true);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -260,35 +266,12 @@ function ProfileSettings(props: Props) {
           >
             Дата рождения
           </Typography>
-          <View style={styles.birthdayInputsContainer}>
-            <BorderedInput
-              textAlign="center"
-              type="numbers-only"
-              onChangeText={handleOnChangeDay}
-              maxLength={2}
-              style={styles.inputStyle}
-              placeholder="ДД"
-              value={String(birthday.getAt(0))}
-            />
-            <BorderedInput
-              textAlign="center"
-              type="numbers-only"
-              maxLength={2}
-              onChangeText={handleOnChangeMonth}
-              style={styles.inputStyle}
-              placeholder="ММ"
-              value={String(birthday.getAt(1))}
-            />
-            <BorderedInput
-              textAlign="center"
-              type="numbers-only"
-              maxLength={4}
-              onChangeText={handleOnChangeYear}
-              style={styles.inputStyle}
-              placeholder="ГГГГ"
-              value={String(birthday.getAt(2))}
-            />
-          </View>
+          <DatePicker
+            onOpen={handleOnOpenPicker}
+            isPicker={isPicker}
+            value={birthday}
+            onChange={handleOnChangeBirthDay}
+          />
         </View>
         <Typography
           color={StyleGuide.colorPalette.gray}

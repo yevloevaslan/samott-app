@@ -5,14 +5,12 @@ import {
   BorderedInput,
   Bubble,
   Button,
+  DatePicker,
   RadioButton,
   Typography,
   withBackgroundHoc,
 } from "../components";
-import { useArray } from "../hooks";
 import { UserController } from "../lib";
-import { useUser } from "../redux/hooks";
-import { UserActionsTypes } from "../redux/types";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -41,10 +39,6 @@ const styles = StyleSheet.create({
   birthdayInputsContainerTitle: {
     marginBottom: 30,
   },
-  birthdayInputsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
   termsOfUseButtonContainer: {
     marginVertical: 32,
     paddingLeft: 17,
@@ -59,13 +53,13 @@ interface Props
 
 function Registration(props: Props) {
   const userController = UserController();
-  const { setUser } = useUser();
   const [isErrored, setIsErrored] = useState<boolean>(true);
   const [firstName, setFirstName] = useState<string>();
   const [middleName, setMiddleName] = useState<string>();
   const [lastName, setLastName] = useState<string>();
   const [email, setEmail] = useState<string>();
-  const birthday = useArray<number>([0, 0, 0]);
+  const [birthday, setBirthday] = useState<Date>();
+  const [isDatePicker, setIsDatePicker] = useState<boolean>(false);
   const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>();
 
   const isAllInputsDone = useMemo(
@@ -84,42 +78,20 @@ function Registration(props: Props) {
     setIsTermsAccepted,
   ]);
 
-  const handleOnChangeDay = useCallback(
-    (text?: string) => {
-      birthday.setAt(0, Number(text));
-    },
-    [birthday]
-  );
-
-  const handleOnChangeMonth = useCallback(
-    (text?: string) => {
-      birthday.setAt(1, Number(text));
-    },
-    [birthday]
-  );
-
-  const handleOnChangeYear = useCallback(
-    (text?: string) => {
-      birthday.setAt(2, Number(text));
-    },
-    [birthday]
-  );
-
   const handleOnAcceptButtonPress = useCallback(async () => {
-    const birth = birthday.get();
-    if (lastName && middleName && firstName && birth) {
+    if (lastName && middleName && firstName && birthday) {
       const userInfo = {
         lastName,
         middleName,
         firstName,
         email,
-        birthday: new Date(birth[2], birth[1], birth[0]),
+        birthday,
       };
       if (!email?.match(/^[a-z]*@[a-z]*.[a-z]*$/)) {
         delete userInfo.email;
       }
-      userController.userPutInfo(userInfo).then(() => {
-        setUser(UserActionsTypes.SET_NAME, userInfo);
+      userController.userPutInfo(userInfo).then(async () => {
+        await userController.userGetInfo();
         props.navigation.navigate(RoutesNames.PIN_PHOTO);
       });
     }
@@ -130,9 +102,20 @@ function Registration(props: Props) {
     lastName,
     middleName,
     props.navigation,
-    setUser,
     userController,
   ]);
+
+  const handleOnChangeBirthDay = useCallback(
+    (date?: Date) => {
+      setBirthday(date ? date : birthday);
+      setIsDatePicker(false);
+    },
+    [birthday]
+  );
+
+  const handleOnOpenPicker = useCallback(() => {
+    setIsDatePicker(true);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -168,32 +151,12 @@ function Registration(props: Props) {
         >
           Дата рождения
         </Typography>
-        <View style={styles.birthdayInputsContainer}>
-          <BorderedInput
-            textAlign="center"
-            type="numbers-only"
-            onChangeText={handleOnChangeDay}
-            maxLength={2}
-            style={styles.inputStyle}
-            placeholder="ДД"
-          />
-          <BorderedInput
-            textAlign="center"
-            type="numbers-only"
-            maxLength={2}
-            onChangeText={handleOnChangeMonth}
-            style={styles.inputStyle}
-            placeholder="ММ"
-          />
-          <BorderedInput
-            textAlign="center"
-            type="numbers-only"
-            maxLength={4}
-            onChangeText={handleOnChangeYear}
-            style={styles.inputStyle}
-            placeholder="ГГГГ"
-          />
-        </View>
+        <DatePicker
+          onChange={handleOnChangeBirthDay}
+          onOpen={handleOnOpenPicker}
+          value={birthday}
+          isPicker={isDatePicker}
+        />
       </View>
       <BorderedInput
         onChangeText={setEmail}

@@ -1,3 +1,5 @@
+import { IUserInfo } from "../../utils";
+
 export enum UserActionsTypes {
   SET_ID = "SET_ID",
   SET_TOKEN = "SET_TOKEN",
@@ -9,15 +11,9 @@ export enum UserActionsTypes {
   SET_SCORE = "SET_SCORE",
 }
 
-export interface IUser {
+export interface IUser extends IUserInfo {
   id?: string;
   phone?: string;
   token: string;
   photo?: { uri?: string };
-  lastName: string;
-  middleName: string;
-  firstName: string;
-  email?: string;
-  score?: number;
-  birthday?: Date;
 }

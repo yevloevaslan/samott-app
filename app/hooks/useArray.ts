@@ -48,7 +48,7 @@ const useArray = <T>(initialState?: T[]): ActionsInterface<T> => {
 
   const getAt = useCallback(
     (index: number) => {
-      if (userArray) {
+      if (userArray && userArray[index]) {
         return userArray[index];
       }
 

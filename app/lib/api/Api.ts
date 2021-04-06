@@ -1,5 +1,5 @@
 import { IUserInfo } from "./../../utils/interfaces";
-import { ApiLogin, ApiUserInfo } from "./apiTypes";
+import { ApiLogin, ApiUserAuth, ApiUserInfo } from "./apiTypes";
 import { RestApiHelper } from "rest-api-helper";
 import config from "./apiConfig";
 
@@ -21,7 +21,7 @@ export default class Api {
   }
 
   async userAuth(code: string, _id?: string) {
-    const response = await RestApiHelper.build<ApiUserInfo>("userAuth")
+    const response = await RestApiHelper.build<ApiUserAuth>("userAuth")
       .withBody({
         _id,
         code,
@@ -43,9 +43,9 @@ export default class Api {
     return response.body.data;
   }
 
-  async userPutInfo(info: IUserInfo, token: string) {
-    const response = await RestApiHelper.build<void>("userPutInfo")
-      .withBody({ ...info, birthday: info.birthday.toString() })
+  async userPutInfo(info: Partial<IUserInfo>, token: string) {
+    const response = await RestApiHelper.build<IUserInfo>("userPutInfo")
+      .withBody({ ...info, birthday: info.birthday?.toISOString() })
       .withHeaders({ "x-access-token": token })
       .fetch();
 
@@ -53,7 +53,7 @@ export default class Api {
   }
 
   async userGetInfo(token: string) {
-    const response = await RestApiHelper.build<{ data: IUserInfo }>(
+    const response = await RestApiHelper.build<{ data: ApiUserInfo }>(
       "userGetInfo"
     )
       .withHeaders({ "x-access-token": token })
