@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import {
+  ActivityIndicator,
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps,
@@ -20,10 +21,11 @@ const styles = StyleSheet.create({
 
 interface Props extends TouchableOpacityProps {
   children?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 const Button = (props: Props) => {
-  const { onPress, children, disabled } = props;
+  const { onPress, children, disabled, isLoading } = props;
 
   const containerStyle = useMemo(() => {
     if (disabled) {
@@ -33,8 +35,21 @@ const Button = (props: Props) => {
   }, [disabled, props.style]);
 
   return (
-    <TouchableOpacity {...props} onPress={onPress} style={containerStyle}>
-      {children}
+    <TouchableOpacity
+      {...props}
+      disabled={disabled || isLoading}
+      onPress={onPress}
+      style={containerStyle}
+    >
+      {isLoading ? (
+        <ActivityIndicator
+          style={{ paddingVertical: 4 }}
+          size="small"
+          color={StyleGuide.colorPalette.black}
+        />
+      ) : (
+        children
+      )}
     </TouchableOpacity>
   );
 };

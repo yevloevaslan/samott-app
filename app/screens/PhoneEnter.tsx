@@ -35,6 +35,7 @@ function PhoneEnter(props: Props) {
   const userController = UserController();
   const [inputValue, setInputValue] = useState<string>();
   const [isInputErrored, setIsInputErrored] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleOnChangeText = useCallback((_text?: string, ext?: string) => {
     setInputValue(ext);
@@ -43,12 +44,14 @@ function PhoneEnter(props: Props) {
   const handleOnSubmitButtonPress = useCallback(async () => {
     if (inputValue) {
       const phone = "+7" + inputValue;
+      setIsLoading(true);
       const response = await userController.userLogin(phone);
       if (response) {
         props.navigation.navigate(RoutesNames.CODE_ENTER, {
           phone,
         });
       }
+      setIsLoading(false);
     }
   }, [inputValue, props.navigation, userController]);
 
@@ -72,6 +75,7 @@ function PhoneEnter(props: Props) {
           style={styles.submitButton}
           disabled={isInputErrored}
           onPress={handleOnSubmitButtonPress}
+          isLoading={isLoading}
         >
           <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
             Подтвердить

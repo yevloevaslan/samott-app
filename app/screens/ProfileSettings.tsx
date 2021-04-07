@@ -16,6 +16,7 @@ import {
   Typography,
   withBackgroundHoc,
   DatePicker,
+  Button,
 } from "../components";
 import { useUser } from "../redux/hooks";
 import {
@@ -123,6 +124,10 @@ const styles = StyleSheet.create({
   exitIcon: {
     flexGrow: 1,
   },
+  submitButton: {
+    marginTop: 20,
+    alignItems: "center",
+  },
 });
 
 interface Props
@@ -148,6 +153,7 @@ function ProfileSettings(props: Props) {
     uri: "",
   });
   const [isPicker, setIsPicker] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleOnAvatarPress = useCallback(() => {
     ImagePicker.launchImageLibrary({ mediaType: "photo" }, (photo) => {
@@ -181,17 +187,19 @@ function ProfileSettings(props: Props) {
     handleOnCloseModal();
   }, [handleOnCloseModal, selectedPhoto, setUser]);
 
-  const handleOnBackButtonPress = useCallback(async () => {
+  const handleOnSubmitButtonPress = useCallback(async () => {
     const userInfo: Partial<IUserInfo> = {
       lastName: lastName || user.lastName,
       middleName: middleName || user.middleName,
       firstName: firstName || user.firstName,
       birthday,
     };
+    setIsLoading(true);
     const response = await userController.userPutInfo(userInfo);
     if (response) {
       await userController.userGetInfo();
     }
+    setIsLoading(false);
   }, [
     birthday,
     firstName,
@@ -223,7 +231,6 @@ function ProfileSettings(props: Props) {
   return (
     <View style={styles.container}>
       <Header
-        onBackButtonPress={handleOnBackButtonPress}
         navigation={props.navigation}
         title="Настройки"
         justifyContent="space-between"
@@ -298,6 +305,13 @@ function ProfileSettings(props: Props) {
           type="email"
           placeholder="example@email.exm"
         />
+        <Button
+          onPress={handleOnSubmitButtonPress}
+          style={styles.submitButton}
+          isLoading={isLoading}
+        >
+          <Typography>Подтвердить изменения</Typography>
+        </Button>
         <TouchableOpacity style={styles.deleteAccountButton}>
           <Image source={TRASH_CAN} style={styles.trashCanIcon} />
           <Typography
