@@ -1,4 +1,4 @@
-import { UserActionsTypes } from "./../types";
+import { UserActionsTypes } from "../types";
 import { createAction } from "@reduxjs/toolkit";
 
 const setUserId = createAction(UserActionsTypes.SET_ID);
@@ -9,6 +9,7 @@ const setUserName = createAction(UserActionsTypes.SET_NAME);
 const setUserRating = createAction(UserActionsTypes.SET_RATING);
 const setUserBirthday = createAction(UserActionsTypes.SET_BIRTHDAY);
 const setUserScore = createAction(UserActionsTypes.SET_SCORE);
+const setUserInfo = createAction(UserActionsTypes.SET_INFO);
 
 export {
   setUserId,
@@ -19,4 +20,5 @@ export {
   setUserRating,
   setUserBirthday,
   setUserScore,
+  setUserInfo,
 };

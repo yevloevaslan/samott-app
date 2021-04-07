@@ -1,4 +1,4 @@
-import { IUserInfo } from "./../../utils/interfaces";
+import { IUserInfo } from "../../utils";
 import { ApiLogin, ApiUserAuth, ApiUserInfo } from "./apiTypes";
 import { RestApiHelper } from "rest-api-helper";
 import config from "./apiConfig";
@@ -28,9 +28,7 @@ export default class Api {
       })
       .fetch();
 
-    const data = response.body.data;
-
-    return data;
+    return response.body.data;
   }
 
   async userLogin(phone: string) {

@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder, createReducer } from "@reduxjs/toolkit";
 import { reducer } from "../../utils";
 import { UserActions } from "../actions";
-import { IUser } from "../types/userTypes";
+import { IUser } from "../types";
 
 export const userInitialState: IUser = {
   id: undefined,
@@ -13,6 +13,7 @@ export const userInitialState: IUser = {
   email: undefined,
   birthday: new Date(),
   score: 0,
+  sex: undefined,
 };
 
 const userReducer = createReducer(
@@ -26,6 +27,7 @@ const userReducer = createReducer(
     builder.addCase(UserActions.setUserRating, reducer);
     builder.addCase(UserActions.setUserBirthday, reducer);
     builder.addCase(UserActions.setUserScore, reducer);
+    builder.addCase(UserActions.setUserInfo, reducer);
   }
 );
 

@@ -147,8 +147,7 @@ function ProfileSettings(props: Props) {
   const [lastName, setLastName] = useState<string | undefined>(user.lastName);
   const [email, setEmail] = useState<string | undefined>(user.email);
   const [birthday, setBirthday] = useState<Date | undefined>(user.birthday);
-  const [isMale, setIsMale] = useState<boolean>(false);
-  const [isFemale, setIsFemale] = useState<boolean>(false);
+  const [sex, setSex] = useState<"m" | "f" | undefined>(user.sex);
   const [selectedPhoto, setSelectedPhoto] = useState<{ uri: string }>({
     uri: "",
   });
@@ -166,15 +165,13 @@ function ProfileSettings(props: Props) {
 
   const handleOnFemaleSexPress = useCallback((isSetted?: boolean) => {
     if (isSetted) {
-      setIsFemale(isSetted);
-      setIsMale(false);
+      setSex("f");
     }
   }, []);
 
   const handleOnMaleSexPress = useCallback((isSetted?: boolean) => {
-    if (isSetted !== undefined) {
-      setIsMale(isSetted);
-      setIsFemale(false);
+    if (isSetted) {
+      setSex("m");
     }
   }, []);
 
@@ -193,6 +190,7 @@ function ProfileSettings(props: Props) {
       middleName: middleName || user.middleName,
       firstName: firstName || user.firstName,
       birthday,
+      sex,
     };
     setIsLoading(true);
     const response = await userController.userPutInfo(userInfo);
@@ -205,6 +203,7 @@ function ProfileSettings(props: Props) {
     firstName,
     lastName,
     middleName,
+    sex,
     user.firstName,
     user.lastName,
     user.middleName,
@@ -288,12 +287,12 @@ function ProfileSettings(props: Props) {
           Ваш пол
         </Typography>
         <View style={styles.sexContainer}>
-          <RadioButton value={isMale} onPress={handleOnMaleSexPress}>
+          <RadioButton value={sex === "m"} onPress={handleOnMaleSexPress}>
             <Typography color={StyleGuide.colorPalette.black}>
               Мужской
             </Typography>
           </RadioButton>
-          <RadioButton value={isFemale} onPress={handleOnFemaleSexPress}>
+          <RadioButton value={sex === "f"} onPress={handleOnFemaleSexPress}>
             <Typography color={StyleGuide.colorPalette.black}>
               Женский
             </Typography>

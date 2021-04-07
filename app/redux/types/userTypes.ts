@@ -9,6 +9,7 @@ export enum UserActionsTypes {
   SET_RATING = "SET_RATING",
   SET_BIRTHDAY = "SET_BIRTHDAY",
   SET_SCORE = "SET_SCORE",
+  SET_INFO = "SET_INFO",
 }
 
 export interface IUser extends IUserInfo {
