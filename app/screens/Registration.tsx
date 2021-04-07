@@ -61,6 +61,7 @@ function Registration(props: Props) {
   const [birthday, setBirthday] = useState<Date>();
   const [isDatePicker, setIsDatePicker] = useState<boolean>(false);
   const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const isAllInputsDone = useMemo(
     () =>
@@ -90,10 +91,12 @@ function Registration(props: Props) {
       if (!email?.match(/^[a-z]*@[a-z]*.[a-z]*$/)) {
         delete userInfo.email;
       }
+      setIsLoading(true);
       userController.userPutInfo(userInfo).then(async () => {
         await userController.userGetInfo();
         props.navigation.navigate(RoutesNames.PIN_PHOTO);
       });
+      setIsLoading(false);
     }
   }, [
     birthday,
@@ -176,7 +179,11 @@ function Registration(props: Props) {
           </Typography>
         </RadioButton>
       </View>
-      <Button onPress={handleOnAcceptButtonPress} disabled={isErrored}>
+      <Button
+        isLoading={isLoading}
+        onPress={handleOnAcceptButtonPress}
+        disabled={isErrored}
+      >
         <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
           Продолжить
         </Typography>

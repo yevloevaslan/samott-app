@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { GEAR_WHEEL, RED_STAR, ROTATE_ARROWS } from "../assets/images";
 import {
@@ -154,12 +154,15 @@ interface Props extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE> {}
 
 function Profile(props: Props) {
   const userController = UserController();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleOnGoSettingsPress = useCallback(() => {
     props.navigation.navigate(RoutesNames.PROFILE_SETTINGS);
   }, [props.navigation]);
 
   const handleOnUpdatePress = useCallback(async () => {
+    setIsLoading(true);
     await userController.userGetInfo();
+    setIsLoading(false);
   }, [userController]);
 
   return (
@@ -205,7 +208,11 @@ function Profile(props: Props) {
             </View>
           </View>
           <View style={[styles.whiteContainer, styles.updateContainer]}>
-            <Button style={styles.updateButton} onPress={handleOnUpdatePress}>
+            <Button
+              isLoading={isLoading}
+              style={styles.updateButton}
+              onPress={handleOnUpdatePress}
+            >
               <Image source={ROTATE_ARROWS} style={styles.updateButtonIcon} />
             </Button>
             <Typography

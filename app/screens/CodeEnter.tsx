@@ -10,10 +10,9 @@ import {
 } from "../components";
 import { UserController } from "../lib";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RoutesNames } from "../utils/enums";
+import { RoutesNames, StyleGuide } from "../utils";
 import { useTimer } from "../hooks";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { StyleGuide } from "../utils/StyleGuide";
 
 const styles = StyleSheet.create({
   container: {
@@ -54,6 +53,7 @@ function CodeEnter(props: Props) {
   const [timerText, setTimerText] = useState<string>(
     "Повторно отправить через "
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (props.route.params?.newTimer) {
@@ -77,6 +77,7 @@ function CodeEnter(props: Props) {
 
   const handleOnSubmitButtonPress = useCallback(async () => {
     if (parsedInputValue) {
+      setIsLoading(true);
       const response = await userController.userAuth(parsedInputValue);
       if (response) {
         if (!response.user.firstIn) {
@@ -92,9 +93,11 @@ function CodeEnter(props: Props) {
             },
           ],
         });
+        return;
       } else {
         handleGoError();
       }
+      setIsLoading(false);
     } else {
       handleGoError();
     }
@@ -131,6 +134,7 @@ function CodeEnter(props: Props) {
           style={styles.submitButton}
           disabled={isInputErrored}
           onPress={handleOnSubmitButtonPress}
+          isLoading={isLoading}
         >
           <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
             Создать аккаунт
