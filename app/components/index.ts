@@ -10,6 +10,7 @@ import TabBar from "./TabBar/TabBar";
 import BackButton from "./BackButton";
 import Star from "./Star";
 import DatePicker from "./DatePicker";
+import Alert from "./Alert";
 
 export {
   Typography,
@@ -24,4 +25,5 @@ export {
   BackButton,
   Star,
   DatePicker,
+  Alert,
 };

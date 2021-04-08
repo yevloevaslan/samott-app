@@ -17,6 +17,7 @@ import {
   withBackgroundHoc,
   DatePicker,
   Button,
+  Alert,
 } from "../components";
 import { useUser } from "../redux/hooks";
 import {
@@ -153,6 +154,8 @@ function ProfileSettings(props: Props) {
   });
   const [isPicker, setIsPicker] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isAlert, setIsAlert] = useState<boolean>(false);
+  const [isExitAlert, setIsExitAlert] = useState<boolean>(false);
 
   const handleOnAvatarPress = useCallback(() => {
     ImagePicker.launchImageLibrary({ mediaType: "photo" }, (photo) => {
@@ -211,6 +214,11 @@ function ProfileSettings(props: Props) {
   ]);
 
   const handleOnExitButtonPress = useCallback(async () => {
+    setIsExitAlert(true);
+  }, []);
+
+  const handleOnExit = useCallback(() => {
+    setIsExitAlert(false);
     props.navigation.navigate(RoutesNames.PHONE_ENTER);
     dispatch({ type: RESET_APP });
   }, [dispatch, props.navigation]);
@@ -321,6 +329,23 @@ function ProfileSettings(props: Props) {
           </Typography>
         </TouchableOpacity>
       </View>
+      <Alert
+        visible={isAlert}
+        title="Удалить аккаунт?"
+        buttons={[
+          { text: "Нет", onPress: () => setIsAlert(false) },
+          { text: "Да", onPress: () => setIsAlert(false) },
+        ]}
+        warning="Внимание! Все ваши результаты будут удалены!"
+      />
+      <Alert
+        visible={isExitAlert}
+        title="Выйти из приложения?"
+        buttons={[
+          { text: "Нет", onPress: () => setIsExitAlert(false) },
+          { text: "Да", onPress: handleOnExit },
+        ]}
+      />
       <Modal
         onRequestClose={handleOnCloseModal}
         animationType="fade"
