@@ -18,6 +18,7 @@ import {
   DatePicker,
   Button,
   Alert,
+  Bubble,
 } from "../components";
 import { useUser } from "../redux/hooks";
 import {
@@ -46,6 +47,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
+  },
+  helloBubbleContainer: {
+    marginBottom: 50,
+    paddingHorizontal: 28,
   },
   inputStyle: {
     marginBottom: 15,
@@ -132,7 +137,7 @@ const styles = StyleSheet.create({
 });
 
 interface Props
-  extends StackScreenProps<HomeStackProps, RoutesNames.REGISTRATION> {}
+  extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE_SETTINGS> {}
 
 function ProfileSettings(props: Props) {
   const { user, setUser } = useUser();
@@ -147,7 +152,9 @@ function ProfileSettings(props: Props) {
   );
   const [lastName, setLastName] = useState<string | undefined>(user.lastName);
   const [email, setEmail] = useState<string | undefined>(user.email);
-  const [birthday, setBirthday] = useState<Date | undefined>(user.birthday);
+  const [birthday, setBirthday] = useState<Date | undefined>(
+    props.route.params.firstIn ? undefined : user.birthday
+  );
   const [sex, setSex] = useState<"m" | "f" | undefined>(user.sex);
   const [selectedPhoto, setSelectedPhoto] = useState<{ uri: string }>({
     uri: "",
@@ -193,19 +200,26 @@ function ProfileSettings(props: Props) {
       middleName: middleName || user.middleName,
       firstName: firstName || user.firstName,
       birthday,
+      email,
       sex,
     };
     setIsLoading(true);
     const response = await userController.userPutInfo(userInfo);
     if (response) {
       await userController.userGetInfo();
+      if (props.route.params.firstIn) {
+        props.navigation.navigate(RoutesNames.PIN_PHOTO);
+      }
     }
     setIsLoading(false);
   }, [
     birthday,
+    email,
     firstName,
     lastName,
     middleName,
+    props.navigation,
+    props.route.params.firstIn,
     sex,
     user.firstName,
     user.lastName,
@@ -235,25 +249,45 @@ function ProfileSettings(props: Props) {
     setIsPicker(true);
   }, []);
 
+  const handleOnDeleteButtonPress = useCallback(() => {
+    setIsAlert(true);
+  }, []);
+
+  const handleOnDeleteAccount = useCallback(() => setIsAlert(false), []);
+
   return (
     <View style={styles.container}>
-      <Header
-        navigation={props.navigation}
-        title="Настройки"
-        justifyContent="space-between"
-        decorators="right"
-      >
-        <TouchableOpacity
-          style={styles.exitIconContainer}
-          onPress={handleOnExitButtonPress}
-        >
-          <Image source={EXIT} style={styles.exitIcon} />
-        </TouchableOpacity>
-      </Header>
-      <View style={styles.contentContainer}>
-        <View style={styles.avatarContainer}>
-          <Avatar newPhoto onPress={handleOnAvatarPress} />
+      {props.route.params.firstIn ? (
+        <View style={styles.helloBubbleContainer}>
+          <Bubble
+            backgroundColor={StyleGuide.colorPalette.green}
+            from="left"
+            titleType={TypographyTypes.BOLD34}
+            titleAlign="left"
+            title={"ДАВАЙТЕ\nПОЗНАКОМИМСЯ!"}
+          />
         </View>
+      ) : (
+        <Header
+          navigation={props.navigation}
+          title="Настройки"
+          justifyContent="space-between"
+          decorators="right"
+        >
+          <TouchableOpacity
+            style={styles.exitIconContainer}
+            onPress={handleOnExitButtonPress}
+          >
+            <Image source={EXIT} style={styles.exitIcon} />
+          </TouchableOpacity>
+        </Header>
+      )}
+      <View style={styles.contentContainer}>
+        {!props.route.params.firstIn && (
+          <View style={styles.avatarContainer}>
+            <Avatar newPhoto onPress={handleOnAvatarPress} />
+          </View>
+        )}
         <BorderedInput
           value={firstName}
           onChangeText={setFirstName}
@@ -317,24 +351,33 @@ function ProfileSettings(props: Props) {
           style={styles.submitButton}
           isLoading={isLoading}
         >
-          <Typography>Подтвердить изменения</Typography>
-        </Button>
-        <TouchableOpacity style={styles.deleteAccountButton}>
-          <Image source={TRASH_CAN} style={styles.trashCanIcon} />
-          <Typography
-            color={StyleGuide.colorPalette.gray}
-            type={TypographyTypes.NORMAL18}
-          >
-            Удалить аккаунт
+          <Typography>
+            {props.route.params.firstIn
+              ? "Продолжить"
+              : "Подтвердить изменения"}
           </Typography>
-        </TouchableOpacity>
+        </Button>
+        {!props.route.params.firstIn && (
+          <TouchableOpacity
+            onPress={handleOnDeleteButtonPress}
+            style={styles.deleteAccountButton}
+          >
+            <Image source={TRASH_CAN} style={styles.trashCanIcon} />
+            <Typography
+              color={StyleGuide.colorPalette.gray}
+              type={TypographyTypes.NORMAL18}
+            >
+              Удалить аккаунт
+            </Typography>
+          </TouchableOpacity>
+        )}
       </View>
       <Alert
         visible={isAlert}
         title="Удалить аккаунт?"
         buttons={[
           { text: "Нет", onPress: () => setIsAlert(false) },
-          { text: "Да", onPress: () => setIsAlert(false) },
+          { text: "Да", onPress: handleOnDeleteAccount },
         ]}
         warning="Внимание! Все ваши результаты будут удалены!"
       />

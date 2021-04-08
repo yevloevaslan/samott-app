@@ -156,7 +156,7 @@ function Profile(props: Props) {
   const userController = UserController();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleOnGoSettingsPress = useCallback(() => {
-    props.navigation.navigate(RoutesNames.PROFILE_SETTINGS);
+    props.navigation.navigate(RoutesNames.PROFILE_SETTINGS, { firstIn: false });
   }, [props.navigation]);
 
   const handleOnUpdatePress = useCallback(async () => {

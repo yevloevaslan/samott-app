@@ -88,8 +88,9 @@ function CodeEnter(props: Props) {
           routes: [
             {
               name: response.user.firstIn
-                ? RoutesNames.REGISTRATION
+                ? RoutesNames.PROFILE_SETTINGS
                 : RoutesNames.TAB_NAVIGATOR,
+              params: { firstIn: true },
             },
           ],
         });
