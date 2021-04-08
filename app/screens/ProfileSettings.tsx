@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   Dimensions,
   Image,
@@ -255,6 +255,17 @@ function ProfileSettings(props: Props) {
 
   const handleOnDeleteAccount = useCallback(() => setIsAlert(false), []);
 
+  const isSubmitButtonDisabled = useMemo(
+    () =>
+      !(
+        firstName?.trim() &&
+        middleName?.trim() &&
+        lastName?.trim() &&
+        birthday
+      ),
+    [birthday, firstName, lastName, middleName]
+  );
+
   return (
     <View style={styles.container}>
       {props.route.params.firstIn ? (
@@ -296,13 +307,13 @@ function ProfileSettings(props: Props) {
         />
         <BorderedInput
           value={middleName}
-          onChangeText={setMiddleName}
+          onChangeText={setLastName}
           style={styles.inputStyle}
           placeholder="Фамилия"
         />
         <BorderedInput
           value={lastName}
-          onChangeText={setLastName}
+          onChangeText={setMiddleName}
           style={styles.inputStyle}
           placeholder="Отчество"
         />
@@ -350,6 +361,7 @@ function ProfileSettings(props: Props) {
           onPress={handleOnSubmitButtonPress}
           style={styles.submitButton}
           isLoading={isLoading}
+          disabled={isSubmitButtonDisabled}
         >
           <Typography>
             {props.route.params.firstIn

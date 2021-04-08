@@ -56,8 +56,10 @@ export default function UserController() {
       const response = await Api.getInstance().userGetInfo(
         storeState.user.token
       );
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { createdAt, updatedAt, ...rest } = response;
       setUser(UserActionsTypes.SET_INFO, {
-        ...response,
+        ...rest,
         birthday: new Date(response.birthday),
       });
       return response;
