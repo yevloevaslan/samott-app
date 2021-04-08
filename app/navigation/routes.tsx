@@ -51,10 +51,6 @@ const Routes = () => {
         name={RoutesNames.ERROR_CODE}
         component={Screens.ErrorCode}
       />
-      <Stack.Screen
-        name={RoutesNames.REGISTRATION}
-        component={Screens.Registration}
-      />
       <Stack.Screen name={RoutesNames.PROFILE} component={Screens.Profile} />
       <Stack.Screen
         options={{ cardStyleInterpolator }}

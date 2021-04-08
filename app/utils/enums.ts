@@ -22,7 +22,6 @@ export enum RoutesNames {
   PHONE_ENTER = "PhoneEnter",
   CODE_ENTER = "CodeEnter",
   ERROR_CODE = "ErrorCode",
-  REGISTRATION = "Registration",
   PIN_PHOTO = "PinPhoto",
   SPLASH = "Splash",
   TAB_NAVIGATOR = "TabNavigator",

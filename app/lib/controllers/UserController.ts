@@ -1,7 +1,7 @@
 import { Alert } from "react-native";
 import { store } from "../../redux/store";
 import Api from "../api";
-import { useMemo, useState, useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { GlobalState, IUserInfo } from "../../utils";
 import useUser from "../../redux/hooks/user";
 import { UserActionsTypes } from "../../redux/types";
@@ -43,12 +43,7 @@ export default function UserController() {
   const userPutInfo = useCallback(
     async (info: Partial<IUserInfo>) => {
       try {
-        const response = await Api.getInstance().userPutInfo(
-          info,
-          storeState.user.token
-        );
-
-        return response;
+        return await Api.getInstance().userPutInfo(info, storeState.user.token);
       } catch (e) {
         Alert.alert("Не удалось зайти.", `${e}`);
       }
@@ -61,28 +56,25 @@ export default function UserController() {
       const response = await Api.getInstance().userGetInfo(
         storeState.user.token
       );
-      const {
-        lastName,
-        score,
-        middleName,
-        firstName,
-        phone,
-        birthday,
-      } = response;
-      setUser(UserActionsTypes.SET_NAME, { lastName, middleName, firstName });
-      setUser(UserActionsTypes.SET_PHONE, { phone });
-      setUser(UserActionsTypes.SET_SCORE, { score });
-      setUser(UserActionsTypes.SET_BIRTHDAY, { birthday: new Date(birthday) });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { createdAt, updatedAt, ...rest } = response;
+      setUser(UserActionsTypes.SET_INFO, {
+        ...rest,
+        birthday: new Date(response.birthday),
+      });
       return response;
     } catch (e) {
       Alert.alert("Ошибка", `${e}`);
     }
   }, [setUser, storeState.user.token]);
 
-  const controller = useMemo(
-    () => ({ userLogin, userAuth, userPutInfo, userGetInfo }),
+  return useMemo(
+    () => ({
+      userLogin,
+      userAuth,
+      userPutInfo,
+      userGetInfo,
+    }),
     [userAuth, userLogin, userPutInfo, userGetInfo]
   );
-
-  return controller;
 }

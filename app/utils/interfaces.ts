@@ -21,4 +21,5 @@ export interface IUserInfo {
   phone?: string;
   score?: number;
   birthday?: Date;
+  sex?: "m" | "f";
 }

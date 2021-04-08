@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: StyleGuide.colorPalette.white,
+    paddingHorizontal: 30,
   },
   logo: {
     flexGrow: 1,
@@ -23,12 +24,12 @@ function Splash(props: Props) {
   const { user } = useUser();
   const userController = UserController();
   useAsyncEffect(async () => {
-    const response = await userController.userGetInfo();
+    const response = user.token && (await userController.userGetInfo());
     props.navigation.reset({
       index: 0,
       routes: [
         {
-          name: response ? RoutesNames.PHONE_ENTER : RoutesNames.TAB_NAVIGATOR,
+          name: response ? RoutesNames.TAB_NAVIGATOR : RoutesNames.PHONE_ENTER,
         },
       ],
     });

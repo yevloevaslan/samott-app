@@ -21,4 +21,6 @@ export type ApiUserAuth = {
 
 export interface ApiUserInfo extends Omit<IUserInfo, "birthday"> {
   birthday: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
