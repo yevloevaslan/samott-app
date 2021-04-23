@@ -7,15 +7,15 @@ import {
   RoutesNames,
   StyleGuide,
   TypographyTypes,
-} from "../utils";
+} from "utils";
 import {
   Bubble,
   Header,
   Star,
   Typography,
   withBackgroundHoc,
-} from "../components";
-import { useUser } from "../redux/hooks";
+} from "components";
+import { useUser } from "redux/hooks";
 
 const styles = StyleSheet.create({
   container: {

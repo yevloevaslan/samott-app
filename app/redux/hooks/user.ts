@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GlobalState } from "../../utils";
-import { IUser, UserActionsTypes } from "../types/userTypes";
+import { GlobalState, IUser, UserActionsTypes } from "utils";
 
 const useUser = (): {
   user: IUser;

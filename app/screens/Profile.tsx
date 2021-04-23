@@ -1,7 +1,7 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { useCallback, useState } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
-import { GEAR_WHEEL, RED_STAR, ROTATE_ARROWS } from "../assets/images";
+import { GEAR_WHEEL, RED_STAR, ROTATE_ARROWS } from "assets/images";
 import {
   Avatar,
   Bubble,
@@ -10,15 +10,15 @@ import {
   Star,
   Typography,
   withBackgroundHoc,
-} from "../components";
-import { UserController } from "../lib";
+} from "components";
+import { UserController } from "lib";
 import {
   BackgroundImages,
   HomeStackProps,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
-} from "../utils";
+} from "utils";
 
 const styles = StyleSheet.create({
   container: {

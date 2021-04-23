@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
-import { Image, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { ARROW_BUTTON } from "../assets/images";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { ARROW_BUTTON } from "assets/images";
 
 const styles = StyleSheet.create({
   image: {

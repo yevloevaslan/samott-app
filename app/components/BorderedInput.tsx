@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
-import { StyleGuide, TypographyTypes, BorderedInputTypes } from "../utils";
+import { StyleGuide, TypographyTypes, BorderedInputTypes } from "utils";
 
 const styles = StyleSheet.create({
   container: {

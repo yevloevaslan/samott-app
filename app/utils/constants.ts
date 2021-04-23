@@ -1,5 +1,5 @@
 import { TabBarType } from "./types";
-import { ARROW, BOOK, HOME, SHARE } from "./../assets/images/index";
+import { ARROW, BOOK, HOME, SHARE } from "assets/images";
 import { Platform } from "react-native";
 import { RoutesNames } from "./enums";
 

@@ -1,7 +1,6 @@
 import { createReducer, ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { IApp } from "./../types/appTypes";
-import { AppActions } from "../actions";
-import { reducer } from "../../utils";
+import { AppActions } from "redux/actions";
+import { IApp, reducer } from "utils";
 
 export const appInitialState: IApp = {};
 

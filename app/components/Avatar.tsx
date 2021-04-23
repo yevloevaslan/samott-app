@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import { TouchableOpacity, Image, StyleSheet, View } from "react-native";
-import { DEFAULT_AVATAR, PHOTO_CAMERA } from "../assets/images";
-import { useUser } from "../redux/hooks";
-import { StyleGuide, TypographyTypes } from "../utils";
-import Typography from "./Typography";
+import { DEFAULT_AVATAR, PHOTO_CAMERA } from "assets/images";
+import { useUser } from "redux/hooks";
+import { StyleGuide, TypographyTypes } from "utils";
+import { Typography } from "components";
 
 const styles = StyleSheet.create({
   container: {

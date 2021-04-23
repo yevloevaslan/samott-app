@@ -1,11 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { BackgroundImages, RoutesNames, TypographyTypes } from "../utils/enums";
-import { HomeStackProps, StyleGuide } from "../utils";
+import {
+  HomeStackProps,
+  StyleGuide,
+  BackgroundImages,
+  RoutesNames,
+  TypographyTypes,
+} from "utils";
 import { StackScreenProps } from "@react-navigation/stack";
-import { Bubble, Header, Typography, withBackgroundHoc } from "../components";
-import { useTimer } from "../hooks";
-import UserController from "../lib/controllers/UserController";
+import { Bubble, Header, Typography, withBackgroundHoc } from "components";
+import { useTimer } from "hooks";
+import UserController from "lib/controllers/UserController";
 
 const styles = StyleSheet.create({
   containerWrapper: {

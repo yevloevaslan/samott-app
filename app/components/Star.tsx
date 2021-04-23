@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Image, StyleSheet } from "react-native";
-import { GOLD_STAR, GRAY_STAR, RED_STAR } from "../assets/images";
+import { GOLD_STAR, GRAY_STAR, RED_STAR } from "assets/images";
 
 const styles = StyleSheet.create({
   star: {

@@ -7,14 +7,14 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { Avatar, BackButton, Typography } from ".";
-import { TITLE_DECORATOR } from "../assets/images";
+import { TITLE_DECORATOR } from "assets/images";
 import {
   HomeStackProps,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
-} from "../utils";
+} from "utils";
+import { Avatar, BackButton, Typography } from "components";
 
 const styles = StyleSheet.create({
   containerWrapper: {

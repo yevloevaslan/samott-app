@@ -1,17 +1,22 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
 import { StyleSheet, View } from "react-native";
-import { BackgroundImages, TypographyTypes, HomeStackProps } from "../utils";
 import {
   BorderedInput,
   Button,
   Header,
   Typography,
   withBackgroundHoc,
-} from "../components";
-import { UserController } from "../lib";
+} from "components";
+import { UserController } from "lib";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RoutesNames, StyleGuide } from "../utils";
-import { useTimer } from "../hooks";
+import {
+  RoutesNames,
+  StyleGuide,
+  BackgroundImages,
+  TypographyTypes,
+  HomeStackProps,
+} from "utils";
+import { useTimer } from "hooks";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({

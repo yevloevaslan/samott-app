@@ -1,6 +1,4 @@
-import { AppActions } from "./../types/appTypes";
 import { createAction } from "@reduxjs/toolkit";
+import { AppActions } from "utils";
 
-const resetApp = createAction(AppActions.RESET_APP);
-
-export { resetApp };
+export const resetApp = createAction(AppActions.RESET_APP);

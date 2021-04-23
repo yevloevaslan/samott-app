@@ -6,11 +6,15 @@ import {
   Header,
   Typography,
   withBackgroundHoc,
-} from "../components";
-import { BackgroundImages, HomeStackProps, TypographyTypes } from "../utils";
-import UserController from "../lib/controllers/UserController";
+} from "components";
+import {
+  BackgroundImages,
+  HomeStackProps,
+  TypographyTypes,
+  RoutesNames,
+} from "utils";
+import UserController from "lib/controllers/UserController";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RoutesNames } from "../utils/enums";
 
 const styles = StyleSheet.create({
   submitButton: {},

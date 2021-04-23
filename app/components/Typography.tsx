@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TextProps } from "react-native";
-import { TypographyTypes, StyleGuide } from "../utils";
+import { TypographyTypes, StyleGuide } from "utils";
 
 interface Props extends TextProps {
   children?: React.ReactFragment;

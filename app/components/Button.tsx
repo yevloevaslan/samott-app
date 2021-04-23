@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from "react-native";
-import { StyleGuide } from "../utils";
+import { StyleGuide } from "utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
   },
   disabled: {
     backgroundColor: StyleGuide.colorPalette.gray,
+  },
+  activityIndicator: {
+    paddingVertical: 4,
   },
 });
 
@@ -43,7 +46,7 @@ const Button = (props: Props) => {
     >
       {isLoading ? (
         <ActivityIndicator
-          style={{ paddingVertical: 4 }}
+          style={styles.activityIndicator}
           size="small"
           color={StyleGuide.colorPalette.black}
         />

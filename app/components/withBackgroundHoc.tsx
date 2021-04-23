@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     right: -3,
     bottom: 0,
   },
+  backgroundImage: {
+    position: "absolute",
+  },
 });
 
 function withBackgroundHoc(
@@ -48,7 +51,7 @@ function withBackgroundHoc(
           <ImageBackground
             resizeMode="stretch"
             style={styles.content}
-            imageStyle={{ position: "absolute" }}
+            imageStyle={styles.backgroundImage}
             source={StyleGuide.backgrounds[image]}
           >
             <KeyboardAvoidingView

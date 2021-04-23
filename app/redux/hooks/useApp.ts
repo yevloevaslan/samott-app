@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GlobalState } from "../../utils";
-import { IApp, AppActions } from "../types";
+import { AppActions, GlobalState, IApp } from "utils";
 
 const useApp = (): {
   app: IApp;

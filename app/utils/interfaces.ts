@@ -1,6 +1,7 @@
 import { ImageSourcePropType, TextStyle } from "react-native";
-import { IUser, IApp } from "../redux/types";
-import { Colors, TypographyTypes, BackgroundImages } from "./enums";
+import { Colors, TypographyTypes, BackgroundImages } from "utils";
+
+export interface IApp {}
 
 export interface GlobalState {
   user: IUser;
@@ -22,4 +23,11 @@ export interface IUserInfo {
   score?: number;
   birthday?: Date;
   sex?: "m" | "f";
+}
+
+export interface IUser extends IUserInfo {
+  id?: string;
+  phone?: string;
+  token: string;
+  photo?: { uri?: string };
 }

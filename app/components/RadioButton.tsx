@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { StyleGuide } from "../utils";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleGuide } from "utils";
 
 const styles = StyleSheet.create({
   container: {

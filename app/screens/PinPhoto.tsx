@@ -13,17 +13,17 @@ import {
   Button,
   Typography,
   withBackgroundHoc,
-} from "../components";
+} from "components";
 import {
   BackgroundImages,
   HomeStackProps,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
-} from "../utils";
+  UserActionsTypes,
+} from "utils";
 import * as ImagePicker from "react-native-image-picker";
-import { useUser } from "../redux/hooks";
-import { UserActionsTypes } from "../redux/types";
+import { useUser } from "redux/hooks";
 import { StackScreenProps } from "@react-navigation/stack";
 
 const styles = StyleSheet.create({

@@ -15,7 +15,6 @@ export type HomeStackProps = {
     timerDuration: number;
     phoneNumber: string;
   };
-  [RoutesNames.REGISTRATION]?: object;
   [RoutesNames.PIN_PHOTO]?: object;
   [RoutesNames.SPLASH]?: object;
   [RoutesNames.TAB_NAVIGATOR]?: object;

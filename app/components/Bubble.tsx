@@ -1,8 +1,7 @@
+import { Typography } from "components";
 import React, { useMemo } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { TypographyTypes } from "../utils";
-import Typography from "./Typography";
-import { StyleGuide } from "../utils/StyleGuide";
+import { TypographyTypes, StyleGuide } from "../utils";
 
 const styles = StyleSheet.create({
   container: {

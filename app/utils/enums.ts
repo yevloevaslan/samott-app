@@ -48,3 +48,23 @@ export enum BackgroundImages {
   WITH_CASTLES = "WITH_CASTLES",
   WITH_ORNAMENTS = "WITH_ORNAMENTS",
 }
+
+export enum UserActionsTypes {
+  SET_ID = "SET_ID",
+  SET_TOKEN = "SET_TOKEN",
+  SET_PHONE = "SET_PHONE",
+  SET_PHOTO = "SET_PHOTO",
+  SET_NAME = "SET_NAME",
+  SET_RATING = "SET_RATING",
+  SET_BIRTHDAY = "SET_BIRTHDAY",
+  SET_SCORE = "SET_SCORE",
+  SET_INFO = "SET_INFO",
+}
+
+export enum AppActions {
+  RESET_APP = "RESET_APP",
+}
+
+export enum ScoreActions {
+  SET_SCORE = "SET_SCORE",
+}

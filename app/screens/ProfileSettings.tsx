@@ -19,8 +19,8 @@ import {
   Button,
   Alert,
   Bubble,
-} from "../components";
-import { useUser } from "../redux/hooks";
+} from "components";
+import { useUser } from "redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -29,12 +29,12 @@ import {
   RoutesNames,
   StyleGuide,
   TypographyTypes,
-} from "../utils";
+  UserActionsTypes,
+} from "utils";
 import * as ImagePicker from "react-native-image-picker";
-import { UserActionsTypes } from "../redux/types";
-import { EXIT, TRASH_CAN } from "../assets/images";
+import { EXIT, TRASH_CAN } from "assets/images";
 import { useDispatch } from "react-redux";
-import { UserController } from "../lib";
+import { UserController } from "lib";
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -306,13 +306,13 @@ function ProfileSettings(props: Props) {
           placeholder="Имя"
         />
         <BorderedInput
-          value={middleName}
+          value={lastName}
           onChangeText={setLastName}
           style={styles.inputStyle}
           placeholder="Фамилия"
         />
         <BorderedInput
-          value={lastName}
+          value={middleName}
           onChangeText={setMiddleName}
           style={styles.inputStyle}
           placeholder="Отчество"
