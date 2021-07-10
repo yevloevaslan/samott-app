@@ -1,21 +1,22 @@
 import React, { useCallback } from "react";
 import { StackScreenProps } from "@react-navigation/stack";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   BackgroundImages,
   HomeStackProps,
+  MissionDifficultType,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
 } from "utils";
 import {
   Bubble,
+  DifficultSelector,
   Header,
-  Star,
   Typography,
   withBackgroundHoc,
 } from "components";
-import { useUser } from "redux/hooks";
+import { useUser, usePlayground, useApp } from "redux/hooks";
 
 const styles = StyleSheet.create({
   container: {
@@ -37,29 +38,6 @@ const styles = StyleSheet.create({
     paddingRight: 40,
     paddingVertical: 20,
   },
-  difficultSelector: {
-    width: "100%",
-    paddingVertical: 22,
-    paddingLeft: 18,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingRight: 30,
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-  },
-  starsContainer: {
-    flexDirection: "row",
-  },
-  easy: {
-    backgroundColor: StyleGuide.colorPalette.mayo,
-  },
-  medium: {
-    backgroundColor: StyleGuide.colorPalette.orange,
-  },
-  hard: {
-    backgroundColor: StyleGuide.colorPalette.tomato,
-  },
 });
 
 interface Props
@@ -68,10 +46,22 @@ interface Props
 function Missions(props: Props) {
   const {} = props;
   const { user } = useUser();
+  const { setIsPlaying } = useApp();
+  const { playground } = usePlayground();
+  const { setCurrentDifficult } = usePlayground();
 
   const handleOnTitlePress = useCallback(() => {
     props.navigation.navigate(RoutesNames.PROFILE);
   }, [props.navigation]);
+
+  const handleOnDifficultPress = useCallback(
+    (difficult: MissionDifficultType) => {
+      setIsPlaying(true);
+      setCurrentDifficult(difficult);
+      props.navigation.navigate(RoutesNames.MISSIONS_PLAYGROUND);
+    },
+    [props.navigation, setCurrentDifficult, setIsPlaying]
+  );
 
   return (
     <View style={styles.container}>
@@ -88,7 +78,7 @@ function Missions(props: Props) {
                 type={TypographyTypes.NORMAL18}
                 color={StyleGuide.colorPalette.black}
               >
-                Рейтинг 0
+                Рейтинг {playground.totalScore}
               </Typography>
             </Bubble>
           </View>
@@ -111,27 +101,18 @@ function Missions(props: Props) {
         Выберите уровень обучения
       </Typography>
       <View style={styles.difficultSelectorsContainer}>
-        <TouchableOpacity style={[styles.difficultSelector, styles.easy]}>
-          <View style={styles.starsContainer}>
-            <Star difficult="easy" />
-          </View>
-          <Typography type={TypographyTypes.BOLD24}>ЛЕГКИЙ</Typography>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.difficultSelector, styles.medium]}>
-          <View style={styles.starsContainer}>
-            <Star difficult="middle" />
-            <Star difficult="middle" />
-          </View>
-          <Typography type={TypographyTypes.BOLD24}>СРЕДНИЙ</Typography>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.difficultSelector, styles.hard]}>
-          <View style={styles.starsContainer}>
-            <Star difficult="hard" />
-            <Star difficult="hard" />
-            <Star difficult="hard" />
-          </View>
-          <Typography type={TypographyTypes.BOLD24}>СЛОЖНЫЙ</Typography>
-        </TouchableOpacity>
+        <DifficultSelector
+          onPress={handleOnDifficultPress}
+          difficult={MissionDifficultType.EASY}
+        />
+        <DifficultSelector
+          onPress={handleOnDifficultPress}
+          difficult={MissionDifficultType.MEDIUM}
+        />
+        <DifficultSelector
+          onPress={handleOnDifficultPress}
+          difficult={MissionDifficultType.HARD}
+        />
       </View>
     </View>
   );

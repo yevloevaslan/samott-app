@@ -1,4 +1,21 @@
-import { RoutesNames } from "./enums";
+import { RoutesNames, TaskTypes } from "./enums";
+import {
+  CommonTaskData,
+  IApp,
+  IPlaygound,
+  IUser,
+  TaskAudio,
+  TaskCorrectTranslate,
+  TaskFreeAnswer,
+  TaskImage,
+  TaskSpace,
+} from "./interfaces";
+
+export enum MissionDifficultType {
+  EASY = 1,
+  MEDIUM = 2,
+  HARD = 3,
+}
 
 export type MainRoutesProps = {
   [route in RoutesNames]?: any;
@@ -22,6 +39,8 @@ export type HomeStackProps = {
   [RoutesNames.PROFILE_SETTINGS]: {
     firstIn: boolean;
   };
+  [RoutesNames.MISSIONS_PLAYGROUND]?: {};
+  [RoutesNames.DICTIONARY]?: {};
 };
 
 export type BorderedInputTypes =
@@ -36,5 +55,22 @@ export type TabBarType = {
   index: number;
   title: string;
   routeName: RoutesNames;
-  size: { w: number; h: number };
 };
+
+export type Difficult = "easy" | "medium" | "hard";
+
+export type CommonReducerTypes = IApp | IPlaygound | IUser;
+
+export type ITask = CommonTaskData &
+  (TaskImage | TaskCorrectTranslate | TaskAudio | TaskFreeAnswer | TaskSpace);
+
+export type GetTaskParams<T extends TaskTypes> = Extract<
+  ITask,
+  { type: T }
+>["params"];
+
+export type ISelectTask = Exclude<ITask, TaskFreeAnswer>;
+
+export type GetSelectTaskParams<
+  T extends Exclude<TaskTypes, TaskTypes.AUDIO_FREE_ANSWER>
+> = Extract<ISelectTask, { type: T }>["params"];

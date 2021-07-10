@@ -26,6 +26,7 @@ const userReducer = createReducer(
     builder.addCase(UserActions.setUserRating, reducer);
     builder.addCase(UserActions.setUserBirthday, reducer);
     builder.addCase(UserActions.setUserInfo, reducer);
+    builder.addCase(UserActions.setUser, reducer);
   }
 );
 

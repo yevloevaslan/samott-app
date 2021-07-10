@@ -5,6 +5,7 @@ import { AppActions, GlobalState, IApp } from "utils";
 const useApp = (): {
   app: IApp;
   setApp: (type: AppActions, user: Partial<IApp>) => void;
+  setIsPlaying: (isPlaying: boolean) => void;
 } => {
   const app = useSelector((state: GlobalState) => state.app);
   const dispatchApp = useDispatch();
@@ -13,7 +14,14 @@ const useApp = (): {
       dispatchApp({ type, payload }),
     [dispatchApp]
   );
-  return { app, setApp };
+  const setIsPlaying = useCallback(
+    (isPlaying: boolean) => {
+      dispatchApp({ type: AppActions.SET_IS_PLAYING, payload: { isPlaying } });
+    },
+    [dispatchApp]
+  );
+
+  return { app, setApp, setIsPlaying };
 };
 
 export default useApp;

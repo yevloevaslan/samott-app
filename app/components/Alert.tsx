@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
 import { Button, Typography } from "components";
+import React, { useCallback } from "react";
 import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { StyleGuide, TypographyTypes } from "utils";
 

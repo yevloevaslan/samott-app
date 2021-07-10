@@ -4,7 +4,7 @@ declare const global: any;
 interface ApiConfig extends Config {}
 
 const config: ApiConfig = {
-  baseURL: "http://164.90.247.206/api/",
+  baseURL: "http://68.183.7.178:1854/api/",
   logger: __DEV__ && Boolean(global.origin),
   headers: {
     "content-Type": "application/json",
@@ -30,6 +30,18 @@ const config: ApiConfig = {
     userGetInfo: {
       url: "users/info",
       method: "GET",
+    },
+    getTask: {
+      url: "tasks/random",
+      method: "GET",
+    },
+    checkAnswer: {
+      method: "POST",
+      url: "tasks/{taskId}/answer",
+    },
+    getWord: {
+      method: "GET",
+      url: "dictionaries",
     },
   },
 };

@@ -6,15 +6,18 @@ export enum Colors {
   BLUE = "blue",
   TRANSPARENT = "transparent",
   GREEN = "green",
-  DARK_GRAY = "darkGray",
+  MEDIUM_DARK_GRAY = "mediumDarkGray",
   GRAY45 = "gray45",
   BLACK = "black",
   MAYO = "mayo",
   DARK_GREEN = "darkGreen",
   DARK_BROWN = "darkBrown",
+  DARK_GREY = "darkGrey",
   TOMATO = "tomato",
   DARK_BLUE = "darkBlue",
   ACID_GREEN = "acidGreen",
+  LIGHT_GRAY = "lightGray",
+  BROWN = "brown",
 }
 
 export enum RoutesNames {
@@ -27,6 +30,10 @@ export enum RoutesNames {
   TAB_NAVIGATOR = "TabNavigator",
   PROFILE = "Profile",
   PROFILE_SETTINGS = "ProfileSettings",
+  MISSIONS_PLAYGROUND = "MISSIONS_PLAYGROUND",
+  HOME = "HOME",
+  DICTIONARY = "DICTIONARY",
+  SHARE = "SHARE",
 }
 
 export enum TypographyTypes {
@@ -59,12 +66,29 @@ export enum UserActionsTypes {
   SET_BIRTHDAY = "SET_BIRTHDAY",
   SET_SCORE = "SET_SCORE",
   SET_INFO = "SET_INFO",
+  SET_USER = "SET_USER",
 }
 
 export enum AppActions {
   RESET_APP = "RESET_APP",
+  SET_IS_PLAYING = "SET_IS_PLAYING",
+  SET_CURRENT_DIFFICULT = "SET_CURRENT_DIFFICULT",
 }
 
 export enum ScoreActions {
   SET_SCORE = "SET_SCORE",
+}
+
+export enum TaskTypes {
+  IMAGES = "1",
+  CORRECT_TRANSLATE = "2",
+  AUDIO = "3",
+  AUDIO_FREE_ANSWER = "4",
+  SPACE = "5",
+}
+
+export enum DictionaryActions {
+  SET_FOUND_WORDS = "SET_FOUND_WORDS",
+  SET_SELECTED_LANG = "SET_SELECTED_LANG",
+  SET_SEARCH_INPUT = "SET_SEARCH_INPUT",
 }

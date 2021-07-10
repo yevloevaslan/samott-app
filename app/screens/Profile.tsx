@@ -6,8 +6,8 @@ import {
   Avatar,
   Bubble,
   Button,
+  DifficultSelector,
   Header,
-  Star,
   Typography,
   withBackgroundHoc,
 } from "components";
@@ -15,10 +15,12 @@ import { UserController } from "lib";
 import {
   BackgroundImages,
   HomeStackProps,
+  MissionDifficultType,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
 } from "utils";
+import { usePlayground } from "redux/hooks";
 
 const styles = StyleSheet.create({
   container: {
@@ -109,51 +111,20 @@ const styles = StyleSheet.create({
   },
   difficultContainer: {
     marginBottom: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
   },
   difficultsContainer: {
     flex: 1,
     marginLeft: -10,
   },
-  difficultCounter: {
-    paddingVertical: 12,
-    paddingHorizontal: 38,
-    borderRadius: 12,
-  },
   missionStatusTitleText: {
     marginBottom: 20,
-  },
-  difficultSelector: {
-    marginRight: 10,
-    flex: 1,
-    paddingVertical: 12,
-    paddingLeft: 18,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingRight: 24,
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-  },
-  starsContainer: {
-    flexDirection: "row",
-  },
-  easy: {
-    backgroundColor: StyleGuide.colorPalette.mayo,
-  },
-  medium: {
-    backgroundColor: StyleGuide.colorPalette.orange,
-  },
-  hard: {
-    backgroundColor: StyleGuide.colorPalette.tomato,
   },
 });
 
 interface Props extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE> {}
 
 function Profile(props: Props) {
-  const userController = UserController();
+  const { playground } = usePlayground();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleOnGoSettingsPress = useCallback(() => {
     props.navigation.navigate(RoutesNames.PROFILE_SETTINGS, { firstIn: false });
@@ -161,9 +132,9 @@ function Profile(props: Props) {
 
   const handleOnUpdatePress = useCallback(async () => {
     setIsLoading(true);
-    await userController.userGetInfo();
+    await UserController.userGetInfo();
     setIsLoading(false);
-  }, [userController]);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -184,19 +155,19 @@ function Profile(props: Props) {
         <View style={styles.pointsInfoContainer}>
           <View style={[styles.whiteContainer, styles.rateInfoContainer]}>
             <View style={[styles.row, styles.pointsRow]}>
-              <Typography color={StyleGuide.colorPalette.darkGray}>
+              <Typography color={StyleGuide.colorPalette.mediumDarkGray}>
                 Баллы
               </Typography>
               <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
                 <Typography color={StyleGuide.colorPalette.acidGreen}>
-                  0
+                  {playground.totalScore}
                 </Typography>
               </Bubble>
             </View>
             <View style={styles.row}>
               <Typography
                 style={styles.ratingText}
-                color={StyleGuide.colorPalette.darkGray}
+                color={StyleGuide.colorPalette.mediumDarkGray}
               >
                 Рейтинг
               </Typography>
@@ -228,7 +199,7 @@ function Profile(props: Props) {
         <View style={[styles.whiteContainer, styles.currentRatingContainer]}>
           <View style={styles.row}>
             <Typography
-              color={StyleGuide.colorPalette.darkGray}
+              color={StyleGuide.colorPalette.mediumDarkGray}
               type={TypographyTypes.NORMAL24}
               style={styles.currentRatingText}
             >
@@ -244,48 +215,28 @@ function Profile(props: Props) {
         <View style={[styles.whiteContainer, styles.missionsStatusContainer]}>
           <Typography
             style={styles.missionStatusTitleText}
-            color={StyleGuide.colorPalette.darkGray}
+            color={StyleGuide.colorPalette.mediumDarkGray}
           >
             Выполнено заданий
           </Typography>
           <View style={styles.difficultsContainer}>
             <View style={styles.difficultContainer}>
-              <TouchableOpacity style={[styles.difficultSelector, styles.easy]}>
-                <View style={styles.starsContainer}>
-                  <Star size={24} difficult="easy" />
-                </View>
-                <Typography type={TypographyTypes.NORMAL18}>ЛЕГКИЙ</Typography>
-              </TouchableOpacity>
-              <View style={[styles.difficultCounter, styles.easy]}>
-                <Typography>0</Typography>
-              </View>
+              <DifficultSelector
+                score={playground.easyLevelScore}
+                difficult={MissionDifficultType.EASY}
+              />
             </View>
             <View style={styles.difficultContainer}>
-              <TouchableOpacity
-                style={[styles.difficultSelector, styles.medium]}
-              >
-                <View style={styles.starsContainer}>
-                  <Star size={24} difficult="middle" />
-                  <Star size={24} difficult="middle" />
-                </View>
-                <Typography type={TypographyTypes.NORMAL18}>СРЕДНИЙ</Typography>
-              </TouchableOpacity>
-              <View style={[styles.difficultCounter, styles.medium]}>
-                <Typography>0</Typography>
-              </View>
+              <DifficultSelector
+                score={playground.mediumLevelScore}
+                difficult={MissionDifficultType.MEDIUM}
+              />
             </View>
             <View style={styles.difficultContainer}>
-              <TouchableOpacity style={[styles.difficultSelector, styles.hard]}>
-                <View style={styles.starsContainer}>
-                  <Star size={24} difficult="hard" />
-                  <Star size={24} difficult="hard" />
-                  <Star size={24} difficult="hard" />
-                </View>
-                <Typography type={TypographyTypes.NORMAL18}>СЛОЖНЫЙ</Typography>
-              </TouchableOpacity>
-              <View style={[styles.difficultCounter, styles.hard]}>
-                <Typography>0</Typography>
-              </View>
+              <DifficultSelector
+                score={playground.hardLevelScore}
+                difficult={MissionDifficultType.HARD}
+              />
             </View>
           </View>
         </View>

@@ -45,7 +45,6 @@ interface Props
 
 function CodeEnter(props: Props) {
   const phoneNumber = useRef<string>(props.route.params?.phone || "").current;
-  const userController = UserController();
   const { seconds: timerDuration, formatted, reset } = useTimer(
     60,
     undefined,
@@ -83,10 +82,10 @@ function CodeEnter(props: Props) {
   const handleOnSubmitButtonPress = useCallback(async () => {
     if (parsedInputValue) {
       setIsLoading(true);
-      const response = await userController.userAuth(parsedInputValue);
+      const response = await UserController.userAuth(parsedInputValue);
       if (response) {
         if (!response.user.firstIn) {
-          await userController.userGetInfo();
+          await UserController.userGetInfo();
         }
         props.navigation.reset({
           index: 0,
@@ -107,19 +106,19 @@ function CodeEnter(props: Props) {
     } else {
       handleGoError();
     }
-  }, [parsedInputValue, userController, props.navigation, handleGoError]);
+  }, [parsedInputValue, UserController, props.navigation, handleGoError]);
 
   const handleOnChangeText = useCallback((_text?: string, ext?: string) => {
     setParsedInputValue(ext);
   }, []);
 
   const handleOnTimerPress = useCallback(async () => {
-    const response = await userController.userLogin(phoneNumber);
+    const response = await UserController.userLogin(phoneNumber);
     if (response) {
       reset();
       setTimerText("Отправить повторно через ");
     }
-  }, [phoneNumber, reset, userController]);
+  }, [phoneNumber, reset, UserController]);
 
   return (
     <View style={styles.container}>

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     right: 0,
-    backgroundColor: StyleGuide.colorPalette.darkGray,
+    backgroundColor: StyleGuide.colorPalette.mediumDarkGray,
     justifyContent: "center",
   },
   newPhotoImage: {

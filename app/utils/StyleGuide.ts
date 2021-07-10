@@ -12,7 +12,7 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.BLUE]: "#2F80ED",
   [Colors.TRANSPARENT]: "transparent",
   [Colors.GREEN]: "#27AE60",
-  [Colors.DARK_GRAY]: "#666666",
+  [Colors.MEDIUM_DARK_GRAY]: "#666666",
   [Colors.GRAY45]: "rgba(48, 51, 65, 0.45)",
   [Colors.BLACK]: "#000000",
   [Colors.MAYO]: "#DBD8A5",
@@ -21,6 +21,9 @@ const colorPalette: { [color in Colors]: string } = {
   [Colors.TOMATO]: "#FF6633",
   [Colors.DARK_BLUE]: "#1B53DB",
   [Colors.ACID_GREEN]: "#CCFF33",
+  [Colors.DARK_GREY]: "#828282",
+  [Colors.LIGHT_GRAY]: "#E5E5E5",
+  [Colors.BROWN]: "#996666",
 };
 
 const typography: { [key in TypographyTypes]: TextStyle } = {

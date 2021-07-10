@@ -5,8 +5,8 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
+  View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { BACKGROUND_ORNAMENT_DECORATOR } from "../assets/images";
 import { BackgroundImages, IS_IOS, StyleGuide } from "../utils";
 
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flexGrow: 1,
+    paddingTop: 20,
   },
   ornamentDecorator: {
     position: "absolute",
@@ -47,7 +48,7 @@ function withBackgroundHoc(
   return <T extends object>(Component: React.ComponentType<T>) => {
     return function (props: T) {
       return (
-        <SafeAreaView style={styles.containerWrapper}>
+        <View style={styles.containerWrapper}>
           <ImageBackground
             resizeMode="stretch"
             style={styles.content}
@@ -75,7 +76,7 @@ function withBackgroundHoc(
               style={styles.ornamentDecorator}
             />
           )}
-        </SafeAreaView>
+        </View>
       );
     };
   };

@@ -1,8 +1,7 @@
+import { Typography } from "components";
 import React, { useCallback, useMemo } from "react";
-import { Image, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Typography } from "..";
-import { StyleGuide, TabBarType, TypographyTypes } from "../../utils";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleGuide, TabBarType, TypographyTypes } from "utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,26 +9,30 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabBarIcon: {
-    width: 45,
-    height: 50,
+    aspectRatio: 1,
+    width: 50,
     marginBottom: 8,
   },
 });
 
 interface Props extends TabBarType {
   onPress: (index: number) => void;
+  selected: boolean;
 }
 
 const Tab = (props: Props) => {
-  const { image, index, title, onPress, size } = props;
+  const { image, index, title, onPress, selected } = props;
 
   const handleOnPress = useCallback(() => {
     onPress(index);
   }, [index, onPress]);
 
   const imageStyle = useMemo(
-    () => [styles.tabBarIcon, { width: size.w, height: size.h }],
-    [size.h, size.w]
+    () => [
+      styles.tabBarIcon,
+      selected && { tintColor: StyleGuide.colorPalette.brown },
+    ],
+    [selected]
   );
 
   return (

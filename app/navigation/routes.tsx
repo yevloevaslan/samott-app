@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { TabBar } from "../components";
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomeStackProps, RoutesNames } from "../utils";
@@ -7,6 +7,7 @@ import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
+import useApp from "redux/hooks/useApp";
 
 const Stack = createStackNavigator<HomeStackProps>();
 const Tab = createBottomTabNavigator<HomeStackProps>();
@@ -17,12 +18,25 @@ const cardStyleInterpolator = ({ current }: { current: any }) => ({
 const customTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
 
 const TabNavigator = () => {
+  const { app } = useApp();
+
+  const initialRouteName = useMemo(
+    () =>
+      app.isPlaying ? RoutesNames.MISSIONS_PLAYGROUND : RoutesNames.MISSIONS,
+    [app.isPlaying]
+  );
+
   return (
-    <Tab.Navigator
-      tabBar={customTabBar}
-      initialRouteName={RoutesNames.MISSIONS}
-    >
+    <Tab.Navigator tabBar={customTabBar} initialRouteName={initialRouteName}>
       <Tab.Screen name={RoutesNames.MISSIONS} component={Screens.Missions} />
+      <Tab.Screen
+        name={RoutesNames.MISSIONS_PLAYGROUND}
+        component={Screens.MissionsPlayground}
+      />
+      <Tab.Screen
+        name={RoutesNames.DICTIONARY}
+        component={Screens.Dictionary}
+      />
     </Tab.Navigator>
   );
 };

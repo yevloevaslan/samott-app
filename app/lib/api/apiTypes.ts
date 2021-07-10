@@ -24,3 +24,5 @@ export interface ApiUserInfo extends Omit<IUserInfo, "birthday"> {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface ApiTasks {}

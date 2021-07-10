@@ -1,6 +1,9 @@
-import useUser from "./user";
+import useUser from "./useUser";
+import useApp from "./useApp";
+import usePlayground from "./usePlayground";
+import useDictionary from "./useDictionary";
 
-const ReduxHooks = { useUser };
+const ReduxHooks = { useUser, useApp, usePlayground, useDictionary };
 
-export { useUser };
+export { useUser, useApp, usePlayground, useDictionary };
 export default ReduxHooks;

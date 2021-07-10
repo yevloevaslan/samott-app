@@ -11,6 +11,13 @@ import BackButton from "./BackButton";
 import Star from "./Star";
 import DatePicker from "./DatePicker";
 import Alert from "./Alert";
+import DifficultSelector from "./DifficultSelector";
+import MissionTitle from "./MissionTitle";
+import MissionAnswer from "./MissionAnswer";
+import Player from "./Player";
+import TaskInput from "./TaskInput";
+import Input from "./Input";
+import DictionaryWordsList from "./DictionaryWordsList";
 
 export {
   Typography,
@@ -26,4 +33,11 @@ export {
   Star,
   DatePicker,
   Alert,
+  DifficultSelector,
+  MissionTitle,
+  MissionAnswer,
+  Player,
+  TaskInput,
+  Input,
+  DictionaryWordsList,
 };

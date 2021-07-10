@@ -141,7 +141,6 @@ interface Props
 
 function ProfileSettings(props: Props) {
   const { user, setUser } = useUser();
-  const userController = UserController();
   const dispatch = useDispatch();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string | undefined>(
@@ -204,9 +203,9 @@ function ProfileSettings(props: Props) {
       sex,
     };
     setIsLoading(true);
-    const response = await userController.userPutInfo(userInfo);
+    const response = await UserController.userPutInfo(userInfo);
     if (response) {
-      await userController.userGetInfo();
+      await UserController.userGetInfo();
       if (props.route.params.firstIn) {
         props.navigation.navigate(RoutesNames.PIN_PHOTO);
       }
@@ -224,7 +223,6 @@ function ProfileSettings(props: Props) {
     user.firstName,
     user.lastName,
     user.middleName,
-    userController,
   ]);
 
   const handleOnExitButtonPress = useCallback(async () => {

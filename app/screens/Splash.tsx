@@ -6,6 +6,7 @@ import { useAsyncEffect } from "hooks";
 import { UserController } from "lib";
 import { useUser } from "redux/hooks";
 import { HomeStackProps, RoutesNames, StyleGuide } from "utils";
+import MainController from "lib/controllers/MainController";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,9 +23,10 @@ interface Props extends StackScreenProps<HomeStackProps, RoutesNames.SPLASH> {}
 
 function Splash(props: Props) {
   const { user } = useUser();
-  const userController = UserController();
+
   useAsyncEffect(async () => {
-    const response = user.token && (await userController.userGetInfo());
+    await MainController.init();
+    const response = user.token && (await UserController.userGetInfo());
     props.navigation.reset({
       index: 0,
       routes: [

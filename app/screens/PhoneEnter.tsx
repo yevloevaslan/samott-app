@@ -36,7 +36,6 @@ interface Props
   extends StackScreenProps<HomeStackProps, RoutesNames.CODE_ENTER> {}
 
 function PhoneEnter(props: Props) {
-  const userController = UserController();
   const [inputValue, setInputValue] = useState<string>();
   const [isInputErrored, setIsInputErrored] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -49,7 +48,7 @@ function PhoneEnter(props: Props) {
     if (inputValue) {
       const phone = "+7" + inputValue;
       setIsLoading(true);
-      const response = await userController.userLogin(phone);
+      const response = await UserController.userLogin(phone);
       if (response) {
         props.navigation.navigate(RoutesNames.CODE_ENTER, {
           phone,
@@ -57,7 +56,7 @@ function PhoneEnter(props: Props) {
       }
       setIsLoading(false);
     }
-  }, [inputValue, props.navigation, userController]);
+  }, [inputValue, props.navigation, UserController]);
 
   return (
     <View style={styles.container}>

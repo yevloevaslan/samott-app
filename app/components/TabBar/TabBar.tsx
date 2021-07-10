@@ -2,12 +2,15 @@ import {
   BottomTabBarOptions,
   BottomTabBarProps,
 } from "@react-navigation/bottom-tabs";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { RoutesNames, StyleGuide, TabBarType, TABS } from "../../utils";
+import { isX, RoutesNames, StyleGuide, TabBarType, TABS } from "utils";
 import Tab from "./Tab";
 
 const styles = StyleSheet.create({
+  containerWrapper: {
+    backgroundColor: StyleGuide.colorPalette.white,
+  },
   container: {
     height: 93,
     width: "100%",
@@ -23,29 +26,46 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 4,
     elevation: 4,
+    marginBottom: isX ? 30 : 0,
   },
 });
 
 const TabBar = (props: BottomTabBarProps<BottomTabBarOptions>) => {
+  const [selectedTab, setSelectedTab] = useState<RoutesNames>(
+    RoutesNames.MISSIONS
+  );
+
   const handleOnPress = useCallback(
     (index: number) => {
-      const screen =
-        TABS.find((tab) => tab.index === index)?.routeName ||
-        RoutesNames.MISSIONS;
+      let screen = TABS.find((tab) => tab.index === index)?.routeName;
 
-      props.navigation.navigate(screen);
+      if (screen) {
+        setSelectedTab(screen);
+        props.navigation.navigate(screen);
+      }
     },
     [props.navigation]
   );
 
   const renderTab = useCallback(
     (item: TabBarType, index: number) => {
-      return <Tab {...item} key={index} onPress={handleOnPress} />;
+      return (
+        <Tab
+          {...item}
+          selected={selectedTab === item.routeName}
+          key={index}
+          onPress={handleOnPress}
+        />
+      );
     },
-    [handleOnPress]
+    [handleOnPress, selectedTab]
   );
 
-  return <View style={styles.container}>{TABS.map(renderTab)}</View>;
+  return (
+    <View style={styles.containerWrapper}>
+      <View style={styles.container}>{TABS.map(renderTab)}</View>
+    </View>
+  );
 };
 
 export default TabBar;

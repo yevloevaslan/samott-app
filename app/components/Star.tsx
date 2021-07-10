@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { Image, StyleSheet } from "react-native";
 import { GOLD_STAR, GRAY_STAR, RED_STAR } from "assets/images";
+import { MissionDifficultType } from "utils";
 
 const styles = StyleSheet.create({
   star: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
 });
 
 interface Props {
-  difficult: "easy" | "middle" | "hard";
+  difficult: MissionDifficultType;
   size?: number;
 }
 
@@ -19,11 +20,11 @@ const Star = (props: Props) => {
 
   const starImage = useMemo(() => {
     switch (difficult) {
-      case "easy":
+      case MissionDifficultType.EASY:
         return RED_STAR;
-      case "middle":
+      case MissionDifficultType.MEDIUM:
         return GRAY_STAR;
-      case "hard":
+      case MissionDifficultType.HARD:
         return GOLD_STAR;
     }
   }, [difficult]);
