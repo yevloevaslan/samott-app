@@ -186,7 +186,12 @@ const Dictionary = (props: Props) => {
                         color={StyleGuide.colorPalette.darkGrey}
                       >
                         Результат по слову{" "}
-                        <Typography color={"#636363"}>{searchInput}</Typography>{" "}
+                        <Typography
+                          color={"#636363"}
+                          type={TypographyTypes.NORMAL14}
+                        >
+                          {searchInput}
+                        </Typography>{" "}
                         - {fullWords.length}{" "}
                         {getDeclining(fullWords.length, [
                           "слово",

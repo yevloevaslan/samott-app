@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TextProps } from "react-native";
-import { TypographyTypes, StyleGuide } from "utils";
+import { StyleGuide, TypographyTypes } from "utils";
 
 interface Props extends TextProps {
   children?: React.ReactFragment;
@@ -21,9 +21,9 @@ const Typography = (props: Props) => {
 
   return (
     <Text
+      numberOfLines={numberOfLines}
       {...props}
       adjustsFontSizeToFit
-      numberOfLines={numberOfLines}
       style={[style, StyleGuide.typography[type], { color, textAlign }]}
     />
   );

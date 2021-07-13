@@ -1,6 +1,6 @@
+import { ARROW_BUTTON } from "assets/images";
 import React, { useCallback } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
-import { ARROW_BUTTON } from "assets/images";
 
 const styles = StyleSheet.create({
   image: {
@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
 
 interface Props {
   onPress?: () => void;
-  navigation: any;
 }
 
 const BackButton = (props: Props) => {
@@ -20,8 +19,7 @@ const BackButton = (props: Props) => {
     if (onPress) {
       onPress();
     }
-    props.navigation.goBack();
-  }, [onPress, props.navigation]);
+  }, [onPress]);
 
   return (
     <TouchableOpacity onPress={handleOnBackButtonPress}>

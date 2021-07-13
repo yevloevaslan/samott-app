@@ -8,6 +8,8 @@ import Profile from "./Profile";
 import ProfileSettings from "./ProfileSettings";
 import MissionsPlayground from "./MissionsPlayground";
 import Dictionary from "./Dictionary";
+import Share from "./Share";
+import ProjectInfo from "./ProjectInfo";
 
 const Screens = {
   Missions,
@@ -20,6 +22,8 @@ const Screens = {
   MissionsPlayground,
   Splash,
   Dictionary,
+  Share,
+  ProjectInfo,
 };
 
 export {
@@ -33,5 +37,7 @@ export {
   MissionsPlayground,
   Splash,
   Dictionary,
+  Share,
+  ProjectInfo,
 };
 export default Screens;

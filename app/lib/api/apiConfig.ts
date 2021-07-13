@@ -43,6 +43,10 @@ const config: ApiConfig = {
       method: "GET",
       url: "dictionaries",
     },
+    getAboutProjects: {
+      method: "GET",
+      url: "about_projects",
+    },
   },
 };
 

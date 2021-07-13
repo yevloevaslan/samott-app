@@ -34,6 +34,7 @@ export enum RoutesNames {
   HOME = "HOME",
   DICTIONARY = "DICTIONARY",
   SHARE = "SHARE",
+  PROJECT_INFO = "PROJECT_INFO",
 }
 
 export enum TypographyTypes {

@@ -7,6 +7,13 @@ class MainController extends Controller {
     SplashScreen.hide();
     Api.configure();
   }
+
+  async getAboutProject() {
+    try {
+      const response = Api.getInfoAboutProject(this.token);
+      return response;
+    } catch (e) {}
+  }
 }
 
 export default new MainController();

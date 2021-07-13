@@ -1,6 +1,14 @@
-import React, { useCallback } from "react";
 import { StackScreenProps } from "@react-navigation/stack";
+import {
+  Bubble,
+  DifficultSelector,
+  Header,
+  Typography,
+  withBackgroundHoc,
+} from "components";
+import React, { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
+import { useApp, usePlayground, useUser } from "redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -9,14 +17,6 @@ import {
   StyleGuide,
   TypographyTypes,
 } from "utils";
-import {
-  Bubble,
-  DifficultSelector,
-  Header,
-  Typography,
-  withBackgroundHoc,
-} from "components";
-import { useUser, usePlayground, useApp } from "redux/hooks";
 
 const styles = StyleSheet.create({
   container: {
@@ -50,10 +50,6 @@ function Missions(props: Props) {
   const { playground } = usePlayground();
   const { setCurrentDifficult } = usePlayground();
 
-  const handleOnTitlePress = useCallback(() => {
-    props.navigation.navigate(RoutesNames.PROFILE);
-  }, [props.navigation]);
-
   const handleOnDifficultPress = useCallback(
     (difficult: MissionDifficultType) => {
       setIsPlaying(true);
@@ -66,12 +62,7 @@ function Missions(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Header
-          avatar
-          title={user.firstName}
-          decorators="right"
-          onPress={handleOnTitlePress}
-        >
+        <Header avatar title={user.firstName} decorators="right">
           <View style={styles.ratingBubbleContainer}>
             <Bubble backgroundColor={StyleGuide.colorPalette.mayo}>
               <Typography

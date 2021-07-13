@@ -1,5 +1,6 @@
 import { RestApiHelper } from "rest-api-helper";
 import {
+  IAboutProject,
   IAnswer,
   IDictionary,
   ITask,
@@ -95,6 +96,16 @@ export default class Api {
     )
       .withHeaders({ "x-access-token": token })
       .withQueryParams(qwery)
+      .fetch();
+
+    return response.body.data;
+  }
+
+  static async getInfoAboutProject(token: string) {
+    const response = await RestApiHelper.build<{ data: IAboutProject }>(
+      "getAboutProjects"
+    )
+      .withHeaders({ "x-access-token": token })
       .fetch();
 
     return response.body.data;

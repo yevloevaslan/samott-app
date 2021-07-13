@@ -1,4 +1,5 @@
-import { StackNavigationProp } from "@react-navigation/stack";
+import { TITLE_DECORATOR } from "assets/images";
+import { Avatar, BackButton, Typography } from "components";
 import React, { useCallback, useMemo } from "react";
 import {
   Image,
@@ -7,14 +8,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { TITLE_DECORATOR } from "assets/images";
-import {
-  HomeStackProps,
-  RoutesNames,
-  StyleGuide,
-  TypographyTypes,
-} from "utils";
-import { Avatar, BackButton, Typography } from "components";
+import { StyleGuide, TypographyTypes } from "utils";
 
 const styles = StyleSheet.create({
   containerWrapper: {
@@ -66,10 +60,9 @@ interface Props {
   avatar?: boolean;
   title: string;
   onPress?: () => void;
-  navigation?: StackNavigationProp<HomeStackProps, RoutesNames>;
   justifyContent?: "space-between" | "space-around" | "space-evenly";
   titleType?: TypographyTypes;
-  onBackButtonPress?: () => {};
+  onBackButtonPress?: () => void;
 }
 
 const Header = (props: Props) => {
@@ -79,7 +72,6 @@ const Header = (props: Props) => {
     onPress,
     avatar,
     title,
-    navigation,
     justifyContent = "flex-start",
     titleType,
     onBackButtonPress,
@@ -118,14 +110,12 @@ const Header = (props: Props) => {
   const renderLeft = useCallback(() => {
     if (avatar) {
       return <Avatar />;
-    } else if (navigation) {
-      return (
-        <BackButton onPress={handleOnBackButtonPress} navigation={navigation} />
-      );
+    } else if (onBackButtonPress) {
+      return <BackButton onPress={handleOnBackButtonPress} />;
     }
 
     return null;
-  }, [avatar, handleOnBackButtonPress, navigation]);
+  }, [avatar, handleOnBackButtonPress, onBackButtonPress]);
 
   return (
     <TouchableOpacity

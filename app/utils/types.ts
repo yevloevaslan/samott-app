@@ -3,6 +3,7 @@ import {
   CommonTaskData,
   IApp,
   IPlaygound,
+  IProject,
   IUser,
   TaskAudio,
   TaskCorrectTranslate,
@@ -22,6 +23,7 @@ export type MainRoutesProps = {
 };
 
 export type HomeStackProps = {
+  [RoutesNames.HOME]?: {};
   [RoutesNames.MISSIONS]?: object;
   [RoutesNames.CODE_ENTER]?: {
     phone?: string;
@@ -41,6 +43,8 @@ export type HomeStackProps = {
   };
   [RoutesNames.MISSIONS_PLAYGROUND]?: {};
   [RoutesNames.DICTIONARY]?: {};
+  [RoutesNames.SHARE]?: {};
+  [RoutesNames.PROJECT_INFO]: { info: IProject; title: string };
 };
 
 export type BorderedInputTypes =

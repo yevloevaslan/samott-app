@@ -31,9 +31,7 @@ const styles = StyleSheet.create({
 });
 
 const TabBar = (props: BottomTabBarProps<BottomTabBarOptions>) => {
-  const [selectedTab, setSelectedTab] = useState<RoutesNames>(
-    RoutesNames.MISSIONS
-  );
+  const [selectedTab, setSelectedTab] = useState<RoutesNames>(RoutesNames.HOME);
 
   const handleOnPress = useCallback(
     (index: number) => {

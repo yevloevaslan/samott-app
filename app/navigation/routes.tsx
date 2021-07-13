@@ -1,13 +1,12 @@
-import React, { useMemo } from "react";
-import { TabBar } from "../components";
-import { createStackNavigator } from "@react-navigation/stack";
-import { HomeStackProps, RoutesNames } from "../utils";
-import Screens from "../screens";
 import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
-import useApp from "redux/hooks/useApp";
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { TabBar } from "../components";
+import Screens from "../screens";
+import { HomeStackProps, RoutesNames } from "../utils";
 
 const Stack = createStackNavigator<HomeStackProps>();
 const Tab = createBottomTabNavigator<HomeStackProps>();
@@ -18,16 +17,9 @@ const cardStyleInterpolator = ({ current }: { current: any }) => ({
 const customTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
 
 const TabNavigator = () => {
-  const { app } = useApp();
-
-  const initialRouteName = useMemo(
-    () =>
-      app.isPlaying ? RoutesNames.MISSIONS_PLAYGROUND : RoutesNames.MISSIONS,
-    [app.isPlaying]
-  );
-
   return (
-    <Tab.Navigator tabBar={customTabBar} initialRouteName={initialRouteName}>
+    <Tab.Navigator tabBar={customTabBar}>
+      <Tab.Screen name={RoutesNames.HOME} component={Screens.Profile} />
       <Tab.Screen name={RoutesNames.MISSIONS} component={Screens.Missions} />
       <Tab.Screen
         name={RoutesNames.MISSIONS_PLAYGROUND}
@@ -37,6 +29,7 @@ const TabNavigator = () => {
         name={RoutesNames.DICTIONARY}
         component={Screens.Dictionary}
       />
+      <Tab.Screen name={RoutesNames.SHARE} component={Screens.Share} />
     </Tab.Navigator>
   );
 };
@@ -75,6 +68,10 @@ const Routes = () => {
       <Stack.Screen
         name={RoutesNames.PROFILE_SETTINGS}
         component={Screens.ProfileSettings}
+      />
+      <Stack.Screen
+        name={RoutesNames.PROJECT_INFO}
+        component={Screens.ProjectInfo}
       />
     </Stack.Navigator>
   );

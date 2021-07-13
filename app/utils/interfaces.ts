@@ -115,3 +115,13 @@ export interface StoreDictionary {
   selectedLang: "РУС" | "ИНГ";
   searchInput: string;
 }
+
+export interface IAboutProject {
+  project: IProject;
+  author: IProject;
+}
+
+export interface IProject {
+  description: string;
+  photos: string[];
+}
