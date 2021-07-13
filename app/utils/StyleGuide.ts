@@ -1,8 +1,8 @@
-import { ImageSourcePropType, TextStyle } from "react-native";
 import { BACKGROUND_WITH_CASTLE } from "assets/images";
+import { ImageSourcePropType, TextStyle } from "react-native";
+import { BACKGROUND_WITH_ORNAMENTS } from "../assets/images";
 import { BackgroundImages, Colors, TypographyTypes } from "./enums";
 import { IStyleGuide } from "./interfaces";
-import { BACKGROUND_WITH_ORNAMENTS } from "../assets/images";
 
 const colorPalette: { [color in Colors]: string } = {
   [Colors.WHITE]: "#FFFFFF",

@@ -1,7 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import { CHANGE_LANG } from "assets/images";
+import { BOOK, CHANGE_LANG } from "assets/images";
 import {
-  Button,
   DictionaryWordsList,
   Header,
   Input,
@@ -17,6 +16,7 @@ import React, {
   useState,
 } from "react";
 import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { useDictionary } from "redux/hooks";
 import {
   BackgroundImages,
@@ -38,6 +38,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
+  },
+  grammarBtn: {
+    paddingVertical: 8,
+    alignItems: "center",
   },
   headerBtn: {
     backgroundColor: StyleGuide.colorPalette.brown,
@@ -69,6 +73,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  grammarBookImage: {
+    tintColor: StyleGuide.colorPalette.white,
+    aspectRatio: 18 / 23,
+    width: 18,
+    marginRight: 7,
+  },
 });
 
 const SEARCH_TIMEOUT = 300;
@@ -95,6 +105,8 @@ const Dictionary = (props: Props) => {
         DictionaryController.setSearchInput(searchInput);
         setIsLoading(false);
       }, SEARCH_TIMEOUT);
+    } else {
+      setIsLoading(false);
     }
   }, [searchInput, selectedLang]);
 
@@ -131,21 +143,25 @@ const Dictionary = (props: Props) => {
       <View style={styles.container}>
         <View>
           <View style={styles.header}>
-            <Button
-              onPress={handleOnChangeLang}
-              style={[styles.headerBtn, styles.switchLangBtn]}
-            >
-              <Typography type={TypographyTypes.NORMAL14}>
-                {selectedLang}
-              </Typography>
-              <Image source={CHANGE_LANG} style={styles.changeImage} />
-              <Typography type={TypographyTypes.NORMAL14}>
-                {anotherLang}
-              </Typography>
-            </Button>
-            <Button style={styles.switchLangBtn}>
-              <Typography />
-            </Button>
+            <TouchableWithoutFeedback onPress={handleOnChangeLang}>
+              <View style={[styles.headerBtn, styles.switchLangBtn]}>
+                <Typography type={TypographyTypes.NORMAL14}>
+                  {selectedLang}
+                </Typography>
+                <Image source={CHANGE_LANG} style={styles.changeImage} />
+                <Typography type={TypographyTypes.NORMAL14}>
+                  {anotherLang}
+                </Typography>
+              </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback>
+              <View style={[styles.headerBtn, styles.grammarBtn]}>
+                <Image source={BOOK} style={styles.grammarBookImage} />
+                <Typography type={TypographyTypes.NORMAL14}>
+                  Грамматика
+                </Typography>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
           <View style={styles.inputContainer}>
             <Input
@@ -163,35 +179,39 @@ const Dictionary = (props: Props) => {
             <>
               {searchInput.length > 0 ? (
                 <>
-                  <Typography
-                    type={TypographyTypes.NORMAL14}
-                    color={StyleGuide.colorPalette.darkGrey}
-                  >
-                    Результат по слову{" "}
-                    <Typography color={"#636363"}>{searchInput}</Typography> -{" "}
-                    {fullWords.length > 0
-                      ? `${fullWords.length} ${getDeclining(fullWords.length, [
+                  {fullWords.length > 0 ? (
+                    <>
+                      <Typography
+                        type={TypographyTypes.NORMAL14}
+                        color={StyleGuide.colorPalette.darkGrey}
+                      >
+                        Результат по слову{" "}
+                        <Typography color={"#636363"}>{searchInput}</Typography>{" "}
+                        - {fullWords.length}{" "}
+                        {getDeclining(fullWords.length, [
                           "слово",
-                          "слова",
                           "слов",
-                        ])}`
-                      : "Нет данных"}
-                  </Typography>
-                  <View style={styles.fullWordsContainer}>
-                    <DictionaryWordsList words={fullWords} />
-                  </View>
-                  <Typography
-                    type={TypographyTypes.NORMAL14}
-                    color={StyleGuide.colorPalette.darkGrey}
-                    style={styles.wordListTitle}
-                  >
-                    Слова с{" "}
-                    <Typography color={"#636363"}>{searchInput}</Typography>
-                    {wordsWhichContainsSearch.length > 0
-                      ? undefined
-                      : " - Нет данных"}
-                  </Typography>
-                  <DictionaryWordsList words={wordsWhichContainsSearch} />
+                          "слова",
+                        ])}
+                      </Typography>
+                      <View style={styles.fullWordsContainer}>
+                        <DictionaryWordsList words={fullWords} />
+                      </View>
+                    </>
+                  ) : null}
+                  {wordsWhichContainsSearch.length > 0 ? (
+                    <>
+                      <Typography
+                        type={TypographyTypes.NORMAL14}
+                        color={StyleGuide.colorPalette.darkGrey}
+                        style={styles.wordListTitle}
+                      >
+                        Слова с{" "}
+                        <Typography color={"#636363"}>{searchInput}</Typography>
+                      </Typography>
+                      <DictionaryWordsList words={wordsWhichContainsSearch} />
+                    </>
+                  ) : null}
                 </>
               ) : null}
             </>
