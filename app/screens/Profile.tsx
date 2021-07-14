@@ -138,12 +138,7 @@ function Profile(props: Props) {
 
   return (
     <View style={styles.container}>
-      <Header
-        justifyContent="space-between"
-        navigation={props.navigation}
-        title="Профиль"
-        decorators="right"
-      >
+      <Header justifyContent="space-between" title="Профиль" decorators="right">
         <TouchableOpacity onPress={handleOnGoSettingsPress}>
           <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
         </TouchableOpacity>

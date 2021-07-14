@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     width: 50,
     marginBottom: 8,
+    tintColor: StyleGuide.colorPalette.black,
   },
 });
 

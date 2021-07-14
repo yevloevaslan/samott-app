@@ -212,7 +212,12 @@ const Dictionary = (props: Props) => {
                         style={styles.wordListTitle}
                       >
                         Слова с{" "}
-                        <Typography color={"#636363"}>{searchInput}</Typography>
+                        <Typography
+                          type={TypographyTypes.NORMAL14}
+                          color={"#636363"}
+                        >
+                          {searchInput}
+                        </Typography>
                       </Typography>
                       <DictionaryWordsList words={wordsWhichContainsSearch} />
                     </>

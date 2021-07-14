@@ -1,4 +1,18 @@
 import { StackScreenProps } from "@react-navigation/stack";
+import { EXIT, TRASH_CAN } from "assets/images";
+import {
+  Alert,
+  Avatar,
+  BorderedInput,
+  Bubble,
+  Button,
+  DatePicker,
+  Header,
+  RadioButton,
+  Typography,
+  withBackgroundHoc,
+} from "components";
+import { UserController } from "lib";
 import React, { useCallback, useMemo, useState } from "react";
 import {
   Dimensions,
@@ -8,18 +22,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import {
-  Avatar,
-  BorderedInput,
-  RadioButton,
-  Header,
-  Typography,
-  withBackgroundHoc,
-  DatePicker,
-  Button,
-  Alert,
-  Bubble,
-} from "components";
+import * as ImagePicker from "react-native-image-picker";
+import { useDispatch } from "react-redux";
 import { useUser } from "redux/hooks";
 import {
   BackgroundImages,
@@ -31,10 +35,6 @@ import {
   TypographyTypes,
   UserActionsTypes,
 } from "utils";
-import * as ImagePicker from "react-native-image-picker";
-import { EXIT, TRASH_CAN } from "assets/images";
-import { useDispatch } from "react-redux";
-import { UserController } from "lib";
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -278,7 +278,7 @@ function ProfileSettings(props: Props) {
         </View>
       ) : (
         <Header
-          navigation={props.navigation}
+          onBackButtonPress={props.navigation.goBack}
           title="Настройки"
           justifyContent="space-between"
           decorators="right"
