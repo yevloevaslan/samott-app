@@ -172,16 +172,12 @@ function ProfileSettings(props: Props) {
     });
   }, []);
 
-  const handleOnFemaleSexPress = useCallback((isSetted?: boolean) => {
-    if (isSetted) {
-      setSex("f");
-    }
+  const handleOnFemaleSexPress = useCallback(() => {
+    setSex("f");
   }, []);
 
-  const handleOnMaleSexPress = useCallback((isSetted?: boolean) => {
-    if (isSetted) {
-      setSex("m");
-    }
+  const handleOnMaleSexPress = useCallback(() => {
+    setSex("m");
   }, []);
 
   const handleOnCloseModal = useCallback(() => {
