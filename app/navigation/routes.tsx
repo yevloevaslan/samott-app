@@ -18,7 +18,10 @@ const customTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator tabBar={customTabBar}>
+    <Tab.Navigator
+      tabBar={customTabBar}
+      initialRouteName={RoutesNames.MISSIONS}
+    >
       <Tab.Screen name={RoutesNames.HOME} component={Screens.Profile} />
       <Tab.Screen name={RoutesNames.MISSIONS} component={Screens.Missions} />
       <Tab.Screen
