@@ -1,5 +1,4 @@
-import React, { useCallback, useState, useEffect, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { StackScreenProps } from "@react-navigation/stack";
 import {
   BorderedInput,
   Button,
@@ -7,17 +6,18 @@ import {
   Typography,
   withBackgroundHoc,
 } from "components";
+import { useTimer } from "hooks";
 import { UserController } from "lib";
-import { StackScreenProps } from "@react-navigation/stack";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import {
+  BackgroundImages,
+  HomeStackProps,
   RoutesNames,
   StyleGuide,
-  BackgroundImages,
   TypographyTypes,
-  HomeStackProps,
 } from "utils";
-import { useTimer } from "hooks";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
   container: {

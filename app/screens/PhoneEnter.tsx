@@ -1,20 +1,20 @@
-import React, { useCallback, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StackScreenProps } from "@react-navigation/stack";
 import {
-  Button,
   BorderedInput,
+  Button,
   Header,
   Typography,
   withBackgroundHoc,
 } from "components";
+import UserController from "lib/controllers/UserController";
+import React, { useCallback, useState } from "react";
+import { StyleSheet, View } from "react-native";
 import {
   BackgroundImages,
   HomeStackProps,
-  TypographyTypes,
   RoutesNames,
+  TypographyTypes,
 } from "utils";
-import UserController from "lib/controllers/UserController";
-import { StackScreenProps } from "@react-navigation/stack";
 
 const styles = StyleSheet.create({
   submitButton: {},
@@ -56,7 +56,7 @@ function PhoneEnter(props: Props) {
       }
       setIsLoading(false);
     }
-  }, [inputValue, props.navigation, UserController]);
+  }, [inputValue, props.navigation]);
 
   return (
     <View style={styles.container}>
