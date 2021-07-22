@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-5779046058328214~7818938511"/>
+        <meta-data 
+            android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-5779046058328214~7818938511" />
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
