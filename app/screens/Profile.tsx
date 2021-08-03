@@ -1,7 +1,11 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useCallback, useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
-import { GEAR_WHEEL, RED_STAR, ROTATE_ARROWS } from "assets/images";
+import {
+  GEAR_WHEEL,
+  GOLD_STAR,
+  GRAY_STAR,
+  RED_STAR,
+  ROTATE_ARROWS,
+} from "assets/images";
 import {
   Avatar,
   Bubble,
@@ -12,29 +16,42 @@ import {
   withBackgroundHoc,
 } from "components";
 import { UserController } from "lib";
+import React, { useCallback, useState } from "react";
+import {
+  Image,
+  ImageProps,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { useApp, usePlayground } from "redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
   MissionDifficultType,
   RoutesNames,
+  SCREEN_WIDTH,
   StyleGuide,
   TypographyTypes,
 } from "utils";
-import { usePlayground } from "redux/hooks";
 
 const styles = StyleSheet.create({
-  container: {
+  contentContainerWrapper: {
     flex: 1,
-    paddingTop: 48,
+    paddingTop: 20,
   },
   settingsButtonImage: {
     width: 42,
     height: 42,
   },
   contentContainer: {
-    paddingTop: 20,
+    paddingVertical: 20,
+  },
+  content: {
+    paddingVertical: 20,
     paddingHorizontal: 21,
-    paddingBottom: 20,
   },
   whiteContainer: {
     borderRadius: 7,
@@ -88,8 +105,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   starContainer: {
-    paddingVertical: 5,
-    paddingHorizontal: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 40,
     backgroundColor: StyleGuide.colorPalette.mayo,
     borderRadius: 12,
     alignItems: "center",
@@ -125,6 +142,7 @@ interface Props extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE> {}
 
 function Profile(props: Props) {
   const { playground } = usePlayground();
+  const { app } = useApp();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleOnGoSettingsPress = useCallback(() => {
     props.navigation.navigate(RoutesNames.PROFILE_SETTINGS, { firstIn: false });
@@ -136,108 +154,160 @@ function Profile(props: Props) {
     setIsLoading(false);
   }, []);
 
+  const renderCurrentLevelStatus = useCallback(() => {
+    const containerStyle: ViewStyle[] = [styles.starContainer];
+    let star: ImageProps["source"] = RED_STAR;
+
+    if (playground.currentDifficult) {
+      switch (playground.currentDifficult) {
+        case MissionDifficultType.EASY:
+          containerStyle.push({
+            backgroundColor: StyleGuide.colorPalette.mayo,
+          });
+          break;
+        case MissionDifficultType.MEDIUM:
+          containerStyle.push({
+            backgroundColor: StyleGuide.colorPalette.orange,
+          });
+          star = GRAY_STAR;
+          break;
+        case MissionDifficultType.MEDIUM:
+          containerStyle.push({
+            backgroundColor: StyleGuide.colorPalette.tomato,
+          });
+          star = GOLD_STAR;
+          break;
+      }
+    }
+
+    return (
+      <View style={containerStyle}>
+        <Image source={star} style={styles.star} />
+      </View>
+    );
+  }, [playground.currentDifficult]);
+
   return (
-    <View style={styles.container}>
-      <Header justifyContent="space-between" title="Профиль" decorators="right">
-        <TouchableOpacity onPress={handleOnGoSettingsPress}>
-          <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
-        </TouchableOpacity>
-      </Header>
-      <View style={styles.contentContainer}>
-        <View style={styles.avatarContainer}>
-          <Avatar withName size={{ w: 152, h: 149 }} />
+    <>
+      {app.bannerUrl && (
+        <View>
+          <Image
+            resizeMethod="resize"
+            resizeMode="cover"
+            source={{ uri: app.bannerUrl }}
+            style={{ width: "100%", aspectRatio: SCREEN_WIDTH / 100 }}
+          />
         </View>
-        <View style={styles.pointsInfoContainer}>
-          <View style={[styles.whiteContainer, styles.rateInfoContainer]}>
-            <View style={[styles.row, styles.pointsRow]}>
-              <Typography color={StyleGuide.colorPalette.mediumDarkGray}>
-                Баллы
-              </Typography>
-              <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
-                <Typography color={StyleGuide.colorPalette.acidGreen}>
-                  {playground.totalScore}
+      )}
+      <ScrollView
+        style={styles.contentContainerWrapper}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <Header
+          justifyContent="space-between"
+          title="Профиль"
+          decorators="right"
+        >
+          <TouchableOpacity onPress={handleOnGoSettingsPress}>
+            <Image source={GEAR_WHEEL} style={styles.settingsButtonImage} />
+          </TouchableOpacity>
+        </Header>
+        <View style={styles.content}>
+          <View style={styles.avatarContainer}>
+            <Avatar withName size={{ w: 152, h: 149 }} />
+          </View>
+          <View style={styles.pointsInfoContainer}>
+            <View style={[styles.whiteContainer, styles.rateInfoContainer]}>
+              <View style={[styles.row, styles.pointsRow]}>
+                <Typography color={StyleGuide.colorPalette.mediumDarkGray}>
+                  Баллы
                 </Typography>
-              </Bubble>
+                <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
+                  <Typography color={StyleGuide.colorPalette.acidGreen}>
+                    {playground.totalScore}
+                  </Typography>
+                </Bubble>
+              </View>
+              <View style={styles.row}>
+                <Typography
+                  style={styles.ratingText}
+                  color={StyleGuide.colorPalette.mediumDarkGray}
+                >
+                  Рейтинг
+                </Typography>
+                <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
+                  <Typography color={StyleGuide.colorPalette.acidGreen}>
+                    0
+                  </Typography>
+                </Bubble>
+              </View>
             </View>
+            <View style={[styles.whiteContainer, styles.updateContainer]}>
+              <Button
+                isLoading={isLoading}
+                style={styles.updateButton}
+                onPress={handleOnUpdatePress}
+              >
+                <Image source={ROTATE_ARROWS} style={styles.updateButtonIcon} />
+              </Button>
+              <Typography
+                color={StyleGuide.colorPalette.darkBlue}
+                type={TypographyTypes.NORMAL18}
+                numberOfLines={2}
+                textAlign="center"
+              >
+                Обновить{"\n"}данные
+              </Typography>
+            </View>
+          </View>
+          <View style={[styles.whiteContainer, styles.currentRatingContainer]}>
             <View style={styles.row}>
               <Typography
-                style={styles.ratingText}
                 color={StyleGuide.colorPalette.mediumDarkGray}
+                type={TypographyTypes.NORMAL24}
+                style={styles.currentRatingText}
               >
-                Рейтинг
+                Текущий уровень
               </Typography>
-              <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
-                <Typography color={StyleGuide.colorPalette.acidGreen}>
-                  0
-                </Typography>
-              </Bubble>
+              {renderCurrentLevelStatus()}
             </View>
           </View>
-          <View style={[styles.whiteContainer, styles.updateContainer]}>
-            <Button
-              isLoading={isLoading}
-              style={styles.updateButton}
-              onPress={handleOnUpdatePress}
-            >
-              <Image source={ROTATE_ARROWS} style={styles.updateButtonIcon} />
-            </Button>
+          <View style={[styles.whiteContainer, styles.missionsStatusContainer]}>
             <Typography
-              color={StyleGuide.colorPalette.darkBlue}
-              type={TypographyTypes.NORMAL18}
-              numberOfLines={2}
-              textAlign="center"
-            >
-              Обновить{"\n"}данные
-            </Typography>
-          </View>
-        </View>
-        <View style={[styles.whiteContainer, styles.currentRatingContainer]}>
-          <View style={styles.row}>
-            <Typography
+              style={styles.missionStatusTitleText}
               color={StyleGuide.colorPalette.mediumDarkGray}
-              type={TypographyTypes.NORMAL24}
-              style={styles.currentRatingText}
             >
-              Текущий уровень
+              Выполнено заданий
             </Typography>
-            <View style={styles.starContainer}>
-              <View style={styles.starContainer}>
-                <Image source={RED_STAR} style={styles.star} />
+            <View style={styles.difficultsContainer}>
+              <View style={styles.difficultContainer}>
+                <DifficultSelector
+                  score={playground.easyLevelScore}
+                  difficult={MissionDifficultType.EASY}
+                />
+              </View>
+              <View style={styles.difficultContainer}>
+                <DifficultSelector
+                  score={playground.mediumLevelScore}
+                  difficult={MissionDifficultType.MEDIUM}
+                />
+              </View>
+              <View style={styles.difficultContainer}>
+                <DifficultSelector
+                  score={playground.hardLevelScore}
+                  difficult={MissionDifficultType.HARD}
+                />
               </View>
             </View>
           </View>
         </View>
-        <View style={[styles.whiteContainer, styles.missionsStatusContainer]}>
-          <Typography
-            style={styles.missionStatusTitleText}
-            color={StyleGuide.colorPalette.mediumDarkGray}
-          >
-            Выполнено заданий
-          </Typography>
-          <View style={styles.difficultsContainer}>
-            <View style={styles.difficultContainer}>
-              <DifficultSelector
-                score={playground.easyLevelScore}
-                difficult={MissionDifficultType.EASY}
-              />
-            </View>
-            <View style={styles.difficultContainer}>
-              <DifficultSelector
-                score={playground.mediumLevelScore}
-                difficult={MissionDifficultType.MEDIUM}
-              />
-            </View>
-            <View style={styles.difficultContainer}>
-              <DifficultSelector
-                score={playground.hardLevelScore}
-                difficult={MissionDifficultType.HARD}
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
+      </ScrollView>
+    </>
   );
 }
 
-export default withBackgroundHoc(BackgroundImages.WITH_CASTLES)(Profile);
+export default withBackgroundHoc(
+  BackgroundImages.WITH_CASTLES,
+  false,
+  false
+)(Profile);

@@ -8,13 +8,16 @@ import {
 } from "components";
 import MainController from "lib/controllers/MainController";
 import React, { useCallback, useState } from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
 import { useEffectAsync } from "react-native-text-input-mask";
 import {
+  APP_STORE_APP_URL,
   BackgroundImages,
+  GOOGLE_PLAY_APP_URL,
   HomeStackProps,
   IAboutProject,
   IProject,
+  IS_IOS,
   RoutesNames,
   StyleGuide,
   TypographyTypes,
@@ -72,7 +75,16 @@ function Share(props: Props) {
     handleOnGoToInfo("Автор проекта", aboutProject?.author);
   }, [aboutProject?.author, handleOnGoToInfo]);
 
-  const goToMarket = useCallback(() => {}, []);
+  const goToMarket = useCallback(async () => {
+    const link = IS_IOS ? APP_STORE_APP_URL : GOOGLE_PLAY_APP_URL;
+    try {
+      const res = await Linking.canOpenURL(link);
+      if (res) {
+        Linking.openURL(link);
+        setIsAlertVisible((prev) => !prev);
+      }
+    } catch (e) {}
+  }, []);
 
   const toggleModal = useCallback(() => {
     setIsAlertVisible((prev) => !prev);
