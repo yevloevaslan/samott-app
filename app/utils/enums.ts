@@ -70,10 +70,11 @@ export enum UserActionsTypes {
   SET_USER = "SET_USER",
 }
 
-export enum AppActions {
+export enum AppActionsTypes {
   RESET_APP = "RESET_APP",
   SET_IS_PLAYING = "SET_IS_PLAYING",
   SET_CURRENT_DIFFICULT = "SET_CURRENT_DIFFICULT",
+  SET_PROFILE_BANNER = "SET_PROFILE_BANNER",
 }
 
 export enum ScoreActions {

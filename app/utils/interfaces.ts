@@ -4,6 +4,7 @@ import { ITask, MissionDifficultType } from "./types";
 
 export interface IApp {
   isPlaying: boolean;
+  bannerUrl?: string;
 }
 
 export interface GlobalState {
@@ -119,6 +120,7 @@ export interface StoreDictionary {
 export interface IAboutProject {
   project: IProject;
   author: IProject;
+  banner: string;
 }
 
 export interface IProject {

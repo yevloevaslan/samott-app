@@ -47,7 +47,11 @@ function ProjectInfo(props: Props) {
       />
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={{ uri: info.photos[0] }} style={styles.image} />
+          <Image
+            source={{ uri: info.photos[0] }}
+            style={styles.image}
+            resizeMode="cover"
+          />
         </View>
         <Typography
           color="#5E4A3C"

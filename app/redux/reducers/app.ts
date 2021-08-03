@@ -4,6 +4,7 @@ import { IApp, reducer } from "utils";
 
 export const appInitialState: IApp = {
   isPlaying: false,
+  bannerUrl: undefined,
 };
 
 const appReducer = createReducer(
@@ -11,6 +12,7 @@ const appReducer = createReducer(
   (builder: ActionReducerMapBuilder<IApp>) => {
     builder
       .addCase(AppActions.resetApp, reducer)
+      .addCase(AppActions.setProfileBanner, reducer)
       .addCase(AppActions.setIsPlaying, reducer);
   }
 );
