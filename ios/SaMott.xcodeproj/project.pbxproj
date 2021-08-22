@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* TranslatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TranslatorTests.m */; };
+		00E356F31AD99517003FC87E /* SaMottTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SaMottTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1865E2C5197E7A185CCDEFB6 /* libPods-Translator-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846671D3B15AD86DC3075C90 /* libPods-Translator-tvOSTests.a */; };
 		1DB0BAE8D783490BA4340BF4 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3732A8F4818B4573BF754429 /* Roboto-ThinItalic.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* TranslatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TranslatorTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* SaMottTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SaMottTests.m */; };
 		36B5F3F3420F4749A2161FDB /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 799987672B004CAFB582D72D /* Roboto-MediumItalic.ttf */; };
 		3E2D6D15C1624DAB9F723BE7 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21CF79001F814832AC0AD895 /* Roboto-LightItalic.ttf */; };
+		4E318112E6F30ADB27FD3A92 /* libPods-SaMott-SaMottTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 271C819F8087D7CFC5BCCB60 /* libPods-SaMott-SaMottTests.a */; };
 		5408B997240D48F9A81F159E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8A56079F76543F49F87A47D /* Roboto-Bold.ttf */; };
-		5F529E2B8F40DD1CEFE0CF73 /* libPods-Translator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B10D98545F45815C679511EB /* libPods-Translator.a */; };
 		6272B805CEBC45989CFF5CE0 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94C805CFE4084A3C8C5C13D5 /* Roboto-Medium.ttf */; };
-		64912F4EB980B8419BA85513 /* libPods-Translator-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E94D74ACC2DC65B791A1C095 /* libPods-Translator-tvOS.a */; };
 		7E291EC1F7E54CE2B2E63037 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3B64E6832AA4A39B0F25D17 /* Roboto-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		90A071CB771D417780C1FA70 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DB7A610DA1245B8B9245BA1 /* Roboto-Light.ttf */; };
 		937DC22793E34EA5B7C6A151 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A3F4170270444E88BAA952 /* Roboto-BoldItalic.ttf */; };
-		AF90D118BED794B24FB97ED8 /* libPods-Translator-TranslatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C555C67BA277A014DEB8ACEC /* libPods-Translator-TranslatorTests.a */; };
+		953ACEB600F167962B4AA6E0 /* libPods-SaMott.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 993DCD375026B130F8280215 /* libPods-SaMott.a */; };
+		9CA0516623D6F09D9E533B49 /* libPods-SaMott-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */; };
+		9DECE26D965300DFF9E370AF /* libPods-SaMott-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F31889DCD908223DCC054024 /* libPods-SaMott-tvOS.a */; };
 		AFA249AE477D4AF080D86D41 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E8936FB7E75492B9FB3FBB2 /* Roboto-Italic.ttf */; };
 		BD3E3CCF928C4C40911403A0 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 893FCB9328FE40F4B3953373 /* Roboto-Thin.ttf */; };
 		E522CB581A4443FC9AB062A4 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77B48F5F4FAC4F4FB4F06862 /* Roboto-BlackItalic.ttf */; };
@@ -40,57 +40,57 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = Translator;
+			remoteInfo = SaMott;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "Translator-tvOS";
+			remoteInfo = "SaMott-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* TranslatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TranslatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SaMottTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaMottTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* TranslatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslatorTests.m; sourceTree = "<group>"; };
-		08AE1C4C14C506A925CCA88F /* Pods-Translator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.debug.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.debug.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Translator/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Translator/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Translator/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Translator/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Translator/main.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SaMottTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaMottTests.m; sourceTree = "<group>"; };
+		0946DFC5EEB5FDEAAE264C7A /* Pods-SaMott.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott.debug.xcconfig"; path = "Target Support Files/Pods-SaMott/Pods-SaMott.debug.xcconfig"; sourceTree = "<group>"; };
+		0A5F52F3ADFE8758DA863839 /* Pods-SaMott-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SaMott-tvOSTests/Pods-SaMott-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SaMott.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaMott.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SaMott/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SaMott/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SaMott/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SaMott/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SaMott/main.m; sourceTree = "<group>"; };
 		21CF79001F814832AC0AD895 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../app/assets/fonts/Roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
-		2385B172B17033F80BB331F0 /* Pods-Translator-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Translator-tvOSTests/Pods-Translator-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* Translator-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translator-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* Translator-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Translator-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		271C819F8087D7CFC5BCCB60 /* libPods-SaMott-SaMottTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott-SaMottTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* SaMott-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SaMott-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* SaMott-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SaMott-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3732A8F4818B4573BF754429 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../app/assets/fonts/Roboto/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		45A3F4170270444E88BAA952 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../app/assets/fonts/Roboto/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
-		4E9E3DEA8FA0AEA03DD39FC1 /* Pods-Translator-TranslatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-TranslatorTests.release.xcconfig"; path = "Target Support Files/Pods-Translator-TranslatorTests/Pods-Translator-TranslatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		4BCF0735362A89E6A2AF6C7B /* Pods-SaMott.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott.release.xcconfig"; path = "Target Support Files/Pods-SaMott/Pods-SaMott.release.xcconfig"; sourceTree = "<group>"; };
+		5BE467603DA41DDCF0586312 /* Pods-SaMott-SaMottTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-SaMottTests.debug.xcconfig"; path = "Target Support Files/Pods-SaMott-SaMottTests/Pods-SaMott-SaMottTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6827F1BA67DB548B9DD280C4 /* Pods-SaMott-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SaMott-tvOS/Pods-SaMott-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		6E8936FB7E75492B9FB3FBB2 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		77B48F5F4FAC4F4FB4F06862 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../app/assets/fonts/Roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		793C1ACA278A44109A3E5271 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		799987672B004CAFB582D72D /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../app/assets/fonts/Roboto/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
-		7AF37741AEF989279A93DAC6 /* Pods-Translator-TranslatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-TranslatorTests.debug.xcconfig"; path = "Target Support Files/Pods-Translator-TranslatorTests/Pods-Translator-TranslatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CE8F3EEC97388D54123EFDF /* Pods-SaMott-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SaMott-tvOSTests/Pods-SaMott-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		7D57C911702E63B10C01A3EB /* Pods-SaMott-SaMottTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-SaMottTests.release.xcconfig"; path = "Target Support Files/Pods-SaMott-SaMottTests/Pods-SaMott-SaMottTests.release.xcconfig"; sourceTree = "<group>"; };
 		7DB7A610DA1245B8B9245BA1 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Light.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Translator/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		846671D3B15AD86DC3075C90 /* libPods-Translator-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SaMott/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		893FCB9328FE40F4B3953373 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		94C805CFE4084A3C8C5C13D5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		A4823D2630429109DB761C63 /* Pods-Translator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator.release.xcconfig"; path = "Target Support Files/Pods-Translator/Pods-Translator.release.xcconfig"; sourceTree = "<group>"; };
-		A87E7D4689D90E822CA02904 /* Pods-Translator-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Translator-tvOS/Pods-Translator-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		B10D98545F45815C679511EB /* libPods-Translator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C555C67BA277A014DEB8ACEC /* libPods-Translator-TranslatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator-TranslatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C627FFCCBA540BE558911496 /* Pods-Translator-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Translator-tvOSTests/Pods-Translator-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		992DAD3594EE07BD8D39803E /* Pods-SaMott-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SaMott-tvOS/Pods-SaMott-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		993DCD375026B130F8280215 /* libPods-SaMott.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B64E6832AA4A39B0F25D17 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		E8A56079F76543F49F87A47D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		E94D74ACC2DC65B791A1C095 /* libPods-Translator-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Translator-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB90BF843F2B330B1125469E /* Pods-Translator-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translator-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Translator-tvOS/Pods-Translator-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F31889DCD908223DCC054024 /* libPods-SaMott-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF90D118BED794B24FB97ED8 /* libPods-Translator-TranslatorTests.a in Frameworks */,
+				4E318112E6F30ADB27FD3A92 /* libPods-SaMott-SaMottTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F529E2B8F40DD1CEFE0CF73 /* libPods-Translator.a in Frameworks */,
+				953ACEB600F167962B4AA6E0 /* libPods-SaMott.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64912F4EB980B8419BA85513 /* libPods-Translator-tvOS.a in Frameworks */,
+				9DECE26D965300DFF9E370AF /* libPods-SaMott-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,20 +122,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1865E2C5197E7A185CCDEFB6 /* libPods-Translator-tvOSTests.a in Frameworks */,
+				9CA0516623D6F09D9E533B49 /* libPods-SaMott-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* TranslatorTests */ = {
+		00E356EF1AD99517003FC87E /* SaMottTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* TranslatorTests.m */,
+				00E356F21AD99517003FC87E /* SaMottTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = TranslatorTests;
+			path = SaMottTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -146,7 +146,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Translator */ = {
+		13B07FAE1A68108700A75B9A /* SaMott */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -157,20 +157,20 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = Translator;
+			name = SaMott;
 			sourceTree = "<group>";
 		};
 		2305E7557667E6B74E59BD9C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				08AE1C4C14C506A925CCA88F /* Pods-Translator.debug.xcconfig */,
-				A4823D2630429109DB761C63 /* Pods-Translator.release.xcconfig */,
-				7AF37741AEF989279A93DAC6 /* Pods-Translator-TranslatorTests.debug.xcconfig */,
-				4E9E3DEA8FA0AEA03DD39FC1 /* Pods-Translator-TranslatorTests.release.xcconfig */,
-				A87E7D4689D90E822CA02904 /* Pods-Translator-tvOS.debug.xcconfig */,
-				EB90BF843F2B330B1125469E /* Pods-Translator-tvOS.release.xcconfig */,
-				C627FFCCBA540BE558911496 /* Pods-Translator-tvOSTests.debug.xcconfig */,
-				2385B172B17033F80BB331F0 /* Pods-Translator-tvOSTests.release.xcconfig */,
+				0946DFC5EEB5FDEAAE264C7A /* Pods-SaMott.debug.xcconfig */,
+				4BCF0735362A89E6A2AF6C7B /* Pods-SaMott.release.xcconfig */,
+				5BE467603DA41DDCF0586312 /* Pods-SaMott-SaMottTests.debug.xcconfig */,
+				7D57C911702E63B10C01A3EB /* Pods-SaMott-SaMottTests.release.xcconfig */,
+				992DAD3594EE07BD8D39803E /* Pods-SaMott-tvOS.debug.xcconfig */,
+				6827F1BA67DB548B9DD280C4 /* Pods-SaMott-tvOS.release.xcconfig */,
+				0A5F52F3ADFE8758DA863839 /* Pods-SaMott-tvOSTests.debug.xcconfig */,
+				7CE8F3EEC97388D54123EFDF /* Pods-SaMott-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -180,10 +180,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				B10D98545F45815C679511EB /* libPods-Translator.a */,
-				C555C67BA277A014DEB8ACEC /* libPods-Translator-TranslatorTests.a */,
-				E94D74ACC2DC65B791A1C095 /* libPods-Translator-tvOS.a */,
-				846671D3B15AD86DC3075C90 /* libPods-Translator-tvOSTests.a */,
+				993DCD375026B130F8280215 /* libPods-SaMott.a */,
+				271C819F8087D7CFC5BCCB60 /* libPods-SaMott-SaMottTests.a */,
+				F31889DCD908223DCC054024 /* libPods-SaMott-tvOS.a */,
+				A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,9 +217,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* Translator */,
+				13B07FAE1A68108700A75B9A /* SaMott */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* TranslatorTests */,
+				00E356EF1AD99517003FC87E /* SaMottTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				2305E7557667E6B74E59BD9C /* Pods */,
@@ -233,10 +233,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Translator.app */,
-				00E356EE1AD99517003FC87E /* TranslatorTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* Translator-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* Translator-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* SaMott.app */,
+				00E356EE1AD99517003FC87E /* SaMottTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* SaMott-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* SaMott-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,52 +244,52 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* TranslatorTests */ = {
+		00E356ED1AD99517003FC87E /* SaMottTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "TranslatorTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SaMottTests" */;
 			buildPhases = (
-				1A29C7C991F97AF815CD5BA6 /* [CP] Check Pods Manifest.lock */,
+				4563AB5FC4639D7F79D7B94C /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				D1D929A0674309DB3E724378 /* [CP] Copy Pods Resources */,
+				C1F5282350F66ACE2D09178E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = TranslatorTests;
-			productName = TranslatorTests;
-			productReference = 00E356EE1AD99517003FC87E /* TranslatorTests.xctest */;
+			name = SaMottTests;
+			productName = SaMottTests;
+			productReference = 00E356EE1AD99517003FC87E /* SaMottTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Translator */ = {
+		13B07F861A680F5B00A75B9A /* SaMott */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Translator" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SaMott" */;
 			buildPhases = (
-				7CDD699307CF7DF198FEE8A8 /* [CP] Check Pods Manifest.lock */,
+				F09DD5C5F616284AFF89393C /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				A5BDB1CC1DC8AEFEFE12F25D /* [CP] Copy Pods Resources */,
+				846885C0D29B10BADD06B63B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Translator;
-			productName = Translator;
-			productReference = 13B07F961A680F5B00A75B9A /* Translator.app */;
+			name = SaMott;
+			productName = SaMott;
+			productReference = 13B07F961A680F5B00A75B9A /* SaMott.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* Translator-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* SaMott-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Translator-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SaMott-tvOS" */;
 			buildPhases = (
-				6B92B0176A789A6E10F1870A /* [CP] Check Pods Manifest.lock */,
+				0E73471C2C62EF20EEBD8244 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -300,16 +300,16 @@
 			);
 			dependencies = (
 			);
-			name = "Translator-tvOS";
-			productName = "Translator-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* Translator-tvOS.app */;
+			name = "SaMott-tvOS";
+			productName = "SaMott-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* SaMott-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* Translator-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* SaMott-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Translator-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SaMott-tvOSTests" */;
 			buildPhases = (
-				0CC3FEC11F18BF8D70C5EA94 /* [CP] Check Pods Manifest.lock */,
+				70448C52F63372FF53E73B52 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -319,9 +319,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "Translator-tvOSTests";
-			productName = "Translator-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* Translator-tvOSTests.xctest */;
+			name = "SaMott-tvOSTests";
+			productName = "SaMott-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* SaMott-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -350,7 +350,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Translator" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SaMott" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -363,10 +363,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Translator */,
-				00E356ED1AD99517003FC87E /* TranslatorTests */,
-				2D02E47A1E0B4A5D006451C7 /* Translator-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* Translator-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* SaMott */,
+				00E356ED1AD99517003FC87E /* SaMottTests */,
+				2D02E47A1E0B4A5D006451C7 /* SaMott-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* SaMott-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -432,7 +432,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		0CC3FEC11F18BF8D70C5EA94 /* [CP] Check Pods Manifest.lock */ = {
+		0E73471C2C62EF20EEBD8244 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -447,29 +447,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Translator-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1A29C7C991F97AF815CD5BA6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Translator-TranslatorTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SaMott-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -490,7 +468,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		6B92B0176A789A6E10F1870A /* [CP] Check Pods Manifest.lock */ = {
+		4563AB5FC4639D7F79D7B94C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -505,14 +483,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Translator-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SaMott-SaMottTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7CDD699307CF7DF198FEE8A8 /* [CP] Check Pods Manifest.lock */ = {
+		70448C52F63372FF53E73B52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -527,20 +505,20 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Translator-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SaMott-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A5BDB1CC1DC8AEFEFE12F25D /* [CP] Copy Pods Resources */ = {
+		846885C0D29B10BADD06B63B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Translator/Pods-Translator-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SaMott/Pods-SaMott-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -549,16 +527,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Translator/Pods-Translator-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SaMott/Pods-SaMott-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D1D929A0674309DB3E724378 /* [CP] Copy Pods Resources */ = {
+		C1F5282350F66ACE2D09178E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Translator-TranslatorTests/Pods-Translator-TranslatorTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SaMott-SaMottTests/Pods-SaMott-SaMottTests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -567,7 +545,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Translator-TranslatorTests/Pods-Translator-TranslatorTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SaMott-SaMottTests/Pods-SaMott-SaMottTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F09DD5C5F616284AFF89393C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SaMott-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -615,7 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* TranslatorTests.m in Sources */,
+				00E356F31AD99517003FC87E /* SaMottTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,7 +641,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* TranslatorTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* SaMottTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,12 +650,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Translator */;
+			target = 13B07F861A680F5B00A75B9A /* SaMott */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* Translator-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* SaMott-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -663,14 +663,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AF37741AEF989279A93DAC6 /* Pods-Translator-TranslatorTests.debug.xcconfig */;
+			baseConfigurationReference = 5BE467603DA41DDCF0586312 /* Pods-SaMott-SaMottTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = TranslatorTests/Info.plist;
+				INFOPLIST_FILE = SaMottTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -680,17 +680,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Translator.app/Translator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaMott.app/SaMott";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E9E3DEA8FA0AEA03DD39FC1 /* Pods-Translator-TranslatorTests.release.xcconfig */;
+			baseConfigurationReference = 7D57C911702E63B10C01A3EB /* Pods-SaMott-SaMottTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = TranslatorTests/Info.plist;
+				INFOPLIST_FILE = SaMottTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -700,13 +700,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Translator.app/Translator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaMott.app/SaMott";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08AE1C4C14C506A925CCA88F /* Pods-Translator.debug.xcconfig */;
+			baseConfigurationReference = 0946DFC5EEB5FDEAAE264C7A /* Pods-SaMott.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -750,7 +750,7 @@
 					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
 					"\"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS\"",
 				);
-				INFOPLIST_FILE = Translator/Info.plist;
+				INFOPLIST_FILE = SaMott/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -758,7 +758,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Translator;
+				PRODUCT_NAME = SaMott;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -767,7 +767,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4823D2630429109DB761C63 /* Pods-Translator.release.xcconfig */;
+			baseConfigurationReference = 4BCF0735362A89E6A2AF6C7B /* Pods-SaMott.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -810,7 +810,7 @@
 					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
 					"\"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS\"",
 				);
-				INFOPLIST_FILE = Translator/Info.plist;
+				INFOPLIST_FILE = SaMott/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -818,7 +818,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Translator;
+				PRODUCT_NAME = SaMott;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -826,7 +826,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A87E7D4689D90E822CA02904 /* Pods-Translator-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 992DAD3594EE07BD8D39803E /* Pods-SaMott-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -837,14 +837,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Translator-tvOS/Info.plist";
+				INFOPLIST_FILE = "SaMott-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Translator-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.SaMott-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -854,7 +854,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB90BF843F2B330B1125469E /* Pods-Translator-tvOS.release.xcconfig */;
+			baseConfigurationReference = 6827F1BA67DB548B9DD280C4 /* Pods-SaMott-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -865,14 +865,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Translator-tvOS/Info.plist";
+				INFOPLIST_FILE = "SaMott-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Translator-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.SaMott-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -882,7 +882,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C627FFCCBA540BE558911496 /* Pods-Translator-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 0A5F52F3ADFE8758DA863839 /* Pods-SaMott-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -892,24 +892,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Translator-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "SaMott-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Translator-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.SaMott-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Translator-tvOS.app/Translator-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaMott-tvOS.app/SaMott-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2385B172B17033F80BB331F0 /* Pods-Translator-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 7CE8F3EEC97388D54123EFDF /* Pods-SaMott-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -919,17 +919,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Translator-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "SaMott-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Translator-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.SaMott-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Translator-tvOS.app/Translator-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaMott-tvOS.app/SaMott-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1050,7 +1050,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "TranslatorTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SaMottTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1059,7 +1059,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Translator" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SaMott" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1068,7 +1068,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Translator-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SaMott-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1077,7 +1077,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Translator-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SaMott-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1086,7 +1086,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Translator" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SaMott" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

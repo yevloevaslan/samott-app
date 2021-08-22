@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'Translator' do
+target 'SaMott' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -15,16 +15,16 @@ target 'Translator' do
   pod 'Google-Mobile-Ads-SDK', '~> 7.69.0'
   pod 'react-native-admob', path: '../node_modules/react-native-admob'
   
-  target 'TranslatorTests' do
+  target 'SaMottTests' do
     inherit! :complete
     # Pods for testing
   end
 end
 
-target 'Translator-tvOS' do
-  # Pods for Translator-tvOS
+target 'SaMott-tvOS' do
+  # Pods for SaMott-tvOS
   
-  target 'Translator-tvOSTests' do
+  target 'SaMott-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
