@@ -122,7 +122,9 @@ const Dictionary = (props: Props) => {
   const fullWords = useMemo(
     () =>
       words.filter((w) =>
-        selectedLang === "ИНГ" ? w.ing === searchInput : w.rus === searchInput
+        selectedLang === "ИНГ"
+          ? w.ing.toLowerCase() === searchInput.toLowerCase()
+          : w.rus.toLowerCase() === searchInput.toLowerCase()
       ),
     [searchInput, selectedLang, words]
   );
