@@ -74,7 +74,7 @@ export default class Api {
   static async checkAnswer(
     token: string,
     taskId: string,
-    answer: string
+    answer: string | string[]
   ): Promise<IAnswer> {
     const response = await RestApiHelper.build<{ data: IAnswer }>("checkAnswer")
       .withHeaders({ "x-access-token": token })

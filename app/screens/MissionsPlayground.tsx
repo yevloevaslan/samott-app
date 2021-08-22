@@ -7,7 +7,11 @@ import {
   Typography,
   withBackgroundHoc,
 } from "components";
-import { SelectMission, TypeMission } from "components/missions";
+import {
+  AudioSelectMission,
+  SelectMission,
+  TypeMission,
+} from "components/missions";
 import { useAsyncEffect } from "hooks";
 import PlaygroundController from "lib/controllers/PlaygroundController";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -79,7 +83,9 @@ function MissionsPlayground(_props: Props) {
   const [completed, setCompleted] = useState<boolean>(false);
   const [taskAnswer, setTaskAnswer] = useState<IAnswer>();
   const [isRightAnswerGiven, setIsRightAnswerGiven] = useState<boolean>(false);
-  const [isFreeInputLoading, setIsFreeInputLoading] = useState<boolean>(false);
+  const [isTaskAnswerLoading, setIsTaskAnswerLoading] = useState<boolean>(
+    false
+  );
 
   const loadTask = useCallback(async () => {
     setIsLoading(true);
@@ -113,9 +119,9 @@ function MissionsPlayground(_props: Props) {
   }, [completed]);
 
   const handleOnComplete = useCallback(
-    async (answer: string) => {
+    async (answer: string | string[]) => {
       if (currentTask) {
-        setIsFreeInputLoading(true);
+        setIsTaskAnswerLoading(true);
         try {
           const response = await PlaygroundController.checkAnswer(
             currentTask._id,
@@ -129,7 +135,7 @@ function MissionsPlayground(_props: Props) {
             }
           }
         } catch (e) {}
-        setIsFreeInputLoading(false);
+        setIsTaskAnswerLoading(false);
         setCompleted(true);
       }
     },
@@ -142,20 +148,18 @@ function MissionsPlayground(_props: Props) {
         title: currentTask.title,
         answer: taskAnswer,
         onComplete: handleOnComplete,
+        isLoading: isTaskAnswerLoading,
       };
       switch (currentTask.type) {
         case TaskTypes.AUDIO:
           return (
-            <SelectMission<TaskTypes.AUDIO>
-              {...currentTask.params}
-              {...defaultParams}
-            />
+            <AudioSelectMission {...currentTask.params} {...defaultParams} />
           );
         case TaskTypes.CORRECT_TRANSLATE:
           return (
             <SelectMission<TaskTypes.CORRECT_TRANSLATE>
-              {...currentTask.params}
               {...defaultParams}
+              {...currentTask.params}
               findWord={currentTask.params.text}
             />
           );
@@ -177,13 +181,7 @@ function MissionsPlayground(_props: Props) {
             />
           );
         case TaskTypes.AUDIO_FREE_ANSWER:
-          return (
-            <TypeMission
-              isLoading={isFreeInputLoading}
-              params={currentTask.params}
-              {...defaultParams}
-            />
-          );
+          return <TypeMission params={currentTask.params} {...defaultParams} />;
       }
     }
 
@@ -192,7 +190,7 @@ function MissionsPlayground(_props: Props) {
         На данный момент задач нет.
       </Typography>
     );
-  }, [currentTask, handleOnComplete, isFreeInputLoading, taskAnswer]);
+  }, [currentTask, handleOnComplete, isTaskAnswerLoading, taskAnswer]);
 
   const countsBackgroundColor = useMemo(
     () =>

@@ -15,7 +15,7 @@ class PlaygroundController extends Controller {
 
   async checkAnswer(
     taskId: string,
-    answer: string
+    answer: string | string[]
   ): Promise<IAnswer | undefined> {
     try {
       return await Api.checkAnswer(this.token, taskId, answer);
