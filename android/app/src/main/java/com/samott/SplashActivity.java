@@ -1,4 +1,4 @@
-package com.translator;
+package com.samott;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -26,11 +26,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.translator"
+        applicationId "com.SaMott"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 10001
+        versionName "1.0.1"
         multiDexEnabled true
     }
     splits {
@@ -48,13 +48,21 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('SAMOTT_UPLOAD_STORE_FILE')) {
+                storeFile file(SAMOTT_UPLOAD_STORE_FILE)
+                storePassword SAMOTT_UPLOAD_STORE_PASSWORD
+                keyAlias SAMOTT_UPLOAD_KEY_ALIAS
+                keyPassword SAMOTT_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

@@ -1,4 +1,4 @@
-package com.translator;
+package com.samott;
 
 import android.os.Bundle;
 
@@ -28,6 +28,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Translator";
+    return "SaMott";
   }
 }
