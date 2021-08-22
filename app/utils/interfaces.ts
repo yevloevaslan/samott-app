@@ -51,6 +51,7 @@ export interface IMissionTaskProps {
   onComplete: (answer: string) => void;
   answer?: IAnswer;
   title: string;
+  isLoading: boolean;
 }
 
 export interface CommonTaskData {
@@ -103,7 +104,7 @@ export interface TaskSpace {
 
 export interface IAnswer {
   trueResult: boolean;
-  answer: string;
+  answer: string | string[];
 }
 
 export interface IDictionary {
