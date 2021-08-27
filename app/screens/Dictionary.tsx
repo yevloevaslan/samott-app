@@ -8,6 +8,7 @@ import {
   withBackgroundHoc,
 } from "components";
 import DictionaryController from "lib/controllers/DictionaryController";
+import MainController from "lib/controllers/MainController";
 import React, {
   useCallback,
   useEffect,
@@ -15,7 +16,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  Linking,
+  StyleSheet,
+  View,
+} from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { useDictionary } from "redux/hooks";
 import {
@@ -91,6 +98,7 @@ const Dictionary = (props: Props) => {
   const { words, selectedLang, searchInput: initialSearch } = useDictionary();
   const searchTimer = useRef<any>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isGrammarLoading, setIsGrammarLoading] = useState<boolean>(false);
 
   const [searchInput, setSearchInput] = useState<string>(initialSearch);
 
@@ -139,6 +147,15 @@ const Dictionary = (props: Props) => {
     [searchInput, selectedLang, words]
   );
 
+  const handleOnGetGrammarPress = useCallback(async () => {
+    setIsGrammarLoading(true);
+    const response = await MainController.getGrammarFile();
+    if (response && response.filename.length > 0) {
+      Linking.openURL(response.filename);
+    }
+    setIsGrammarLoading(false);
+  }, []);
+
   return (
     <View>
       <Header title="Словарь-Дошлорг" decorators="right" />
@@ -156,12 +173,21 @@ const Dictionary = (props: Props) => {
                 </Typography>
               </View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback
+              disabled={isGrammarLoading}
+              onPress={handleOnGetGrammarPress}
+            >
               <View style={[styles.headerBtn, styles.grammarBtn]}>
-                <Image source={BOOK} style={styles.grammarBookImage} />
-                <Typography type={TypographyTypes.NORMAL14}>
-                  Грамматика
-                </Typography>
+                {isGrammarLoading ? (
+                  <ActivityIndicator />
+                ) : (
+                  <>
+                    <Image source={BOOK} style={styles.grammarBookImage} />
+                    <Typography type={TypographyTypes.NORMAL14}>
+                      Грамматика
+                    </Typography>
+                  </>
+                )}
               </View>
             </TouchableWithoutFeedback>
           </View>

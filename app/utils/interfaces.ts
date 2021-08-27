@@ -128,3 +128,7 @@ export interface IProject {
   description: string;
   photos: string[];
 }
+
+export interface IGrammarFile {
+  filename: string;
+}

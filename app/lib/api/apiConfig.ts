@@ -47,6 +47,10 @@ const config: ApiConfig = {
       method: "GET",
       url: "about_projects",
     },
+    getGrammar: {
+      method: "GET",
+      url: "about_projects/grammar",
+    },
   },
 };
 
