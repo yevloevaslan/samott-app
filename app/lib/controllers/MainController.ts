@@ -19,6 +19,14 @@ class MainController extends Controller {
       return response;
     } catch (e) {}
   }
+
+  async getGrammarFile() {
+    try {
+      const response = await Api.getGrammar(this.token);
+      return response;
+    } catch (ignore) {}
+    return undefined;
+  }
 }
 
 export default new MainController();

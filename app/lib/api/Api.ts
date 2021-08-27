@@ -3,6 +3,7 @@ import {
   IAboutProject,
   IAnswer,
   IDictionary,
+  IGrammarFile,
   ITask,
   IUserInfo,
   MissionDifficultType,
@@ -104,6 +105,16 @@ export default class Api {
   static async getInfoAboutProject(token: string) {
     const response = await RestApiHelper.build<{ data: IAboutProject }>(
       "getAboutProjects"
+    )
+      .withHeaders({ "x-access-token": token })
+      .fetch();
+
+    return response.body.data;
+  }
+
+  static async getGrammar(token: string) {
+    const response = await RestApiHelper.build<{ data: IGrammarFile }>(
+      "getGrammar"
     )
       .withHeaders({ "x-access-token": token })
       .fetch();
