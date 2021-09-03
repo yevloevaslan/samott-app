@@ -187,18 +187,26 @@ function Profile(props: Props) {
     );
   }, [playground.currentDifficult]);
 
+  const renderBanner = useCallback(() => {
+    if (!app.bannerUrl) {
+      return null;
+    }
+
+    return (
+      <View>
+        <Image
+          resizeMethod="resize"
+          resizeMode="cover"
+          source={{ uri: app.bannerUrl }}
+          style={{ width: "100%", aspectRatio: SCREEN_WIDTH / 100 }}
+        />
+      </View>
+    );
+  }, [app.bannerUrl]);
+
   return (
     <>
-      {app.bannerUrl && (
-        <View>
-          <Image
-            resizeMethod="resize"
-            resizeMode="cover"
-            source={{ uri: app.bannerUrl }}
-            style={{ width: "100%", aspectRatio: SCREEN_WIDTH / 100 }}
-          />
-        </View>
-      )}
+      {renderBanner()}
       <ScrollView
         style={styles.contentContainerWrapper}
         contentContainerStyle={styles.contentContainer}
