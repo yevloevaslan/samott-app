@@ -46,10 +46,7 @@ const SelectMission = <
     (answ: string) => {
       let userAnswer = answ;
       if (photos) {
-        const oldAnswer = photos.find((p) => p.includes(answ));
-        if (oldAnswer) {
-          userAnswer = String(photos.indexOf(oldAnswer) + 1);
-        }
+        userAnswer = String(photos.findIndex((p) => p.includes(answ)));
       }
       setSelectedAnswer(answ);
       onComplete(userAnswer);

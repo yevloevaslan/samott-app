@@ -64,7 +64,7 @@ export default function MissionAnswer(props: Props) {
         result.push(
           (
             photoAnswer
-              ? rightAnswer.answer === String(index + 1)
+              ? rightAnswer.answer === String(index)
               : rightAnswer.answer === answer
           )
             ? correct
@@ -72,7 +72,7 @@ export default function MissionAnswer(props: Props) {
         );
       } else if (
         rightAnswer && photoAnswer
-          ? rightAnswer.answer === String(index + 1)
+          ? rightAnswer.answer === String(index)
           : rightAnswer?.answer === answer
       ) {
         result.push(correct);
