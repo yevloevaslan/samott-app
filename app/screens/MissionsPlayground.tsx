@@ -1,3 +1,4 @@
+import { useFocusEffect } from "@react-navigation/native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { SKIP } from "assets/images";
 import {
@@ -12,7 +13,6 @@ import {
   SelectMission,
   TypeMission,
 } from "components/missions";
-import { useAsyncEffect } from "hooks";
 import PlaygroundController from "lib/controllers/PlaygroundController";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
@@ -108,9 +108,11 @@ function MissionsPlayground(_props: Props) {
     setCompleted(false);
   }, [playground.currentDifficult]);
 
-  useAsyncEffect(async () => {
-    loadTask();
-  }, [playground.currentDifficult]);
+  useFocusEffect(
+    useCallback(() => {
+      loadTask();
+    }, [loadTask])
+  );
 
   useEffect(() => {
     if (completed) {
