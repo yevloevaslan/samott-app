@@ -68,9 +68,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: 11,
   },
-  wordListTitle: {
-    marginBottom: 22,
-  },
   fullWordsContainer: {
     marginTop: 22,
     marginBottom: 12,
@@ -127,26 +124,6 @@ const Dictionary = (props: Props) => {
     DictionaryController.setLang(anotherLang);
   }, [anotherLang]);
 
-  const fullWords = useMemo(
-    () =>
-      words.filter((w) =>
-        selectedLang === "ИНГ"
-          ? w.ing.toLowerCase() === searchInput.toLowerCase()
-          : w.rus.toLowerCase() === searchInput.toLowerCase()
-      ),
-    [searchInput, selectedLang, words]
-  );
-
-  const wordsWhichContainsSearch = useMemo(
-    () =>
-      words.filter((w) =>
-        selectedLang === "ИНГ"
-          ? w.ing !== searchInput && w.ing.includes(searchInput)
-          : w.rus !== searchInput && w.rus.includes(searchInput)
-      ),
-    [searchInput, selectedLang, words]
-  );
-
   const handleOnGetGrammarPress = useCallback(async () => {
     setIsGrammarLoading(true);
     const response = await MainController.getGrammarFile();
@@ -155,6 +132,39 @@ const Dictionary = (props: Props) => {
     }
     setIsGrammarLoading(false);
   }, []);
+
+  const renderContent = useCallback(() => {
+    if (isLoading) {
+      return (
+        <View style={styles.emptyContainer}>
+          <ActivityIndicator color={StyleGuide.colorPalette.blue} />
+        </View>
+      );
+    }
+
+    if (words.length < 0) {
+      return null;
+    }
+
+    return (
+      <>
+        <Typography
+          type={TypographyTypes.NORMAL14}
+          color={StyleGuide.colorPalette.darkGrey}
+        >
+          Результат по слову{" "}
+          <Typography color={"#636363"} type={TypographyTypes.NORMAL14}>
+            {searchInput}
+          </Typography>{" "}
+          - {words.length}{" "}
+          {getDeclining(words.length, ["слово", "слов", "слова"])}
+        </Typography>
+        <View style={styles.fullWordsContainer}>
+          <DictionaryWordsList words={words} />
+        </View>
+      </>
+    );
+  }, [isLoading, searchInput, words]);
 
   return (
     <View>
@@ -199,61 +209,7 @@ const Dictionary = (props: Props) => {
               value={searchInput}
             />
           </View>
-          {isLoading ? (
-            <View style={styles.emptyContainer}>
-              <ActivityIndicator color={StyleGuide.colorPalette.blue} />
-            </View>
-          ) : (
-            <>
-              {searchInput.length > 0 ? (
-                <>
-                  {fullWords.length > 0 ? (
-                    <>
-                      <Typography
-                        type={TypographyTypes.NORMAL14}
-                        color={StyleGuide.colorPalette.darkGrey}
-                      >
-                        Результат по слову{" "}
-                        <Typography
-                          color={"#636363"}
-                          type={TypographyTypes.NORMAL14}
-                        >
-                          {searchInput}
-                        </Typography>{" "}
-                        - {fullWords.length}{" "}
-                        {getDeclining(fullWords.length, [
-                          "слово",
-                          "слов",
-                          "слова",
-                        ])}
-                      </Typography>
-                      <View style={styles.fullWordsContainer}>
-                        <DictionaryWordsList words={fullWords} />
-                      </View>
-                    </>
-                  ) : null}
-                  {wordsWhichContainsSearch.length > 0 ? (
-                    <>
-                      <Typography
-                        type={TypographyTypes.NORMAL14}
-                        color={StyleGuide.colorPalette.darkGrey}
-                        style={styles.wordListTitle}
-                      >
-                        Слова с{" "}
-                        <Typography
-                          type={TypographyTypes.NORMAL14}
-                          color={"#636363"}
-                        >
-                          {searchInput}
-                        </Typography>
-                      </Typography>
-                      <DictionaryWordsList words={wordsWhichContainsSearch} />
-                    </>
-                  ) : null}
-                </>
-              ) : null}
-            </>
-          )}
+          {renderContent()}
         </View>
       </View>
     </View>
