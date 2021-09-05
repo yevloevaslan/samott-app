@@ -193,7 +193,7 @@ function Profile(props: Props) {
     }
 
     return (
-      <View>
+      <View style={{ marginTop: -20 }}>
         <Image
           resizeMethod="resize"
           resizeMode="cover"

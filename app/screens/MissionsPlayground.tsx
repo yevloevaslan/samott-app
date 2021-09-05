@@ -179,7 +179,7 @@ function MissionsPlayground(_props: Props) {
             <SelectMission<TaskTypes.SPACE>
               {...currentTask.params}
               {...defaultParams}
-              subTitle={currentTask.params.text}
+              findWord={currentTask.params.text}
             />
           );
         case TaskTypes.AUDIO_FREE_ANSWER:
@@ -188,7 +188,7 @@ function MissionsPlayground(_props: Props) {
     }
 
     return (
-      <Typography color={StyleGuide.colorPalette.black}>
+      <Typography numberOfLines={1} color={StyleGuide.colorPalette.black}>
         На данный момент задач нет.
       </Typography>
     );

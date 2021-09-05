@@ -16,7 +16,6 @@ class MainController extends Controller {
       this.dispatch(AppActionsTypes.SET_PROFILE_BANNER, {
         bannerUrl: response.banner,
       });
-      return response;
     } catch (e) {}
   }
 

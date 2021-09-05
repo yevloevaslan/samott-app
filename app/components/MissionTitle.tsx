@@ -2,7 +2,7 @@ import { TASK_TITLE_ORNAMENT } from "assets/images";
 import { Typography } from "components";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import { TypographyTypes, StyleGuide } from "utils";
+import { StyleGuide, TypographyTypes } from "utils";
 
 const styles = StyleSheet.create({
   taskTitleContainer: {
@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: StyleGuide.colorPalette.lightGray,
     minHeight: 91,
     marginBottom: 20,
+    width: "100%",
   },
   taskTitleContainerImage: {
     position: "absolute",
@@ -26,20 +27,15 @@ const styles = StyleSheet.create({
   findWordText: {
     fontWeight: "500",
   },
-  subTitleText: {
-    marginTop: 20,
-    fontWeight: "500",
-  },
 });
 
 interface Props {
   title: string;
-  subTitle?: string;
   findWord?: string;
 }
 
 export default function MissionTitle(props: Props) {
-  const { title, findWord, subTitle } = props;
+  const { title, findWord } = props;
   return (
     <View style={styles.taskTitleContainer}>
       <Image
@@ -66,15 +62,6 @@ export default function MissionTitle(props: Props) {
             </Typography>
           )}
         </Typography>
-        {subTitle && (
-          <Typography
-            color={StyleGuide.colorPalette.red}
-            style={styles.subTitleText}
-            type={TypographyTypes.NORMAL24}
-          >
-            {subTitle}
-          </Typography>
-        )}
       </View>
     </View>
   );

@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   wordItem: {
     marginBottom: 10,
     fontWeight: "500",
+    flexGrow: 1,
   },
 });
 
@@ -28,6 +29,7 @@ export default function DictionaryWordsList(props: Props) {
             style={styles.wordItem}
             color={StyleGuide.colorPalette.brown}
             key={index}
+            allowFontScaling={false}
           >
             {item.ing} - {item.rus}
           </Typography>
@@ -40,6 +42,7 @@ export default function DictionaryWordsList(props: Props) {
           style={styles.wordItem}
           color={StyleGuide.colorPalette.brown}
           key={index}
+          allowFontScaling={false}
         >
           {item.rus} - {item.ing}
         </Typography>
@@ -48,5 +51,9 @@ export default function DictionaryWordsList(props: Props) {
     [selectedLang]
   );
 
-  return <View>{words.map(renderWord)}</View>;
+  return (
+    <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+      {words.map(renderWord)}
+    </View>
+  );
 }

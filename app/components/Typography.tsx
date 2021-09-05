@@ -16,12 +16,10 @@ const Typography = (props: Props) => {
     color = StyleGuide.colorPalette.white,
     style,
     textAlign,
-    numberOfLines = 1,
   } = props;
 
   return (
     <Text
-      numberOfLines={numberOfLines}
       {...props}
       adjustsFontSizeToFit
       style={[style, StyleGuide.typography[type], { color, textAlign }]}

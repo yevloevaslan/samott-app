@@ -15,6 +15,7 @@ import {
   IMissionTaskProps,
   StyleGuide,
   TaskTypes,
+  TypographyTypes,
 } from "utils";
 
 const styles = StyleSheet.create({
@@ -94,7 +95,9 @@ const TaskAnswer = (props: TaskAnswerProps) => {
       {selected && isLoading ? (
         <ActivityIndicator />
       ) : (
-        <Typography>{answer}</Typography>
+        <Typography textAlign="center" type={TypographyTypes.NORMAL14}>
+          {answer}
+        </Typography>
       )}
     </TouchableOpacity>
   );
@@ -162,6 +165,9 @@ const AudioMission = (props: Props) => {
     <>
       <MissionTitle title={title} />
       <Player sound={sound} />
+      <Typography color={StyleGuide.colorPalette.black}>
+        {selectedAnswers.join(" ")}
+      </Typography>
       <TouchableOpacity
         onPress={handleOnSubmitPress}
         disabled={!selectedAnswers.length}
