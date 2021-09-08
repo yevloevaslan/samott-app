@@ -147,7 +147,7 @@ function MissionsPlayground(_props: Props) {
   const renderMission = useCallback(() => {
     if (currentTask) {
       const defaultParams = {
-        title: currentTask.title,
+        title: currentTask.params.text,
         answer: taskAnswer,
         onComplete: handleOnComplete,
         isLoading: isTaskAnswerLoading,
@@ -162,7 +162,6 @@ function MissionsPlayground(_props: Props) {
             <SelectMission<TaskTypes.CORRECT_TRANSLATE>
               {...defaultParams}
               {...currentTask.params}
-              findWord={currentTask.params.text}
             />
           );
         case TaskTypes.IMAGES:
@@ -170,7 +169,6 @@ function MissionsPlayground(_props: Props) {
             <SelectMission<TaskTypes.IMAGES>
               {...currentTask.params}
               {...defaultParams}
-              findWord={currentTask.params.text}
               withPhotos
             />
           );
@@ -179,7 +177,6 @@ function MissionsPlayground(_props: Props) {
             <SelectMission<TaskTypes.SPACE>
               {...currentTask.params}
               {...defaultParams}
-              findWord={currentTask.params.text}
             />
           );
         case TaskTypes.AUDIO_FREE_ANSWER:

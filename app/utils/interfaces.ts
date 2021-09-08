@@ -56,8 +56,6 @@ export interface IMissionTaskProps {
 
 export interface CommonTaskData {
   _id: string;
-  title: string;
-  description: string;
   level: string;
   points: number;
   active: boolean;
@@ -84,6 +82,7 @@ export interface TaskAudio {
   params: {
     sound: string;
     answers: string[];
+    text: string;
   };
 }
 
@@ -91,6 +90,7 @@ export interface TaskFreeAnswer {
   type: TaskTypes.AUDIO_FREE_ANSWER;
   params: {
     sound: string;
+    text: string;
   };
 }
 

@@ -232,7 +232,7 @@ function ProfileSettings(props: Props) {
   }, [dispatch, props.navigation]);
 
   const handleOnChangeBirthDay = useCallback(
-    (date?: Date) => {
+    (date: Date) => {
       setBirthday(date || birthday);
       setIsPicker(false);
     },
@@ -324,6 +324,7 @@ function ProfileSettings(props: Props) {
             isPicker={isPicker}
             value={birthday}
             onChange={handleOnChangeBirthDay}
+            onCancel={() => setIsPicker(false)}
           />
         </View>
         <Typography

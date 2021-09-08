@@ -37,7 +37,6 @@ const SelectMission = <
     answers,
     photos,
     sound,
-    findWord,
   } = props;
   const [selectedAnswer, setSelectedAnswer] = useState<string>();
 
@@ -72,7 +71,7 @@ const SelectMission = <
 
   return (
     <>
-      <MissionTitle title={title} findWord={findWord} />
+      <MissionTitle title={title} />
       {sound && <Player sound={sound} />}
       {data && <View style={styles.container}>{data.map(renderAnswer)}</View>}
     </>

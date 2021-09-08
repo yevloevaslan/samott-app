@@ -58,7 +58,7 @@ const DatePicker = (props: Props) => {
           time = value?.getDate();
           break;
         case "ММ":
-          time = value?.getMonth();
+          time = value ? value?.getMonth() + 1 : undefined;
           break;
         case "ГГГГ":
           time = value?.getFullYear();
@@ -102,6 +102,7 @@ const DatePicker = (props: Props) => {
         mode={props.mode}
         onConfirm={handleOnChange}
         onCancel={handleOnCancel}
+        maximumDate={new Date()}
       />
     </View>
   );

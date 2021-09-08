@@ -24,18 +24,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  findWordText: {
-    fontWeight: "500",
-  },
 });
 
 interface Props {
   title: string;
-  findWord?: string;
 }
 
 export default function MissionTitle(props: Props) {
-  const { title, findWord } = props;
+  const { title } = props;
   return (
     <View style={styles.taskTitleContainer}>
       <Image
@@ -51,16 +47,6 @@ export default function MissionTitle(props: Props) {
           color={StyleGuide.colorPalette.black}
         >
           {title}{" "}
-          {findWord && (
-            <Typography
-              textAlign="center"
-              style={styles.findWordText}
-              type={TypographyTypes.NORMAL18}
-              color={StyleGuide.colorPalette.black}
-            >
-              "{findWord}"
-            </Typography>
-          )}
         </Typography>
       </View>
     </View>
