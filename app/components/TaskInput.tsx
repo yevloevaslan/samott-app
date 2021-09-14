@@ -47,7 +47,7 @@ export default function TaskInput(props: Props) {
         style={styles.input}
         onChangeText={setValue}
       />
-      <TouchableOpacity disabled={isLoading} onPress={handleOnSubmitPress}>
+      <TouchableOpacity disabled={isLoading || !value.length} onPress={handleOnSubmitPress}>
         {isLoading ? (
           <View style={styles.buttonImage}>
             <ActivityIndicator color={StyleGuide.colorPalette.gray45} />

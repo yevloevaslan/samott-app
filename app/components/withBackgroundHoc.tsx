@@ -5,8 +5,9 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
-  View,
+  View
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { BACKGROUND_ORNAMENT_DECORATOR } from "../assets/images";
 import { BackgroundImages, IS_IOS, StyleGuide } from "../utils";
 
@@ -54,9 +55,11 @@ function withBackgroundHoc(
             <KeyboardAvoidingView
               behavior={IS_IOS ? "padding" : "height"}
               style={styles.container}
+              keyboardVerticalOffset={50}
             >
               <ScrollView
                 keyboardShouldPersistTaps="handled"
+                keyboardDismissMode="on-drag"
                 bounces={false}
                 style={styles.contentContainerWrapper}
                 contentContainerStyle={styles.contentContainer}
@@ -71,7 +74,7 @@ function withBackgroundHoc(
       }, [props]);
 
       return (
-        <View style={styles.containerWrapper}>
+        <SafeAreaView edges={['top']} style={styles.containerWrapper}>
           <ImageBackground
             resizeMode="stretch"
             style={styles.content}
@@ -87,7 +90,7 @@ function withBackgroundHoc(
               style={styles.ornamentDecorator}
             />
           )}
-        </View>
+        </SafeAreaView>
       );
     };
   };

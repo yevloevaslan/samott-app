@@ -6,12 +6,12 @@ import {
   DifficultSelector,
   Header,
   Typography,
-  withBackgroundHoc,
+  withBackgroundHoc
 } from "components";
 import {
   AudioSelectMission,
   SelectMission,
-  TypeMission,
+  TypeMission
 } from "components/missions";
 import PlaygroundController from "lib/controllers/PlaygroundController";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -20,13 +20,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { usePlayground, useUser } from "redux/hooks";
 import {
   BackgroundImages,
+  getDeclining,
   HomeStackProps,
   IAnswer,
   ITask,
   RoutesNames,
   StyleGuide,
   TaskTypes,
-  TypographyTypes,
+  TypographyTypes
 } from "utils";
 
 const styles = StyleSheet.create({
@@ -228,7 +229,7 @@ function MissionsPlayground(_props: Props) {
             <View style={styles.scoreTitleContainer}>
               <Bubble
                 backgroundColor={countsBackgroundColor}
-                title={`баллы ${currentTask?.points}`}
+                title={`${currentTask?.points} ${getDeclining(currentTask?.points, ['балл', 'баллов', 'балла'])}`}
               />
               <TouchableOpacity disabled={isLoading} onPress={loadTask}>
                 <Image source={SKIP} style={styles.skipButtonImage} />
