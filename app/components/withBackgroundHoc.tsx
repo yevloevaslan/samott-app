@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     width: 63,
     right: -3,
     bottom: 0,
+    zIndex: -1,
   },
   backgroundImage: {
     position: "absolute",
@@ -53,9 +54,9 @@ function withBackgroundHoc(
         if (withScroll) {
           return (
             <KeyboardAvoidingView
-              behavior={IS_IOS ? "padding" : "height"}
+              behavior={IS_IOS ? "padding" : undefined}
               style={styles.container}
-              keyboardVerticalOffset={50}
+              keyboardVerticalOffset={IS_IOS ? 50 : 0}
             >
               <ScrollView
                 keyboardShouldPersistTaps="handled"

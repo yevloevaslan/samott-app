@@ -1,6 +1,6 @@
 import {
   BottomTabBarOptions,
-  BottomTabBarProps,
+  BottomTabBarProps
 } from "@react-navigation/bottom-tabs";
 import React, { useCallback, useState } from "react";
 import { StyleSheet, View } from "react-native";
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
       height: -4,
     },
     shadowRadius: 4,
-    elevation: 4,
+    elevation: 10,
     marginBottom: isX ? 30 : 0,
   },
 });

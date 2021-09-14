@@ -29,8 +29,8 @@ android {
         applicationId "com.SaMott"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 101002
-        versionName "1.0.02"
+        versionCode 101003
+        versionName "1.0.03"
         multiDexEnabled true
     }
     splits {

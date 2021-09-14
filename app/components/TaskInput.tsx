@@ -17,14 +17,18 @@ const styles = StyleSheet.create({
     borderColor: StyleGuide.colorPalette.gray45,
     borderRadius: 7,
     flex: 1,
-    marginRight: 10,
   },
   buttonImage: {
-    height: 30,
+    aspectRatio: 32 / 30,
     width: 32,
     alignItems: "center",
     justifyContent: "center",
   },
+  sendBtnContainer: { 
+    paddingLeft: 10,
+    paddingVertical: -5,
+    marginVertical: 5
+  }
 });
 
 interface Props {
@@ -47,7 +51,7 @@ export default function TaskInput(props: Props) {
         style={styles.input}
         onChangeText={setValue}
       />
-      <TouchableOpacity disabled={isLoading || !value.length} onPress={handleOnSubmitPress}>
+      <TouchableOpacity style={styles.sendBtnContainer} disabled={isLoading || !value.length} onPress={handleOnSubmitPress}>
         {isLoading ? (
           <View style={styles.buttonImage}>
             <ActivityIndicator color={StyleGuide.colorPalette.gray45} />
