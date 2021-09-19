@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  sendBtnContainer: { 
+  sendBtnContainer: {
     paddingLeft: 10,
     paddingVertical: -5,
-    marginVertical: 5
-  }
+    marginVertical: 5,
+  },
 });
 
 interface Props {
@@ -51,7 +51,11 @@ export default function TaskInput(props: Props) {
         style={styles.input}
         onChangeText={setValue}
       />
-      <TouchableOpacity style={styles.sendBtnContainer} disabled={isLoading || !value.length} onPress={handleOnSubmitPress}>
+      <TouchableOpacity
+        style={styles.sendBtnContainer}
+        disabled={isLoading || !value.length}
+        onPress={handleOnSubmitPress}
+      >
         {isLoading ? (
           <View style={styles.buttonImage}>
             <ActivityIndicator color={StyleGuide.colorPalette.gray45} />

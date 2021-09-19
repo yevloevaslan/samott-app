@@ -5,7 +5,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
-  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BACKGROUND_ORNAMENT_DECORATOR } from "../assets/images";
@@ -75,7 +74,7 @@ function withBackgroundHoc(
       }, [props]);
 
       return (
-        <SafeAreaView edges={['top']} style={styles.containerWrapper}>
+        <SafeAreaView edges={["top"]} style={styles.containerWrapper}>
           <ImageBackground
             resizeMode="stretch"
             style={styles.content}
