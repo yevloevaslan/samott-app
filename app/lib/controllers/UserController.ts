@@ -1,8 +1,8 @@
 import { Alert } from "react-native";
-import Api from "../api";
-import { IUserInfo, UserActionsTypes } from "utils";
-import Controller from "./Controller";
 import PlaygroundActions from "redux/actions/playgroundActions";
+import { IUserInfo, UserActionsTypes } from "utils";
+import Api from "../api";
+import Controller from "./Controller";
 
 class UserController extends Controller {
   async userAuth(code: string) {
@@ -50,6 +50,19 @@ class UserController extends Controller {
     } catch (e) {
       Alert.alert("Ошибка", `${e}`);
     }
+  }
+
+  async uploadUserPhoto(imageUrl: string, name: string, type: string) {
+    try {
+      const data = new FormData();
+      data.append("file", {
+        uri: imageUrl,
+        name,
+        type,
+      });
+      const response = await Api.uploadPhoto(this.token, data);
+      this.dispatch(UserActionsTypes.SET_PHOTO, { uri: response.data.path });
+    } catch (e) {}
   }
 }
 

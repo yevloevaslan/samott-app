@@ -121,4 +121,31 @@ export default class Api {
 
     return response.body.data;
   }
+
+  static async uploadPhoto(
+    token: string,
+    data: FormData
+  ): Promise<{
+    data: {
+      path: string;
+    };
+  }> {
+    const headers = new Headers();
+    headers.append("Content-Type", "multipart/form-data");
+    headers.append("x-access-token", token);
+
+    // eslint-disable-next-line no-undef
+    const options: RequestInit = {
+      method: "POST",
+      headers,
+      body: data,
+    };
+
+    const response = await fetch(
+      "http://68.183.7.178:1855/api/admin/upload",
+      options
+    );
+
+    return await response.json();
+  }
 }

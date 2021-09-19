@@ -31,9 +31,9 @@ import {
   IUserInfo,
   RESET_APP,
   RoutesNames,
+  SCREEN_WIDTH,
   StyleGuide,
   TypographyTypes,
-  UserActionsTypes,
 } from "utils";
 
 const styles = StyleSheet.create({
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     backgroundColor: StyleGuide.colorPalette.gray45,
   },
   modalImageContainer: {
-    width: Dimensions.get("screen").width,
-    height: Dimensions.get("screen").width,
+    width: SCREEN_WIDTH,
+    aspectRatio: 1,
   },
   modalActionButtonContainer: {
     flexDirection: "row",
@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 43,
   },
   selectedPhoto: {
-    flexGrow: 1,
+    width: "100%",
+    aspectRatio: 1,
   },
   selectedPhotoContainer: {
     width: "100%",
@@ -140,7 +141,7 @@ interface Props
   extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE_SETTINGS> {}
 
 function ProfileSettings(props: Props) {
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   const dispatch = useDispatch();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string | undefined>(
@@ -155,9 +156,9 @@ function ProfileSettings(props: Props) {
     props.route.params.firstIn ? undefined : user.birthday
   );
   const [sex, setSex] = useState<"m" | "f" | undefined>(user.sex);
-  const [selectedPhoto, setSelectedPhoto] = useState<{ uri: string }>({
-    uri: "",
-  });
+  const [selectedPhoto, setSelectedPhoto] = useState<
+    Parameters<ImagePicker.Callback>[0]
+  >({});
   const [isPicker, setIsPicker] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isAlert, setIsAlert] = useState<boolean>(false);
@@ -165,9 +166,10 @@ function ProfileSettings(props: Props) {
 
   const handleOnAvatarPress = useCallback(() => {
     ImagePicker.launchImageLibrary({ mediaType: "photo" }, (photo) => {
-      if (photo.uri) {
+      if (photo && photo.type) {
         setIsModal(true);
-        setSelectedPhoto({ uri: photo.uri });
+        //@ts-ignore
+        setSelectedPhoto(photo);
       }
     });
   }, []);
@@ -185,9 +187,15 @@ function ProfileSettings(props: Props) {
   }, []);
 
   const handleOnAcceptImagePress = useCallback(() => {
-    setUser(UserActionsTypes.SET_PHOTO, { photo: selectedPhoto });
+    if (selectedPhoto.uri && selectedPhoto.type) {
+      UserController.uploadUserPhoto(
+        selectedPhoto.uri,
+        selectedPhoto.fileName || "",
+        selectedPhoto.type
+      );
+    }
     handleOnCloseModal();
-  }, [handleOnCloseModal, selectedPhoto, setUser]);
+  }, [handleOnCloseModal, selectedPhoto]);
 
   const handleOnSubmitButtonPress = useCallback(async () => {
     const userInfo: Partial<IUserInfo> = {
@@ -406,7 +414,11 @@ function ProfileSettings(props: Props) {
         <View style={styles.modalContentContainerWrapper}>
           <View style={styles.modalImageContainer}>
             {selectedPhoto.uri ? (
-              <Image source={selectedPhoto} style={styles.selectedPhoto} />
+              <Image
+                resizeMode="stretch"
+                source={{ uri: selectedPhoto.uri }}
+                style={styles.selectedPhoto}
+              />
             ) : null}
             <View style={styles.selectedPhotoContainer}>
               <View style={styles.imageCropp} />

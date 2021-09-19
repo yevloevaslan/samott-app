@@ -1,9 +1,15 @@
-import React, { useMemo } from "react";
-import { TouchableOpacity, Image, StyleSheet, View } from "react-native";
 import { DEFAULT_AVATAR, PHOTO_CAMERA } from "assets/images";
+import { Typography } from "components";
+import React, { useMemo, useState } from "react";
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useUser } from "redux/hooks";
 import { StyleGuide, TypographyTypes } from "utils";
-import { Typography } from "components";
 
 const styles = StyleSheet.create({
   container: {
@@ -44,6 +50,7 @@ interface Props {
 const Avatar = (props: Props) => {
   const { size = { w: 67, h: 67 }, newPhoto, onPress, withName } = props;
   const { user } = useUser();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const containerStyle = useMemo(
     () => [
       styles.container,
@@ -75,7 +82,24 @@ const Avatar = (props: Props) => {
       onPress={onPress}
       style={containerStyle}
     >
+      {isLoading && (
+        <View
+          style={{
+            position: "absolute",
+            width: size.w,
+            height: size.h,
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1,
+          }}
+        >
+          <ActivityIndicator color={StyleGuide.colorPalette.black} />
+        </View>
+      )}
       <Image
+        onLoadStart={() => setIsLoading(true)}
+        onLoadEnd={() => setIsLoading(false)}
+        defaultSource={DEFAULT_AVATAR}
         resizeMode="cover"
         source={user.photo || DEFAULT_AVATAR}
         style={avatarImageStyle}

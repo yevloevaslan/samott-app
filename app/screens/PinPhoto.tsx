@@ -1,12 +1,4 @@
-import React, { useCallback, useState } from "react";
-import {
-  Dimensions,
-  Image,
-  Modal,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { StackScreenProps } from "@react-navigation/stack";
 import {
   Avatar,
   Bubble,
@@ -14,6 +6,18 @@ import {
   Typography,
   withBackgroundHoc,
 } from "components";
+import { UserController } from "lib";
+import React, { useCallback, useState } from "react";
+import {
+  Dimensions,
+  Image,
+  Modal,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import * as ImagePicker from "react-native-image-picker";
+import { useUser } from "redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -22,9 +26,6 @@ import {
   TypographyTypes,
   UserActionsTypes,
 } from "utils";
-import * as ImagePicker from "react-native-image-picker";
-import { useUser } from "redux/hooks";
-import { StackScreenProps } from "@react-navigation/stack";
 
 const styles = StyleSheet.create({
   container: {
@@ -92,15 +93,15 @@ interface Props
 function PinPhoto(props: Props) {
   const { setUser } = useUser();
   const [isModal, setIsModal] = useState<boolean>(false);
-  const [selectedPhoto, setSelectedPhoto] = useState<{ uri: string }>({
-    uri: "",
-  });
+  const [selectedPhoto, setSelectedPhoto] = useState<
+    Parameters<ImagePicker.Callback>[0]
+  >({});
 
   const handleOnAvatarPress = useCallback(() => {
     ImagePicker.launchImageLibrary({ mediaType: "photo" }, (photo) => {
       if (photo.uri) {
         setIsModal(true);
-        setSelectedPhoto({ uri: photo.uri });
+        setSelectedPhoto(photo);
       }
     });
   }, []);
@@ -111,6 +112,13 @@ function PinPhoto(props: Props) {
 
   const handleOnAcceptImagePress = useCallback(() => {
     setUser(UserActionsTypes.SET_PHOTO, { photo: selectedPhoto });
+    if (selectedPhoto.uri && selectedPhoto.type) {
+      UserController.uploadUserPhoto(
+        selectedPhoto.uri,
+        selectedPhoto.fileName || "",
+        selectedPhoto.type
+      );
+    }
     handleOnCloseModal();
   }, [handleOnCloseModal, selectedPhoto, setUser]);
 
@@ -162,7 +170,10 @@ function PinPhoto(props: Props) {
         <View style={styles.modalContentContainerWrapper}>
           <View style={styles.modalImageContainer}>
             {selectedPhoto.uri ? (
-              <Image source={selectedPhoto} style={styles.selectedPhoto} />
+              <Image
+                source={{ uri: selectedPhoto.uri }}
+                style={styles.selectedPhoto}
+              />
             ) : null}
             <View style={styles.selectedPhotoContainer}>
               <View style={styles.imageCropp} />
