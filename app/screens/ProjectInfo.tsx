@@ -1,11 +1,17 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import { Header, Typography, withBackgroundHoc } from "components";
+import {
+  Header,
+  LoadingImage,
+  Typography,
+  withBackgroundHoc,
+} from "components";
 import React, { useCallback } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   BackgroundImages,
   HomeStackProps,
   RoutesNames,
+  StyleGuide,
   TypographyTypes,
 } from "utils";
 
@@ -47,7 +53,8 @@ function ProjectInfo(props: Props) {
       />
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
+          <LoadingImage
+            indicatorColor={StyleGuide.colorPalette.black}
             source={{ uri: info.photos[0] }}
             style={styles.image}
             resizeMode="cover"

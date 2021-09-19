@@ -18,6 +18,7 @@ import Player from "./Player";
 import TaskInput from "./TaskInput";
 import Input from "./Input";
 import DictionaryWordsList from "./DictionaryWordsList";
+import LoadingImage from "./LoadingImage";
 
 export {
   Typography,
@@ -40,4 +41,5 @@ export {
   TaskInput,
   Input,
   DictionaryWordsList,
+  LoadingImage,
 };

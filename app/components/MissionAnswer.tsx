@@ -1,8 +1,7 @@
-import { Typography } from "components";
+import { LoadingImage, Typography } from "components";
 import React, { useCallback, useMemo } from "react";
 import {
   ActivityIndicator,
-  Image,
   ImageStyle,
   StyleSheet,
   TouchableOpacity,
@@ -105,7 +104,7 @@ export default function MissionAnswer(props: Props) {
   const renderAnswerContent = useCallback(() => {
     if (photoAnswer) {
       return (
-        <Image
+        <LoadingImage
           resizeMode="stretch"
           source={{ uri: answer }}
           style={imageStyle}
@@ -116,7 +115,7 @@ export default function MissionAnswer(props: Props) {
     return (
       <Typography
         textAlign="center"
-        type={TypographyTypes.NORMAL500}
+        type={TypographyTypes.NORMAL14}
         color={StyleGuide.colorPalette.white}
         numberOfLines={3}
       >
