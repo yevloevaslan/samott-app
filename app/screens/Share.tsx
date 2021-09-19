@@ -8,7 +8,14 @@ import {
 } from "components";
 import MainController from "lib/controllers/MainController";
 import React, { useCallback, useState } from "react";
-import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  Linking,
+  Platform,
+  Share,
+  StyleSheet,
+  View,
+} from "react-native";
 import { useEffectAsync } from "react-native-text-input-mask";
 import {
   APP_STORE_APP_URL,
@@ -43,9 +50,11 @@ const styles = StyleSheet.create({
 
 interface Props extends StackScreenProps<HomeStackProps, RoutesNames.SHARE> {}
 
-function Share(props: Props) {
+function ShareScreen(props: Props) {
   const {} = props;
-  const [aboutProject, setAboutProject] = useState<IAboutProject>();
+  const [aboutProject, setAboutProject] = useState<
+    Omit<IAboutProject, "banner">
+  >();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
 
@@ -90,6 +99,21 @@ function Share(props: Props) {
     setIsAlertVisible((prev) => !prev);
   }, []);
 
+  const handleOnShareBtnPress = useCallback(() => {
+    Share.share({
+      message:
+        "Выучи Ингушский язык с помощью задач!\n" +
+        Platform.select({
+          ios: APP_STORE_APP_URL,
+          android: GOOGLE_PLAY_APP_URL,
+        }),
+      url: Platform.select({
+        ios: APP_STORE_APP_URL,
+        android: GOOGLE_PLAY_APP_URL,
+      }),
+    });
+  }, []);
+
   return (
     <View>
       <Header title="Поделиться" decorators="right" />
@@ -111,12 +135,15 @@ function Share(props: Props) {
             <Button onPress={toggleModal} style={styles.navigationBtn}>
               <Typography type={TypographyTypes.BOLD24}>Оценить</Typography>
             </Button>
-            <Button style={styles.navigationBtn}>
+            <Button onPress={goToMarket} style={styles.navigationBtn}>
               <Typography type={TypographyTypes.BOLD24}>
                 Написать нам
               </Typography>
             </Button>
-            <Button style={styles.navigationBtn}>
+            <Button
+              onPress={handleOnShareBtnPress}
+              style={styles.navigationBtn}
+            >
               <Typography type={TypographyTypes.BOLD24}>Поделиться</Typography>
             </Button>
           </>
@@ -134,4 +161,7 @@ function Share(props: Props) {
   );
 }
 
-export default withBackgroundHoc(BackgroundImages.WITH_CASTLES, true)(Share);
+export default withBackgroundHoc(
+  BackgroundImages.WITH_CASTLES,
+  true
+)(ShareScreen);

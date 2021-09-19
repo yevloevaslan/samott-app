@@ -13,9 +13,11 @@ class MainController extends Controller {
   async getAboutProject() {
     try {
       const response = await Api.getInfoAboutProject(this.token);
+      const { banner, ...about } = response;
       this.dispatch(AppActionsTypes.SET_PROFILE_BANNER, {
-        bannerUrl: response.banner,
+        bannerUrl: banner,
       });
+      return about;
     } catch (e) {}
   }
 

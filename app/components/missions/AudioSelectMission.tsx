@@ -53,7 +53,15 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     marginRight: 12,
   },
+  finalWordContainer: {
+    backgroundColor: StyleGuide.colorPalette.white,
+    padding: 20,
+    marginBottom: 10,
+    flex: 1,
+    borderRadius: 20,
+  },
 });
+
 type ExtraAnswerType = GetSelectTaskParams<TaskTypes.AUDIO>["answers"][0];
 
 interface TaskAnswerProps {
@@ -165,9 +173,13 @@ const AudioMission = (props: Props) => {
     <>
       <MissionTitle title={title} />
       <Player sound={sound} />
-      <Typography color={StyleGuide.colorPalette.black}>
-        {selectedAnswers.join(" ")}
-      </Typography>
+      {selectedAnswers.length > 0 && (
+        <View style={styles.finalWordContainer}>
+          <Typography color={StyleGuide.colorPalette.black}>
+            {selectedAnswers.join(" ")}
+          </Typography>
+        </View>
+      )}
       <TouchableOpacity
         onPress={handleOnSubmitPress}
         disabled={!selectedAnswers.length}
