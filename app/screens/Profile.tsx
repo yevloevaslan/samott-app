@@ -12,6 +12,7 @@ import {
   Button,
   DifficultSelector,
   Header,
+  LoadingImage,
   Typography,
   withBackgroundHoc,
 } from "components";
@@ -194,9 +195,9 @@ function Profile(props: Props) {
 
     return (
       <View style={{ marginTop: -20 }}>
-        <Image
+        <LoadingImage
           resizeMethod="resize"
-          resizeMode="cover"
+          resizeMode="stretch"
           source={{ uri: app.bannerUrl }}
           style={{ width: "100%", aspectRatio: SCREEN_WIDTH / 100 }}
         />

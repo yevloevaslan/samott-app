@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import { EXIT, TRASH_CAN } from "assets/images";
+import { EXIT } from "assets/images";
 import {
   Alert,
   Avatar,
@@ -112,17 +112,17 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     borderColor: StyleGuide.colorPalette.white,
   },
-  trashCanIcon: {
-    height: 43,
-    width: 31,
-    marginRight: 20,
-  },
-  deleteAccountButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingTop: 20,
-    justifyContent: "center",
-  },
+  // trashCanIcon: {
+  //   height: 43,
+  //   width: 31,
+  //   marginRight: 20,
+  // },
+  // deleteAccountButton: {
+  //   flexDirection: "row",
+  //   alignItems: "center",
+  //   paddingTop: 20,
+  //   justifyContent: "center",
+  // },
   exitIconContainer: {
     width: 44,
     height: 41,
@@ -243,9 +243,9 @@ function ProfileSettings(props: Props) {
     setIsPicker(true);
   }, []);
 
-  const handleOnDeleteButtonPress = useCallback(() => {
-    setIsAlert(true);
-  }, []);
+  // const handleOnDeleteButtonPress = useCallback(() => {
+  //   setIsAlert(true);
+  // }, []);
 
   const handleOnDeleteAccount = useCallback(() => setIsAlert(false), []);
 
@@ -255,7 +255,8 @@ function ProfileSettings(props: Props) {
         firstName?.trim() &&
         middleName?.trim() &&
         lastName?.trim() &&
-        birthday
+        birthday instanceof Date &&
+        !isNaN(birthday.getMilliseconds())
       ),
     [birthday, firstName, lastName, middleName]
   );
@@ -364,7 +365,7 @@ function ProfileSettings(props: Props) {
               : "Подтвердить изменения"}
           </Typography>
         </Button>
-        {!props.route.params.firstIn && (
+        {/* {!props.route.params.firstIn && (
           <TouchableOpacity
             onPress={handleOnDeleteButtonPress}
             style={styles.deleteAccountButton}
@@ -377,7 +378,7 @@ function ProfileSettings(props: Props) {
               Удалить аккаунт
             </Typography>
           </TouchableOpacity>
-        )}
+        )} */}
       </View>
       <Alert
         visible={isAlert}
