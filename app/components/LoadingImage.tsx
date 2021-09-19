@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { ActivityIndicator, Image, ImageProps, View } from "react-native";
-import Animated, { Easing } from "react-native-reanimated";
 import { StyleGuide } from "utils";
 
 interface Props extends ImageProps {
@@ -13,26 +12,21 @@ export default function LoadingImage(props: Props) {
     ...imageProps
   } = props;
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const opacityAnimValue = Animated.useValue<number>(0);
 
   const handleOnLoadEnd = useCallback(() => {
     setIsLoading(false);
   }, []);
-
-  useEffect(() => {
-    Animated.timing(opacityAnimValue, {
-      toValue: +!isLoading,
-      duration: 250,
-      easing: Easing.sin,
-    }).start();
-  }, [isLoading, opacityAnimValue]);
 
   return (
     <>
       {isLoading && (
         <View
           style={[
-            { alignItems: "center", justifyContent: "center" },
+            {
+              alignItems: "center",
+              justifyContent: "center",
+              position: "absolute",
+            },
             imageProps.style,
           ]}
         >

@@ -57,7 +57,7 @@ function ProjectInfo(props: Props) {
             indicatorColor={StyleGuide.colorPalette.black}
             source={{ uri: info.photos[0] }}
             style={styles.image}
-            resizeMode="cover"
+            resizeMode="stretch"
           />
         </View>
         <Typography
