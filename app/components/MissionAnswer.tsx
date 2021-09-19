@@ -104,7 +104,13 @@ export default function MissionAnswer(props: Props) {
 
   const renderAnswerContent = useCallback(() => {
     if (photoAnswer) {
-      return <Image source={{ uri: answer }} style={imageStyle} />;
+      return (
+        <Image
+          resizeMode="stretch"
+          source={{ uri: answer }}
+          style={imageStyle}
+        />
+      );
     }
 
     return (

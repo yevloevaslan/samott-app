@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  title: {
+    fontWeight: "500",
+  },
 });
 
 interface Props {
@@ -43,8 +46,9 @@ export default function MissionTitle(props: Props) {
         <Typography
           textAlign="center"
           numberOfLines={100}
-          type={TypographyTypes.NORMAL18}
+          type={TypographyTypes.NORMAL24}
           color={StyleGuide.colorPalette.black}
+          style={styles.title}
         >
           {title}{" "}
         </Typography>
