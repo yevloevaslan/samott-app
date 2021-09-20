@@ -12,19 +12,22 @@ class MainController extends Controller {
 
   async getAboutProject() {
     try {
-      const response = await Api.getInfoAboutProject(this.token);
-      const { banner, ...about } = response;
+      return await Api.getInfoAboutProject(this.token);
+    } catch (e) {}
+  }
+
+  async getBanner() {
+    try {
+      const { banner } = await Api.getInfoAboutProject(this.token);
       this.dispatch(AppActionsTypes.SET_PROFILE_BANNER, {
         bannerUrl: banner,
       });
-      return about;
     } catch (e) {}
   }
 
   async getGrammarFile() {
     try {
-      const response = await Api.getGrammar(this.token);
-      return response;
+      return await Api.getGrammar(this.token);
     } catch (ignore) {}
     return undefined;
   }

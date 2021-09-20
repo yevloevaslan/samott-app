@@ -1,3 +1,4 @@
+import { useFocusEffect } from "@react-navigation/core";
 import { StackScreenProps } from "@react-navigation/stack";
 import {
   GEAR_WHEEL,
@@ -17,6 +18,7 @@ import {
   withBackgroundHoc,
 } from "components";
 import { UserController } from "lib";
+import MainController from "lib/controllers/MainController";
 import React, { useCallback, useState } from "react";
 import {
   Image,
@@ -155,6 +157,14 @@ function Profile(props: Props) {
     setIsLoading(false);
   }, []);
 
+  useFocusEffect(
+    useCallback(() => {
+      (async () => {
+        MainController.getBanner();
+      })();
+    }, [])
+  );
+
   const renderCurrentLevelStatus = useCallback(() => {
     const containerStyle: ViewStyle[] = [styles.starContainer];
     let star: ImageProps["source"] = RED_STAR;
@@ -196,7 +206,7 @@ function Profile(props: Props) {
     return (
       <View style={{ marginTop: -20 }}>
         <LoadingImage
-          resizeMethod="resize"
+          resizeMethod="auto"
           resizeMode="stretch"
           source={{ uri: app.bannerUrl }}
           style={{ width: "100%", aspectRatio: SCREEN_WIDTH / 100 }}
