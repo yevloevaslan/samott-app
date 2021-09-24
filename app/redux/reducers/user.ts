@@ -13,7 +13,7 @@ export const userInitialState: IUser = {
   birthday: new Date(),
   score: 0,
   sex: undefined,
-  photo: undefined,
+  img: "",
 };
 
 const userReducer = createReducer(
@@ -22,15 +22,12 @@ const userReducer = createReducer(
     builder.addCase(UserActions.setUserId, reducer);
     builder.addCase(UserActions.setUserPhone, reducer);
     builder.addCase(UserActions.setUserToken, reducer);
-    builder.addCase(UserActions.setUserPhoto, (state, { payload }) => ({
-      ...state,
-      photo: payload,
-    }));
     builder.addCase(UserActions.setUserName, reducer);
     builder.addCase(UserActions.setUserRating, reducer);
     builder.addCase(UserActions.setUserBirthday, reducer);
     builder.addCase(UserActions.setUserInfo, reducer);
     builder.addCase(UserActions.setUser, reducer);
+    builder.addCase(UserActions.setUserImg, reducer);
   }
 );
 

@@ -25,10 +25,10 @@ export interface IUserInfo {
   middleName: string;
   firstName: string;
   email?: string;
-  phone?: string;
   score?: number;
   birthday?: Date;
   sex?: "m" | "f";
+  img: string;
 }
 
 export interface IPlaygound {
@@ -44,7 +44,6 @@ export interface IUser extends IUserInfo {
   id?: string;
   phone?: string;
   token: string;
-  photo?: { uri?: string };
 }
 
 export interface IMissionTaskProps {

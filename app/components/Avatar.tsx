@@ -101,7 +101,7 @@ const Avatar = (props: Props) => {
         onLoadEnd={() => setIsLoading(false)}
         defaultSource={DEFAULT_AVATAR}
         resizeMode="cover"
-        source={user.photo || DEFAULT_AVATAR}
+        source={{ uri: user.img } || DEFAULT_AVATAR}
         style={avatarImageStyle}
       />
       {withName && (

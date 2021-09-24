@@ -28,3 +28,42 @@ export function getDeclining(value: number, declinings: string[]): string {
 
   return declinings[2];
 }
+
+export function deepEqual<T extends Object = object>(
+  firstObj?: T,
+  secondObj?: T
+): boolean {
+  if ((!firstObj && secondObj) || (firstObj && !secondObj)) {
+    return false;
+  }
+
+  if (firstObj && secondObj) {
+    const firstObjKeys = Object.keys(firstObj) as (keyof T)[];
+    const secondObjKeys = Object.keys(secondObj) as (keyof T)[];
+
+    if (firstObjKeys.length !== secondObjKeys.length) {
+      return false;
+    }
+
+    for (const key of firstObjKeys) {
+      const firstObjValue = firstObj[key];
+      const secondObjValue = secondObj[key];
+
+      if (typeof firstObjValue !== typeof secondObjValue) {
+        return false;
+      }
+
+      if (Array.isArray(firstObjValue)) {
+        return firstObjValue.every(() =>
+          deepEqual(firstObjValue, secondObjValue)
+        );
+      } else if (typeof firstObjValue === "object") {
+        return deepEqual(firstObjValue, secondObjValue);
+      } else if (firstObjValue !== secondObjValue) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}

@@ -27,6 +27,7 @@ import { useDispatch } from "react-redux";
 import { useUser } from "redux/hooks";
 import {
   BackgroundImages,
+  deepEqual,
   HomeStackProps,
   IUserInfo,
   RESET_APP,
@@ -257,17 +258,18 @@ function ProfileSettings(props: Props) {
 
   const handleOnDeleteAccount = useCallback(() => setIsAlert(false), []);
 
-  const isSubmitButtonDisabled = useMemo(
-    () =>
-      !(
-        firstName?.trim() &&
-        middleName?.trim() &&
-        lastName?.trim() &&
-        birthday instanceof Date &&
-        !isNaN(birthday.getMilliseconds())
-      ),
-    [birthday, firstName, lastName, middleName]
-  );
+  const isSubmitButtonDisabled = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { phone, id, token, sex: userInfoSex, score, img, ...uf } = user;
+
+    return deepEqual<Partial<IUserInfo>>(uf, {
+      firstName,
+      lastName,
+      birthday,
+      middleName,
+      email,
+    });
+  }, [birthday, email, firstName, lastName, middleName, user]);
 
   return (
     <View style={styles.container}>

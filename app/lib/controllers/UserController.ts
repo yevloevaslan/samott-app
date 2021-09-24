@@ -61,7 +61,10 @@ class UserController extends Controller {
         type,
       });
       const response = await Api.uploadPhoto(this.token, data);
-      this.dispatch(UserActionsTypes.SET_PHOTO, { uri: response.data.path });
+      const photo = await this.userPutInfo({ img: response.data.path });
+      if (photo) {
+        this.dispatch(UserActionsTypes.SET_IMG, { img: response.data.path });
+      }
     } catch (e) {}
   }
 }

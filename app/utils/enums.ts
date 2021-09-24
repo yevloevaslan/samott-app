@@ -61,7 +61,7 @@ export enum UserActionsTypes {
   SET_ID = "SET_ID",
   SET_TOKEN = "SET_TOKEN",
   SET_PHONE = "SET_PHONE",
-  SET_PHOTO = "SET_PHOTO",
+  SET_IMG = "SET_IMG",
   SET_NAME = "SET_NAME",
   SET_RATING = "SET_RATING",
   SET_BIRTHDAY = "SET_BIRTHDAY",
