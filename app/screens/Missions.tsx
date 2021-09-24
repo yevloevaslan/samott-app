@@ -47,7 +47,6 @@ function Missions(props: Props) {
   const {} = props;
   const { user } = useUser();
   const { setIsPlaying } = useApp();
-  const { playground } = usePlayground();
   const { setCurrentDifficult } = usePlayground();
 
   const handleOnDifficultPress = useCallback(
@@ -69,7 +68,7 @@ function Missions(props: Props) {
                 type={TypographyTypes.NORMAL18}
                 color={StyleGuide.colorPalette.black}
               >
-                Рейтинг {playground.totalScore}
+                Рейтинг {user.rating}
               </Typography>
             </Bubble>
           </View>

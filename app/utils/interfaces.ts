@@ -29,6 +29,7 @@ export interface IUserInfo {
   birthday?: Date;
   sex?: "m" | "f";
   img: string;
+  rating: number;
 }
 
 export interface IPlaygound {

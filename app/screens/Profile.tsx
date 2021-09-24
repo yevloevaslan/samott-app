@@ -29,7 +29,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { useApp, usePlayground } from "redux/hooks";
+import { useApp, usePlayground, useUser } from "redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -146,6 +146,7 @@ interface Props extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE> {}
 function Profile(props: Props) {
   const { playground } = usePlayground();
   const { app } = useApp();
+  const { user } = useUser();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleOnGoSettingsPress = useCallback(() => {
     props.navigation.navigate(RoutesNames.PROFILE_SETTINGS, { firstIn: false });
@@ -256,7 +257,7 @@ function Profile(props: Props) {
                 </Typography>
                 <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
                   <Typography color={StyleGuide.colorPalette.acidGreen}>
-                    0
+                    {user.rating}
                   </Typography>
                 </Bubble>
               </View>

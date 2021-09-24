@@ -40,9 +40,10 @@ class UserController extends Controller {
     try {
       const response = await Api.userGetInfo(this.store.getState().user.token);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { createdAt, updatedAt, score, ...rest } = response;
+      const { createdAt, updatedAt, score, _id: id, ...rest } = response;
       this.dispatch(UserActionsTypes.SET_INFO, {
         ...rest,
+        id,
         birthday: new Date(response.birthday),
       });
       this.dispatch(PlaygroundActions.SET_SCORE, { totalScore: score });
@@ -52,7 +53,11 @@ class UserController extends Controller {
     }
   }
 
-  async uploadUserPhoto(imageUrl: string, name: string, type: string) {
+  async uploadUserPhoto(
+    imageUrl: string,
+    name: string,
+    type: string
+  ): Promise<string | undefined> {
     try {
       const data = new FormData();
       data.append("file", {
@@ -60,12 +65,12 @@ class UserController extends Controller {
         name,
         type,
       });
-      const response = await Api.uploadPhoto(this.token, data);
-      const photo = await this.userPutInfo({ img: response.data.path });
-      if (photo) {
-        this.dispatch(UserActionsTypes.SET_IMG, { img: response.data.path });
-      }
+      const {
+        data: { path },
+      } = await Api.uploadPhoto(this.token, data);
+      return path;
     } catch (e) {}
+    return undefined;
   }
 }
 

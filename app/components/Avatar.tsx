@@ -45,6 +45,7 @@ interface Props {
   newPhoto?: boolean;
   onPress?: () => void;
   withName?: boolean;
+  img?: string;
 }
 
 const Avatar = (props: Props) => {
@@ -101,7 +102,7 @@ const Avatar = (props: Props) => {
         onLoadEnd={() => setIsLoading(false)}
         defaultSource={DEFAULT_AVATAR}
         resizeMode="cover"
-        source={{ uri: user.img } || DEFAULT_AVATAR}
+        source={{ uri: props.img || user.img } || DEFAULT_AVATAR}
         style={avatarImageStyle}
       />
       {withName && (

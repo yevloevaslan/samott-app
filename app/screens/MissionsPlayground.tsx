@@ -213,7 +213,7 @@ function MissionsPlayground(_props: Props) {
               type={TypographyTypes.NORMAL18}
               color={StyleGuide.colorPalette.black}
             >
-              Рейтинг {playground.totalScore}
+              Рейтинг {user.rating}
             </Typography>
           </Bubble>
         </View>

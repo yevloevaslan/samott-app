@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: "row",
+    flexWrap: "wrap",
   },
   contentContainer: {
     flex: 1,
@@ -51,6 +52,9 @@ const styles = StyleSheet.create({
   leftContentContainer: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+    flex: 1,
+    flexWrap: "wrap",
   },
 });
 
@@ -131,13 +135,17 @@ const Header = (props: Props) => {
           />
         )}
         <View style={[styles.contentContainer, { justifyContent }]}>
+          {renderLeft()}
           <View style={styles.leftContentContainer}>
-            {renderLeft()}
-            <Typography type={titleType} style={styles.titleText}>
+            <Typography
+              numberOfLines={1}
+              type={titleType}
+              style={styles.titleText}
+            >
               {title}
             </Typography>
+            {children}
           </View>
-          {children}
         </View>
         {isRight && (
           <Image

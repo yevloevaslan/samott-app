@@ -142,7 +142,7 @@ interface Props
   extends StackScreenProps<HomeStackProps, RoutesNames.PROFILE_SETTINGS> {}
 
 function ProfileSettings(props: Props) {
-  const { user } = useUser();
+  const { user, userInfo: oldInfo } = useUser();
   const dispatch = useDispatch();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string | undefined>(
@@ -184,21 +184,25 @@ function ProfileSettings(props: Props) {
   }, []);
 
   const handleOnCloseModal = useCallback(() => {
+    setSelectedPhoto({});
     setIsModal(false);
   }, []);
 
   const handleOnAcceptImagePress = useCallback(() => {
+    setIsModal(false);
+  }, []);
+
+  const handleOnSubmitButtonPress = useCallback(async () => {
+    let img;
+    setIsLoading(true);
     if (selectedPhoto.uri && selectedPhoto.type) {
-      UserController.uploadUserPhoto(
+      img = await UserController.uploadUserPhoto(
         selectedPhoto.uri,
         selectedPhoto.fileName || "",
         selectedPhoto.type
       );
+      setSelectedPhoto({});
     }
-    handleOnCloseModal();
-  }, [handleOnCloseModal, selectedPhoto]);
-
-  const handleOnSubmitButtonPress = useCallback(async () => {
     const userInfo: Partial<IUserInfo> = {
       lastName: lastName || user.lastName,
       middleName: middleName || user.middleName,
@@ -206,8 +210,8 @@ function ProfileSettings(props: Props) {
       birthday,
       email,
       sex,
+      img,
     };
-    setIsLoading(true);
     const response = await UserController.userPutInfo(userInfo);
     if (response) {
       await UserController.userGetInfo();
@@ -224,6 +228,9 @@ function ProfileSettings(props: Props) {
     middleName,
     props.navigation,
     props.route.params.firstIn,
+    selectedPhoto.fileName,
+    selectedPhoto.type,
+    selectedPhoto.uri,
     sex,
     user.firstName,
     user.lastName,
@@ -259,17 +266,30 @@ function ProfileSettings(props: Props) {
   const handleOnDeleteAccount = useCallback(() => setIsAlert(false), []);
 
   const isSubmitButtonDisabled = useMemo(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { phone, id, token, sex: userInfoSex, score, img, ...uf } = user;
+    const { birthday: oldBirthday, ...withoutBirthday } = oldInfo;
 
-    return deepEqual<Partial<IUserInfo>>(uf, {
-      firstName,
-      lastName,
-      birthday,
-      middleName,
-      email,
-    });
-  }, [birthday, email, firstName, lastName, middleName, user]);
+    return deepEqual<any>(
+      { birthday: oldBirthday?.toISOString(), ...withoutBirthday },
+      {
+        firstName,
+        lastName,
+        middleName,
+        email,
+        sex,
+        img: selectedPhoto.uri || oldInfo.img,
+        birthday: birthday?.toISOString(),
+      }
+    );
+  }, [
+    birthday,
+    email,
+    firstName,
+    lastName,
+    middleName,
+    oldInfo,
+    selectedPhoto.uri,
+    sex,
+  ]);
 
   return (
     <View style={styles.container}>
@@ -301,7 +321,11 @@ function ProfileSettings(props: Props) {
       <View style={styles.contentContainer}>
         {!props.route.params.firstIn && (
           <View style={styles.avatarContainer}>
-            <Avatar newPhoto onPress={handleOnAvatarPress} />
+            <Avatar
+              newPhoto
+              img={selectedPhoto.uri}
+              onPress={handleOnAvatarPress}
+            />
           </View>
         )}
         <BorderedInput

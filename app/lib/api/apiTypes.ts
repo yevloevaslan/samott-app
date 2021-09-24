@@ -23,6 +23,7 @@ export interface ApiUserInfo extends Omit<IUserInfo, "birthday"> {
   birthday: string;
   createdAt: Date;
   updatedAt: Date;
+  _id: string;
 }
 
 export interface ApiTasks {}
