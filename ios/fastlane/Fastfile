@@ -6,25 +6,9 @@ ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "app specific пароль
 ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"] = "-t DAV"
 
 platform :ios do
-    lane :prod do
-      produce(
-        username: 'koshechkin-vlad@yandex.ru',
-        app_identifier: 'ru.use-case.translate',
-        app_name: 'SaMott',
-        language: 'ru'
-      )
-    end
-
-    lane :reg_dev do
-        register_devices(
-          devices: {
-            "Имя устройства (например Nikita 6s)" => "UDID устройства"
-          }
-        )
-    end
     lane :build do
         match(type: 'appstore', readonly: true)
-        gym(scheme: 'SaMott')
+        gym(scheme: 'Translator')
     end
 
     lane :deploy do
