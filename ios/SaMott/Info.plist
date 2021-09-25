@@ -45,10 +45,10 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Требуется доступ к гео данным</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Требуется доступ к галерее для загрузки аватара</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
