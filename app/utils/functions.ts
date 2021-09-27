@@ -1,5 +1,3 @@
-import { DevSettings } from "react-native";
-
 export function HelloWorld() {
   return "Hello, World!";
 }
@@ -7,8 +5,6 @@ export function HelloWorld() {
 export function reducer<T>(state: T, action: { type: string; payload: any }) {
   return { ...state, ...action.payload };
 }
-
-export const RestartApp = DevSettings.reload;
 
 export function getDeclining(value: number, declinings: string[]): string {
   const lastTwoNumbers = Number(String(value).substr(-2));

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_label" translatesAutoresizingMaskIntoConstraints="NO" id="KyF-13-f5i">
-                                <rect key="frame" x="40" y="360" width="295" height="76"/>
+                                <rect key="frame" x="19.5" y="360" width="336" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KyF-13-f5i" secondAttribute="height" multiplier="166:43" id="njz-XS-1cF"/>
                                 </constraints>
@@ -32,20 +32,14 @@
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="KyF-13-f5i" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="40" id="GD8-lm-E2S"/>
-                            <constraint firstItem="KyF-13-f5i" firstAttribute="top" secondItem="M27-h2-zL4" secondAttribute="bottom" constant="50" id="Mo0-7q-PeV"/>
-                            <constraint firstItem="KyF-13-f5i" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" id="NzB-D3-etH"/>
-                            <constraint firstItem="M27-h2-zL4" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="78" id="Svx-vV-rpb"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="M27-h2-zL4" secondAttribute="trailing" constant="78" id="UPr-BO-fgq"/>
-                            <constraint firstItem="M27-h2-zL4" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="120" id="Vz5-xD-u1e"/>
-                            <constraint firstItem="M27-h2-zL4" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="80" id="b3v-aO-r38"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="M27-h2-zL4" secondAttribute="trailing" constant="80" id="bKi-Qa-khQ"/>
-                            <constraint firstItem="M27-h2-zL4" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="85" id="eWn-17-kCi"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="M27-h2-zL4" secondAttribute="trailing" constant="80" id="heD-ZS-nNj"/>
-                            <constraint firstItem="KyF-13-f5i" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="40" id="kG7-ZF-iCL"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="KyF-13-f5i" secondAttribute="trailing" constant="20" id="qro-rY-enZ"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="KyF-13-f5i" secondAttribute="trailing" constant="40" id="t2l-lH-gHz"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="M27-h2-zL4" secondAttribute="trailing" constant="120" id="xeE-3w-6dh"/>
+                            <constraint firstItem="M27-h2-zL4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Qlt-js-gXJ"/>
+                            <constraint firstItem="M27-h2-zL4" firstAttribute="centerX" secondItem="KyF-13-f5i" secondAttribute="centerX" id="R0Q-Hy-aZy"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="M27-h2-zL4" secondAttribute="trailing" constant="80" id="Vag-43-bAy"/>
+                            <constraint firstItem="KyF-13-f5i" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="19.5" id="aIB-Hb-vwk"/>
+                            <constraint firstItem="KyF-13-f5i" firstAttribute="top" secondItem="M27-h2-zL4" secondAttribute="bottom" constant="50" id="gCA-Vk-fgx"/>
+                            <constraint firstItem="M27-h2-zL4" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="80" id="kfO-Jl-OcE"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="KyF-13-f5i" secondAttribute="trailing" constant="19.5" id="lyk-aV-slU"/>
+                            <constraint firstItem="M27-h2-zL4" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="85" id="p07-VQ-ETc"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -1,9 +1,6 @@
 default_platform :ios
 
-#https://docs.fastlane.tools/best-practices/continuous-integration/#application-specific-passwords
-ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "app specific пароль для загрузки приложения в appstoreconnect"
-
-ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"] = "-t DAV"
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "ekbm-uqpd-extc-atxt"
 
 platform :ios do
     lane :build do
