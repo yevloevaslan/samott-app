@@ -11,7 +11,6 @@ import {
   Avatar,
   Bubble,
   Button,
-  DifficultSelector,
   Header,
   LoadingImage,
   Typography,
@@ -122,22 +121,6 @@ const styles = StyleSheet.create({
   currentRatingText: {
     marginRight: 10,
     paddingTop: 7,
-  },
-  missionsStatusContainer: {
-    paddingHorizontal: 10,
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 24,
-  },
-  difficultContainer: {
-    marginBottom: 10,
-  },
-  difficultsContainer: {
-    flex: 1,
-    marginLeft: -10,
-  },
-  missionStatusTitleText: {
-    marginBottom: 20,
   },
 });
 
@@ -290,34 +273,6 @@ function Profile(props: Props) {
                 Текущий уровень
               </Typography>
               {renderCurrentLevelStatus()}
-            </View>
-          </View>
-          <View style={[styles.whiteContainer, styles.missionsStatusContainer]}>
-            <Typography
-              style={styles.missionStatusTitleText}
-              color={StyleGuide.colorPalette.mediumDarkGray}
-            >
-              Выполнено заданий
-            </Typography>
-            <View style={styles.difficultsContainer}>
-              <View style={styles.difficultContainer}>
-                <DifficultSelector
-                  score={playground.easyLevelScore}
-                  difficult={MissionDifficultType.EASY}
-                />
-              </View>
-              <View style={styles.difficultContainer}>
-                <DifficultSelector
-                  score={playground.mediumLevelScore}
-                  difficult={MissionDifficultType.MEDIUM}
-                />
-              </View>
-              <View style={styles.difficultContainer}>
-                <DifficultSelector
-                  score={playground.hardLevelScore}
-                  difficult={MissionDifficultType.HARD}
-                />
-              </View>
             </View>
           </View>
         </View>

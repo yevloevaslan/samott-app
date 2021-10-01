@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   taskTitleContainer: {
     borderRadius: 20,
     padding: 16,
-    backgroundColor: StyleGuide.colorPalette.gray45,
+    backgroundColor: StyleGuide.colorPalette.lightGray,
     minHeight: 91,
     marginBottom: 20,
     width: "100%",
