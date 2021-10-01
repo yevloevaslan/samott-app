@@ -1,0 +1,18 @@
+stages:
+  - lint
+  - deploy
+
+deploy_ios:
+  stage: deploy
+  variables:
+    FASTLANE_SESSION: '---\n- !ruby/object:HTTP::Cookie\n  name: myacinfo\n  value: DAWTKNV323952cf8084a204fb20ab2508441a07d02d318a9e9c0b6500c1415ebe5edc315f7d630a821cffbd4e0bf3e4cab696e1350887c749c7f4be05ecb30c3031f32fe3a706083114097c2fd5dca64e629fd545c403901a9ee69c51a0dad30e7696c521f4cb146388febd4932487b64b4591a64993e8f7b9cbc9129e3ffecfaf6003a9e9825f3739519424b31456903267e676ecf65988a6459706e9eb824aecd13ec27716f3bf57015a415bb82fecfda2aefbc336510a9883ab37aba23e4d52bb3ab03879f1c37aa3bf6110e72ccac6218456ad9e6f2ff59141ede4ab5107c0eed47648d27843921c472bd738a1e8ac5aa63387ca3721f1af7d9bb0298f77c41b2bff12b1e4975d5c6db6847b3fe07e992d461f174567f57e5a26f81987896dd6260d27156cc8ca631fa9d310ae3acafa1888d399a67c6759a8b212290a8f937aca51577acc9b21b70c63b7ac1a719b6fb7c0cda169878af6fc7a00a5e5e5ec13daf50fafaa157679d3bce42b86fd9b661881e0c81b6e3edbe818c9f703f8e1865e2a13e345f7902862bd3eb7c6bea796e53e6628dd0bd7c6d84fab30a56621524a91b681eca0a7af8380272fda0ef3feea6e77fd4e568b224ae26b68b6e048d2a25984db644421cac4c17f979c104be5238e87350df3d3ce26e243ab25839c13622ad8972da0670a4afa6da8998980e75f3ff392907c79ecbe3c7b1e91ee4316de841d1edc5ede52262f56730525b9e949090843943db85e73860f3f1b5b0b3ce8ae72c62eccfce0d70d8f65ba08b59f85d73c67f9b40cf59e1f3b46371b1c4de31d784892f2af02b9cb5268ab36cdc6bebd3bac585a47V3\n  domain: apple.com\n  for_domain: true\n  path: "/"\n  secure: true\n  httponly: true\n  expires:\n  max_age:\n  created_at: 2021-07-29 17:43:38.859649000 +03:00\n  accessed_at: 2021-07-29 17:48:23.421551000 +03:00\n- !ruby/object:HTTP::Cookie\n  name: DES5ba2e777fb31ecd20687708195faab9e3\n  value: HSARMTKNSRVXWFla/U1sEpPE85o/7Yn2zVm4CzZDgK4WK9OO9nEXZTYsuWuRxCFZxx1XNV7oZcavbzOjTzPbi9TtWkotklCmCBYmKVl3uZT7vQYucZ0per6jTqblZxdP+Edgok76YVRH4TZ2ZOg4bDnk7DKmQdlRuZ2nS0fAFdnXAIGFsQfoul6coclsnQlKTY1T9nSC4pc=SRVX\n  domain: idmsa.apple.com\n  for_domain: true\n  path: "/"\n  secure: true\n  httponly: true\n  expires:\n  max_age: 2592000\n  created_at: &1 2021-07-29 17:43:38.859542000 +03:00\n  accessed_at: *1\n- !ruby/object:HTTP::Cookie\n  name: dqsid\n  value: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2Mjc1Njk4MjQsImp0aSI6IlVuU3lBMUJOWUk4SVpnaVQ1VDlyWmcifQ.-swtqepW8WQ6yyPmAOasBW6sckrhIih8DRG25aeyXeg\n  domain: appstoreconnect.apple.com\n  for_domain: false\n  path: "/"\n  secure: true\n  httponly: true\n  expires:\n  max_age: 1800\n  created_at: &2 2021-07-29 17:48:24.902491000 +03:00\n  accessed_at: *2\n'
+  only:
+    - feat/ci
+  script:
+    - yarn
+    - cd ios
+    - pod install
+    - bundle install
+    - bundle exec fastlane deploy
+  tags:
+    - fastlane
