@@ -2,6 +2,7 @@ import { PAUSE_ICON, PLAY_ICON } from "assets/images";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   Image,
   LayoutChangeEvent,
   StyleSheet,
@@ -66,6 +67,8 @@ export default function Player(props: Props) {
   const [soundDuration, setSoundDuration] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playerWidth, setPlayerWidth] = useState<number>(0);
+  const [soundLoaded, setSoundLoaded] = useState<boolean>(false);
+  const [isLoadingErrored, setIsLoadingErrored] = useState<boolean>(false);
 
   const playerProgress = useValue<number>(0);
   const isPLayingAnim = useValue<0 | 1>(0);
@@ -88,10 +91,22 @@ export default function Player(props: Props) {
     [soundDuration]
   );
 
-  const finishedLoadingURL = useCallback(async (data: SoundPlayerEventData) => {
-    if (data.success && data.url) {
-      const { duration } = await SoundPlayer.getInfo();
-      setSoundDuration(duration);
+  useEffect(() => {
+    if (soundLoaded) {
+      (async () => {
+        const { duration } = await SoundPlayer.getInfo();
+        setSoundDuration(duration);
+      })();
+    } else if (isLoadingErrored) {
+      Alert.alert("Возникла ошибка при загрузке");
+    }
+  }, [isLoadingErrored, soundLoaded]);
+
+  const finishedLoadingURL = useCallback((data: SoundPlayerEventData) => {
+    if (data.success) {
+      setSoundLoaded(true);
+    } else {
+      setIsLoadingErrored(true);
     }
   }, []);
 
