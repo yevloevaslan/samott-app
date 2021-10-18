@@ -176,11 +176,11 @@ function ProfileSettings(props: Props) {
   }, []);
 
   const handleOnFemaleSexPress = useCallback(() => {
-    setSex("f");
+    setSex((prev) => (prev === "f" ? undefined : "f"));
   }, []);
 
   const handleOnMaleSexPress = useCallback(() => {
-    setSex("m");
+    setSex((prev) => (prev === "m" ? undefined : "m"));
   }, []);
 
   const handleOnCloseModal = useCallback(() => {
@@ -207,12 +207,13 @@ function ProfileSettings(props: Props) {
       lastName: lastName || user.lastName,
       middleName: middleName || user.middleName,
       firstName: firstName || user.firstName,
-      birthday,
+      birthday: birthday ? birthday : undefined,
       email,
       sex,
       img,
     };
     const response = await UserController.userPutInfo(userInfo);
+
     if (response) {
       await UserController.userGetInfo();
       if (props.route.params.firstIn) {
@@ -268,7 +269,7 @@ function ProfileSettings(props: Props) {
   const isSubmitButtonDisabled = useMemo(() => {
     const { birthday: oldBirthday, ...withoutBirthday } = oldInfo;
 
-    return deepEqual<any>(
+    return deepEqual(
       { birthday: oldBirthday?.toISOString(), ...withoutBirthday },
       {
         firstName,
@@ -352,7 +353,7 @@ function ProfileSettings(props: Props) {
             type={TypographyTypes.NORMAL24}
             style={styles.birthdayInputsContainerTitle}
           >
-            Дата рождения
+            Дата рождения (необязательно)
           </Typography>
           <DatePicker
             onOpen={handleOnOpenPicker}
@@ -367,7 +368,7 @@ function ProfileSettings(props: Props) {
           type={TypographyTypes.NORMAL24}
           style={styles.birthdayInputsContainerTitle}
         >
-          Ваш пол
+          Ваш пол (необязательно)
         </Typography>
         <View style={styles.sexContainer}>
           <RadioButton value={sex === "m"} onPress={handleOnMaleSexPress}>
@@ -385,7 +386,7 @@ function ProfileSettings(props: Props) {
           value={email}
           onChangeText={setEmail}
           type="email"
-          placeholder="example@email.exm"
+          placeholder="example@email.exm (необязательно)"
         />
         <Button
           onPress={handleOnSubmitButtonPress}

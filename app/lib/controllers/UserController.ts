@@ -44,7 +44,7 @@ class UserController extends Controller {
       this.dispatch(UserActionsTypes.SET_INFO, {
         ...rest,
         id,
-        birthday: new Date(response.birthday),
+        birthday: response.birthday ? new Date(response.birthday) : undefined,
       });
       this.dispatch(PlaygroundActions.SET_SCORE, { totalScore: score });
       return response;
