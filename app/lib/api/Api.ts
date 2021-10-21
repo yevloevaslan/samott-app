@@ -48,6 +48,7 @@ export default class Api {
         ...info,
         birthday: info.birthday?.toISOString(),
         sex: info.sex || "",
+        email: info.email ? info.email : undefined,
       })
       .withHeaders({ "x-access-token": token })
       .fetch();

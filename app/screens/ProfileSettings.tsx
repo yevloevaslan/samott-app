@@ -248,13 +248,10 @@ function ProfileSettings(props: Props) {
     dispatch({ type: RESET_APP });
   }, [dispatch, props.navigation]);
 
-  const handleOnChangeBirthDay = useCallback(
-    (date: Date) => {
-      setBirthday(date || birthday);
-      setIsPicker(false);
-    },
-    [birthday]
-  );
+  const handleOnChangeBirthDay = useCallback((date?: Date) => {
+    setBirthday(date);
+    setIsPicker(false);
+  }, []);
 
   const handleOnOpenPicker = useCallback(() => {
     setIsPicker(true);
@@ -360,7 +357,10 @@ function ProfileSettings(props: Props) {
             isPicker={isPicker}
             value={birthday}
             onChange={handleOnChangeBirthDay}
-            onCancel={() => setIsPicker(false)}
+            onCancel={() => {
+              setBirthday(undefined);
+              setIsPicker(false);
+            }}
           />
         </View>
         <Typography

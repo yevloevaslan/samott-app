@@ -1,8 +1,8 @@
+import { Typography } from "components";
 import React, { useCallback } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { StyleGuide } from "utils";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { Typography } from "components";
+import { StyleGuide } from "utils";
 
 const styles = StyleSheet.create({
   inputsContainer: {

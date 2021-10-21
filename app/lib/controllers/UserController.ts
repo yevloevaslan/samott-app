@@ -32,7 +32,10 @@ class UserController extends Controller {
     try {
       return await Api.userPutInfo(info, this.store.getState().user.token);
     } catch (e) {
-      Alert.alert("Не удалось зайти.", `${e}`);
+      Alert.alert(
+        "Не удалось установить данные.",
+        "Проверьте корректность ввода данных"
+      );
     }
   }
 
@@ -45,6 +48,7 @@ class UserController extends Controller {
         ...rest,
         id,
         birthday: response.birthday ? new Date(response.birthday) : undefined,
+        sex: rest.sex ? rest.sex : undefined,
       });
       this.dispatch(PlaygroundActions.SET_SCORE, { totalScore: score });
       return response;
