@@ -28,8 +28,10 @@
 		953ACEB600F167962B4AA6E0 /* libPods-SaMott.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 993DCD375026B130F8280215 /* libPods-SaMott.a */; };
 		9CA0516623D6F09D9E533B49 /* libPods-SaMott-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */; };
 		9DECE26D965300DFF9E370AF /* libPods-SaMott-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F31889DCD908223DCC054024 /* libPods-SaMott-tvOS.a */; };
-		AC39EC3D271D47F4000D6338 /* wronganswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC39EC3B271D47F4000D6338 /* wronganswer.mp3 */; };
-		AC39EC3E271D47F4000D6338 /* rightanswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC39EC3C271D47F4000D6338 /* rightanswer.mp3 */; };
+		AC2FBBD527241C2500C383A5 /* wronganswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC2FBBD327241C2400C383A5 /* wronganswer.mp3 */; };
+		AC2FBBD627241C2500C383A5 /* rightanswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC2FBBD427241C2500C383A5 /* rightanswer.mp3 */; };
+		AC2FBBD927241C4200C383A5 /* rightanswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC2FBBD727241C4200C383A5 /* rightanswer.mp3 */; };
+		AC2FBBDA27241C4200C383A5 /* wronganswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC2FBBD827241C4200C383A5 /* wronganswer.mp3 */; };
 		AFA249AE477D4AF080D86D41 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E8936FB7E75492B9FB3FBB2 /* Roboto-Italic.ttf */; };
 		BD3E3CCF928C4C40911403A0 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 893FCB9328FE40F4B3953373 /* Roboto-Thin.ttf */; };
 		D63C60A726FDFD0A008826BA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63C60A626FDFD0A008826BA /* File.swift */; };
@@ -89,10 +91,10 @@
 		992DAD3594EE07BD8D39803E /* Pods-SaMott-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SaMott-tvOS/Pods-SaMott-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		993DCD375026B130F8280215 /* libPods-SaMott.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC39EC3B271D47F4000D6338 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wronganswer.mp3; path = ../../../Downloads/wronganswer.mp3; sourceTree = "<group>"; };
-		AC39EC3C271D47F4000D6338 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rightanswer.mp3; path = ../../../Downloads/rightanswer.mp3; sourceTree = "<group>"; };
-		AC39EC40271DF176000D6338 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wronganswer.mp3; path = ../../../Downloads/wronganswer.mp3; sourceTree = "<group>"; };
-		AC39EC41271DF17C000D6338 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rightanswer.mp3; path = ../../../Downloads/rightanswer.mp3; sourceTree = "<group>"; };
+		AC2FBBD327241C2400C383A5 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wronganswer.mp3; path = ../../../../Downloads/wronganswer.mp3; sourceTree = "<group>"; };
+		AC2FBBD427241C2500C383A5 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rightanswer.mp3; path = ../../../../Downloads/rightanswer.mp3; sourceTree = "<group>"; };
+		AC2FBBD727241C4200C383A5 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rightanswer.mp3; path = ../../../../Downloads/rightanswer.mp3; sourceTree = "<group>"; };
+		AC2FBBD827241C4200C383A5 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wronganswer.mp3; path = ../../../../Downloads/wronganswer.mp3; sourceTree = "<group>"; };
 		D3B64E6832AA4A39B0F25D17 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D63C60A526FDFD0A008826BA /* SaMott-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SaMott-Bridging-Header.h"; sourceTree = "<group>"; };
 		D63C60A626FDFD0A008826BA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -158,8 +160,8 @@
 		13B07FAE1A68108700A75B9A /* SaMott */ = {
 			isa = PBXGroup;
 			children = (
-				AC39EC40271DF176000D6338 /* wronganswer.mp3 */,
-				AC39EC41271DF17C000D6338 /* rightanswer.mp3 */,
+				AC2FBBD427241C2500C383A5 /* rightanswer.mp3 */,
+				AC2FBBD327241C2400C383A5 /* wronganswer.mp3 */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -230,8 +232,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				AC39EC3B271D47F4000D6338 /* wronganswer.mp3 */,
-				AC39EC3C271D47F4000D6338 /* rightanswer.mp3 */,
+				AC2FBBD727241C4200C383A5 /* rightanswer.mp3 */,
+				AC2FBBD827241C4200C383A5 /* wronganswer.mp3 */,
 				13B07FAE1A68108700A75B9A /* SaMott */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SaMottTests */,
@@ -401,18 +403,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				AC39EC3D271D47F4000D6338 /* wronganswer.mp3 in Resources */,
+				AC2FBBD527241C2500C383A5 /* wronganswer.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				EA19889C14014F2A882BE375 /* Roboto-Black.ttf in Resources */,
 				E522CB581A4443FC9AB062A4 /* Roboto-BlackItalic.ttf in Resources */,
+				AC2FBBDA27241C4200C383A5 /* wronganswer.mp3 in Resources */,
 				5408B997240D48F9A81F159E /* Roboto-Bold.ttf in Resources */,
 				937DC22793E34EA5B7C6A151 /* Roboto-BoldItalic.ttf in Resources */,
 				AFA249AE477D4AF080D86D41 /* Roboto-Italic.ttf in Resources */,
 				90A071CB771D417780C1FA70 /* Roboto-Light.ttf in Resources */,
 				3E2D6D15C1624DAB9F723BE7 /* Roboto-LightItalic.ttf in Resources */,
+				AC2FBBD627241C2500C383A5 /* rightanswer.mp3 in Resources */,
 				6272B805CEBC45989CFF5CE0 /* Roboto-Medium.ttf in Resources */,
-				AC39EC3E271D47F4000D6338 /* rightanswer.mp3 in Resources */,
 				36B5F3F3420F4749A2161FDB /* Roboto-MediumItalic.ttf in Resources */,
+				AC2FBBD927241C4200C383A5 /* rightanswer.mp3 in Resources */,
 				7E291EC1F7E54CE2B2E63037 /* Roboto-Regular.ttf in Resources */,
 				BD3E3CCF928C4C40911403A0 /* Roboto-Thin.ttf in Resources */,
 				1DB0BAE8D783490BA4340BF4 /* Roboto-ThinItalic.ttf in Resources */,
@@ -734,7 +738,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10118;
+				CURRENT_PROJECT_VERSION = 10119;
 				DEVELOPMENT_TEAM = 2FM7Z9P7DS;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -777,7 +781,7 @@
 				);
 				INFOPLIST_FILE = SaMott/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.18;
+				MARKETING_VERSION = 1.1.19;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -801,7 +805,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10118;
+				CURRENT_PROJECT_VERSION = 10119;
 				DEVELOPMENT_TEAM = 2FM7Z9P7DS;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -843,7 +847,7 @@
 				);
 				INFOPLIST_FILE = SaMott/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.18;
+				MARKETING_VERSION = 1.1.19;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

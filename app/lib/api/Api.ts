@@ -46,7 +46,7 @@ export default class Api {
     const response = await RestApiHelper.build<IUserInfo>("userPutInfo")
       .withBody({
         ...info,
-        birthday: info.birthday?.toISOString(),
+        birthday: info.birthday?.toISOString() || "",
         sex: info.sex || "",
         email: info.email ? info.email : undefined,
       })

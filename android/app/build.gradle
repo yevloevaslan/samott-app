@@ -49,10 +49,6 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file(SAMOTT_UPLOAD_STORE_FILE)
-            storePassword 'eskyiDV7J3'
-            keyAlias 'samott-key-alias'
-            keyPassword 'eskyiDV7J3'
             if (project.hasProperty('SAMOTT_UPLOAD_STORE_FILE')) {
                 storeFile file(SAMOTT_UPLOAD_STORE_FILE)
                 storePassword SAMOTT_UPLOAD_STORE_PASSWORD
