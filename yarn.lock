@@ -5884,10 +5884,15 @@ react-native-screens@^2.18.1:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.18.1.tgz#47b9991c6f762d00d0ed3233e5283d523e859885"
   integrity sha512-r5WZLpmx2hHjC1RgMdPq5YpSU9tEhBpUaZ5M1SUtNIONyiLqQVxabhRCINdebIk4depJiIl7yw2Q85zJyeX6fw==
 
-react-native-sound-player@0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/react-native-sound-player/-/react-native-sound-player-0.11.1.tgz#5df2b017c1574fe77f164c1248b24ebe1920f2ad"
-  integrity sha512-hXf0qrVWzNniYo0BWvjloGKQIi0tc81H4FghxnPmyAVG6WWx+zq3k9twrOc6Ced8b6AdxCzmJfmjb4RZH0Y+Tg==
+react-native-sound-player@0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/react-native-sound-player/-/react-native-sound-player-0.10.3.tgz#42f5c7c80d1d015dd89d01da8318a39900321f6f"
+  integrity sha512-YiNpH58bDWJlpmlvwMnBAuqmZiikykn/8EfMD4ReF9qvGZe4haIVjZd40r0MleCn8BaxDhBj55w8Vnfy3qdBbQ==
+
+react-native-sound@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.11.0.tgz#ad60b55ba8c6dc89917f381ad3713f2738de530f"
+  integrity sha512-4bGAZfni6E2L695NQjOZwNLBQGXgBGYC4Sy+h99K5h0HqNZjCqR0+aLel+ezASxEJDpaH83gylNObXpiqJgdwg==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"

@@ -14,10 +14,16 @@ import {
   TypeMission,
 } from "components/missions";
 import PlaygroundController from "lib/controllers/PlaygroundController";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import SoundPlayer from "react-native-sound-player";
+import Sound from "react-native-sound";
 import { usePlayground, useUser } from "redux/hooks";
 import {
   BackgroundImages,
@@ -80,7 +86,7 @@ function MissionsPlayground(_props: Props) {
   const { user } = useUser();
   const { playground, addScore } = usePlayground();
 
-  const [currentTask, setcurrentTask] = useState<ITask | undefined>();
+  const [currentTask, setCurrentTask] = useState<ITask | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
   const [taskAnswer, setTaskAnswer] = useState<IAnswer>();
@@ -88,6 +94,14 @@ function MissionsPlayground(_props: Props) {
   const [isTaskAnswerLoading, setIsTaskAnswerLoading] = useState<boolean>(
     false
   );
+
+  const rightSound = useRef<Sound>(
+    new Sound("rightanswer.mp3", Sound.MAIN_BUNDLE)
+  ).current;
+
+  const wrongSound = useRef<Sound>(
+    new Sound("wronganswer.mp3", Sound.MAIN_BUNDLE)
+  ).current;
 
   const loadTask = useCallback(async () => {
     setIsLoading(true);
@@ -97,17 +111,17 @@ function MissionsPlayground(_props: Props) {
           playground.currentDifficult
         );
         if (response) {
-          setcurrentTask(response);
+          setCurrentTask(response);
           setTaskAnswer(undefined);
         }
       }
     } catch (e) {
-      setcurrentTask(undefined);
+      setCurrentTask(undefined);
       setTaskAnswer(undefined);
     }
     setIsRightAnswerGiven(false);
-    setIsLoading(false);
     setCompleted(false);
+    setIsLoading(false);
   }, [playground.currentDifficult]);
 
   useFocusEffect(
@@ -123,28 +137,33 @@ function MissionsPlayground(_props: Props) {
   }, [completed]);
 
   const handleOnComplete = useCallback(
-    async (answer: string | string[]) => {
-      if (currentTask) {
-        setIsTaskAnswerLoading(true);
-        const response = await PlaygroundController.checkAnswer(
-          currentTask._id,
-          answer
-        );
-        if (response) {
-          setTaskAnswer(response);
-          if (response.trueResult) {
-            SoundPlayer.playSoundFile("rightanswer", "mp3");
-            setIsRightAnswerGiven(true);
-            addScore(currentTask.points, playground.currentDifficult);
-          } else {
-            SoundPlayer.playSoundFile("wronganswer", "mp3");
-          }
-        }
-        setIsTaskAnswerLoading(false);
+    async (answer?: string | string[]) => {
+      if (!answer) {
         setCompleted(true);
       }
+      if (currentTask) {
+        if (answer) {
+          setIsTaskAnswerLoading(true);
+          const response = await PlaygroundController.checkAnswer(
+            currentTask._id,
+            answer
+          );
+          if (response) {
+            setTaskAnswer(response);
+            if (response.trueResult) {
+              rightSound.play();
+              setIsRightAnswerGiven(true);
+              addScore(currentTask.points, playground.currentDifficult);
+            } else {
+              wrongSound.play();
+            }
+          }
+          setIsTaskAnswerLoading(false);
+          setCompleted(true);
+        }
+      }
     },
-    [addScore, playground.currentDifficult, currentTask]
+    [currentTask, rightSound, addScore, playground.currentDifficult, wrongSound]
   );
 
   const renderMission = useCallback(() => {
