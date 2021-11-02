@@ -200,6 +200,8 @@
 		4ACAE356C87E4F148C377341 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC71B30C2731AD9700283D2B /* rightanswer.mp3 */,
+				AC71B30B2731AD9700283D2B /* wronganswer.mp3 */,
 				793C1ACA278A44109A3E5271 /* Roboto-Black.ttf */,
 				77B48F5F4FAC4F4FB4F06862 /* Roboto-BlackItalic.ttf */,
 				E8A56079F76543F49F87A47D /* Roboto-Bold.ttf */,
@@ -389,6 +391,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC71B30E2731AD9700283D2B /* wronganswer.mp3 in Resources */,
+				AC71B3122731AD9700283D2B /* rightanswer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +412,7 @@
 				3E2D6D15C1624DAB9F723BE7 /* Roboto-LightItalic.ttf in Resources */,
 				D679EBF62724266500079126 /* wronganswer.mp3 in Resources */,
 				6272B805CEBC45989CFF5CE0 /* Roboto-Medium.ttf in Resources */,
+				AC71B3112731AD9700283D2B /* rightanswer.mp3 in Resources */,
 				36B5F3F3420F4749A2161FDB /* Roboto-MediumItalic.ttf in Resources */,
 				7E291EC1F7E54CE2B2E63037 /* Roboto-Regular.ttf in Resources */,
 				BD3E3CCF928C4C40911403A0 /* Roboto-Thin.ttf in Resources */,
@@ -419,7 +424,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC71B30F2731AD9700283D2B /* wronganswer.mp3 in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				AC71B3132731AD9700283D2B /* rightanswer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +434,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC71B3102731AD9700283D2B /* wronganswer.mp3 in Resources */,
+				AC71B3142731AD9700283D2B /* rightanswer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +454,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0E73471C2C62EF20EEBD8244 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

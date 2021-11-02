@@ -1,5 +1,11 @@
 import { PAUSE_ICON, PLAY_ICON } from "assets/images";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -23,7 +29,7 @@ import Animated, {
   useCode,
   useValue,
 } from "react-native-reanimated";
-import SoundPlayer, { SoundPlayerEventData } from "react-native-sound-player";
+import Sound from "react-native-sound";
 import { StyleGuide } from "utils";
 
 const styles = StyleSheet.create({
@@ -70,6 +76,8 @@ export default function Player(props: Props) {
   const [soundLoaded, setSoundLoaded] = useState<boolean>(false);
   const [isLoadingErrored, setIsLoadingErrored] = useState<boolean>(false);
 
+  const soundPlayer = useRef<Sound>();
+
   const playerProgress = useValue<number>(0);
   const isPLayingAnim = useValue<0 | 1>(0);
   const clock = new Animated.Clock();
@@ -94,67 +102,46 @@ export default function Player(props: Props) {
   useEffect(() => {
     if (soundLoaded) {
       (async () => {
-        const { duration } = await SoundPlayer.getInfo();
-        setSoundDuration(duration);
+        const duration = soundPlayer.current?.getDuration();
+        if (duration) {
+          setSoundDuration(duration);
+        }
       })();
     } else if (isLoadingErrored) {
       Alert.alert("Возникла ошибка при загрузке");
     }
   }, [isLoadingErrored, soundLoaded]);
 
-  const finishedLoadingURL = useCallback((data: SoundPlayerEventData) => {
-    if (data.success) {
-      setSoundLoaded(true);
-    } else {
-      setIsLoadingErrored(true);
-    }
-  }, []);
-
   const finishedPLaying = useCallback(() => {
     setIsPlaying(false);
-    SoundPlayer.seek(0);
-  }, []);
-
-  useEffect(() => {
-    const finishedLoadingEvent = SoundPlayer.addEventListener(
-      "FinishedLoading",
-      finishedLoadingURL
-    );
-    const finishedLoadingUrlEvent = SoundPlayer.addEventListener(
-      "FinishedLoadingURL",
-      finishedLoadingURL
-    );
-    const finishedPlayingEvent = SoundPlayer.addEventListener(
-      "FinishedPlaying",
-      finishedPLaying
-    );
-
-    return () => {
-      finishedLoadingEvent.remove();
-      finishedLoadingUrlEvent.remove();
-      finishedPlayingEvent.remove();
-    };
+    soundPlayer.current?.setCurrentTime(0);
   }, []);
 
   useEffect(() => {
     if (sound) {
-      SoundPlayer.loadUrl(sound);
+      soundPlayer.current = new Sound(sound, "", (error) => {
+        if (!error) {
+          setSoundLoaded(true);
+        } else {
+          setIsLoadingErrored(true);
+        }
+      });
     }
   }, [sound]);
 
   const handleOnSoundPlayPress = useCallback(async () => {
     if (sound) {
       if (isPlaying) {
-        SoundPlayer.pause();
+        soundPlayer.current?.pause();
         setIsPlaying(false);
         isPLayingAnim.setValue(0);
       } else {
         setIsPlaying(true);
-        SoundPlayer.play();
+        soundPlayer.current?.play(finishedPLaying);
         isPLayingAnim.setValue(1);
       }
     }
-  }, [isPLayingAnim, isPlaying, sound]);
+  }, [finishedPLaying, isPLayingAnim, isPlaying, sound]);
 
   useCode(
     () => [
