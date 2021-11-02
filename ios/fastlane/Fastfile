@@ -4,6 +4,7 @@ ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "ekbm-uqpd-extc-atxt"
 
 platform :ios do
     lane :build do
+        match(readonly: true)
         match(type: 'appstore', readonly: true)
         gym(scheme: 'SaMott')
     end
