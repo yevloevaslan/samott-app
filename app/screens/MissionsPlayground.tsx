@@ -95,13 +95,11 @@ function MissionsPlayground(_props: Props) {
     false
   );
 
-  const rightSound = useRef<Sound>(
-    new Sound("rightanswer.mp3", Sound.MAIN_BUNDLE)
-  ).current;
+  const rightSound = useRef(new Sound("rightanswer.mp3", Sound.MAIN_BUNDLE))
+    .current;
 
-  const wrongSound = useRef<Sound>(
-    new Sound("wronganswer.mp3", Sound.MAIN_BUNDLE)
-  ).current;
+  const wrongSound = useRef(new Sound("wronganswer.mp3", Sound.MAIN_BUNDLE))
+    .current;
 
   const loadTask = useCallback(async () => {
     setIsLoading(true);
@@ -151,11 +149,11 @@ function MissionsPlayground(_props: Props) {
           if (response) {
             setTaskAnswer(response);
             if (response.trueResult) {
-              rightSound.play();
+              rightSound.play(() => {});
               setIsRightAnswerGiven(true);
               addScore(currentTask.points, playground.currentDifficult);
             } else {
-              wrongSound.play();
+              wrongSound.play(() => {});
             }
           }
           setIsTaskAnswerLoading(false);

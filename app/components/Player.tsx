@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     backgroundColor: StyleGuide.colorPalette.gray45,
     overflow: "hidden",
     borderRadius: 3,
+    borderWidth: 1,
+    borderColor: StyleGuide.colorPalette.black,
   },
   playerProgress: {
     height: "100%",
@@ -93,20 +95,18 @@ export default function Player(props: Props) {
   const config: Animated.TimingConfig = useMemo(
     () => ({
       toValue: 1,
-      duration: soundDuration * 1000,
-      easing: Easing.ease,
+      duration: soundDuration * 740,
+      easing: Easing.sin,
     }),
     [soundDuration]
   );
 
   useEffect(() => {
     if (soundLoaded) {
-      (async () => {
-        const duration = soundPlayer.current?.getDuration();
-        if (duration) {
-          setSoundDuration(duration);
-        }
-      })();
+      const duration = soundPlayer.current?.getDuration();
+      if (duration) {
+        setSoundDuration(duration);
+      }
     } else if (isLoadingErrored) {
       Alert.alert("Возникла ошибка при загрузке");
     }
@@ -130,18 +130,15 @@ export default function Player(props: Props) {
   }, [sound]);
 
   const handleOnSoundPlayPress = useCallback(async () => {
-    if (sound) {
-      if (isPlaying) {
-        soundPlayer.current?.pause();
-        setIsPlaying(false);
-        isPLayingAnim.setValue(0);
-      } else {
-        setIsPlaying(true);
-        soundPlayer.current?.play(finishedPLaying);
-        isPLayingAnim.setValue(1);
-      }
+    setIsPlaying((prev) => !prev);
+    if (isPlaying) {
+      soundPlayer.current?.pause();
+      isPLayingAnim.setValue(0);
+    } else {
+      soundPlayer.current?.play(finishedPLaying);
+      isPLayingAnim.setValue(1);
     }
-  }, [finishedPLaying, isPLayingAnim, isPlaying, sound]);
+  }, [finishedPLaying, isPLayingAnim, isPlaying]);
 
   useCode(
     () => [

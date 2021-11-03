@@ -310,11 +310,11 @@ PODS:
     - React
   - RNScreens (2.18.1):
     - React-Core
-  - RNSound (0.11.0):
-    - React
-    - RNSound/Core (= 0.11.0)
-  - RNSound/Core (0.11.0):
-    - React
+  - RNSound (0.11.1):
+    - React-Core
+    - RNSound/Core (= 0.11.1)
+  - RNSound/Core (0.11.1):
+    - React-Core
   - RNSoundPlayer (0.10.3):
     - React
   - Yoga (1.14.0)
@@ -499,7 +499,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  RNSound: da030221e6ac7e8290c6b43f2b5f2133a8e225b0
+  RNSound: 27e8268bdb0a1f191f219a33267f7e0445e8d62f
   RNSoundPlayer: 36fe7b7390a62c81a7eb4deeca07420399699872
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
