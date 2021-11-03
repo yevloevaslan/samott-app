@@ -28,6 +28,7 @@
 		953ACEB600F167962B4AA6E0 /* libPods-SaMott.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 993DCD375026B130F8280215 /* libPods-SaMott.a */; };
 		9CA0516623D6F09D9E533B49 /* libPods-SaMott-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */; };
 		9DECE26D965300DFF9E370AF /* libPods-SaMott-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F31889DCD908223DCC054024 /* libPods-SaMott-tvOS.a */; };
+		AC92FFE62733035F0045F9C5 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC92FFE52733035F0045F9C5 /* dummy.swift */; };
 		AC9D618F2731E03D00B22CD8 /* rightanswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC9D618D2731E03D00B22CD8 /* rightanswer.mp3 */; };
 		AC9D61902731E03D00B22CD8 /* wronganswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AC9D618E2731E03D00B22CD8 /* wronganswer.mp3 */; };
 		AFA249AE477D4AF080D86D41 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E8936FB7E75492B9FB3FBB2 /* Roboto-Italic.ttf */; };
@@ -89,6 +90,7 @@
 		992DAD3594EE07BD8D39803E /* Pods-SaMott-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaMott-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SaMott-tvOS/Pods-SaMott-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		993DCD375026B130F8280215 /* libPods-SaMott.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05CFEEC4D75B37286591D4F /* libPods-SaMott-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaMott-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC92FFE52733035F0045F9C5 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 		AC9D618D2731E03D00B22CD8 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rightanswer.mp3; path = SaMott/rightanswer.mp3; sourceTree = "<group>"; };
 		AC9D618E2731E03D00B22CD8 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wronganswer.mp3; path = SaMott/wronganswer.mp3; sourceTree = "<group>"; };
 		D3B64E6832AA4A39B0F25D17 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../app/assets/fonts/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				AC92FFE52733035F0045F9C5 /* dummy.swift */,
 				13B07FAE1A68108700A75B9A /* SaMott */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SaMottTests */,
@@ -640,6 +643,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				D63C60A726FDFD0A008826BA /* File.swift in Sources */,
+				AC92FFE62733035F0045F9C5 /* dummy.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,7 +734,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10120;
+				CURRENT_PROJECT_VERSION = 10121;
 				DEVELOPMENT_TEAM = 2FM7Z9P7DS;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -772,8 +776,9 @@
 					"\"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS\"",
 				);
 				INFOPLIST_FILE = SaMott/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.20;
+				MARKETING_VERSION = 1.1.21;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -797,7 +802,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10120;
+				CURRENT_PROJECT_VERSION = 10121;
 				DEVELOPMENT_TEAM = 2FM7Z9P7DS;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -838,8 +843,9 @@
 					"\"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS\"",
 				);
 				INFOPLIST_FILE = SaMott/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.20;
+				MARKETING_VERSION = 1.1.21;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1011,7 +1017,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
@@ -1064,7 +1070,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",

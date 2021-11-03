@@ -72,7 +72,7 @@ const SelectMission = <
   return (
     <>
       <MissionTitle title={title} />
-      {sound && <Player sound={sound} />}
+      <Player sound={sound} />
       {data && <View style={styles.container}>{data.map(renderAnswer)}</View>}
     </>
   );

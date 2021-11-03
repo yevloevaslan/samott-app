@@ -238,6 +238,9 @@ PODS:
     - InputMask (~> 6.1.0)
     - React-Core
     - React-RCTText
+  - react-native-track-player (2.1.2):
+    - React-Core
+    - SwiftAudioEx (= 0.14.5)
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
   - React-RCTAnimation (0.63.4):
@@ -310,13 +313,14 @@ PODS:
     - React
   - RNScreens (2.18.1):
     - React-Core
-  - RNSound (0.11.1):
-    - React-Core
-    - RNSound/Core (= 0.11.1)
-  - RNSound/Core (0.11.1):
-    - React-Core
-  - RNSoundPlayer (0.10.3):
+  - RNSound (0.11.0):
     - React
+    - RNSound/Core (= 0.11.0)
+  - RNSound/Core (0.11.0):
+    - React
+  - RNSoundPlayer (0.11.1):
+    - React
+  - SwiftAudioEx (0.14.5)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -343,6 +347,7 @@ DEPENDENCIES:
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
+  - react-native-track-player (from `../node_modules/react-native-track-player`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -373,6 +378,7 @@ SPEC REPOS:
     - InputMask
     - nanopb
     - PromisesObjC
+    - SwiftAudioEx
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -415,6 +421,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-splash-screen"
   react-native-text-input-mask:
     :path: "../node_modules/react-native-text-input-mask"
+  react-native-track-player:
+    :path: "../node_modules/react-native-track-player"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -483,6 +491,7 @@ SPEC CHECKSUMS:
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-text-input-mask: 36a546b378fadd2efe1b7484a859d34bc2c80395
+  react-native-track-player: 23dd515aacf1d36a0e522ef7fdbc55f13f26d4fb
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -499,10 +508,11 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  RNSound: 27e8268bdb0a1f191f219a33267f7e0445e8d62f
-  RNSoundPlayer: 36fe7b7390a62c81a7eb4deeca07420399699872
+  RNSound: da030221e6ac7e8290c6b43f2b5f2133a8e225b0
+  RNSoundPlayer: 1a8fb785d9c41ec0cb14283a5ba87ff30c2a50b6
+  SwiftAudioEx: bfaff9894c885aded7edfb0793e25165d55053d4
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: aa232822771e34147fbaa613858838afeef8c8f3
+PODFILE CHECKSUM: 00d9d612f1bbf7f06f2425ec3b0b4c359555f728
 
 COCOAPODS: 1.11.2
