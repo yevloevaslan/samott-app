@@ -1,27 +1,22 @@
 import { PAUSE_ICON, PLAY_ICON } from "assets/images";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
   Image,
   LayoutChangeEvent,
+  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
 import Animated, {
-  and,
   clockRunning,
   cond,
   Easing,
   eq,
   interpolate,
+  or,
   set,
   startClock,
   stopClock,
@@ -29,8 +24,15 @@ import Animated, {
   useCode,
   useValue,
 } from "react-native-reanimated";
-import Sound from "react-native-sound";
 import { StyleGuide } from "utils";
+import TrackPlayer, {
+  Event,
+  RepeatMode,
+  State,
+  usePlaybackState,
+  useProgress,
+  useTrackPlayerEvents,
+} from "react-native-track-player";
 
 const styles = StyleSheet.create({
   playerContainer: {
@@ -67,21 +69,20 @@ const styles = StyleSheet.create({
 });
 
 interface Props {
-  sound: string;
+  sound?: string;
 }
 
 export default function Player(props: Props) {
   const { sound } = props;
+  const playbackState = usePlaybackState();
+  const { duration } = useProgress();
   const [soundDuration, setSoundDuration] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playerWidth, setPlayerWidth] = useState<number>(0);
-  const [soundLoaded, setSoundLoaded] = useState<boolean>(false);
-  const [isLoadingErrored, setIsLoadingErrored] = useState<boolean>(false);
-
-  const soundPlayer = useRef<Sound>();
+  const [isLoadErrored, setIsLoadErrored] = useState<boolean>(false);
 
   const playerProgress = useValue<number>(0);
-  const isPLayingAnim = useValue<0 | 1>(0);
+  const isPLayingAnim = useValue<0 | 1 | 2>(0);
   const clock = new Animated.Clock();
 
   const state = {
@@ -89,56 +90,77 @@ export default function Player(props: Props) {
     time: new Animated.Value(0),
     frameTime: new Animated.Value(0),
     position: new Animated.Value(0),
-    started: new Animated.Value<number>(0),
   };
 
   const config: Animated.TimingConfig = useMemo(
     () => ({
       toValue: 1,
-      duration: soundDuration * 740,
+      duration: soundDuration * (Platform.OS === "ios" ? 700 : 950),
       easing: Easing.sin,
     }),
     [soundDuration]
   );
 
-  useEffect(() => {
-    if (soundLoaded) {
-      const duration = soundPlayer.current?.getDuration();
-      if (duration) {
-        setSoundDuration(duration);
-      }
-    } else if (isLoadingErrored) {
-      Alert.alert("Возникла ошибка при загрузке");
-    }
-  }, [isLoadingErrored, soundLoaded]);
-
-  const finishedPLaying = useCallback(() => {
-    setIsPlaying(false);
-    soundPlayer.current?.setCurrentTime(0);
-  }, []);
-
-  useEffect(() => {
+  const setup = useCallback(async () => {
     if (sound) {
-      soundPlayer.current = new Sound(sound, "", (error) => {
-        if (!error) {
-          setSoundLoaded(true);
-        } else {
-          setIsLoadingErrored(true);
-        }
-      });
+      await TrackPlayer.setupPlayer();
+      await TrackPlayer.add([
+        { url: sound, id: sound, title: sound, artist: sound },
+      ]);
+      if (Platform.OS === "ios") {
+        await TrackPlayer.setRepeatMode(RepeatMode.Track);
+        await TrackPlayer.pause();
+      }
     }
   }, [sound]);
 
-  const handleOnSoundPlayPress = useCallback(async () => {
-    setIsPlaying((prev) => !prev);
-    if (isPlaying) {
-      soundPlayer.current?.pause();
-      isPLayingAnim.setValue(0);
-    } else {
-      soundPlayer.current?.play(finishedPLaying);
-      isPLayingAnim.setValue(1);
+  useTrackPlayerEvents([Event.PlaybackQueueEnded], async () => {
+    await TrackPlayer.pause();
+    if (Platform.OS === "android") {
+      await TrackPlayer.skip(0);
     }
-  }, [finishedPLaying, isPLayingAnim, isPlaying]);
+    setIsPlaying(false);
+    isPLayingAnim.setValue(2);
+  });
+
+  useTrackPlayerEvents([Event.PlaybackError], () => {
+    setIsLoadErrored(true);
+  });
+
+  useEffect(() => {
+    if (isLoadErrored) {
+      Alert.alert("Произошла ошибка при загрузке.");
+    }
+  }, [isLoadErrored]);
+
+  useEffect(() => {
+    setSoundDuration(duration);
+  }, [duration]);
+
+  useEffect(() => {
+    if (playbackState === State.Playing) {
+      setIsPlaying(true);
+      isPLayingAnim.setValue(1);
+    } else if (playbackState === State.Paused) {
+      setIsPlaying(false);
+      isPLayingAnim.setValue(0);
+    }
+  }, [playbackState]);
+
+  useEffect(() => {
+    setup();
+    return () => {
+      TrackPlayer.reset();
+    };
+  }, [setup]);
+
+  const handleOnSoundPlayPress = useCallback(async () => {
+    if (playbackState !== State.Playing) {
+      await TrackPlayer.play();
+    } else if (playbackState === State.Playing) {
+      await TrackPlayer.pause();
+    }
+  }, [playbackState]);
 
   useCode(
     () => [
@@ -148,22 +170,18 @@ export default function Player(props: Props) {
           cond(eq(isPLayingAnim, 0), set(state.time, clock)),
           timing(clock, state, config),
         ],
-        cond(and(eq(isPLayingAnim, 1), eq(state.started, 0)), [
-          set(state.started, 1),
-          startClock(clock),
-        ])
+        cond(eq(isPLayingAnim, 1), startClock(clock))
       ),
       cond(
-        eq(state.finished, 1),
+        or(eq(state.finished, 1), eq(isPLayingAnim, 2)),
         [
           stopClock(clock),
           set(isPLayingAnim, 0),
-          set(state.started, 0),
           set(state.finished, 0),
           set(state.time, 0),
           set(state.frameTime, 0),
           set(state.position, 0),
-          set(playerProgress, state.position),
+          set(playerProgress, 0),
         ],
         set(playerProgress, state.position)
       ),
@@ -191,6 +209,10 @@ export default function Player(props: Props) {
     ],
     [playerProgress, playerWidth]
   );
+
+  if (!sound) {
+    return null;
+  }
 
   return (
     <View style={styles.playerContainer}>
