@@ -14,16 +14,10 @@ import {
   TypeMission,
 } from "components/missions";
 import PlaygroundController from "lib/controllers/PlaygroundController";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Sound from "react-native-sound";
+import SoundPlayer from "react-native-sound-player";
 import { usePlayground, useUser } from "redux/hooks";
 import {
   BackgroundImages,
@@ -95,12 +89,6 @@ function MissionsPlayground(_props: Props) {
     false
   );
 
-  const rightSound = useRef(new Sound("rightanswer.mp3", Sound.MAIN_BUNDLE))
-    .current;
-
-  const wrongSound = useRef(new Sound("wronganswer.mp3", Sound.MAIN_BUNDLE))
-    .current;
-
   const loadTask = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -149,11 +137,11 @@ function MissionsPlayground(_props: Props) {
           if (response) {
             setTaskAnswer(response);
             if (response.trueResult) {
-              rightSound.play(() => {});
+              SoundPlayer.playSoundFile("rightanswer", "mp3");
               setIsRightAnswerGiven(true);
               addScore(currentTask.points, playground.currentDifficult);
             } else {
-              wrongSound.play(() => {});
+              SoundPlayer.playSoundFile("wronganswer", "mp3");
             }
           }
           setIsTaskAnswerLoading(false);
@@ -161,7 +149,7 @@ function MissionsPlayground(_props: Props) {
         }
       }
     },
-    [currentTask, rightSound, addScore, playground.currentDifficult, wrongSound]
+    [currentTask, addScore, playground.currentDifficult]
   );
 
   const renderMission = useCallback(() => {
