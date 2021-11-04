@@ -313,11 +313,6 @@ PODS:
     - React
   - RNScreens (2.18.1):
     - React-Core
-  - RNSound (0.11.0):
-    - React
-    - RNSound/Core (= 0.11.0)
-  - RNSound/Core (0.11.0):
-    - React
   - RNSoundPlayer (0.11.1):
     - React
   - SwiftAudioEx (0.14.5)
@@ -364,7 +359,6 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNSound (from `../node_modules/react-native-sound`)
   - RNSoundPlayer (from `../node_modules/react-native-sound-player`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -455,8 +449,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNSound:
-    :path: "../node_modules/react-native-sound"
   RNSoundPlayer:
     :path: "../node_modules/react-native-sound-player"
   Yoga:
@@ -508,7 +500,6 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  RNSound: da030221e6ac7e8290c6b43f2b5f2133a8e225b0
   RNSoundPlayer: 1a8fb785d9c41ec0cb14283a5ba87ff30c2a50b6
   SwiftAudioEx: bfaff9894c885aded7edfb0793e25165d55053d4
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
