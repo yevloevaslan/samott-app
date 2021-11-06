@@ -25,3 +25,4 @@ export const PAUSE_ICON = { uri: "pause_icon" };
 export const SKIP = { uri: "skip" };
 export const SEND = { uri: "send" };
 export const CHANGE_LANG = { uri: "change_lang" };
+export const BROKEN_FILE = { uri: "broken_file" };
