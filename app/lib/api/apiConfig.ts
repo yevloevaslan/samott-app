@@ -4,7 +4,7 @@ declare const global: any;
 interface ApiConfig extends Config {}
 
 const config: ApiConfig = {
-  baseURL: "http://68.183.7.178:1854/api/",
+  baseURL: "https://translate.use-case.ru/api/",
   logger: __DEV__ && Boolean(global.origin),
   headers: {
     "content-Type": "application/json",
