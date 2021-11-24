@@ -3,8 +3,8 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { SKIP } from "assets/images";
 import {
   Bubble,
-  DifficultSelector,
   Header,
+  Star,
   Typography,
   withBackgroundHoc,
 } from "components";
@@ -15,7 +15,13 @@ import {
 } from "components/missions";
 import PlaygroundController from "lib/controllers/PlaygroundController";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import SoundPlayer from "react-native-sound-player";
 import { usePlayground, useUser } from "redux/hooks";
@@ -25,6 +31,7 @@ import {
   HomeStackProps,
   IAnswer,
   ITask,
+  MissionDifficultType,
   RoutesNames,
   StyleGuide,
   TaskTypes,
@@ -34,22 +41,20 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 28,
   },
   ratingBubbleContainer: {
     marginLeft: 10,
   },
   difficultContainer: {
+    paddingVertical: 15,
+    paddingHorizontal: 24,
+    marginBottom: 24,
     marginTop: 20,
-    paddingRight: 40,
-  },
-  scoreTitleContainer: {
+    borderRadius: 20,
+    backgroundColor: StyleGuide.colorPalette.lightGray,
     flexDirection: "row",
-    width: "100%",
     justifyContent: "space-between",
-    paddingHorizontal: 47,
-    marginTop: 19,
-    marginBottom: 20,
   },
   skipButtonImage: {
     width: 43,
@@ -69,6 +74,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  starsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  starContainer: {
+    marginHorizontal: 3,
+  },
 });
 
 interface Props
@@ -78,13 +90,12 @@ const REQUEST_TASK_TIME = 1000;
 
 function MissionsPlayground(_props: Props) {
   const { user } = useUser();
-  const { playground, addScore } = usePlayground();
+  const { playground } = usePlayground();
 
   const [currentTask, setCurrentTask] = useState<ITask | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
   const [taskAnswer, setTaskAnswer] = useState<IAnswer>();
-  const [isRightAnswerGiven, setIsRightAnswerGiven] = useState<boolean>(false);
   const [isTaskAnswerLoading, setIsTaskAnswerLoading] = useState<boolean>(
     false
   );
@@ -105,7 +116,6 @@ function MissionsPlayground(_props: Props) {
       setCurrentTask(undefined);
       setTaskAnswer(undefined);
     }
-    setIsRightAnswerGiven(false);
     setCompleted(false);
     setIsLoading(false);
   }, [playground.currentDifficult]);
@@ -138,8 +148,6 @@ function MissionsPlayground(_props: Props) {
             setTaskAnswer(response);
             if (response.trueResult) {
               SoundPlayer.playSoundFile("rightanswer", "mp3");
-              setIsRightAnswerGiven(true);
-              addScore(currentTask.points, playground.currentDifficult);
             } else {
               SoundPlayer.playSoundFile("wronganswer", "mp3");
             }
@@ -149,8 +157,19 @@ function MissionsPlayground(_props: Props) {
         }
       }
     },
-    [currentTask, addScore, playground.currentDifficult]
+    [currentTask]
   );
+
+  const currentDifficultLevel = useMemo(() => {
+    switch (playground.currentDifficult) {
+      case MissionDifficultType.EASY:
+        return "легкий";
+      case MissionDifficultType.MEDIUM:
+        return "средний";
+      default:
+        return "сложный";
+    }
+  }, [playground.currentDifficult]);
 
   const renderMission = useCallback(() => {
     if (currentTask) {
@@ -159,6 +178,7 @@ function MissionsPlayground(_props: Props) {
         answer: taskAnswer,
         onComplete: handleOnComplete,
         isLoading: isTaskAnswerLoading,
+        onError: loadTask,
       };
       switch (currentTask.type) {
         case TaskTypes.AUDIO:
@@ -199,58 +219,115 @@ function MissionsPlayground(_props: Props) {
     );
   }, [currentTask, handleOnComplete, isTaskAnswerLoading, taskAnswer]);
 
-  const countsBackgroundColor = useMemo(
-    () =>
-      completed
-        ? isRightAnswerGiven
-          ? StyleGuide.colorPalette.green
-          : StyleGuide.colorPalette.red
-        : StyleGuide.colorPalette.mediumDarkGray,
-    [completed, isRightAnswerGiven]
-  );
+  const renderStars = useCallback(() => {
+    let count = 1;
+    let color = StyleGuide.colorPalette.green;
+    switch (playground.currentDifficult) {
+      case MissionDifficultType.MEDIUM:
+        count = 2;
+        color = StyleGuide.colorPalette.yellow;
+        break;
+      case MissionDifficultType.HARD:
+        count = 3;
+        color = StyleGuide.colorPalette.tomato;
+    }
+    const res = [];
+    for (let index = 0; index < count; index++) {
+      res.push(
+        <View key={index} style={styles.starContainer}>
+          <Star key={index} color={color} size={26} />
+        </View>
+      );
+    }
+    return <View style={styles.starsContainer}>{res}</View>;
+  }, [playground.currentDifficult]);
 
   return (
     <View style={styles.container}>
       <Header avatar title={user.firstName} decorators="right">
         <View style={styles.ratingBubbleContainer}>
-          <Bubble backgroundColor={StyleGuide.colorPalette.mayo}>
-            <Typography
-              type={TypographyTypes.NORMAL18}
-              color={StyleGuide.colorPalette.black}
-            >
-              Рейтинг {user.rating}
-            </Typography>
+          <Bubble backgroundColor={StyleGuide.colorPalette.white}>
+            <View style={{ paddingVertical: 6, paddingHorizontal: 12 }}>
+              <Typography
+                type={TypographyTypes.NORMAL18}
+                color={StyleGuide.colorPalette.black}
+              >
+                Рейтинг {user.rating}
+              </Typography>
+            </View>
           </Bubble>
         </View>
       </Header>
-      <View style={styles.difficultContainer}>
-        <DifficultSelector difficult={playground.currentDifficult} />
-      </View>
       {isLoading ? (
         <View style={styles.emptyContainer}>
           <ActivityIndicator color={StyleGuide.colorPalette.black} />
         </View>
       ) : (
         <>
-          {currentTask && (
-            <View style={styles.scoreTitleContainer}>
-              <Bubble
-                backgroundColor={countsBackgroundColor}
-                title={`${
-                  currentTask?.points
-                } ${getDeclining(currentTask?.points, [
-                  "балл",
-                  "баллов",
-                  "балла",
-                ])}`}
-              />
-              <TouchableOpacity disabled={isLoading} onPress={loadTask}>
-                <Image source={SKIP} style={styles.skipButtonImage} />
-              </TouchableOpacity>
-            </View>
-          )}
-          <View style={styles.taskContainer}>
+          <ScrollView
+            contentContainerStyle={{ paddingBottom: 70 }}
+            style={styles.taskContainer}
+          >
+            {currentTask && (
+              <View style={styles.difficultContainer}>
+                <View>
+                  <Typography
+                    color={StyleGuide.colorPalette.gray}
+                    type={TypographyTypes.BOLD18}
+                  >
+                    Уровень {currentDifficultLevel}
+                  </Typography>
+                  <Typography
+                    type={TypographyTypes.NORMAL12}
+                    color={StyleGuide.colorPalette.darkGrey}
+                  >
+                    Вы получите {currentTask.points}{" "}
+                    {getDeclining(currentTask?.points, [
+                      "балл",
+                      "баллов",
+                      "балла",
+                    ])}
+                  </Typography>
+                </View>
+                {renderStars()}
+              </View>
+            )}
             <View style={styles.taskAnswersContainer}>{renderMission()}</View>
+          </ScrollView>
+          <View
+            style={{
+              position: "absolute",
+              width: "100%",
+              bottom: 20,
+              paddingHorizontal: 20,
+              justifyContent: "space-between",
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: StyleGuide.colorPalette.lightGray,
+                paddingVertical: 12,
+                paddingHorizontal: 16,
+                borderRadius: 32,
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                color={StyleGuide.colorPalette.black}
+                type={TypographyTypes.NORMAL14}
+              >
+                Выполнено{" "}
+                {playground.counts.userTasksCount[
+                  playground.currentDifficult
+                ] || 0}{" "}
+                /{" "}
+                {playground.counts.totalTasksCount[playground.currentDifficult]}
+              </Typography>
+            </View>
+            <TouchableOpacity disabled={isLoading} onPress={loadTask}>
+              <Image source={SKIP} style={styles.skipButtonImage} />
+            </TouchableOpacity>
           </View>
         </>
       )}
@@ -260,5 +337,6 @@ function MissionsPlayground(_props: Props) {
 
 export default withBackgroundHoc(
   BackgroundImages.WITH_CASTLES,
-  true
+  true,
+  false
 )(MissionsPlayground);

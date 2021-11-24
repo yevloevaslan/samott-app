@@ -1,40 +1,33 @@
 import React, { useMemo } from "react";
 import { Image, StyleSheet } from "react-native";
-import { GOLD_STAR, GRAY_STAR, RED_STAR } from "assets/images";
-import { MissionDifficultType } from "utils";
+import { STAR } from "assets/images";
+import { StyleGuide } from "utils";
 
 const styles = StyleSheet.create({
   star: {
-    width: 42,
-    height: 42,
+    width: 32,
+    aspectRatio: 1,
   },
 });
 
 interface Props {
-  difficult: MissionDifficultType;
+  color: string;
   size?: number;
 }
 
 const Star = (props: Props) => {
-  const { difficult, size } = props;
-
-  const starImage = useMemo(() => {
-    switch (difficult) {
-      case MissionDifficultType.EASY:
-        return RED_STAR;
-      case MissionDifficultType.MEDIUM:
-        return GRAY_STAR;
-      case MissionDifficultType.HARD:
-        return GOLD_STAR;
-    }
-  }, [difficult]);
+  const { color = StyleGuide.colorPalette.tomato, size = 32 } = props;
 
   const starImageStyle = useMemo(
-    () => [styles.star, size ? { width: size, height: size } : {}],
-    [size]
+    () => [
+      styles.star,
+      { tintColor: color },
+      size ? { width: size, height: size } : {},
+    ],
+    [color, size]
   );
 
-  return <Image source={starImage} style={starImageStyle} />;
+  return <Image source={STAR} style={starImageStyle} />;
 };
 
 export default Star;

@@ -12,17 +12,18 @@ const styles = StyleSheet.create({
 
 interface Props extends Pick<TaskFreeAnswer, "params">, IMissionTaskProps {
   isLoading: boolean;
+  onError(): void;
 }
 
 const TypeMission = (props: Props) => {
-  const { onComplete, title, isLoading, params } = props;
+  const { onComplete, title, isLoading, params, onError } = props;
 
   const handleOnSubmit = useCallback(onComplete, [onComplete]);
 
   return (
     <View style={styles.container}>
       <MissionTitle title={title} />
-      <Player sound={params.sound} />
+      <Player sound={params.sound} onError={onError} />
       <TaskInput onSubmit={handleOnSubmit} isLoading={isLoading} />
     </View>
   );

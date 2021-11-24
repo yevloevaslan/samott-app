@@ -9,13 +9,13 @@ import { StyleGuide } from "utils";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: StyleGuide.colorPalette.orange,
+    backgroundColor: StyleGuide.colorPalette.green,
     paddingVertical: 12,
     justifyContent: "center",
     alignContent: "center",
   },
   disabled: {
-    backgroundColor: StyleGuide.colorPalette.gray,
+    backgroundColor: StyleGuide.colorPalette.lightGray,
   },
   activityIndicator: {
     paddingVertical: 4,

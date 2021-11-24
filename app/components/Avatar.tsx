@@ -38,6 +38,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderRadius: 12,
   },
+  loaderContainer: {
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1,
+  },
 });
 
 interface Props {
@@ -84,16 +90,7 @@ const Avatar = (props: Props) => {
       style={containerStyle}
     >
       {isLoading && (
-        <View
-          style={{
-            position: "absolute",
-            width: size.w,
-            height: size.h,
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1,
-          }}
-        >
+        <View style={styles.loaderContainer}>
           <ActivityIndicator color={StyleGuide.colorPalette.black} />
         </View>
       )}
@@ -108,7 +105,7 @@ const Avatar = (props: Props) => {
       {withName && (
         <View style={styles.nameContainer}>
           <Typography type={TypographyTypes.NORMAL24}>
-            {user.firstName}
+            {user.firstName.trim()}
           </Typography>
         </View>
       )}

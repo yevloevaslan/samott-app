@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     marginBottom: 20,
   },
+  containerWrapper: {
+    paddingTop: 29,
+  },
 });
 
 interface Props extends StackScreenProps<HomeStackProps, RoutesNames.SHARE> {}
@@ -115,7 +118,7 @@ function ShareScreen(props: Props) {
   }, []);
 
   return (
-    <View>
+    <View style={styles.containerWrapper}>
       <Header title="Поделиться" decorators="right" />
       <View style={styles.container}>
         {isLoading ? (

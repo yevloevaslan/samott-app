@@ -13,8 +13,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
+    borderRadius: 20,
   },
   starsContainer: {
     flexDirection: "row",
@@ -27,6 +26,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginLeft: 24,
     width: 86,
+  },
+  starContainer: {
+    marginRight: 10,
   },
 });
 
@@ -60,13 +62,13 @@ export default function DifficultSelector(props: Props) {
     () => [
       styles.container,
       {
-        backgroundColor,
-        paddingRight: score !== undefined ? 24 : 30,
+        backgroundColor: StyleGuide.colorPalette.lightGray,
+        paddingRight: score !== undefined ? 24 : 10,
         paddingVertical: score !== undefined ? 12 : 20,
         paddingLeft: score !== undefined ? 8 : 18,
       },
     ],
-    [backgroundColor, score]
+    [score]
   );
 
   const starsToRender = useMemo(() => {
@@ -88,12 +90,19 @@ export default function DifficultSelector(props: Props) {
 
   const renderStar = useCallback(
     (item: MissionDifficultType, index: number) => {
+      let color = StyleGuide.colorPalette.green;
+
+      switch (item) {
+        case MissionDifficultType.HARD:
+          color = StyleGuide.colorPalette.tomato;
+          break;
+        case MissionDifficultType.MEDIUM:
+          color = StyleGuide.colorPalette.yellow;
+      }
       return (
-        <Star
-          key={index}
-          difficult={item}
-          size={score !== undefined ? 24 : undefined}
-        />
+        <View key={index} style={styles.starContainer}>
+          <Star color={color} size={score !== undefined ? 24 : undefined} />
+        </View>
       );
     },
     [score]
@@ -122,18 +131,19 @@ export default function DifficultSelector(props: Props) {
         onPress={handleOnPress}
         style={containerStyle}
       >
-        <View style={styles.starsContainer}>
-          {starsToRender.map(renderStar)}
-        </View>
         <Typography
+          color={StyleGuide.colorPalette.gray}
           type={
             score !== undefined
               ? TypographyTypes.NORMAL18
-              : TypographyTypes.BOLD24
+              : TypographyTypes.BOLD18
           }
         >
           {title}
         </Typography>
+        <View style={styles.starsContainer}>
+          {starsToRender.map(renderStar)}
+        </View>
       </TouchableOpacity>
       {score !== undefined && (
         <View style={counterContntainerStyle}>

@@ -21,7 +21,6 @@ const Typography = (props: Props) => {
   return (
     <Text
       {...props}
-      adjustsFontSizeToFit
       style={[style, StyleGuide.typography[type], { color, textAlign }]}
     />
   );

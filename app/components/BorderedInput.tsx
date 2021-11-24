@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 10,
     borderBottomWidth: 2,
-    borderBottomColor: StyleGuide.colorPalette.red,
+    borderBottomColor: StyleGuide.colorPalette.green,
   },
   input: {
     padding: 0,

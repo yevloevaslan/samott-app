@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   datePickerButton: {
     borderBottomWidth: 2,
-    borderBottomColor: StyleGuide.colorPalette.red,
+    borderBottomColor: StyleGuide.colorPalette.green,
     paddingBottom: 5,
     width: 60,
     alignItems: "center",
