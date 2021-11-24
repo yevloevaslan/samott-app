@@ -106,7 +106,7 @@ function CodeEnter(props: Props) {
     } else {
       handleGoError();
     }
-  }, [parsedInputValue, UserController, props.navigation, handleGoError]);
+  }, [parsedInputValue, props.navigation, handleGoError]);
 
   const handleOnChangeText = useCallback((_text?: string, ext?: string) => {
     setParsedInputValue(ext);
@@ -118,14 +118,15 @@ function CodeEnter(props: Props) {
       reset();
       setTimerText("Отправить повторно через ");
     }
-  }, [phoneNumber, reset, UserController]);
+  }, [phoneNumber, reset]);
 
   return (
     <View style={styles.container}>
       <Header
-        titleType={TypographyTypes.BOLD34}
+        titleType={TypographyTypes.BOLD24}
         decorators="all"
         title="АВТОРИЗАЦИЯ"
+        alignTitle="center"
       />
       <View style={styles.contentContainer}>
         <BorderedInput

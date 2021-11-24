@@ -34,11 +34,12 @@ export interface IUserInfo {
 
 export interface IPlaygound {
   totalScore: number;
-  easyLevelScore: number;
-  mediumLevelScore: number;
-  hardLevelScore: number;
   currentTask?: ITask;
-  currentDifficult?: MissionDifficultType;
+  currentDifficult: MissionDifficultType;
+  counts: {
+    totalTasksCount: TasksCounts;
+    userTasksCount: TasksCounts;
+  };
 }
 
 export interface IUser extends IUserInfo {
@@ -132,3 +133,5 @@ export interface IProject {
 export interface IGrammarFile {
   filename: string;
 }
+
+export type TasksCounts = Record<MissionDifficultType, number | undefined>;

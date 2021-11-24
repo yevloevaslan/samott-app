@@ -115,6 +115,7 @@ interface Props
   extends GetSelectTaskParams<TaskTypes.AUDIO>,
     Omit<IMissionTaskProps, "onComplete"> {
   onComplete: (answers: ExtraAnswerType[]) => void;
+  onError(): void;
 }
 
 const AudioMission = (props: Props) => {
@@ -125,6 +126,7 @@ const AudioMission = (props: Props) => {
     answer: rightAnswer,
     onComplete,
     isLoading,
+    onError,
   } = props;
   const [selectedAnswers, setSelectedAnswers] = useState<ExtraAnswerType[]>([]);
 
@@ -172,7 +174,7 @@ const AudioMission = (props: Props) => {
   return (
     <>
       <MissionTitle title={title} />
-      <Player sound={sound} />
+      <Player sound={sound} onError={onError} />
       {selectedAnswers.length > 0 && (
         <View style={styles.finalWordContainer}>
           <Typography color={StyleGuide.colorPalette.black}>

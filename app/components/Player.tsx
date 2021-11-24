@@ -11,12 +11,12 @@ import {
   View,
 } from "react-native";
 import Animated, {
+  and,
   clockRunning,
   cond,
   Easing,
   eq,
   interpolate,
-  or,
   set,
   startClock,
   stopClock,
@@ -24,15 +24,8 @@ import Animated, {
   useCode,
   useValue,
 } from "react-native-reanimated";
+import SoundPlayer, { SoundPlayerEventData } from "react-native-sound-player";
 import { StyleGuide } from "utils";
-import TrackPlayer, {
-  Event,
-  RepeatMode,
-  State,
-  usePlaybackState,
-  useProgress,
-  useTrackPlayerEvents,
-} from "react-native-track-player";
 
 const styles = StyleSheet.create({
   playerContainer: {
@@ -70,19 +63,19 @@ const styles = StyleSheet.create({
 
 interface Props {
   sound?: string;
+  onError(): void;
 }
 
 export default function Player(props: Props) {
-  const { sound } = props;
-  const playbackState = usePlaybackState();
-  const { duration } = useProgress();
+  const { sound, onError } = props;
   const [soundDuration, setSoundDuration] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playerWidth, setPlayerWidth] = useState<number>(0);
-  const [isLoadErrored, setIsLoadErrored] = useState<boolean>(false);
+  const [soundLoaded, setSoundLoaded] = useState<boolean>(false);
+  const [isLoadingErrored, setIsLoadingErrored] = useState<boolean>(false);
 
   const playerProgress = useValue<number>(0);
-  const isPLayingAnim = useValue<0 | 1 | 2>(0);
+  const isPLayingAnim = useValue<0 | 1>(0);
   const clock = new Animated.Clock();
 
   const state = {
@@ -90,77 +83,86 @@ export default function Player(props: Props) {
     time: new Animated.Value(0),
     frameTime: new Animated.Value(0),
     position: new Animated.Value(0),
+    started: new Animated.Value<number>(0),
   };
 
   const config: Animated.TimingConfig = useMemo(
     () => ({
       toValue: 1,
-      duration: soundDuration * (Platform.OS === "ios" ? 700 : 950),
+      duration: soundDuration * (Platform.OS === "ios" ? 750 : 950),
       easing: Easing.sin,
     }),
     [soundDuration]
   );
 
-  const setup = useCallback(async () => {
-    if (sound) {
-      await TrackPlayer.setupPlayer();
-      await TrackPlayer.add([
-        { url: sound, id: sound, title: sound, artist: sound },
-      ]);
-      if (Platform.OS === "ios") {
-        await TrackPlayer.setRepeatMode(RepeatMode.Track);
-        await TrackPlayer.pause();
+  useEffect(() => {
+    if (soundLoaded) {
+      (async () => {
+        const { duration } = await SoundPlayer.getInfo();
+        setSoundDuration(duration);
+      })();
+    } else if (isLoadingErrored) {
+      Alert.alert("Возникла ошибка при загрузке");
+    }
+  }, [isLoadingErrored, soundLoaded]);
+
+  const finishedLoadingURL = useCallback(
+    (data: SoundPlayerEventData) => {
+      if (data.success) {
+        setSoundLoaded(true);
+      } else {
+        setIsLoadingErrored(true);
+        onError();
       }
+    },
+    [onError]
+  );
+
+  const finishedPLaying = useCallback(() => {
+    setIsPlaying(false);
+    SoundPlayer.seek(0);
+  }, []);
+
+  useEffect(() => {
+    const finishedLoadingEvent = SoundPlayer.addEventListener(
+      "FinishedLoading",
+      finishedLoadingURL
+    );
+    const finishedLoadingUrlEvent = SoundPlayer.addEventListener(
+      "FinishedLoadingURL",
+      finishedLoadingURL
+    );
+    const finishedPlayingEvent = SoundPlayer.addEventListener(
+      "FinishedPlaying",
+      finishedPLaying
+    );
+
+    return () => {
+      finishedLoadingEvent.remove();
+      finishedLoadingUrlEvent.remove();
+      finishedPlayingEvent.remove();
+    };
+  }, [finishedLoadingURL, finishedPLaying]);
+
+  useEffect(() => {
+    if (sound) {
+      SoundPlayer.loadUrl(sound);
     }
   }, [sound]);
 
-  useTrackPlayerEvents([Event.PlaybackQueueEnded], async () => {
-    await TrackPlayer.pause();
-    if (Platform.OS === "android") {
-      await TrackPlayer.skip(0);
-    }
-    setIsPlaying(false);
-    isPLayingAnim.setValue(2);
-  });
-
-  useTrackPlayerEvents([Event.PlaybackError], () => {
-    setIsLoadErrored(true);
-  });
-
-  useEffect(() => {
-    if (isLoadErrored) {
-      Alert.alert("Произошла ошибка при загрузке.");
-    }
-  }, [isLoadErrored]);
-
-  useEffect(() => {
-    setSoundDuration(duration);
-  }, [duration]);
-
-  useEffect(() => {
-    if (playbackState === State.Playing) {
-      setIsPlaying(true);
-      isPLayingAnim.setValue(1);
-    } else if (playbackState === State.Paused) {
-      setIsPlaying(false);
-      isPLayingAnim.setValue(0);
-    }
-  }, [playbackState]);
-
-  useEffect(() => {
-    setup();
-    return () => {
-      TrackPlayer.reset();
-    };
-  }, [setup]);
-
   const handleOnSoundPlayPress = useCallback(async () => {
-    if (playbackState !== State.Playing) {
-      await TrackPlayer.play();
-    } else if (playbackState === State.Playing) {
-      await TrackPlayer.pause();
+    if (sound) {
+      if (isPlaying) {
+        SoundPlayer.pause();
+        setIsPlaying(false);
+        isPLayingAnim.setValue(0);
+      } else {
+        setIsPlaying(true);
+        SoundPlayer.play();
+        isPLayingAnim.setValue(1);
+      }
     }
-  }, [playbackState]);
+  }, [isPLayingAnim, isPlaying, sound]);
 
   useCode(
     () => [
@@ -170,18 +172,22 @@ export default function Player(props: Props) {
           cond(eq(isPLayingAnim, 0), set(state.time, clock)),
           timing(clock, state, config),
         ],
-        cond(eq(isPLayingAnim, 1), startClock(clock))
+        cond(and(eq(isPLayingAnim, 1), eq(state.started, 0)), [
+          set(state.started, 1),
+          startClock(clock),
+        ])
       ),
       cond(
-        or(eq(state.finished, 1), eq(isPLayingAnim, 2)),
+        eq(state.finished, 1),
         [
           stopClock(clock),
           set(isPLayingAnim, 0),
+          set(state.started, 0),
           set(state.finished, 0),
           set(state.time, 0),
           set(state.frameTime, 0),
           set(state.position, 0),
-          set(playerProgress, 0),
+          set(playerProgress, state.position),
         ],
         set(playerProgress, state.position)
       ),

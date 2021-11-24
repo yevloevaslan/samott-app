@@ -47,14 +47,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 30,
+    paddingBottom: 30,
+    paddingTop: 28,
   },
   helloBubbleContainer: {
     marginBottom: 50,
     paddingHorizontal: 28,
   },
   inputStyle: {
-    marginBottom: 15,
+    marginBottom: 47,
   },
   birthdayContainer: {
     marginBottom: 20,

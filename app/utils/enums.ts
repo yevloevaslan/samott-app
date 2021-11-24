@@ -18,6 +18,8 @@ export enum Colors {
   ACID_GREEN = "acidGreen",
   LIGHT_GRAY = "lightGray",
   BROWN = "brown",
+  YELLOW = "yellow",
+  GRAY3 = "gray3",
 }
 
 export enum RoutesNames {

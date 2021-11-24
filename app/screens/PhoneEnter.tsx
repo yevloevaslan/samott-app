@@ -61,9 +61,10 @@ function PhoneEnter(props: Props) {
   return (
     <View style={styles.container}>
       <Header
-        titleType={TypographyTypes.BOLD34}
+        titleType={TypographyTypes.BOLD24}
         title="АВТОРИЗАЦИЯ"
         decorators="all"
+        alignTitle="center"
       />
       <View style={styles.contentContainer}>
         <BorderedInput

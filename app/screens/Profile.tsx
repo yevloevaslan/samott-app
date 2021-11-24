@@ -1,15 +1,8 @@
 import { useFocusEffect } from "@react-navigation/core";
 import { StackScreenProps } from "@react-navigation/stack";
-import {
-  GEAR_WHEEL,
-  GOLD_STAR,
-  GRAY_STAR,
-  RED_STAR,
-  ROTATE_ARROWS,
-} from "assets/images";
+import { GEAR_WHEEL, ROTATE_ARROWS } from "assets/images";
 import {
   Avatar,
-  Bubble,
   Button,
   Header,
   LoadingImage,
@@ -19,20 +12,12 @@ import {
 import { UserController } from "lib";
 import MainController from "lib/controllers/MainController";
 import React, { useCallback, useState } from "react";
-import {
-  Image,
-  ImageProps,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useApp, usePlayground, useUser } from "redux/hooks";
 import {
   BackgroundImages,
   HomeStackProps,
-  MissionDifficultType,
   RoutesNames,
   SCREEN_WIDTH,
   StyleGuide,
@@ -65,7 +50,9 @@ const styles = StyleSheet.create({
   },
   rateInfoContainer: {
     justifyContent: "space-around",
-    paddingHorizontal: 24,
+    paddingHorizontal: 14,
+    flex: 1,
+    marginRight: 11,
   },
   pointsRow: {
     marginBottom: 10,
@@ -78,6 +65,7 @@ const styles = StyleSheet.create({
   },
   ratingText: {
     marginRight: 18,
+    flex: 1,
   },
   updateButtonIcon: {
     width: 34,
@@ -101,26 +89,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  currentRatingContainer: {
-    paddingVertical: 10,
+  rateInfoBubble: {
+    paddingVertical: 4,
+    backgroundColor: StyleGuide.colorPalette.gray3,
     alignItems: "center",
-    justifyContent: "center",
-  },
-  starContainer: {
-    paddingVertical: 10,
-    paddingHorizontal: 40,
-    backgroundColor: StyleGuide.colorPalette.mayo,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  star: {
-    width: 24,
-    height: 24,
-  },
-  currentRatingText: {
-    marginRight: 10,
-    paddingTop: 7,
+    borderRadius: 14,
+    flex: 1,
   },
 });
 
@@ -149,46 +123,13 @@ function Profile(props: Props) {
     }, [])
   );
 
-  const renderCurrentLevelStatus = useCallback(() => {
-    const containerStyle: ViewStyle[] = [styles.starContainer];
-    let star: ImageProps["source"] = RED_STAR;
-
-    if (playground.currentDifficult) {
-      switch (playground.currentDifficult) {
-        case MissionDifficultType.EASY:
-          containerStyle.push({
-            backgroundColor: StyleGuide.colorPalette.mayo,
-          });
-          break;
-        case MissionDifficultType.MEDIUM:
-          containerStyle.push({
-            backgroundColor: StyleGuide.colorPalette.orange,
-          });
-          star = GRAY_STAR;
-          break;
-        case MissionDifficultType.MEDIUM:
-          containerStyle.push({
-            backgroundColor: StyleGuide.colorPalette.tomato,
-          });
-          star = GOLD_STAR;
-          break;
-      }
-    }
-
-    return (
-      <View style={containerStyle}>
-        <Image source={star} style={styles.star} />
-      </View>
-    );
-  }, [playground.currentDifficult]);
-
   const renderBanner = useCallback(() => {
     if (!app.bannerUrl) {
       return null;
     }
 
     return (
-      <View style={{ marginTop: -20 }}>
+      <View>
         <LoadingImage
           resizeMethod="auto"
           resizeMode="stretch"
@@ -222,14 +163,17 @@ function Profile(props: Props) {
           <View style={styles.pointsInfoContainer}>
             <View style={[styles.whiteContainer, styles.rateInfoContainer]}>
               <View style={[styles.row, styles.pointsRow]}>
-                <Typography color={StyleGuide.colorPalette.mediumDarkGray}>
+                <Typography
+                  style={styles.ratingText}
+                  color={StyleGuide.colorPalette.mediumDarkGray}
+                >
                   Баллы
                 </Typography>
-                <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
-                  <Typography color={StyleGuide.colorPalette.acidGreen}>
+                <View style={styles.rateInfoBubble}>
+                  <Typography color={StyleGuide.colorPalette.yellow}>
                     {playground.totalScore}
                   </Typography>
-                </Bubble>
+                </View>
               </View>
               <View style={styles.row}>
                 <Typography
@@ -238,11 +182,11 @@ function Profile(props: Props) {
                 >
                   Рейтинг
                 </Typography>
-                <Bubble backgroundColor={StyleGuide.colorPalette.darkGreen}>
-                  <Typography color={StyleGuide.colorPalette.acidGreen}>
+                <View style={styles.rateInfoBubble}>
+                  <Typography color={StyleGuide.colorPalette.yellow}>
                     {user.rating}
                   </Typography>
-                </Bubble>
+                </View>
               </View>
             </View>
             <View style={[styles.whiteContainer, styles.updateContainer]}>
@@ -261,18 +205,6 @@ function Profile(props: Props) {
               >
                 Обновить{"\n"}данные
               </Typography>
-            </View>
-          </View>
-          <View style={[styles.whiteContainer, styles.currentRatingContainer]}>
-            <View style={styles.row}>
-              <Typography
-                color={StyleGuide.colorPalette.mediumDarkGray}
-                type={TypographyTypes.NORMAL24}
-                style={styles.currentRatingText}
-              >
-                Текущий уровень
-              </Typography>
-              {renderCurrentLevelStatus()}
             </View>
           </View>
         </View>

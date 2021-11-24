@@ -14,25 +14,25 @@ export const TABS: TabBarType[] = [
   {
     image: HOME,
     index: 0,
-    title: "ДОМОЙ",
+    title: "Главная",
     routeName: RoutesNames.HOME,
   },
   {
     image: ARROW,
     index: 1,
-    title: "УЧИТЬСЯ",
+    title: "Обучение",
     routeName: RoutesNames.MISSIONS,
   },
   {
     image: BOOK,
     index: 2,
-    title: "СЛОВАРЬ",
+    title: "Словарь",
     routeName: RoutesNames.DICTIONARY,
   },
   {
     image: SHARE,
     index: 3,
-    title: "ПОДЕЛИТЬСЯ",
+    title: "Поделиться",
     routeName: RoutesNames.SHARE,
   },
 ];

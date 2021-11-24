@@ -8,6 +8,7 @@ import {
   IUserInfo,
   MissionDifficultType,
   StoreDictionary,
+  TasksCounts,
 } from "../../utils";
 import config from "./apiConfig";
 import { ApiLogin, ApiUserAuth, ApiUserInfo } from "./apiTypes";
@@ -67,14 +68,20 @@ export default class Api {
   }
 
   static async getTask(token: string, level?: MissionDifficultType) {
-    const response = await RestApiHelper.build<{ data: { task: ITask } }>(
-      "getTask"
-    )
+    const response = await RestApiHelper.build<{
+      data: {
+        task: ITask;
+        tasksCount: {
+          totalTasksCount: { byLevel: TasksCounts };
+          userTasksCount: { byLevel: TasksCounts };
+        };
+      };
+    }>("getTask")
       .withHeaders({ "x-access-token": token })
       .withQueryParams({ level })
       .fetch();
 
-    return response.body.data.task;
+    return response.body.data;
   }
 
   static async checkAnswer(

@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     aspectRatio: 196 / 218,
     width: 196,
   },
+  containerWrapper: {
+    paddingTop: 28,
+  },
 });
 
 interface Props
@@ -44,7 +47,7 @@ function ProjectInfo(props: Props) {
   }, [props.navigation]);
 
   return (
-    <View>
+    <View style={styles.containerWrapper}>
       <Header
         onBackButtonPress={handleOnBackButtonPress}
         decorators="right"

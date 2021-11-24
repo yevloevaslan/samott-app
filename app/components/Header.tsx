@@ -24,14 +24,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: "row",
-    flexWrap: "wrap",
   },
   contentContainer: {
     flex: 1,
     height: 73.5,
     paddingHorizontal: 18,
     flexDirection: "row",
-    backgroundColor: StyleGuide.colorPalette.red,
+    backgroundColor: StyleGuide.colorPalette.green,
     alignItems: "center",
   },
   decorator: {
@@ -44,17 +43,17 @@ const styles = StyleSheet.create({
     left: -32,
   },
   titleText: {
-    marginLeft: 10,
+    flexShrink: 1,
   },
   right: {
     right: -32,
   },
   leftContentContainer: {
-    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     flex: 1,
-    flexWrap: "wrap",
+  },
+  leftContainer: {
+    marginRight: 10,
   },
 });
 
@@ -67,6 +66,8 @@ interface Props {
   justifyContent?: "space-between" | "space-around" | "space-evenly";
   titleType?: TypographyTypes;
   onBackButtonPress?: () => void;
+  titleScale?: boolean;
+  alignTitle?: "center" | "flex-start";
 }
 
 const Header = (props: Props) => {
@@ -79,6 +80,7 @@ const Header = (props: Props) => {
     justifyContent = "flex-start",
     titleType,
     onBackButtonPress,
+    alignTitle = "flex-start",
   } = props;
 
   const isLeft = useMemo<boolean>(
@@ -113,9 +115,17 @@ const Header = (props: Props) => {
 
   const renderLeft = useCallback(() => {
     if (avatar) {
-      return <Avatar />;
+      return (
+        <View style={styles.leftContainer}>
+          <Avatar size={{ w: 58, h: 58 }} />
+        </View>
+      );
     } else if (onBackButtonPress) {
-      return <BackButton onPress={handleOnBackButtonPress} />;
+      return (
+        <View style={styles.leftContainer}>
+          <BackButton onPress={handleOnBackButtonPress} />
+        </View>
+      );
     }
 
     return null;
@@ -136,16 +146,19 @@ const Header = (props: Props) => {
         )}
         <View style={[styles.contentContainer, { justifyContent }]}>
           {renderLeft()}
-          <View style={styles.leftContentContainer}>
+          <View
+            style={[styles.leftContentContainer, { alignItems: alignTitle }]}
+          >
             <Typography
               numberOfLines={1}
               type={titleType}
               style={styles.titleText}
+              allowFontScaling={true}
             >
               {title}
             </Typography>
-            {children}
           </View>
+          {children}
         </View>
         {isRight && (
           <Image

@@ -22,6 +22,7 @@ type Props<
     answers?: string[];
     photos?: string[];
     sound?: string;
+    onError(): void;
   };
 
 const SelectMission = <
@@ -30,6 +31,7 @@ const SelectMission = <
   props: Props<T>
 ) => {
   const {
+    onError,
     onComplete,
     answer,
     title,
@@ -72,7 +74,7 @@ const SelectMission = <
   return (
     <>
       <MissionTitle title={title} />
-      <Player sound={sound} />
+      <Player sound={sound} onError={onError} />
       {data && <View style={styles.container}>{data.map(renderAnswer)}</View>}
     </>
   );

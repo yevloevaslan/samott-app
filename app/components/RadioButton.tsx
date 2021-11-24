@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     padding: 2,
-    borderColor: StyleGuide.colorPalette.red,
+    borderColor: StyleGuide.colorPalette.green,
     borderWidth: 3,
     marginRight: 10,
   },
   settedContainer: {
     width: "100%",
     height: "100%",
-    backgroundColor: StyleGuide.colorPalette.red,
+    backgroundColor: StyleGuide.colorPalette.green,
   },
 });
 

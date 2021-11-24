@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import { BOOK, CHANGE_LANG } from "assets/images";
+import { BOOK, CHANGE_LANG, TASK_TITLE_ORNAMENT } from "assets/images";
 import {
   DictionaryWordsList,
   Header,
@@ -36,14 +36,15 @@ import {
 } from "utils";
 
 const styles = StyleSheet.create({
+  containerWrapper: {
+    paddingTop: 28,
+  },
   container: {
-    paddingLeft: 16,
-    paddingRight: 41,
+    paddingHorizontal: 16,
     paddingTop: 26,
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
     marginBottom: 20,
   },
   grammarBtn: {
@@ -51,11 +52,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerBtn: {
-    backgroundColor: StyleGuide.colorPalette.brown,
-    borderRadius: 15,
-    paddingVertical: 11,
+    backgroundColor: StyleGuide.colorPalette.gray3,
+    borderRadius: 8,
+    paddingVertical: 12,
     paddingHorizontal: 8,
     flexDirection: "row",
+    marginRight: 20,
+    overflow: "hidden",
   },
   switchLangBtn: {
     justifyContent: "space-between",
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
   changeImage: {
     aspectRatio: 28 / 16,
     width: 28,
-    marginHorizontal: 2,
+    marginHorizontal: 7,
   },
   inputContainer: {
     marginBottom: 11,
@@ -82,6 +85,14 @@ const styles = StyleSheet.create({
     aspectRatio: 18 / 23,
     width: 18,
     marginRight: 7,
+  },
+  headerBtnImage: {
+    width: 61,
+    aspectRatio: 61 / 38,
+    position: "absolute",
+    left: -16,
+    zIndex: 1,
+    opacity: 0.4,
   },
 });
 
@@ -152,11 +163,7 @@ const Dictionary = (props: Props) => {
           type={TypographyTypes.NORMAL14}
           color={StyleGuide.colorPalette.darkGrey}
         >
-          Результат по слову{" "}
-          <Typography color={"#636363"} type={TypographyTypes.NORMAL14}>
-            {searchInput}
-          </Typography>{" "}
-          - {words.length}{" "}
+          Найдено {words.length}{" "}
           {getDeclining(words.length, ["слово", "слов", "слова"])}
         </Typography>
         <View style={styles.fullWordsContainer}>
@@ -164,16 +171,21 @@ const Dictionary = (props: Props) => {
         </View>
       </>
     );
-  }, [isLoading, searchInput, words]);
+  }, [isLoading, words]);
 
   return (
-    <View>
+    <View style={styles.containerWrapper}>
       <Header title="Словарь-Дошлорг" decorators="right" />
       <View style={styles.container}>
         <View>
           <View style={styles.header}>
             <TouchableWithoutFeedback onPress={handleOnChangeLang}>
               <View style={[styles.headerBtn, styles.switchLangBtn]}>
+                <Image
+                  resizeMode="contain"
+                  style={styles.headerBtnImage}
+                  source={TASK_TITLE_ORNAMENT}
+                />
                 <Typography type={TypographyTypes.NORMAL14}>
                   {selectedLang}
                 </Typography>
@@ -188,16 +200,19 @@ const Dictionary = (props: Props) => {
               onPress={handleOnGetGrammarPress}
             >
               <View style={[styles.headerBtn, styles.grammarBtn]}>
+                <Image
+                  resizeMode="contain"
+                  style={styles.headerBtnImage}
+                  source={TASK_TITLE_ORNAMENT}
+                />
                 {isGrammarLoading ? (
                   <ActivityIndicator />
                 ) : (
-                  <>
-                    <Image source={BOOK} style={styles.grammarBookImage} />
-                    <Typography type={TypographyTypes.NORMAL14}>
-                      Грамматика
-                    </Typography>
-                  </>
+                  <Image source={BOOK} style={styles.grammarBookImage} />
                 )}
+                <Typography type={TypographyTypes.NORMAL14}>
+                  Грамматика
+                </Typography>
               </View>
             </TouchableWithoutFeedback>
           </View>

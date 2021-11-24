@@ -10,9 +10,8 @@ const styles = StyleSheet.create({
   },
   tabBarIcon: {
     aspectRatio: 1,
-    width: 50,
+    width: 58,
     marginBottom: 8,
-    tintColor: StyleGuide.colorPalette.black,
   },
 });
 
@@ -31,7 +30,7 @@ const Tab = (props: Props) => {
   const imageStyle = useMemo(
     () => [
       styles.tabBarIcon,
-      selected && { tintColor: StyleGuide.colorPalette.brown },
+      selected && { tintColor: StyleGuide.colorPalette.green },
     ],
     [selected]
   );
@@ -41,7 +40,7 @@ const Tab = (props: Props) => {
       <Image source={image} style={imageStyle} />
       <Typography
         textAlign="center"
-        color={StyleGuide.colorPalette.black}
+        color={selected ? StyleGuide.colorPalette.green : "#AAAAAA"}
         type={TypographyTypes.NORMAL12}
       >
         {title}
