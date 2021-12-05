@@ -7,11 +7,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
+    elevation: 3,
   },
   tabBarIcon: {
     aspectRatio: 1,
     width: 58,
     marginBottom: 8,
+    tintColor: "#DEDEDC",
   },
 });
 

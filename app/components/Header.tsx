@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flexShrink: 1,
+    fontSize: 18,
+    lineHeight: 24,
   },
   right: {
     right: -32,
@@ -117,7 +119,7 @@ const Header = (props: Props) => {
     if (avatar) {
       return (
         <View style={styles.leftContainer}>
-          <Avatar size={{ w: 58, h: 58 }} />
+          <Avatar size={{ w: 50, h: 50 }} />
         </View>
       );
     } else if (onBackButtonPress) {

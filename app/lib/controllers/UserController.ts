@@ -14,7 +14,7 @@ class UserController extends Controller {
       });
       return response;
     } catch (e) {
-      Alert.alert("Не удалось зайти.", `${e}`);
+      Alert.alert("Не удалось зайти.");
     }
   }
 
@@ -24,7 +24,7 @@ class UserController extends Controller {
       this.dispatch(UserActionsTypes.SET_ID, { id: response._id });
       return response;
     } catch (e) {
-      Alert.alert("Не удалось зайти.", `${e}`);
+      Alert.alert("Не удалось зайти.");
     }
   }
 
@@ -53,7 +53,7 @@ class UserController extends Controller {
       this.dispatch(PlaygroundActions.SET_SCORE, { totalScore: score });
       return response;
     } catch (e) {
-      Alert.alert("Ошибка", `${e}`);
+      Alert.alert("Ошибка");
     }
   }
 

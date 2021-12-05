@@ -27,7 +27,7 @@ class PlaygroundController extends Controller {
     try {
       return await Api.checkAnswer(this.token, taskId, answer);
     } catch (e) {
-      Alert.alert("Ошибка", `${e}`);
+      Alert.alert("Ошибка");
     }
 
     return undefined;
