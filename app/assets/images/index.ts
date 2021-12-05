@@ -26,3 +26,4 @@ export const SKIP = { uri: "skip" };
 export const SEND = { uri: "send" };
 export const CHANGE_LANG = { uri: "change_lang" };
 export const BROKEN_FILE = { uri: "broken_file" };
+export const SEARCH_ICON = { uri: "search" };

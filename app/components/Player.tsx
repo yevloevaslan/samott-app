@@ -89,22 +89,29 @@ export default function Player(props: Props) {
   const config: Animated.TimingConfig = useMemo(
     () => ({
       toValue: 1,
-      duration: soundDuration * (Platform.OS === "ios" ? 750 : 950),
+      duration: soundDuration * (Platform.OS === "ios" ? 700 : 750),
       easing: Easing.sin,
     }),
     [soundDuration]
   );
 
+  const getSoundDuration = useCallback(async () => {
+    setTimeout(async () => {
+      const resp = await SoundPlayer.getInfo();
+      if (resp.duration <= 0) {
+        onError();
+      }
+      setSoundDuration(resp.duration);
+    }, 1000);
+  }, [onError]);
+
   useEffect(() => {
     if (soundLoaded) {
-      (async () => {
-        const { duration } = await SoundPlayer.getInfo();
-        setSoundDuration(duration);
-      })();
+      getSoundDuration();
     } else if (isLoadingErrored) {
       Alert.alert("Возникла ошибка при загрузке");
     }
-  }, [isLoadingErrored, soundLoaded]);
+  }, [getSoundDuration, isLoadingErrored, soundLoaded]);
 
   const finishedLoadingURL = useCallback(
     (data: SoundPlayerEventData) => {

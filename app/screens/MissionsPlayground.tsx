@@ -221,7 +221,7 @@ function MissionsPlayground(_props: Props) {
 
   const renderStars = useCallback(() => {
     let count = 1;
-    let color = StyleGuide.colorPalette.green;
+    let color = "#8ECF6F";
     switch (playground.currentDifficult) {
       case MissionDifficultType.MEDIUM:
         count = 2;

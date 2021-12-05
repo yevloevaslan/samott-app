@@ -90,7 +90,7 @@ export default function DifficultSelector(props: Props) {
 
   const renderStar = useCallback(
     (item: MissionDifficultType, index: number) => {
-      let color = StyleGuide.colorPalette.green;
+      let color = "#8ECF6F";
 
       switch (item) {
         case MissionDifficultType.HARD:
@@ -101,7 +101,7 @@ export default function DifficultSelector(props: Props) {
       }
       return (
         <View key={index} style={styles.starContainer}>
-          <Star color={color} size={score !== undefined ? 24 : undefined} />
+          <Star color={color} size={32} />
         </View>
       );
     },

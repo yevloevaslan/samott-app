@@ -68,10 +68,14 @@ function Missions(props: Props) {
             <Bubble backgroundColor={StyleGuide.colorPalette.white}>
               <View style={{ paddingVertical: 6, paddingHorizontal: 12 }}>
                 <Typography
+                  style={{
+                    fontSize: 12,
+                    lineHeight: 16,
+                  }}
                   type={TypographyTypes.NORMAL18}
                   color={StyleGuide.colorPalette.black}
                 >
-                  Рейтинг {user.rating}
+                  рейтинг {user.rating}
                 </Typography>
               </View>
             </Bubble>
