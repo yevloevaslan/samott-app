@@ -11,6 +11,7 @@ import {
   BackgroundImages,
   HomeStackProps,
   RoutesNames,
+  SCREEN_WIDTH,
   StyleGuide,
   TypographyTypes,
 } from "utils";
@@ -28,8 +29,8 @@ const styles = StyleSheet.create({
     marginBottom: 51,
   },
   image: {
-    aspectRatio: 196 / 218,
-    width: 196,
+    aspectRatio: SCREEN_WIDTH / 360,
+    width: "100%",
   },
   containerWrapper: {
     paddingTop: 28,
