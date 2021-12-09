@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   helloTitle: {
-    marginBottom: 10,
+    marginBottom: 36,
   },
   difficultSelectorsContainer: {
     flex: 1,
@@ -89,7 +89,8 @@ function Missions(props: Props) {
         color={StyleGuide.colorPalette.gray}
         style={styles.helloTitle}
       >
-        ДОБРО ПОЖАЛОВАТЬ!{"\n"}МАРШ ВОАГIИЙЛА!
+        ДОБРО ПОЖАЛОВАТЬ!{"\n"}
+        {"\n"}МАРШ ВОАГIИЙЛА!
       </Typography>
       <Typography
         textAlign="center"

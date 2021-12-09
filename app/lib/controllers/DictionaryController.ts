@@ -7,7 +7,9 @@ class DictionaryController extends Controller {
     return this.state.dictionary.selectedLang;
   }
   async findWord(word: string) {
-    if (word !== "") {
+    if (word === "") {
+      this.dispatch(DictionaryActions.SET_FOUND_WORDS, []);
+    } else {
       try {
         const response = await Api.findWord(this.token, word, this.lang);
         this.dispatch(DictionaryActions.SET_FOUND_WORDS, response);
