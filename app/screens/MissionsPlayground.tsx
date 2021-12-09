@@ -274,6 +274,7 @@ function MissionsPlayground(_props: Props) {
                   <Typography
                     color={StyleGuide.colorPalette.gray}
                     type={TypographyTypes.BOLD18}
+                    style={{ marginBottom: 4 }}
                   >
                     Уровень {currentDifficultLevel}
                   </Typography>

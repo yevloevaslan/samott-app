@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   updateButtonIcon: {
-    width: 34,
-    height: 34,
+    width: 40,
+    aspectRatio: 1,
   },
   avatarContainer: {
     flex: 1,

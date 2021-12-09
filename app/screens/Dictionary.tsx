@@ -114,16 +114,12 @@ const Dictionary = (props: Props) => {
     if (searchTimer.current) {
       clearTimeout(searchTimer.current);
     }
-    if (searchInput.length > 0) {
-      setIsLoading(true);
-      searchTimer.current = setTimeout(async () => {
-        await DictionaryController.findWord(searchInput);
-        DictionaryController.setSearchInput(searchInput);
-        setIsLoading(false);
-      }, SEARCH_TIMEOUT);
-    } else {
+    setIsLoading(true);
+    searchTimer.current = setTimeout(async () => {
+      await DictionaryController.findWord(searchInput);
+      DictionaryController.setSearchInput(searchInput);
       setIsLoading(false);
-    }
+    }, SEARCH_TIMEOUT);
   }, [searchInput, selectedLang]);
 
   const anotherLang = useMemo<StoreDictionary["selectedLang"]>(
