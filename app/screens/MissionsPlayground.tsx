@@ -1,13 +1,7 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { SKIP } from "assets/images";
-import {
-  Bubble,
-  Header,
-  Star,
-  Typography,
-  withBackgroundHoc,
-} from "components";
+import { Header, Star, Typography, withBackgroundHoc } from "components";
 import {
   AudioSelectMission,
   SelectMission,
@@ -244,18 +238,28 @@ function MissionsPlayground(_props: Props) {
 
   return (
     <View style={styles.container}>
-      <Header avatar title={user.firstName} decorators="right">
+      <Header
+        numberOfLines={1}
+        avatar
+        title={user.firstName}
+        decorators="right"
+      >
         <View style={styles.ratingBubbleContainer}>
-          <Bubble backgroundColor={StyleGuide.colorPalette.white}>
+          <View
+            style={{
+              backgroundColor: StyleGuide.colorPalette.white,
+              borderRadius: 16,
+            }}
+          >
             <View style={{ paddingVertical: 6, paddingHorizontal: 12 }}>
               <Typography
-                type={TypographyTypes.NORMAL18}
+                type={TypographyTypes.NORMAL14}
                 color={StyleGuide.colorPalette.black}
               >
                 Рейтинг {user.rating}
               </Typography>
             </View>
-          </Bubble>
+          </View>
         </View>
       </Header>
       {isLoading ? (

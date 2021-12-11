@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
   phoneInput: {
     marginBottom: 10,
   },
+  phoneInputText: {
+    fontSize: 18,
+  },
 });
 
 interface Props
@@ -61,7 +64,7 @@ function PhoneEnter(props: Props) {
   return (
     <View style={styles.container}>
       <Header
-        titleType={TypographyTypes.BOLD24}
+        titleType={TypographyTypes.BOLD18}
         title="АВТОРИЗАЦИЯ"
         decorators="all"
         alignTitle="center"
@@ -70,7 +73,7 @@ function PhoneEnter(props: Props) {
         <BorderedInput
           onChangeText={handleOnChangeText}
           type="phone-number"
-          placeholder="Введите номер телефона"
+          placeholder="Номер телефона"
           onError={setIsInputErrored}
           style={styles.phoneInput}
           maxLength={14}
@@ -81,7 +84,7 @@ function PhoneEnter(props: Props) {
           onPress={handleOnSubmitButtonPress}
           isLoading={isLoading}
         >
-          <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
+          <Typography textAlign="center" type={TypographyTypes.NORMAL18}>
             Подтвердить
           </Typography>
         </Button>

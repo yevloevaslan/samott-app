@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
   },
   inputStyle: {
-    marginBottom: 47,
+    marginBottom: 20,
   },
   birthdayContainer: {
     marginBottom: 20,
@@ -126,12 +126,9 @@ const styles = StyleSheet.create({
   //   paddingTop: 20,
   //   justifyContent: "center",
   // },
-  exitIconContainer: {
-    width: 44,
-    height: 41,
-  },
   exitIcon: {
-    flexGrow: 1,
+    width: 26,
+    aspectRatio: 1,
   },
   submitButton: {
     marginTop: 20,
@@ -309,10 +306,7 @@ function ProfileSettings(props: Props) {
           justifyContent="space-between"
           decorators="right"
         >
-          <TouchableOpacity
-            style={styles.exitIconContainer}
-            onPress={handleOnExitButtonPress}
-          >
+          <TouchableOpacity onPress={handleOnExitButtonPress}>
             <Image source={EXIT} style={styles.exitIcon} />
           </TouchableOpacity>
         </Header>
@@ -348,7 +342,7 @@ function ProfileSettings(props: Props) {
         <View style={styles.birthdayContainer}>
           <Typography
             color={StyleGuide.colorPalette.gray}
-            type={TypographyTypes.NORMAL24}
+            type={TypographyTypes.NORMAL18}
             style={styles.birthdayInputsContainerTitle}
           >
             Дата рождения (необязательно)
@@ -366,19 +360,25 @@ function ProfileSettings(props: Props) {
         </View>
         <Typography
           color={StyleGuide.colorPalette.gray}
-          type={TypographyTypes.NORMAL24}
+          type={TypographyTypes.NORMAL18}
           style={styles.birthdayInputsContainerTitle}
         >
           Ваш пол (необязательно)
         </Typography>
         <View style={styles.sexContainer}>
           <RadioButton value={sex === "m"} onPress={handleOnMaleSexPress}>
-            <Typography color={StyleGuide.colorPalette.black}>
+            <Typography
+              type={TypographyTypes.NORMAL18}
+              color={StyleGuide.colorPalette.black}
+            >
               Мужской
             </Typography>
           </RadioButton>
           <RadioButton value={sex === "f"} onPress={handleOnFemaleSexPress}>
-            <Typography color={StyleGuide.colorPalette.black}>
+            <Typography
+              type={TypographyTypes.NORMAL18}
+              color={StyleGuide.colorPalette.black}
+            >
               Женский
             </Typography>
           </RadioButton>
@@ -395,7 +395,7 @@ function ProfileSettings(props: Props) {
           isLoading={isLoading}
           disabled={isSubmitButtonDisabled}
         >
-          <Typography>
+          <Typography type={TypographyTypes.NORMAL18}>
             {props.route.params.firstIn
               ? "Продолжить"
               : "Подтвердить изменения"}

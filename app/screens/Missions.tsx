@@ -63,7 +63,12 @@ function Missions(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Header avatar title={user.firstName} decorators="right">
+        <Header
+          numberOfLines={1}
+          avatar
+          title={user.firstName}
+          decorators="right"
+        >
           <View style={styles.ratingBubbleContainer}>
             <Bubble backgroundColor={StyleGuide.colorPalette.white}>
               <View style={{ paddingVertical: 6, paddingHorizontal: 12 }}>
@@ -85,12 +90,18 @@ function Missions(props: Props) {
       <Typography
         type={TypographyTypes.BOLD18}
         textAlign="center"
-        numberOfLines={2}
+        color={StyleGuide.colorPalette.gray}
+        style={{ marginBottom: -15 }}
+      >
+        ДОБРО ПОЖАЛОВАТЬ!{"\n"}
+      </Typography>
+      <Typography
+        type={TypographyTypes.BOLD18}
+        textAlign="center"
         color={StyleGuide.colorPalette.gray}
         style={styles.helloTitle}
       >
-        ДОБРО ПОЖАЛОВАТЬ!{"\n"}
-        {"\n"}МАРШ ВОАГIИЙЛА!
+        МАРШ ВОАГIИЙЛА!
       </Typography>
       <Typography
         textAlign="center"

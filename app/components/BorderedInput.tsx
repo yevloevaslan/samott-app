@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
-import { StyleGuide, TypographyTypes, BorderedInputTypes } from "utils";
+import { StyleGuide, BorderedInputTypes } from "utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 0,
+    fontSize: 18,
   },
 });
 
@@ -88,7 +89,7 @@ const BorderedInput = (props: Props) => {
         placeholderTextColor={StyleGuide.colorPalette.gray}
         keyboardType={keyboardType}
         onChangeText={handleOnChangeText}
-        style={[styles.input, StyleGuide.typography[TypographyTypes.NORMAL24]]}
+        style={styles.input}
       />
     </View>
   );

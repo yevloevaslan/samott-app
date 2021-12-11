@@ -42,11 +42,6 @@ const styles = StyleSheet.create({
   left: {
     left: -32,
   },
-  titleText: {
-    flexShrink: 1,
-    fontSize: 18,
-    lineHeight: 24,
-  },
   right: {
     right: -32,
   },
@@ -70,6 +65,7 @@ interface Props {
   onBackButtonPress?: () => void;
   titleScale?: boolean;
   alignTitle?: "center" | "flex-start";
+  numberOfLines?: number;
 }
 
 const Header = (props: Props) => {
@@ -83,6 +79,7 @@ const Header = (props: Props) => {
     titleType,
     onBackButtonPress,
     alignTitle = "flex-start",
+    numberOfLines,
   } = props;
 
   const isLeft = useMemo<boolean>(
@@ -151,12 +148,7 @@ const Header = (props: Props) => {
           <View
             style={[styles.leftContentContainer, { alignItems: alignTitle }]}
           >
-            <Typography
-              numberOfLines={1}
-              type={titleType}
-              style={styles.titleText}
-              allowFontScaling={true}
-            >
+            <Typography numberOfLines={numberOfLines} type={titleType}>
               {title}
             </Typography>
           </View>
