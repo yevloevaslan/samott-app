@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     width: 86,
   },
   starContainer: {
-    marginRight: 10,
+    marginRight: 4,
   },
 });
 

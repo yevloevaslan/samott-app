@@ -71,7 +71,6 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
     fontFamily: "Roboto-Regular",
     fontSize: 18,
     lineHeight: 21,
-    fontWeight: "900",
   },
   [TypographyTypes.ITALIC18]: {
     fontFamily: "Roboto-Regular",
@@ -82,7 +81,7 @@ const typography: { [key in TypographyTypes]: TextStyle } = {
   [TypographyTypes.BOLD18]: {
     fontFamily: "Roboto-Regular",
     fontSize: 18,
-    lineHeight: 21,
+    // lineHeight: 21,
     fontWeight: "bold",
   },
   [TypographyTypes.BOLD24]: {

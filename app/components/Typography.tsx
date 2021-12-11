@@ -21,7 +21,7 @@ const Typography = (props: Props) => {
   return (
     <Text
       {...props}
-      style={[style, StyleGuide.typography[type], { color, textAlign }]}
+      style={[StyleGuide.typography[type], style, { color, textAlign }]}
     />
   );
 };

@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 21,
   },
   whiteContainer: {
+    padding: 18,
+    paddingBottom: 8,
     borderRadius: 7,
     backgroundColor: StyleGuide.colorPalette.white,
   },
@@ -56,6 +58,7 @@ const styles = StyleSheet.create({
   },
   pointsRow: {
     marginBottom: 10,
+    alignItems: "center",
   },
   pointsInfoContainer: {
     paddingTop: 20,
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   ratingText: {
-    marginRight: 18,
+    fontSize: 16,
     flex: 1,
   },
   updateButtonIcon: {
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   rateInfoBubble: {
-    paddingVertical: 4,
+    paddingVertical: 5,
     backgroundColor: StyleGuide.colorPalette.gray3,
     alignItems: "center",
     borderRadius: 14,
@@ -164,26 +167,34 @@ function Profile(props: Props) {
             <View style={[styles.whiteContainer, styles.rateInfoContainer]}>
               <View style={[styles.row, styles.pointsRow]}>
                 <Typography
+                  type={TypographyTypes.NORMAL18}
                   style={styles.ratingText}
                   color={StyleGuide.colorPalette.mediumDarkGray}
                 >
                   Баллы
                 </Typography>
                 <View style={styles.rateInfoBubble}>
-                  <Typography color={StyleGuide.colorPalette.yellow}>
+                  <Typography
+                    type={TypographyTypes.NORMAL18}
+                    color={StyleGuide.colorPalette.yellow}
+                  >
                     {playground.totalScore}
                   </Typography>
                 </View>
               </View>
-              <View style={styles.row}>
+              <View style={[styles.row, styles.pointsRow]}>
                 <Typography
+                  type={TypographyTypes.NORMAL18}
                   style={styles.ratingText}
                   color={StyleGuide.colorPalette.mediumDarkGray}
                 >
                   Рейтинг
                 </Typography>
                 <View style={styles.rateInfoBubble}>
-                  <Typography color={StyleGuide.colorPalette.yellow}>
+                  <Typography
+                    type={TypographyTypes.NORMAL18}
+                    color={StyleGuide.colorPalette.yellow}
+                  >
                     {user.rating}
                   </Typography>
                 </View>

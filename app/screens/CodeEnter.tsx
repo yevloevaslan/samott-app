@@ -15,7 +15,6 @@ import {
   BackgroundImages,
   HomeStackProps,
   RoutesNames,
-  StyleGuide,
   TypographyTypes,
 } from "utils";
 
@@ -68,7 +67,7 @@ function CodeEnter(props: Props) {
 
   useEffect(() => {
     if (timerDuration === 1) {
-      setTimerText("ОТПРАВИТЬ НОВЫЙ КОД");
+      setTimerText("Отправить новый код");
     }
   }, [timerDuration]);
 
@@ -123,7 +122,7 @@ function CodeEnter(props: Props) {
   return (
     <View style={styles.container}>
       <Header
-        titleType={TypographyTypes.BOLD24}
+        titleType={TypographyTypes.BOLD18}
         decorators="all"
         title="АВТОРИЗАЦИЯ"
         alignTitle="center"
@@ -142,7 +141,7 @@ function CodeEnter(props: Props) {
           onPress={handleOnSubmitButtonPress}
           isLoading={isLoading}
         >
-          <Typography textAlign="center" type={TypographyTypes.NORMAL24}>
+          <Typography textAlign="center" type={TypographyTypes.NORMAL18}>
             Создать аккаунт
           </Typography>
         </Button>
@@ -152,7 +151,7 @@ function CodeEnter(props: Props) {
           disabled={timerDuration !== 0}
         >
           <Typography
-            color={StyleGuide.colorPalette.blue}
+            color={"#828282"}
             type={
               timerDuration === 0
                 ? TypographyTypes.NORMAL900

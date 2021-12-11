@@ -61,13 +61,13 @@ const Avatar = (props: Props) => {
   const containerStyle = useMemo(
     () => [
       styles.container,
-      { width: size.w, height: size.h, borderRadius: size.w / 2 },
+      { width: size.w, aspectRatio: 1, borderRadius: size.w / 2 },
     ],
     [size]
   );
 
   const avatarImageStyle = useMemo(
-    () => [styles.avatarImage, { borderRadius: size.w / 2 }],
+    () => [{ width: size.w, aspectRatio: 1 }, { borderRadius: size.w / 2 }],
     [size.w]
   );
 
@@ -99,7 +99,11 @@ const Avatar = (props: Props) => {
         onLoadEnd={() => setIsLoading(false)}
         defaultSource={DEFAULT_AVATAR}
         resizeMode="cover"
-        source={{ uri: props.img || user.img } || DEFAULT_AVATAR}
+        source={
+          props.img || user.img
+            ? { uri: props.img || user.img }
+            : DEFAULT_AVATAR
+        }
         style={avatarImageStyle}
       />
       {withName && (

@@ -8,9 +8,9 @@ import {
   TypographyTypes,
 } from "utils";
 import { StackScreenProps } from "@react-navigation/stack";
-import { Bubble, Header, Typography, withBackgroundHoc } from "components";
+import { Header, Typography, withBackgroundHoc } from "components";
 import { useTimer } from "hooks";
-import UserController from "lib/controllers/UserController";
+import { UserController } from "lib";
 
 const styles = StyleSheet.create({
   containerWrapper: {
@@ -19,18 +19,19 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingHorizontal: 25,
-    paddingTop: 39,
+    paddingTop: 32,
     flex: 1,
   },
   timerButton: {
     alignItems: "center",
   },
   bubbleContainer: {
-    marginBottom: 20,
+    marginBottom: 24,
+    backgroundColor: StyleGuide.colorPalette.orange,
+    borderRadius: 17,
+    paddingVertical: 12,
   },
-  bubbleTextContainer: {
-    padding: 5,
-  },
+  bubbleTextContainer: {},
 });
 
 interface Props
@@ -38,7 +39,6 @@ interface Props
 
 function ErrorCode(props: Props) {
   const { phoneNumber, timerDuration } = props.route.params;
-  const userController = UserController();
   const { seconds, formatted } = useTimer(timerDuration, timerDuration, true);
   const [timerText, setTimerText] = useState<string>(
     "Отправить повторно код через "
@@ -50,36 +50,40 @@ function ErrorCode(props: Props) {
     }
   }, [seconds]);
 
-  const handleOnTimerPress = useCallback(() => {
-    const response = userController.userLogin(phoneNumber);
+  const handleOnTimerPress = useCallback(async () => {
+    const response = await UserController.userLogin(phoneNumber);
     if (response) {
       props.navigation.navigate(RoutesNames.CODE_ENTER, { newTimer: true });
     }
-  }, [phoneNumber, props.navigation, userController]);
+  }, [phoneNumber, props.navigation]);
 
   return (
     <View style={styles.containerWrapper}>
       <Header
-        titleType={TypographyTypes.BOLD34}
+        titleType={TypographyTypes.BOLD18}
         title="АВТОРИЗАЦИЯ"
         decorators="all"
+        alignTitle="center"
       />
       <View style={styles.contentContainer}>
         <View style={styles.bubbleContainer}>
-          <Bubble
-            backgroundColor={StyleGuide.colorPalette.orange}
-            title={"НЕВЕРНЫЙ КОД\nПОДТВЕРЖДЕНИЯ!"}
+          <Typography
+            textAlign="center"
+            type={TypographyTypes.NORMAL18}
+            style={{ marginBottom: 8, fontSize: 16 }}
           >
-            <View style={styles.bubbleTextContainer}>
-              <Typography
-                type={TypographyTypes.NORMAL24}
-                numberOfLines={2}
-                textAlign="center"
-              >
-                Проверьте коректность{"\n"}введения кода подтверждения
-              </Typography>
-            </View>
-          </Bubble>
+            НЕВЕРНЫЙ КОД
+          </Typography>
+          <View style={styles.bubbleTextContainer}>
+            <Typography
+              type={TypographyTypes.NORMAL18}
+              // numberOfLines={1}
+              textAlign="center"
+              style={{ fontSize: 16 }}
+            >
+              Проверьте корректность ввода
+            </Typography>
+          </View>
         </View>
         <TouchableOpacity
           style={styles.timerButton}
@@ -87,7 +91,7 @@ function ErrorCode(props: Props) {
           disabled={seconds !== 0}
         >
           <Typography
-            color={StyleGuide.colorPalette.blue}
+            color={"#828282"}
             type={
               seconds === 0
                 ? TypographyTypes.NORMAL900
