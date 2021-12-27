@@ -10,6 +10,7 @@ import MissionsPlayground from "./MissionsPlayground";
 import Dictionary from "./Dictionary";
 import Share from "./Share";
 import ProjectInfo from "./ProjectInfo";
+import PrivacyText from "./PrivacyText";
 
 const Screens = {
   Missions,
@@ -24,6 +25,7 @@ const Screens = {
   Dictionary,
   Share,
   ProjectInfo,
+  PrivacyText,
 };
 
 export {
@@ -39,5 +41,6 @@ export {
   Dictionary,
   Share,
   ProjectInfo,
+  PrivacyText,
 };
 export default Screens;

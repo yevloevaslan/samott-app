@@ -26,7 +26,7 @@ export type HomeStackProps = {
   [RoutesNames.HOME]?: {};
   [RoutesNames.MISSIONS]?: object;
   [RoutesNames.CODE_ENTER]?: {
-    phone?: string;
+    email?: string;
     newTimer?: boolean;
   };
   [RoutesNames.PHONE_ENTER]?: object;
@@ -45,6 +45,7 @@ export type HomeStackProps = {
   [RoutesNames.DICTIONARY]?: {};
   [RoutesNames.SHARE]?: {};
   [RoutesNames.PROJECT_INFO]: { info: IProject; title: string };
+  [RoutesNames.PRIVACY_TEXT]?: {};
 };
 
 export type BorderedInputTypes =

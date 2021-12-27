@@ -49,6 +49,11 @@ const Routes = () => {
         component={Screens.Splash}
       />
       <Stack.Screen
+        options={{ cardStyleInterpolator }}
+        name={RoutesNames.PRIVACY_TEXT}
+        component={Screens.PrivacyText}
+      />
+      <Stack.Screen
         name={RoutesNames.PHONE_ENTER}
         options={{ cardStyleInterpolator }}
         component={Screens.PhoneEnter}
