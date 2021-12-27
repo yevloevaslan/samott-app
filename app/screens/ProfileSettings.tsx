@@ -383,13 +383,15 @@ function ProfileSettings(props: Props) {
             </Typography>
           </RadioButton>
         </View>
-        <BorderedInput
-          value={email}
-          onChangeText={setEmail}
-          type="email"
-          placeholder="example@email.exm (необязательно)"
-          editable={false}
-        />
+        {!props.route.params.firstIn ? (
+          <BorderedInput
+            value={email}
+            onChangeText={setEmail}
+            type="email"
+            placeholder="example@email.exm (необязательно)"
+            editable={false}
+          />
+        ) : null}
         <Button
           onPress={handleOnSubmitButtonPress}
           style={styles.submitButton}
