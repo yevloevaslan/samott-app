@@ -734,7 +734,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10131;
+				CURRENT_PROJECT_VERSION = 10132;
 				DEVELOPMENT_TEAM = 2FM7Z9P7DS;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -778,7 +778,7 @@
 				INFOPLIST_FILE = SaMott/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.31;
+				MARKETING_VERSION = 1.1.32;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -802,7 +802,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10131;
+				CURRENT_PROJECT_VERSION = 10132;
 				DEVELOPMENT_TEAM = 2FM7Z9P7DS;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -845,7 +845,7 @@
 				INFOPLIST_FILE = SaMott/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.31;
+				MARKETING_VERSION = 1.1.32;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
