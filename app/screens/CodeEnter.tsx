@@ -3,18 +3,20 @@ import {
   BorderedInput,
   Button,
   Header,
+  RadioButton,
   Typography,
   withBackgroundHoc,
 } from "components";
 import { useTimer } from "hooks";
 import { UserController } from "lib";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import {
   BackgroundImages,
   HomeStackProps,
   RoutesNames,
+  StyleGuide,
   TypographyTypes,
 } from "utils";
 
@@ -43,7 +45,7 @@ interface Props
   extends StackScreenProps<HomeStackProps, RoutesNames.CODE_ENTER> {}
 
 function CodeEnter(props: Props) {
-  const phoneNumber = useRef<string>(props.route.params?.phone || "").current;
+  const phoneNumber = useRef<string>(props.route.params?.email || "").current;
   const { seconds: timerDuration, formatted, reset } = useTimer(
     60,
     undefined,
@@ -57,10 +59,11 @@ function CodeEnter(props: Props) {
     "Повторно отправить через "
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isPrivacyAccepted, setIsPrivacyAccepted] = useState<boolean>(false);
 
   useEffect(() => {
     if (props.route.params?.newTimer) {
-      props.navigation.setParams({ phone: phoneNumber });
+      props.navigation.setParams({ email: phoneNumber });
       reset();
     }
   }, [props.route.params?.newTimer]);
@@ -119,6 +122,14 @@ function CodeEnter(props: Props) {
     }
   }, [phoneNumber, reset]);
 
+  const handleOnCheckboxPress = useCallback(() => {
+    setIsPrivacyAccepted((prev) => !prev);
+  }, []);
+
+  const handleOnPrivacyTextGo = useCallback(() => {
+    props.navigation.navigate(RoutesNames.PRIVACY_TEXT);
+  }, [props.navigation]);
+
   return (
     <View style={styles.container}>
       <Header
@@ -135,9 +146,46 @@ function CodeEnter(props: Props) {
           onError={setIsInputErrored}
           style={styles.phoneInput}
         />
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "flex-start",
+            marginBottom: 12,
+            marginRight: 20,
+          }}
+        >
+          <View>
+            <RadioButton
+              value={isPrivacyAccepted}
+              onPress={handleOnCheckboxPress}
+            />
+          </View>
+          <TouchableOpacity onPress={handleOnPrivacyTextGo} style={{}}>
+            <Text
+              numberOfLines={2}
+              style={{
+                flexWrap: "wrap",
+                width: Dimensions.get("window").width * 0.8,
+              }}
+            >
+              <Typography
+                color={StyleGuide.colorPalette.gray}
+                type={TypographyTypes.NORMAL14}
+              >
+                Соглашаюсь на обработку{" "}
+              </Typography>
+              <Typography
+                color={StyleGuide.colorPalette.black}
+                type={TypographyTypes.NORMAL14}
+              >
+                персональных данных
+              </Typography>
+            </Text>
+          </TouchableOpacity>
+        </View>
         <Button
           style={styles.submitButton}
-          disabled={isInputErrored}
+          disabled={isInputErrored || !isPrivacyAccepted}
           onPress={handleOnSubmitButtonPress}
           isLoading={isLoading}
         >

@@ -52,9 +52,7 @@ class UserController extends Controller {
       });
       this.dispatch(PlaygroundActions.SET_SCORE, { totalScore: score });
       return response;
-    } catch (e) {
-      Alert.alert("Ошибка");
-    }
+    } catch (e) {}
   }
 
   async uploadUserPhoto(

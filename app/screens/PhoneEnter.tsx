@@ -8,7 +8,7 @@ import {
 } from "components";
 import UserController from "lib/controllers/UserController";
 import React, { useCallback, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import {
   BackgroundImages,
   HomeStackProps,
@@ -30,9 +30,6 @@ const styles = StyleSheet.create({
   phoneInput: {
     marginBottom: 10,
   },
-  phoneInputText: {
-    fontSize: 18,
-  },
 });
 
 interface Props
@@ -40,21 +37,24 @@ interface Props
 
 function PhoneEnter(props: Props) {
   const [inputValue, setInputValue] = useState<string>();
-  const [isInputErrored, setIsInputErrored] = useState<boolean>(true);
+  const [isInputErrored, setIsInputErrored] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const handleOnChangeText = useCallback((_text?: string, ext?: string) => {
-    setInputValue(ext);
-  }, []);
 
   const handleOnSubmitButtonPress = useCallback(async () => {
     if (inputValue) {
-      const phone = "+7" + inputValue;
+      if (
+        !inputValue.match(
+          /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+        )?.length
+      ) {
+        Alert.alert("Не правильный формат почты");
+        return;
+      }
       setIsLoading(true);
-      const response = await UserController.userLogin(phone);
+      const response = await UserController.userLogin(inputValue);
       if (response) {
         props.navigation.navigate(RoutesNames.CODE_ENTER, {
-          phone,
+          email: inputValue,
         });
       }
       setIsLoading(false);
@@ -71,12 +71,11 @@ function PhoneEnter(props: Props) {
       />
       <View style={styles.contentContainer}>
         <BorderedInput
-          onChangeText={handleOnChangeText}
-          type="phone-number"
-          placeholder="Номер телефона"
+          onChangeText={setInputValue}
+          type="email"
+          placeholder="Введите адрес почты"
           onError={setIsInputErrored}
           style={styles.phoneInput}
-          maxLength={14}
         />
         <Button
           style={styles.submitButton}

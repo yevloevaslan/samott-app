@@ -33,11 +33,9 @@ export default class Api {
     return response.body.data;
   }
 
-  static async userLogin(phone: string) {
+  static async userLogin(email: string) {
     const response = await RestApiHelper.build<ApiLogin>("userLogin")
-      .withBody({
-        phone,
-      })
+      .withBody({ email })
       .fetch();
 
     return response.body.data;

@@ -388,6 +388,7 @@ function ProfileSettings(props: Props) {
           onChangeText={setEmail}
           type="email"
           placeholder="example@email.exm (необязательно)"
+          editable={false}
         />
         <Button
           onPress={handleOnSubmitButtonPress}

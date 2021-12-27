@@ -37,6 +37,7 @@ export enum RoutesNames {
   DICTIONARY = "DICTIONARY",
   SHARE = "SHARE",
   PROJECT_INFO = "PROJECT_INFO",
+  PRIVACY_TEXT = "PRIVACY_TEXT",
 }
 
 export enum TypographyTypes {
