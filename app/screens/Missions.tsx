@@ -101,7 +101,7 @@ function Missions(props: Props) {
         color={StyleGuide.colorPalette.gray}
         style={styles.helloTitle}
       >
-        МАРШ ВОАГIИЙЛА!
+        МАРША ДОАГ1АЛДА!
       </Typography>
       <Typography
         textAlign="center"

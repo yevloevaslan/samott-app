@@ -45,5 +45,5 @@ export const IOS_ADV_UNIT = "ca-app-pub-5779046058328214/8102843693";
 
 export const ADV_UNIT = Platform.OS === "ios" ? IOS_ADV_UNIT : ANDROID_ADV_UNIT;
 
-export const GOOGLE_PLAY_APP_URL = "market://details?id=com.samott";
+export const GOOGLE_PLAY_APP_URL = "market://details?id=com.SaMott";
 export const APP_STORE_APP_URL = "itms-apps://itunes.apple.com/ru/app/id";
