@@ -91,6 +91,8 @@ function ShareScreen(props: Props) {
     const link = IS_IOS ? APP_STORE_APP_URL : GOOGLE_PLAY_APP_URL;
     try {
       const res = await Linking.canOpenURL(link);
+      console.log(res);
+
       if (res) {
         Linking.openURL(link);
         setIsAlertVisible((prev) => !prev);
