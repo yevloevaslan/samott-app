@@ -48,4 +48,4 @@ export const ADV_UNIT = Platform.OS === "ios" ? IOS_ADV_UNIT : ANDROID_ADV_UNIT;
 export const GOOGLE_PLAY_APP_URL =
   "https://play.google.com/store/apps/details?id=com.SaMott";
 export const APP_STORE_APP_URL =
-  "itms-apps://itunes.apple.com/ru/app/apple-store/id1587203789=ru";
+  "itms-apps://itunes.apple.com/app/apple-store/id1587203789";
