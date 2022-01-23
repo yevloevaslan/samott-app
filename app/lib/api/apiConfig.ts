@@ -51,6 +51,10 @@ const config: ApiConfig = {
       method: "GET",
       url: "about_projects/grammar",
     },
+    deleteAccount: {
+      method: "DELETE",
+      url: "users/deleting",
+    },
   },
 };
 

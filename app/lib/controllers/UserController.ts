@@ -55,6 +55,16 @@ class UserController extends Controller {
     } catch (e) {}
   }
 
+  async deleteAccount() {
+    try {
+      await Api.deleteAccount(this.store.getState().user.token);
+      return true;
+    } catch (err) {
+      Alert.alert("Не удалось удалить аккаунт.");
+    }
+    return false;
+  }
+
   async uploadUserPhoto(
     imageUrl: string,
     name: string,

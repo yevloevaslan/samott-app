@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import { EXIT } from "assets/images";
+import { EXIT, TRASH_CAN } from "assets/images";
 import {
   Alert,
   Avatar,
@@ -115,17 +115,17 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     borderColor: StyleGuide.colorPalette.white,
   },
-  // trashCanIcon: {
-  //   height: 43,
-  //   width: 31,
-  //   marginRight: 20,
-  // },
-  // deleteAccountButton: {
-  //   flexDirection: "row",
-  //   alignItems: "center",
-  //   paddingTop: 20,
-  //   justifyContent: "center",
-  // },
+  trashCanIcon: {
+    height: 43,
+    width: 31,
+    marginRight: 20,
+  },
+  deleteAccountButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: 20,
+    justifyContent: "center",
+  },
   exitIcon: {
     width: 26,
     aspectRatio: 1,
@@ -240,10 +240,19 @@ function ProfileSettings(props: Props) {
     setIsExitAlert(true);
   }, []);
 
-  const handleOnExit = useCallback(() => {
+  const handleOnExit = useCallback(async () => {
     setIsExitAlert(false);
     props.navigation.navigate(RoutesNames.PHONE_ENTER);
     dispatch({ type: RESET_APP });
+  }, [dispatch, props.navigation]);
+
+  const handleOnDeleteAccount = useCallback(async () => {
+    const response = await UserController.deleteAccount();
+    if (response) {
+      setIsAlert(false);
+      props.navigation.navigate(RoutesNames.PHONE_ENTER);
+      dispatch({ type: RESET_APP });
+    }
   }, [dispatch, props.navigation]);
 
   const handleOnChangeBirthDay = useCallback((date?: Date) => {
@@ -255,11 +264,9 @@ function ProfileSettings(props: Props) {
     setIsPicker(true);
   }, []);
 
-  // const handleOnDeleteButtonPress = useCallback(() => {
-  //   setIsAlert(true);
-  // }, []);
-
-  const handleOnDeleteAccount = useCallback(() => setIsAlert(false), []);
+  const handleOnDeleteButtonPress = useCallback(() => {
+    setIsAlert(true);
+  }, []);
 
   const isSubmitButtonDisabled = useMemo(() => {
     const { birthday: oldBirthday, ...withoutBirthday } = oldInfo;
@@ -404,7 +411,7 @@ function ProfileSettings(props: Props) {
               : "Подтвердить изменения"}
           </Typography>
         </Button>
-        {/* {!props.route.params.firstIn && (
+        {!props.route.params.firstIn && (
           <TouchableOpacity
             onPress={handleOnDeleteButtonPress}
             style={styles.deleteAccountButton}
@@ -417,16 +424,16 @@ function ProfileSettings(props: Props) {
               Удалить аккаунт
             </Typography>
           </TouchableOpacity>
-        )} */}
+        )}
       </View>
       <Alert
         visible={isAlert}
-        title="Удалить аккаунт?"
+        title="Вы уверены?"
         buttons={[
           { text: "Нет", onPress: () => setIsAlert(false) },
           { text: "Да", onPress: handleOnDeleteAccount },
         ]}
-        warning="Внимание! Все ваши результаты будут удалены!"
+        warning="Вся ваша статистика будет удалена!"
       />
       <Alert
         visible={isExitAlert}

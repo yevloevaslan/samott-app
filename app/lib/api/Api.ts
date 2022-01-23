@@ -132,6 +132,14 @@ export default class Api {
     return response.body.data;
   }
 
+  static async deleteAccount(token: string) {
+    const response = await RestApiHelper.build<{ data: null }>("deleteAccount")
+      .withHeaders({ "x-access-token": token })
+      .fetch();
+
+    return response.body.data;
+  }
+
   static async uploadPhoto(
     token: string,
     data: FormData
